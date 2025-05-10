@@ -1,0 +1,7 @@
+# Ignore artifacts:
+build
+coverage
+tests/fixtures
+.github/
+dist/
+README.md
