@@ -4,7 +4,7 @@ import Badge from '~/components/Badge'
 import CTA from '~/components/CTA'
 import SocialIcon from '~/components/Socials'
 import SubHeading from '~/components/SubHeading'
-import Modal from '~/components/Modal'
+import Tooltip from '~/components/Tootip'
 
 export interface ContactInfo {
     email: string
@@ -16,13 +16,11 @@ export const contactInfo: ContactInfo = {
     location: 'Tampa, Florida',
 }
 
-export const hometown: string = `Abeokuta, Ogun State's capital in southwestern Nigeria, is a
-                                            historic city known for its dramatic granite outcrops, 
-                                            particularly the sacred Olumo Rock. Founded in the 1830s as a 
-                                            Yoruba settlement, it blends rich cultural heritage with modern 
-                                            development, featuring traditional crafts like adire textile 
-                                            production alongside educational institutions and the impressive 
-                                            Gbadebo royal palace.`
+export const works = {
+    askKumuyi: "I got wind of this project right after my graduation, in oct '25, during their soft launch / beta test phase and I didn't like how the front end design looked so I built something and I sent it to the team.",
+    dlbcTampa: "As a PK --IYKYK-- in a small assembly, you do what you have to to help out when the need arises. Came up with the idea to build this because there's another organization that has a really similar name to ours and a lot of people complain they get misdirected there when navigating to our church location. Had to learn SEO, how gtm works, google business profile, quite a lot. I should writing a book on my experiences :)",
+    freeWillPay: "After the Ask-Kumuyi Project was finished, I got the figma files for this fullstack project and I can't say much more as it is still in development",
+}
 
 export function AboutMe() {
     // Animation variants
@@ -121,7 +119,7 @@ export function AboutMe() {
                                             Location
                                         </h3>
                                         <p className="text-sm text-gray-900">
-                                            Tampa, Florida
+                                            {contactInfo.location}
                                         </p>
                                     </div>
 
@@ -130,7 +128,7 @@ export function AboutMe() {
                                             Email
                                         </h3>
                                         <p className="text-sm text-gray-900">
-                                            hello@danielakoko.com
+                                            {contactInfo.email}
                                         </p>
                                     </div>
 
@@ -175,7 +173,7 @@ export function AboutMe() {
 
                                 <p className="mb-4">
                                     Hello there! Welcome to my corner of the internet. 
-                                    My name is Daniel and I&apos;m from <span className="tip">Abeokuta, Ogun State</span>
+                                    My name is Daniel and I&apos;m currently based in <Tooltip content="I shunt between Tampa, Dallas & LA frequently" position="top" className="decoration-dashed">Tampa, Florida</Tooltip>
                                     {/* 
                                             Abeokuta, Ogun State's capital in southwestern Nigeria, is a 
                                             historic city known for its dramatic granite outcrops, 
@@ -188,25 +186,25 @@ export function AboutMe() {
                                 </p>
                                 
                                 <p className="mb-4">
-                                    I am a FullStack Engineer working on <Link to="#" className="tip">FreeWillPay</Link>.
-                                    Before that, I built <Link to="#" className="tip">dlbcTampa</Link>, and 
-                                    the frontend UI for <Link to="#" className="tip">askKumuyi</Link>.
+                                    I am a FullStack Engineer working on <Link to="#" className="tip decoration-double"><Tooltip content={works.freeWillPay} className="decoration-double" position="top" >FreeWillPay</Tooltip></Link>.
+                                    Before that, I built <Link to="#" className="tip decoration-double"><Tooltip content={works.dlbcTampa} className="decoration-double" position="top" >dlbcTampa</Tooltip></Link>, and 
+                                    the frontend UI for <Link to="https://askkumuyi.ai/" className="tip"><Tooltip content={works.askKumuyi} className="decoration-double" position="top" >askKumuyi</Tooltip></Link>.
                                 </p>
 
                                 <p className="mb-4">
                                     My interests are <span className="">performance</span>, scalability and <span className="">accessibility</span> but 
                                     I am improving my knowledge on <span className="">build tools</span> and <span className="">AI integrations</span>. 
-                                    I hold a BSc in Computer Science from <Link to="https://www.wgu.edu/" target='_blank' className="tip">WGU</Link>,
-                                    a BGS in Criminilogy from <Link to="https://www.usf.edu/" target='_blank' className="tip">USF</Link> and 
+                                    I hold a BS in Computer Science from <Link to="https://www.wgu.edu/" target='_blank' className="tip">WGU</Link>,
+                                    a BGS in Criminology from <Link to="https://www.usf.edu/" target='_blank' className="tip">USF</Link> and 
                                     an AA in Electrical Engineering from <Link to="https://ccbcmd.edu/" target='_blank' className="tip">CCBC</Link>
                                 </p>
 
                                 <p className="mb-4">
-                                    Outside tech and programming, I help run the <span className="tip after:content-['_↗']"><Link to="">DLYA</Link>{' '}Fundraising Team</span>
+                                    Outside tech and programming, I help run the <span ><Link to="https://www.dlya.org/giving" className="tip">DLYA Fundraising Team</Link></span>{' '}
                                 </p>
 
                                 <p className="mb-1 font-medium">Favourite Stack&#58;</p>
-                                <p className="mb-4 ml-4">TypeScript, React, Vite, Nodejs, Tailwind CSS, MySQL, AWS S3 Buckets</p>
+                                <p className="mb-4 ml-4">TypeScript, React, Vite, Nodejs, Tailwind CSS, React-Router, MySQL</p>
                                 
                                 <div className="flex space-x-4 mt-8">
                                     <Link
