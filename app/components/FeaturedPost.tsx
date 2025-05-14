@@ -1,8 +1,34 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 
+interface Post {
+  id: string;
+  title: string;
+  date: string;
+  category: string;
+  readTime: string;
+  excerpt: string;
+  featured?: boolean;
+}
+
+// Define type for category
+interface Category {
+  value: string;
+  label: string;
+}
+
+interface FeaturedPostProps {
+  post: Post;
+  categories: Category[];
+}
+
+interface FeaturedPostsProps {
+  blogPosts: Post[];
+  categories: Category[];
+}
+
 // FeaturedPost component needs to receive post as a prop
-export function FeaturedPost({ post, categories }) {
+export function FeaturedPost({ post, categories }: FeaturedPostProps) {
     return (
         <motion.div
             key={post.id}
@@ -37,7 +63,7 @@ export function FeaturedPost({ post, categories }) {
     )
 }
 
-export default function FeaturedPosts({ blogPosts, categories }) {
+export default function FeaturedPosts({ blogPosts, categories }: FeaturedPostsProps) {
     return (
         <>
             <h2 className="text-center text-lg mb-[var(--spacing-md)]">

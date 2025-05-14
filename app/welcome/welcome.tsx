@@ -217,7 +217,7 @@ export function ProjectSection() {
                                 title: 'Ask Kumuyi Ai Interface',
                                 description:
                                     'Chatbot trained on the teachings of Pastor Dr. W.F. Kumuyi',
-                                tags: ['jQuery', 'BootStrap', 'Azure'],
+                                tags: ['jQuery', 'BootStrap', 'Python', 'Azure'],
                                 link: 'https://askkumuyi.ai/'
                             },
                         ].map((project, index) => (

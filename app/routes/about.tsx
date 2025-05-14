@@ -1,5 +1,6 @@
 import { AboutMe } from '~/welcome/about'
 import type { Route } from './+types/about'
+import Loading from '~/components/LoadingScreen'
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -21,7 +22,9 @@ export function links() {
 }
 
 export default function About() {
-    return <AboutMe />
+    return (
+        <Loading OGComponent={AboutMe} />
+    )
 }
 
 // export function links() {

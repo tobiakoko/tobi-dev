@@ -1,6 +1,7 @@
 import BookReviews from "~/welcome/book";
 import { technicalBooks } from "~/welcome/bookData";
 import type { Route } from "./+types/books";
+import Loading from '~/components/LoadingScreen'
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -22,9 +23,5 @@ export function links() {
 }
 
 export default function Books() {
-  return (
-    <>
-      <BookReviews books={technicalBooks} />
-    </>
-  );
+  return <Loading OGComponent={() => <BookReviews books={technicalBooks} />} />;
 }

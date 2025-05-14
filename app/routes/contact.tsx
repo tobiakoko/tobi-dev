@@ -1,5 +1,6 @@
 import { Contacts, Placeholder } from '~/welcome/contact'
 import type { Route } from './+types/contact'
+import Loading from '~/components/LoadingScreen'
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -21,7 +22,8 @@ export function links() {
 }
 export default function Contact() {
     return (
-        <Placeholder />
+        <Loading OGComponent={Placeholder} />
+        
     )
 }
 // export function meta({}: Route.MetaArgs) {

@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router";
 import { BookReviewContent } from "~/welcome/book";
 import { technicalBooks } from "~/welcome/bookData";
 import type { Route } from "./+types/book";
+import Loading from '~/components/LoadingScreen'
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -39,5 +40,5 @@ export default function Book() {
     );
   }
   
-  return <BookReviewContent book={book} />;
+  return <Loading OGComponent={() => <BookReviewContent book={book} />} />;
 }

@@ -164,7 +164,7 @@ export function AboutMe() {
                         <motion.div
                             custom={2}
                             variants={fadeInUp}
-                            className="md:col-span-2 px-20"
+                            className="md:col-span-2 px-4 md:px-20"
                         >
                             <div className="prose max-w-prose text-sm/6 text-slate-500">
                                 <h2 className="text-3xl font-serif font-bold mb-6 text-gray-900">
@@ -242,7 +242,7 @@ export function AboutMe() {
                         className="bg-[rgba(245,245,253,0.5)] backdrop-blur-sm max-w-2xl mx-auto rounded-2xl [box-shadow:inset_0_0_302px_#8092ff4d] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] font-futura p-8 shadow-sm hover:shadow-md transition-all duration-300"
                     >
                         <blockquote className="text-center sm:px-7">
-                            <p className="font-medium md:text-md md:leading-normal xl:leading-normal p-10 max-w-prose">
+                            <p className="font-medium md:text-md md:leading-normal xl:leading-normal p-4 lg:p-10 max-w-prose">
                                 
                                 &ldquo;I didn&apos;t invent the language or mathematics I used. I make little of my one food, 
                                 none of my own clothes. Everything I do depends on other members of our species and the 

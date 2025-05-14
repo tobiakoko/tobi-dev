@@ -1,16 +1,20 @@
 {
     "name": "tobi-dev",
+    "homepage": "https://tobiakoko.github.io/tobi-dev/",
     "private": true,
     "type": "module",
     "scripts": {
         "build": "react-router build",
         "dev": "react-router dev",
         "start": "react-router-serve ./build/server/index.js",
-        "typecheck": "react-router typegen && tsc"
+        "preview": "vite preview",
+        "typecheck": "react-router typegen && tsc",
+        "deploy": "gh-pages -d dist"
     },
     "dependencies": {
         "@react-router/node": "^7.5.0",
         "@react-router/serve": "^7.5.0",
+        "gh-pages": "^6.3.0",
         "isbot": "^5.1.17",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",

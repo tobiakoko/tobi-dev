@@ -1,5 +1,6 @@
 import type { Route } from './+types/home'
 import { Welcome } from '../welcome/welcome'
+import Loading from '~/components/LoadingScreen'
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -22,7 +23,9 @@ export function links() {
 
 
 export default function Home() {
-    return <Welcome />
+    return (
+        <Loading OGComponent={Welcome} />
+    )
 }
 
 /* 
