@@ -1,12 +1,16 @@
 import {
     isRouteErrorResponse,
+    Link,
     Links,
     Meta,
     Outlet,
     Scripts,
     ScrollRestoration,
+    useNavigate
 } from 'react-router'
 import { PageTransition } from './components/LoadingScreen'
+import Loading from './components/LoadingScreen';
+import Lay from '~/routes/layout';
 
 import type { Route } from './+types/root'
 import './app.css'
@@ -22,6 +26,14 @@ export const links: Route.LinksFunction = () => [
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
     },
+    {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap',
+    },
+    {
+        rel: 'stylesheet',
+        href: 'https://use.typekit.net/ffa5vlw.css',
+      },
 ]
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -45,6 +57,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
     )
 }
 
+export function HydrateFallback() {
+    return <Loading OGComponent={Lay} />;
+  }
+
 export default function App() {
     return (
         <PageTransition>
@@ -54,6 +70,7 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+    const navigate = useNavigate()
     let message = 'Oops!'
     let details = 'An unexpected error occurred.'
     let stack: string | undefined
@@ -78,6 +95,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
                     <code>{stack}</code>
                 </pre>
             )}
+            <Link to="/">Go to Main Page</Link>
         </main>
     )
 }
