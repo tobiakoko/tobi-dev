@@ -2,6 +2,11 @@
     "name": "tobi-dev",
     "homepage": "https://tobiakoko.github.io/tobi-dev/",
     "private": true,
+    "author": {
+        "name": "Daniel Akoko",
+        "email": "hello@tobiakoko.com",
+        "url": "https://tobiakoko.com"
+    },
     "type": "module",
     "scripts": {
         "build": "react-router build",

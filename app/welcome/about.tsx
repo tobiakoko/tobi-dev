@@ -53,17 +53,17 @@ export function AboutMe() {
     const socialLinks = [
         {
             name: 'GitHub',
-            url: 'https://github.com/danielakoko',
+            url: 'https://github.com/tobiakoko',
             icon: 'github' as SocialType,
         },
         {
             name: 'LinkedIn',
-            url: 'https://linkedin.com/in/danielakoko',
+            url: 'https://www.linkedin.com/in/daniel-akoko/',
             icon: 'linkedin' as SocialType,
         },
         {
             name: 'Twitter',
-            url: 'https://twitter.com/danielakoko',
+            url: 'https://twitter.com/',
             icon: 'twitter' as SocialType,
         },
     ]
@@ -88,7 +88,7 @@ export function AboutMe() {
                             Daniel Akoko
                         </h1>
                         <p className="text-xl md:text-md font-light tracking-tight text-gray-600 mb-8 max-w-2xl mx-auto">
-                            A summary of a highlight!
+                            Software Engineer | Full Stack Developer
                         </p>
                     </motion.div>
 
@@ -172,8 +172,8 @@ export function AboutMe() {
                                 </h2>
 
                                 <p className="mb-4">
-                                    Hello there! Welcome to my corner of the internet. 
-                                    My name is Daniel and I&apos;m currently based in <Tooltip content="I shunt between Tampa, Dallas & LA frequently" position="top" className="decoration-dashed">Tampa, Florida</Tooltip>
+                                    Hello and welcome! My name is Daniel 
+                                    and I&apos;m currently based in <Tooltip content="I shunt between Tampa, Dallas & LA frequently" position="top" className="decoration-dashed">Tampa, Florida</Tooltip>
                                     {/* 
                                             Abeokuta, Ogun State's capital in southwestern Nigeria, is a 
                                             historic city known for its dramatic granite outcrops, 
@@ -186,17 +186,19 @@ export function AboutMe() {
                                 </p>
                                 
                                 <p className="mb-4">
-                                    I am a FullStack Engineer working on <Link to="#" className="tip decoration-double"><Tooltip content={works.freeWillPay} className="decoration-double" position="top" >FreeWillPay</Tooltip></Link>.
+                                    I&apos;m a FullStack Engineer working on <Link to="#" className="tip decoration-double"><Tooltip content={works.freeWillPay} className="decoration-double" position="top" >FreeWillPay</Tooltip></Link>.
                                     Before that, I built <Link to="#" className="tip decoration-double"><Tooltip content={works.dlbcTampa} className="decoration-double" position="top" >dlbcTampa</Tooltip></Link>, and 
                                     the frontend UI for <Link to="https://askkumuyi.ai/" className="tip"><Tooltip content={works.askKumuyi} className="decoration-double" position="top" >askKumuyi</Tooltip></Link>.
+                                    In a past life, I worked in the hospitality industry, where I honed customer service, attention to detail, and teamwork skills which has influenced my 
+                                    approach to software development, emphasizing user-centric design and collaboration.
                                 </p>
 
                                 <p className="mb-4">
-                                    My interests are <span className="">performance</span>, scalability and <span className="">accessibility</span> but 
-                                    I am improving my knowledge on <span className="">build tools</span> and <span className="">AI integrations</span>. 
+                                    I care a lot about <span className="">web performance</span>, accessibility and <span className="">customer experience</span> but 
+                                    I love exploring topics concerning <span className="">build tools</span> and <span className="">AI integrations</span>. 
                                     I hold a BS in Computer Science from <Link to="https://www.wgu.edu/" target='_blank' className="tip">WGU</Link>,
                                     a BGS in Criminology from <Link to="https://www.usf.edu/" target='_blank' className="tip">USF</Link> and 
-                                    an AA in Electrical Engineering from <Link to="https://ccbcmd.edu/" target='_blank' className="tip">CCBC</Link>
+                                    an AA in Electrical Engineering from <Link to="https://ccbcmd.edu/" target='_blank' className="tip">CCBC</Link>.
                                 </p>
 
                                 <p className="mb-4">

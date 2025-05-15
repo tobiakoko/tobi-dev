@@ -70,7 +70,6 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-    const navigate = useNavigate()
     let message = 'Oops!'
     let details = 'An unexpected error occurred.'
     let stack: string | undefined
@@ -95,7 +94,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
                     <code>{stack}</code>
                 </pre>
             )}
-            <Link to="/">Go to Main Page</Link>
         </main>
     )
 }

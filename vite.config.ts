@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   
   return {
     plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
-    base: '/',
+    base: '',
     build: {
       sourcemap: isProduction ? 'hidden' : true,
       minify: isProduction ? 'terser' : false,
