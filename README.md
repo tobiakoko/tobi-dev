@@ -1,8 +1,8 @@
 # Welcome to Tobi Dev!
 
-Portfolio Website [here][https://www.tobiakoko.com]
+Portfolio Website [here](https://www.tobiakoko.com)
 
-[![SITE DEMO HERE]](https://www.tobiakoko.com)
+[SITE DEMO HERE](https://www.tobiakoko.com)
 
 
 
