@@ -202,7 +202,7 @@ export function ProjectSection() {
                             {
                                 title: 'Church Website',
                                 description:
-                                    'DLBC Tampa church website built with React and Node.js',
+                                    'DLBC Tampa church website built with Next.js and Tailwind CSS',
                                 tags: ['Nextjs', 'Tailwind CSS'],
                                 link: '#'
                             },

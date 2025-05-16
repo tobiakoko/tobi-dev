@@ -51,7 +51,7 @@ export function Project(): JSX.Element {
             id: 1,
             title: 'Church Website',
             description:
-                'A website built with React and Node.js',
+                'A website built with Next.js and Tailwind CSS',
             technologies: [
                 'React',
                 'Nextjs', 

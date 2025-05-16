@@ -12,7 +12,7 @@ export interface ContactInfo {
 }
 
 export const contactInfo: ContactInfo = {
-    email: 'hello@danielakoko.com',
+    email: 'enquiries@tobiakoko.com',
     location: 'Tampa, Florida',
 }
 

@@ -29,7 +29,6 @@ export default function BookReviews({ books }: { books: Book[] }) {
         ? technicalBooks 
         : technicalBooks.filter(book => book.category === selectedCategory);
     
-    // Carousel functionality
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -42,7 +41,6 @@ export default function BookReviews({ books }: { books: Book[] }) {
     }
   };
 
-  // Check scroll buttons on mount and when books change
   useEffect(() => {
     checkScrollButtons();
   }, [filteredBooks]);
@@ -52,7 +50,6 @@ export default function BookReviews({ books }: { books: Book[] }) {
       const scrollAmount = direction === 'left' ? -320 : 320; 
       carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       
-      // Check scroll buttons after scrolling
       setTimeout(checkScrollButtons, 300);
     }
   };
@@ -169,7 +166,7 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
             // Fallback for broken images
             const target = e.target as HTMLImageElement;
             target.onerror = null;
-            target.src = '/images/placeholder-book.jpg'; // Assuming you have a placeholder
+            target.src = '/images/placeholder-book.jpg';
           }}
         />
       </div>

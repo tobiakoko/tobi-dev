@@ -51,7 +51,7 @@ export const Contacts: FC = () => {
 
     // Contact information
     const contactInfo: ContactInfo = {
-        email: 'hello@danielakoko.com',
+        email: 'enquiries@tobiakoko.com',
         location: 'Tampa, Florida',
     }
 
