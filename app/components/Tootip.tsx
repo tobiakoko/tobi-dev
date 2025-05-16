@@ -34,7 +34,7 @@ export default function Tooltip({
     };
   
     return (
-      <div className="relative inline-block">
+      <span className="relative inline-block">
         <span 
           className={`inline-block tip ${className}`}
           onMouseEnter={() => setIsVisible(true)}
@@ -46,11 +46,11 @@ export default function Tooltip({
         </span>
         
         {isVisible && (
-          <div className={`absolute inline-block z-50 py-3 px-2 bg-[rgb(245, 245, 253)] [box-shadow:inset_0_0_12px_#8092ff4d] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] bg-white font-light font-futura text-sm rounded-lg shadow-md w-max max-w-2xl
+          <div className={`absolute inline-block z-50 py-3 px-2 bg-[rgb(245, 245, 253)] [box-shadow:inset_0_0_12px_#8092ff4d] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] bg-white font-light font-futura text-sm rounded-lg shadow-md w-144 md:max-w-2xl lg:max-w-3xl
             ${positionClasses[position] || positionClasses.top}`}>
             {content}
           </div>
         )}
-      </div>
+      </span>
     );
   }

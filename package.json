@@ -2,10 +2,15 @@
     "name": "tobi-dev",
     "homepage": "https://tobiakoko.github.io/tobi-dev/",
     "private": true,
+    "description": "Daniel Akoko's Portfolio webiste",
+    "version": "0.1.0",
     "author": {
         "name": "Daniel Akoko",
         "email": "hello@tobiakoko.com",
         "url": "https://tobiakoko.com"
+    },
+    "bugs": {
+        "url": "https://github.com/tobiakoko/tobi-dev/issues"
     },
     "type": "module",
     "scripts": {
@@ -16,8 +21,24 @@
         "typecheck": "react-router typegen && tsc",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
-        "watch": "vite build --watch"
+        "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md}\"",
+        "eslint": "eslint **/*.{ts,tsx}"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tobiakoko/tobi-dev"
+    },
+    "keywords": [
+        "Daniel",
+        "Akoko",
+        "Software",
+        "Engineer",
+        "react",
+        "typescript",
+        "react-router",
+        "tailwindcss",
+        "github"
+    ],
     "dependencies": {
         "@react-router/node": "^7.5.0",
         "@react-router/serve": "^7.5.0",

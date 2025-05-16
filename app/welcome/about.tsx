@@ -17,9 +17,9 @@ export const contactInfo: ContactInfo = {
 }
 
 export const works = {
-    askKumuyi: "I got wind of this project right after my graduation, in oct '25, during their soft launch / beta test phase and I didn't like how the front end design looked so I built something and I sent it to the team.",
-    dlbcTampa: "As a PK --IYKYK-- in a small assembly, you do what you have to to help out when the need arises. Came up with the idea to build this because there's another organization that has a really similar name to ours and a lot of people complain they get misdirected there when navigating to our church location. Had to learn SEO, how gtm works, google business profile, quite a lot. I should writing a book on my experiences :)",
-    freeWillPay: "After the Ask-Kumuyi Project was finished, I got the figma files for this fullstack project and I can't say much more as it is still in development",
+    askKumuyi: "I got wind of this project right after my graduation, in oct '24, during their soft launch / beta test phase and I didn't like how the front end design looked so I built something, sent it to the team and the rest is history.",
+    dlbcTampa: "As a PK --IYKYK :)-- in a small assembly, you do what you have to to help out when the need arises. Came up with the idea to build this because there's another organization that has a really similar name to ours and a lot of people complain they get misdirected there when navigating to our church location. Had to learn SEO, how gtm works, google business profile, quite a lot. I should writing a book on my experiences :)",
+    freeWillPay: "After the Ask-Kumuyi Project was finished, I got the figma files for this fullstack project (dashboard, landing & info pages) and I can't say much more as it is still in development",
 }
 
 export function AboutMe() {
@@ -172,37 +172,44 @@ export function AboutMe() {
                                 </h2>
 
                                 <p className="mb-4">
-                                    Hello and welcome! My name is Daniel 
-                                    and I&apos;m currently based in <Tooltip content="I shunt between Tampa, Dallas & LA frequently" position="top" className="decoration-dashed">Tampa, Florida</Tooltip>
-                                    {/* 
-                                            Abeokuta, Ogun State's capital in southwestern Nigeria, is a 
-                                            historic city known for its dramatic granite outcrops, 
-                                            particularly the sacred Olumo Rock. Founded in the 1830s as a 
-                                            Yoruba settlement, it blends rich cultural heritage with modern 
-                                            development, featuring traditional crafts like adire textile 
-                                            production alongside educational institutions and the impressive 
-                                            Gbadebo royal palace.
-                                    */}
+                                    Hello and welcome! My name is Daniel Akoko and I&apos;m a Software Engineer currently based 
+                                    in <Tooltip content="I shunt between Tampa, Dallas & LA frequently" position="top" className="decoration-dashed">Tampa, Florida</Tooltip>.
                                 </p>
                                 
                                 <p className="mb-4">
-                                    I&apos;m a FullStack Engineer working on <Link to="#" className="tip decoration-double"><Tooltip content={works.freeWillPay} className="decoration-double" position="top" >FreeWillPay</Tooltip></Link>.
-                                    Before that, I built <Link to="#" className="tip decoration-double"><Tooltip content={works.dlbcTampa} className="decoration-double" position="top" >dlbcTampa</Tooltip></Link>, and 
+                                    I&apos;m gaining experience as a Full Stack Engineer working on <Link to="#" className="tip decoration-double"><Tooltip content={works.freeWillPay} className="decoration-double" position="top" >FreeWillPay</Tooltip></Link>, where I&apos;m 
+                                    building the frontend landing page, blog and dashboard. Prior to this, I independly developed <Link to="#" className="tip decoration-double"><Tooltip content={works.dlbcTampa} className="decoration-double" position="top" >dlbcTampa</Tooltip></Link>, and 
                                     the frontend UI for <Link to="https://askkumuyi.ai/" className="tip"><Tooltip content={works.askKumuyi} className="decoration-double" position="top" >askKumuyi</Tooltip></Link>.
-                                    In a past life, I worked in the hospitality industry, where I honed customer service, attention to detail, and teamwork skills which has influenced my 
-                                    approach to software development, emphasizing user-centric design and collaboration.
+                                    Flexing my concept to implementation (0 to 1) skills.
+                                    
                                 </p>
 
                                 <p className="mb-4">
-                                    I care a lot about <span className="">web performance</span>, accessibility and <span className="">customer experience</span> but 
-                                    I love exploring topics concerning <span className="">build tools</span> and <span className="">AI integrations</span>. 
-                                    I hold a BS in Computer Science from <Link to="https://www.wgu.edu/" target='_blank' className="tip">WGU</Link>,
-                                    a BGS in Criminology from <Link to="https://www.usf.edu/" target='_blank' className="tip">USF</Link> and 
-                                    an AA in Electrical Engineering from <Link to="https://ccbcmd.edu/" target='_blank' className="tip">CCBC</Link>.
+                                    My background includes a Bachelor of Science in Computer Science from Western Governors University 
+                                    (<Link to="https://www.wgu.edu/" target='_blank' className="tip">WGU</Link>), 
+                                    providing a strong theoretical foundation in software engineering principles, data structures, algorithms, computer architecture, 
+                                    operating systems and AI/ML. I also hold a Bachelor of General Studies in Criminology from the 
+                                    University of South Florida (<Link to="https://www.usf.edu/" target='_blank' className="tip">USF</Link>), and 
+                                    an Associate of Science in Electrical Engineering from the Community College of Baltimore County 
+                                    (<Link to="https://ccbcmd.edu/" target='_blank' className="tip">CCBC</Link>).
                                 </p>
 
                                 <p className="mb-4">
-                                    Outside tech and programming, I help run the <span ><Link to="https://www.dlya.org/giving" className="tip">DLYA Fundraising Team</Link></span>{' '}
+                                    My previous experience in the hospitality industry has influenced and uniquely shaped my approach to software development. 
+                                    The customer service and teamwork skills, as well as my attention to detail and experience working under 
+                                    pressure I developed translate directly into a focus on effective collaboration, user-centric design and 
+                                    creating intuitive, accessible applications while making impact and meeting deadline.
+                                </p>
+
+                                <p className="mb-4">
+                                    I&apos;m particularly enthusiastic about building performant and accessible web applications that show exceptional user experiences.
+                                    My technical interests extend to exploring build tools (like Webpack, and Vite), cloud containerization and the possibilities of AI integrations in software.
+                                    
+                                </p>
+
+                                <p className="mb-4">
+                                    Outside of coding, I help lead the <Link to="https://www.dlya.org/giving" className="tip">DLYA Fundraising Team</Link>, <Link to="https://www.deeperlifedc.org" className="tip">the DLBC Tampa</Link> 
+                                    <Tooltip content={"church video & sound"} position={'top'}>media</Tooltip>, <Tooltip content={"choir director"} position={'top'}>choir</Tooltip>, and <Tooltip content={"social media, youtube & zoom livestream"} position={'top'}>online</Tooltip> teams.
                                 </p>
 
                                 <p className="mb-1 font-medium">Favourite Stack&#58;</p>
@@ -210,7 +217,7 @@ export function AboutMe() {
                                 
                                 <div className="flex space-x-4 mt-8">
                                     <Link
-                                        to="/projects"
+                                        to="/books"
                                         className="px-6 py-3 rounded-lg bg-blue-600 text-sm text-white font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-lg"
                                     >
                                         See My Library

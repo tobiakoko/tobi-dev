@@ -1,18 +1,5 @@
 import { Blogs } from '~/welcome/blog'
 
-// export function meta({}: Route.MetaArgs) {
-//     return [
-//         { title: "Blog" },
-//         { name: "description", content: "Welcome to my blog! Here you will find my latest posts." },
-//     ];
-// }
-
-// export function links() {
-//     return [
-//         { rel: "stylesheet", href: "/styles/blog.css" },
-//     ];
-// }
-
 
 /*
 Blog Posts Idea for the future 
@@ -32,67 +19,17 @@ Blog Posts Idea for the future
     Sources - source 1: [https://www.freecodecamp.org/news/making-sense-of-google-analytics-and-the-traffic-to-your-website/]
 */
 
-
 export default function Blog() {
     return <Blogs />
 }
+
+
 //
 // export function meta({}: Route.MetaArgs) {
 //     return [
 //         { title: "Blog" },
 //         { name: "description", content: "Welcome to my blog! Here you will find my latest posts." },
 //     ];
-// }
-// export function links() {
-//     return [
-//         { rel: "stylesheet", href: "/styles/blog.css" },
-//     ];
-// }
-// export function action({ request }: Route.ActionArgs) {
-//     const formData = new URLSearchParams(await request.text());
-//     const title = formData.get("title");
-//     const content = formData.get("content");
-//
-//     // Handle form submission logic here
-//     // For example, save the blog post to a database
-//     console.log("Title:", title);
-//     console.log("Content:", content);
-//
-//     return { success: true };
-// }
-// export function ErrorBoundary({ error }: Route.ErrorBoundaryArgs) {
-//     return (
-//         <div className="error">
-//             <h1>Error</h1>
-//             <p>Something went wrong: {error.message}</p>
-//         </div>
-//     );
-// }
-// export function CatchBoundary() {
-//     return (
-//         <div className="catch">
-//             <h1>Catch</h1>
-//             <p>Something went wrong while loading the blog page.</p>
-//         </div>
-//     );
-//     );
-// }
-// }
-// export function handleError(error: Error) {
-//     console.error("Error in Blog route:", error);
-//     // Handle error logging or reporting here
-// }
-// export function handleCatch(catchInfo: any) {
-//     console.error("Catch in Blog route:", catchInfo);
-//     // Handle catch logging or reporting here
-// }
-// export function handleAction(actionInfo: any) {
-//     console.log("Action in Blog route:", actionInfo);
-//     // Handle action logging or reporting here
-// }
-// export function handleLoad(loadInfo: any) {
-//     console.log("Load in Blog route:", loadInfo);
-//     // Handle load logging or reporting here
 // }
 
 /* 

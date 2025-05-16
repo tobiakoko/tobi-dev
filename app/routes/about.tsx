@@ -7,7 +7,7 @@ export function meta({}: Route.MetaArgs) {
         { name: 'author', content: 'Daniel Akoko'},
         { title: 'Daniel Akoko Website' },
         { name: 'description', content: "Daniel Akoko's Portfolio website"},
-        { name: 'description', content: "Daniel Akoko is a Software Engineer and program Manager based in Tampa Florida and is a dedicated problem solver who thrives on learning and building" },
+        { name: 'description', content: "Daniel Akoko is a new grad full stack react developer software engineer and project manager with typescript nodejs web development web performance optimization accessibility wcag, restful apis, version control git skills and is based in tampa florida, dallas texas, baltimore md, atlanta georgia and los angeles california" },
     ]
 }
 
@@ -26,9 +26,3 @@ export default function About() {
         <Loading OGComponent={AboutMe} />
     )
 }
-
-// export function links() {
-//     return [
-//         { rel: "stylesheet", href: "/styles/about.css" },
-//     ];
-// }
