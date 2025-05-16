@@ -1,4 +1,4 @@
-import { NavLink, useViewTransitionState } from 'react-router'
+import { NavLink } from 'react-router'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '~/assets/portfolio-logo.png'

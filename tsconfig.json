@@ -16,7 +16,9 @@
         "removeComments": true,
         "baseUrl": ".",
         "paths": {
-            "~/*": ["./app/*"]
+            "~/*": ["./app/*"],
+            "~/assets": ["./app/assets/*"],
+            "~/public": ["./public/*"]
         },
         "esModuleInterop": true,
         "verbatimModuleSyntax": true,

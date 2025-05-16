@@ -15,8 +15,8 @@ export function links() {
     return [
         {
             rel: "icon",
-            href: "/Logo-dark.ico",
-            type: "image/png"
+            href: "~/public/Logo-dark.ico",
+            type: "image/x-icon"
         }
     ]
 }

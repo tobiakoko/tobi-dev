@@ -11,7 +11,7 @@ import {
 import { PageTransition } from './components/LoadingScreen'
 import Loading from './components/LoadingScreen';
 import Lay from '~/routes/layout';
-
+import Logo from "~/public/Logo-dark.ico"
 import type { Route } from './+types/root'
 import './app.css'
 
@@ -33,7 +33,10 @@ export const links: Route.LinksFunction = () => [
     {
         rel: 'stylesheet',
         href: 'https://use.typekit.net/ffa5vlw.css',
-      },
+    },
+    {
+        rel: 'icon', type: 'image/x-icon', href: Logo
+    },
 ]
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -59,10 +62,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
     )
 }
 
+/*
 export function HydrateFallback() {
     return <Loading OGComponent={Lay} />;
   }
-
+ */
 export default function App() {
     return (
         <PageTransition>

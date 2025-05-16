@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router";
+import loadingAnimation from "~/public/loadingAnimation.mp4"
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -36,7 +37,7 @@ export function Load({ videoSrc, videoRef }: LoadWithVideoProps) {
       exit={{ opacity: 1, y: "-100%" }}     // Exit back to above
       transition={{ 
         duration: 0.8,
-        ease: [0.22, 1, 0.36, 1] // Custom easing for smoother motion
+        ease: [0.22, 1, 0.36, 1] 
       }}
     >
       <motion.div
@@ -73,7 +74,7 @@ export function Load({ videoSrc, videoRef }: LoadWithVideoProps) {
 
 export default function Loading({ 
   OGComponent, 
-  videoSrc = "/loadingAnimation.mp4" 
+  videoSrc = loadingAnimation 
 }: { 
   OGComponent: React.ComponentType<any>, 
   videoSrc?: string; 
