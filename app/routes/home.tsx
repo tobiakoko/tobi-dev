@@ -1,6 +1,7 @@
 import type { Route } from './+types/home'
-import { Welcome } from '../welcome/welcome'
+import { Welcome } from '~/welcome/welcome'
 import Loading from '~/components/LoadingScreen'
+import favico from '/Logo-dark.ico'
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -15,7 +16,7 @@ export function links() {
     return [
         {
             rel: "icon",
-            href: "~/public/Logo-dark.ico",
+            href: favico,
             type: "image/x-icon"
         }
     ]

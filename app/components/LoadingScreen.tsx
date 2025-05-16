@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router";
-import loadingAnimation from "~/public/loadingAnimation.mp4"
+import loadingAnimation from "~/assets/loadingAnimation.mp4"
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const location = useLocation();

@@ -24,13 +24,5 @@ export default defineConfig({
           drop_console: true,
         },
       },
-      rollupOptions: {
-        input: {
-          main: resolve(__dirname, 'app/root.tsx')
-        }, 
-        output: {
-          manualChunks: undefined,
-        }
-      },
     }
 })

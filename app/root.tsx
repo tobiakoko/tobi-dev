@@ -8,10 +8,9 @@ import {
     ScrollRestoration,
     useNavigate
 } from 'react-router'
-import { PageTransition } from './components/LoadingScreen'
-import Loading from './components/LoadingScreen';
+import Loading, { PageTransition } from './components/LoadingScreen'
 import Lay from '~/routes/layout';
-import Logo from "~/public/Logo-dark.ico"
+import Logo from "/Logo-dark.ico"
 import type { Route } from './+types/root'
 import './app.css'
 
