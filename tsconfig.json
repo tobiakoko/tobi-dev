@@ -18,7 +18,8 @@
         "paths": {
             "~/*": ["./app/*"],
             "~/assets": ["./app/assets/*"],
-            "~/public": ["./public/*"]
+            "~/public": ["./public/*"],
+            "tobi-dev": ["./app/root.tsx"],
         },
         "esModuleInterop": true,
         "verbatimModuleSyntax": true,

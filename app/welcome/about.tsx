@@ -20,6 +20,7 @@ export const works = {
     askKumuyi: "I got wind of this project right after my graduation, in oct '24, during their soft launch / beta test phase and I didn't like how the front end design looked so I built something, sent it to the team and the rest is history.",
     dlbcTampa: "As a PK --IYKYK :)-- in a small assembly, you do what you have to to help out when the need arises. Came up with the idea to build this because there's another organization that has a really similar name to ours and a lot of people complain they get misdirected there when navigating to our church location. Had to learn SEO, how gtm works, google business profile, quite a lot. I should writing a book on my experiences :)",
     freeWillPay: "After the Ask-Kumuyi Project was finished, I got the figma files for this fullstack project (dashboard, landing & info pages) and I can't say much more as it is still in development",
+    theLaw: "I built this website for a friend who is a lawyer and wanted to have an online presence. I used React, React Router v7, Typescript and Tailwind CSS to build it. It was a fun project and I learned a lot about freelance, business requirements and building websites with these technologies.",
 }
 
 export function AboutMe() {
@@ -177,8 +178,11 @@ export function AboutMe() {
                                 </p>
                                 
                                 <p className="mb-4">
-                                    I&apos;m gaining experience as a Full Stack Engineer working on <Link to="#" className="tip decoration-double"><Tooltip content={works.freeWillPay} className="decoration-double" position="top" >FreeWillPay</Tooltip></Link>, where I&apos;m 
-                                    building the frontend landing page, blog and dashboard. Prior to this, I independly developed <Link to="#" className="tip decoration-double"><Tooltip content={works.dlbcTampa} className="decoration-double" position="top" >dlbcTampa</Tooltip></Link>, and 
+                                    I&apos;m gaining experience as a Full Stack Engineer working 
+                                    on <Link to="#" className="tip decoration-double"><Tooltip content={works.freeWillPay} className="decoration-double" position="top" >FreeWillPay</Tooltip></Link>, 
+                                    where I&apos;m building the frontend landing page, blog and dashboard. Prior to this, I 
+                                    independly developed <Link to="https://www.oseiprempeh.com/" className="tip decoration-double"><Tooltip content={works.theLaw} className="decoration-double" position="top" >The Law</Tooltip></Link>, {' '}
+                                     <Link to="#" className="tip decoration-double"><Tooltip content={works.dlbcTampa} className="decoration-double" position="top" >dlbcTampa</Tooltip></Link>, and 
                                     the frontend UI for <Link to="https://askkumuyi.ai/" className="tip"><Tooltip content={works.askKumuyi} className="decoration-double" position="top" >askKumuyi</Tooltip></Link>.
                                     Flexing my concept to implementation (0 to 1) skills.
                                     

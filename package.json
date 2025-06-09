@@ -19,8 +19,6 @@
         "start": "react-router-serve ./build/server/index.js",
         "preview": "vite preview",
         "typecheck": "react-router typegen && tsc",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
         "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md}\"",
         "eslint": "eslint **/*.{ts,tsx}"
     },

@@ -200,6 +200,13 @@ export function ProjectSection() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                         {[
                             {
+                                title: 'The Law',
+                                description:
+                                    'OseiPrempei.com built with React router v7 Framework mode, Typescript and Tailwind CSS',
+                                tags: ['React', 'React router', 'Typescript', 'Tailwind CSS'],
+                                link: '#'
+                            },
+                            {
                                 title: 'Church Website',
                                 description:
                                     'DLBC Tampa church website built with Next.js and Tailwind CSS',

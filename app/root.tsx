@@ -5,9 +5,7 @@ import {
     Meta,
     Outlet,
     Scripts,
-    ScrollRestoration,
-    useNavigate
-} from 'react-router'
+    ScrollRestoration} from 'react-router'
 import Loading, { PageTransition } from './components/LoadingScreen'
 import Lay from '~/routes/layout';
 import Logo from "/Logo-dark.ico"
@@ -36,6 +34,9 @@ export const links: Route.LinksFunction = () => [
     {
         rel: 'icon', type: 'image/x-icon', href: Logo
     },
+    {
+        rel: 'canonical', href: 'https://www.tobiakoko.com'
+    },
 ]
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -56,6 +57,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 {children}
                 <ScrollRestoration />
                 <Scripts />
+                <noscript> This website requires JavaScript to function properly. Please enable JavaScript to continue. </noscript>
             </body>
         </html>
     )
