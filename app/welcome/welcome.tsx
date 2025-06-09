@@ -204,14 +204,14 @@ export function ProjectSection() {
                                 description:
                                     'OseiPrempei.com built with React router v7 Framework mode, Typescript and Tailwind CSS',
                                 tags: ['React', 'React router', 'Typescript', 'Tailwind CSS'],
-                                link: '#'
+                                link: 'https://www.oseiprempeh.com/'
                             },
                             {
                                 title: 'Church Website',
                                 description:
                                     'DLBC Tampa church website built with Next.js and Tailwind CSS',
                                 tags: ['Nextjs', 'Tailwind CSS'],
-                                link: '#'
+                                link: 'https://www.dlbctampa.org/'
                             },
                             {
                                 title: 'FreeWillPay Dashboard',
@@ -259,6 +259,7 @@ export function ProjectSection() {
                                     </p>
                                     <Link
                                         to={project.link}
+                                        target='_blank'
                                         className="text-[color:var(--accent-foreground)] text-sm font-medium inline-flex items-center hover:underline"
                                     >
                                         Link
