@@ -55,10 +55,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </head>
             <body>
                 {children}
-                <Analytics />
                 <ScrollRestoration />
                 <Scripts />
                 <noscript> This website requires JavaScript to function properly. Please enable JavaScript to continue. </noscript>
+                <Analytics />
             </body>
         </html>
     )
