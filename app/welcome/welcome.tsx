@@ -378,14 +378,12 @@ export function TechnicalSkills() {
                                 skills: [
                                     'React.js',
                                     'Nextjs',
-                                    'Vue.js',
                                     'JavaScript (ES6+)',
                                     'TypeScript',
                                     'Java',
                                     'SQL',
                                     'Python',
                                     'HTML5 & CSS3',
-                                    'Sass/SCSS',
                                 ],
                             },
                             {

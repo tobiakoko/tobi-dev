@@ -8,12 +8,12 @@ export default function Footer() {
     const socialLinks = [
         {
             name: 'GitHub',
-            url: 'https://github.com/danielakoko',
+            url: 'https://github.com/tobiakoko',
             icon: 'github',
         },
         {
             name: 'LinkedIn',
-            url: 'https://linkedin.com/in/danielakoko',
+            url: 'https://linkedin.com/in/daniel-akoko',
             icon: 'linkedin',
         },
     ]
