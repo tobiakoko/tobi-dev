@@ -7,7 +7,7 @@ import {
     Scripts,
     ScrollRestoration} from 'react-router'
 import Loading, { PageTransition } from './components/LoadingScreen'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 import Logo from "/Logo-dark.ico"
 import type { Route } from './+types/root'
 import './app.css'
@@ -55,10 +55,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </head>
             <body>
                 {children}
+                <Analytics />
                 <ScrollRestoration />
                 <Scripts />
                 <noscript> This website requires JavaScript to function properly. Please enable JavaScript to continue. </noscript>
-                <Analytics />
             </body>
         </html>
     )
