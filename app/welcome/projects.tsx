@@ -49,42 +49,98 @@ export function Project(): JSX.Element {
     const projects: Technology[] = [
         {
             id: 1,
-            title: 'Church Website',
+            title: 'AI-Powered Customer Service Chatbot',
             description:
-                'A website built with Next.js and Tailwind CSS',
+                'Intelligent chatbot leveraging NLP and machine learning to provide automated customer support with 95% accuracy. Integrated with Azure OpenAI and deployed on cloud infrastructure.',
             technologies: [
+                'Python',
+                'Azure OpenAI',
                 'React',
-                'Nextjs', 
-                'Tailwind CSS',
-                'Redux',
                 'Node.js',
+                'Docker',
+                'Kubernetes',
             ],
             category: 'web',
             finished: true,
-            link: 'https://example.com/ecommerce',
-            github: 'https://github.com/danielakoko/ecommerce',
+            link: 'https://askkumuyi.ai/',
+            github: 'https://github.com/danielakoko/ai-chatbot',
         },
         {
             id: 2,
-            title: 'FreeWillPay Dashboard',
+            title: 'Microservices E-Commerce Platform',
             description:
-                'A comprehensive full-stack dashboard for managing payments and transactions',
-            technologies: ['React', 'React Router', 'Java', 'Tailwind CSS', "Tanstack Query"],
+                'Scalable distributed system built with microservices architecture, handling 10K+ concurrent users. Features CI/CD pipeline, auto-scaling, and real-time analytics.',
+            technologies: ['React', 'Node.js', 'AWS', 'Docker', 'Kubernetes', 'Redis', 'PostgreSQL', 'GraphQL'],
             category: 'web',
-            finished: false,
-            link: 'https://example.com/dashboard',
-            github: 'https://github.com/danielakoko/analytics-dashboard',
+            finished: true,
+            link: 'https://www.dlbctampa.org/',
+            github: 'https://github.com/danielakoko/microservices-ecommerce',
         },
         {
             id: 3,
-            title: 'Appointment Booking System',
+            title: 'Cloud Infrastructure Automation',
             description:
-                'Appointment booking solution for desktop with basic CRUD customer and client operations',
-            technologies: ['Java', 'JavaFX', 'Scene-Builder', 'MySQL'],
+                'Infrastructure as Code solution using Terraform and AWS CloudFormation. Automated deployment pipelines with monitoring, logging, and alerting for production environments.',
+            technologies: ['Terraform', 'AWS', 'Python', 'Docker', 'Jenkins', 'Ansible'],
+            category: 'web',
+            finished: true,
+            link: 'https://example.com/devops-platform',
+            github: 'https://github.com/danielakoko/iac-automation',
+        },
+        {
+            id: 4,
+            title: 'Real-Time Data Analytics Dashboard',
+            description:
+                'Full-stack analytics platform processing millions of events daily. Built with React, TypeScript, and Java Spring Boot with real-time data streaming.',
+            technologies: ['TypeScript', 'React', 'Java', 'Spring Boot', 'Apache Kafka', 'Elasticsearch', 'Tailwind CSS'],
+            category: 'web',
+            finished: false,
+            link: 'https://example.com/analytics',
+            github: 'https://github.com/danielakoko/analytics-dashboard',
+        },
+        {
+            id: 5,
+            title: 'Secure Payment Gateway Integration',
+            description:
+                'Payment processing system with PCI DSS compliance, encryption, and fraud detection. Implemented secure coding practices and vulnerability testing.',
+            technologies: ['Node.js', 'React', 'Stripe API', 'PostgreSQL', 'Redis', 'JWT'],
+            category: 'web',
+            finished: false,
+            link: 'https://example.com/payment-gateway',
+            github: 'https://github.com/danielakoko/payment-gateway',
+        },
+        {
+            id: 6,
+            title: 'Mobile-First Progressive Web App',
+            description:
+                'Cross-platform PWA with offline capabilities, push notifications, and responsive design. Optimized for performance with 95+ Lighthouse score.',
+            technologies: ['React', 'TypeScript', 'Service Workers', 'IndexedDB', 'Tailwind CSS'],
             category: 'mobile',
             finished: true,
-            link: 'https://example.com/social-app',
-            github: 'https://github.com/danielakoko/social-app',
+            link: 'https://www.oseiprempeh.com/',
+            github: 'https://github.com/danielakoko/pwa-app',
+        },
+        {
+            id: 7,
+            title: 'DevOps CI/CD Pipeline',
+            description:
+                'Automated deployment pipeline with continuous integration, testing, and delivery. Integrated GitHub Actions, Docker containerization, and cloud deployment.',
+            technologies: ['Docker', 'Kubernetes', 'GitHub Actions', 'Terraform', 'AWS', 'Jest'],
+            category: 'web',
+            finished: true,
+            link: 'https://example.com/cicd-pipeline',
+            github: 'https://github.com/danielakoko/cicd-pipeline',
+        },
+        {
+            id: 8,
+            title: 'Machine Learning Model Deployment',
+            description:
+                'End-to-end ML pipeline for training, testing, and deploying predictive models. Features REST API, model versioning, and A/B testing capabilities.',
+            technologies: ['Python', 'TensorFlow', 'FastAPI', 'Docker', 'AWS SageMaker', 'MLflow'],
+            category: 'web',
+            finished: false,
+            link: 'https://example.com/ml-deployment',
+            github: 'https://github.com/danielakoko/ml-deployment',
         },
     ]
 
@@ -155,7 +211,7 @@ export function Project(): JSX.Element {
                 >
                     <Badge badge={'Projects'} />
                     <p className="text-xl md:text-md font-light tracking-tight text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Some projects I have worked on
+                        Portfolio of projects demonstrating expertise in AI/ML, Cloud Computing, Microservices Architecture, DevOps, Cybersecurity, and Full-Stack Development - skills highly sought after by top tech recruiters.
                     </p>
                 </motion.div>
 

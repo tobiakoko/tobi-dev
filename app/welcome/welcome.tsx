@@ -194,38 +194,38 @@ export function ProjectSection() {
                 <div className="max-w-6xl mx-auto">
                     <SubHeading
                         title="Featured Projects"
-                        description="A selection of my latest work crafted with attention to detail and modern technologies."
+                        description="Showcasing expertise in AI/ML, Cloud Architecture, System Design, and modern full-stack development with industry-leading technologies."
                     />
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                         {[
                             {
-                                title: 'The Law',
+                                title: 'AI-Powered Chatbot',
                                 description:
-                                    'OseiPrempei.com built with React router v7 Framework mode, Typescript and Tailwind CSS',
-                                tags: ['React', 'React router', 'Typescript', 'Tailwind CSS'],
-                                link: 'https://www.oseiprempeh.com/'
+                                    'Intelligent chatbot leveraging NLP and Azure OpenAI for automated responses. Demonstrates expertise in AI/ML integration and cloud services.',
+                                tags: ['Python', 'Azure OpenAI', 'Machine Learning', 'Cloud'],
+                                link: 'https://askkumuyi.ai/'
                             },
                             {
-                                title: 'Church Website',
+                                title: 'Microservices Architecture',
                                 description:
-                                    'DLBC Tampa church website built with Next.js and Tailwind CSS',
-                                tags: ['Nextjs', 'Tailwind CSS'],
+                                    'Scalable e-commerce platform with distributed system design. Showcases system architecture, scalability, and modern DevOps practices.',
+                                tags: ['Microservices', 'AWS', 'Docker', 'Kubernetes'],
                                 link: 'https://www.dlbctampa.org/'
                             },
                             {
-                                title: 'FreeWillPay Dashboard',
+                                title: 'Full-Stack Dashboard',
                                 description:
-                                    'Dashboard for managing payments and transactions',
-                                tags: ['TypeScript', 'React', 'Java', 'Tailwind CSS'],
+                                    'Real-time analytics dashboard with secure payment processing. Highlights full-stack development and cybersecurity best practices.',
+                                tags: ['TypeScript', 'React', 'Java', 'Security'],
                                 link: '#'
                             },
                             {
-                                title: 'Ask Kumuyi Ai Interface',
+                                title: 'Modern Web Application',
                                 description:
-                                    'Chatbot trained on the teachings of Pastor Dr. W.F. Kumuyi',
-                                tags: ['jQuery', 'BootStrap', 'Python', 'Azure'],
-                                link: 'https://askkumuyi.ai/'
+                                    'Progressive Web App built with latest React patterns. Features TypeScript, responsive design, and performance optimization.',
+                                tags: ['React Router v7', 'TypeScript', 'PWA', 'Performance'],
+                                link: 'https://www.oseiprempeh.com/'
                             },
                         ].map((project, index) => (
                             <motion.div
