@@ -73,6 +73,7 @@ export default function Header() {
                     {[
                         'Home',
                         'About',
+                        'Projects',
                         'Books',
                         'Contact',
                     ].map((item) => (
@@ -118,6 +119,7 @@ export default function Header() {
                             {[
                                 'Home',
                                 'About',
+                                'Projects',
                                 'Books',
                                 'Contact',
                             ].map((item, i) => (
