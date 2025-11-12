@@ -3,85 +3,88 @@
 @theme {
     --font-open-sans: 'Open Sans', Arial, Helvetica, sans-serif;
     --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-futura: 'Futura PT', 'Trebuchet MS', Arial, sans-serif;
-    --font-serif: var(--font-futura);
     --font-mono:
-        'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        'Liberation Mono', 'Courier New', Courier, monospace;
+        'Roboto Mono', 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular,
+        Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
-    --background: #ffffff;
-    --foreground: #0a0a0a;
-    --muted: #f8f8f8;
-    --muted-foreground: #6e6e73;
-    --popover: #ffffff;
-    --popover-foreground: #0a0a0a;
-    --border: #e5e7eb;
-    --input: #e5e7eb;
-    --card: transparent;
-    --card-foreground: #0a0a0a;
+    /* Minimalist Dark Theme - Inspired by top developer portfolios */
+    --background: #0a192f;
+    --foreground: #e6f1ff;
+    --muted: #112240;
+    --muted-foreground: #8892b0;
+    --popover: #112240;
+    --popover-foreground: #ccd6f6;
+    --border: #233554;
+    --input: #112240;
+    --card: #112240;
+    --card-foreground: #ccd6f6;
 
-    --primary: #0a0a0a;
-    --primary-foreground: #111827;
-    --secondary: #f5f7ff;
-    --secondary-foreground: #6b7280;
-    --accent: #6366f1;
-    --accent-foreground: #4f46e5;
+    --primary: #64ffda;
+    --primary-foreground: #0a192f;
+    --secondary: #112240;
+    --secondary-foreground: #8892b0;
+    --accent: #64ffda;
+    --accent-foreground: #0a192f;
 
-    /* Modern purple-indigo accents */
-    --purple: #8b5cf6;
-    --purple-light: #f5f3ff;
-    --purple-foreground: #7c3aed;
+    /* Accent colors for variety */
+    --accent-secondary: #5a67d8;
+    --accent-tertiary: #f6e05e;
 
-    /* Pink accents for contrast */
-    --pink: #ec4899;
-    --pink-light: #fdf2f8;
-    --pink-foreground: #db2777;
+    /* Text hierarchy */
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --text-muted: #495670;
+    --text-heading: #e6f1ff;
 
-    /* Blue palette refinement */
-    --blue: #3b82f6;
-    --blue-light: #eff6ff;
-    --blue-foreground: #1e40af;
+    /* Background variations */
+    --bg-dark: #0a192f;
+    --bg-darker: #020c1b;
+    --bg-light: #112240;
+    --bg-subtle: #0d1c33;
 
+    /* Status colors */
     --destructive: #ef4444;
     --destructive-foreground: #ffffff;
-    --ring: #3b82f6;
-    --ring-offset: #ffffff;
-    --ring-offset-background: #ffffff;
+    --success: #10b981;
+    --warning: #f59e0b;
 
-    --badge-text: #4f46e5;
-    --badge-border: #818cf8;
-    --badge-bg: #eef2ff;
-    --primary-color: #0a0a0a;
-    --secondary-color: #f3f4f6;
-    --accent-color: #3b82f6;
+    /* UI Elements */
+    --ring: #64ffda;
+    --ring-offset: #0a192f;
+    --badge-text: #64ffda;
+    --badge-border: #64ffda;
+    --badge-bg: rgba(100, 255, 218, 0.1);
 
-    --text-primary: #0a0a0a;
-    --text-secondary: #6b7280;
-    --text-muted: #9ca3af;
-
-    --bg-light: #ffffff;
-    --bg-dark: #0f172a;
-    --bg-subtle: #f9fafb;
-
+    /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 3rem;
     --spacing-xl: 5rem;
-    --border-radius: 12px;
-    --border-radius-sm: 8px;
+
+    /* Border radius */
+    --border-radius: 8px;
+    --border-radius-sm: 4px;
+    --border-radius-lg: 12px;
+
+    /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    --shadow-badge: inset 0 0 0 1px rgba(129, 140, 248, 0.2);
+    --transition-fast: all 0.15s ease;
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 20px rgba(100, 255, 218, 0.3);
 }
 
 body {
-    @apply text-[color:var(--text-primary)] bg-[color:var(--bg-light)] leading-relaxed text-base antialiased;
+    @apply text-[color:var(--text-primary)] bg-[color:var(--background)] leading-relaxed antialiased;
     font-family: var(--font-inter);
     letter-spacing: -0.011em;
+    font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -89,24 +92,71 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.2;
+    color: var(--text-heading);
 }
 
 p {
     font-family: var(--font-inter);
-    line-height: 1.7;
+    line-height: 1.8;
+    color: var(--text-secondary);
 }
 
+a {
+    transition: var(--transition-fast);
+}
+
+/* Selection */
+::selection {
+    background-color: rgba(100, 255, 218, 0.2);
+    color: var(--accent);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border);
+}
 
 @layer components {
     .tip {
-        text-decoration: underline; 
-        text-decoration-color: var(--muted-foreground); 
-        cursor: pointer;  
+        text-decoration: underline;
+        text-decoration-color: var(--muted-foreground);
+        cursor: pointer;
         color: var(--muted-foreground);
         text-underline-offset: 4px;
+        transition: var(--transition-fast);
     }
     .tip:hover {
-        color: var(--badge-text);
-        text-decoration-color: var(--badge-text);
+        color: var(--accent);
+        text-decoration-color: var(--accent);
+    }
+
+    .section-number {
+        font-family: var(--font-mono);
+        color: var(--accent);
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+
+    .btn-primary {
+        @apply px-6 py-3 rounded-lg border-2 border-[color:var(--accent)] text-[color:var(--accent)] font-semibold
+               hover:bg-[color:var(--badge-bg)] transition-all duration-300;
+    }
+
+    .btn-secondary {
+        @apply px-6 py-3 rounded-lg bg-transparent text-[color:var(--text-secondary)] font-semibold
+               hover:text-[color:var(--accent)] transition-all duration-300;
     }
 }
