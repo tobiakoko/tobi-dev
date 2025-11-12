@@ -15,21 +15,26 @@
     --muted-foreground: #6e6e73;
     --popover: #ffffff;
     --popover-foreground: #0a0a0a;
-    --border: #e8e8e8;
-    --input: #e8e8e8;
+    --border: #e5e7eb;
+    --input: #e5e7eb;
     --card: transparent;
     --card-foreground: #0a0a0a;
 
     --primary: #0a0a0a;
-    --primary-foreground: #1a1a1a;
+    --primary-foreground: #111827;
     --secondary: #f5f7ff;
     --secondary-foreground: #6b7280;
-    --accent: #3b82f6;
-    --accent-foreground: #2563eb;
+    --accent: #6366f1;
+    --accent-foreground: #4f46e5;
 
-    /* Portal-inspired pink accents */
+    /* Modern purple-indigo accents */
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+    --purple-foreground: #7c3aed;
+
+    /* Pink accents for contrast */
     --pink: #ec4899;
-    --pink-light: #fce7f3;
+    --pink-light: #fdf2f8;
     --pink-foreground: #db2777;
 
     /* Blue palette refinement */

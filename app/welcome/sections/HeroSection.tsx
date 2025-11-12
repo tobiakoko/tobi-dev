@@ -67,15 +67,28 @@ export function HeroSection({ isLoaded }: HeroSectionProps) {
                         >
                             <Link
                                 to="/about"
-                                className="px-8 py-4 rounded-xl bg-[color:var(--accent)] text-white font-semibold transition-all duration-300 hover:bg-[color:var(--accent-foreground)] hover:shadow-lg hover:-translate-y-0.5"
+                                className="group px-8 py-4 rounded-xl bg-gradient-to-r from-[color:var(--accent)] to-[color:var(--purple)] text-white font-semibold transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-2"
                             >
-                                About Me →
+                                About Me
+                                <svg
+                                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                    />
+                                </svg>
                             </Link>
                             <Link
                                 to="/contact"
-                                className="px-8 py-4 rounded-xl border-2 border-[color:var(--pink)] text-[color:var(--pink-foreground)] font-semibold transition-all duration-300 hover:bg-[color:var(--pink-light)]"
+                                className="px-8 py-4 rounded-xl border-2 border-[color:var(--accent)] text-[color:var(--accent)] font-semibold transition-all duration-300 hover:bg-[color:var(--accent)] hover:text-white hover:shadow-lg hover:-translate-y-1"
                             >
-                                Message Me
+                                Get in Touch
                             </Link>
                         </motion.div>
                     </div>
