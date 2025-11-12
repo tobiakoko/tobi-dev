@@ -22,7 +22,7 @@ export default function Header() {
     
     return (
         <motion.header
-            className={`fixed bg-white/90 backdrop-blur-lg z-50 flex justify-between items-center w-full px-6 md:px-10 py-4 top-0 transition-all duration-300 ${scrolled ? 'shadow-md' : ''}`}
+            className={`fixed bg-white/95 backdrop-blur-xl z-50 flex justify-between items-center w-full px-6 md:px-10 py-5 top-0 transition-all duration-300 border-b ${scrolled ? 'shadow-lg border-[color:var(--border)]' : 'border-transparent'}`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: 'spring', stiffness: 100, damping: 20 }}
@@ -84,8 +84,8 @@ export default function Header() {
                                         : `/${item.toLowerCase()}`
                                 }
                                 className={({ isActive }) =>
-                                    `text-gray-700 no-underline font-medium text-sm relative transition-colors duration-300 hover:text-[color:var(--accent-foreground)] 
-                  ${isActive ? 'text-[color:var(--accent-foreground)]' : ''}`
+                                    `text-[color:var(--text-primary)] no-underline font-semibold text-sm relative transition-colors duration-300 hover:text-[color:var(--accent)]
+                  ${isActive ? 'text-[color:var(--accent)]' : ''}`
                                 }
                             >
                                 {({ isActive }) => (
@@ -93,7 +93,7 @@ export default function Header() {
                                         {item}
                                         {isActive && (
                                             <motion.div
-                                                className="absolute -bottom-1 left-0 w-full h-0.5 bg-[color:var(--accent-foreground)] rounded-full"
+                                                className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-[color:var(--accent)] to-[color:var(--pink)] rounded-full"
                                                 layoutId="underline"
                                             />
                                         )}

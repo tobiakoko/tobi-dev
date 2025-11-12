@@ -1,21 +1,14 @@
 import { motion } from 'framer-motion'
+import { fadeInUp } from '~/utils/animations'
 
-export default function Badge({ badge }: { badge: string }) {
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: (i: number) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: i * 0.1,
-                duration: 0.7,
-                ease: [0.6, 0.05, 0.01, 0.9],
-            },
-        }),
-    }
+interface BadgeProps {
+    badge: string
+}
+
+export default function Badge({ badge }: BadgeProps) {
     return (
         <motion.span
-            className="inline-block py-1 px-3 rounded-full bg-[rgb(245, 245, 253)] [box-shadow:inset_0_0_12px_#8092ff4d] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] font-light font-futura text-sm mb-4"
+            className="inline-block py-2 px-4 rounded-full bg-[color:var(--badge-bg)] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] font-semibold text-sm mb-4 shadow-sm"
             custom={0.3}
             variants={fadeInUp}
             initial="hidden"
@@ -26,12 +19,9 @@ export default function Badge({ badge }: { badge: string }) {
     )
 }
 
-export function SecondaryBadge({ badge }: { badge: string }) {
+export function SecondaryBadge({ badge }: BadgeProps) {
     return (
-        <span
-            key={badge}
-            className="text-xs font-medium px-2 py-1 bg-[rgb(245, 245, 253)] [box-shadow:inset_0_0_12px_#8092ff4d] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] font-light font-futura text-sm rounded-full"
-        >
+        <span className="text-xs font-semibold px-3 py-1.5 bg-[color:var(--badge-bg)] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] rounded-full hover:bg-[color:var(--blue-light)] transition-colors">
             {badge}
         </span>
     )

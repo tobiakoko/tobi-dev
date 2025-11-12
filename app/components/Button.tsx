@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 
-export function CTAButton({ src, label }: { src: string; label: string }) {
+interface CTAButtonProps {
+    src: string
+    label: string
+}
+
+export function CTAButton({ src, label }: CTAButtonProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -12,11 +17,11 @@ export function CTAButton({ src, label }: { src: string; label: string }) {
         >
             <Link
                 to={src}
-                className="inline-flex items-center px-6 py-3 rounded-lg border border-[color:var(--accent-foreground)] bg-[color:var(--secondary)] text-sm text-[color:var(--accent-foreground)] font-medium transition-all duration-300 hover:bg-[rgb(186,195,255)]"
+                className="inline-flex items-center px-8 py-4 rounded-xl border-2 border-[color:var(--accent)] bg-white text-[color:var(--accent)] font-semibold transition-all duration-300 hover:bg-[color:var(--accent)] hover:text-white hover:-translate-y-0.5 shadow-md hover:shadow-xl"
             >
                 {label}
                 <svg
-                    className="w-4 h-4 ml-2"
+                    className="w-5 h-5 ml-2"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                 >
