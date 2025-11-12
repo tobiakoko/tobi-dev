@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion'
 
-export default function SubHeading({
-    title,
-    description,
-}: {
+interface SubHeadingProps {
     title: string
     description: string
-}) {
+}
+
+/**
+ * Section heading component with title and description
+ * Used consistently across all major sections
+ */
+export default function SubHeading({ title, description }: SubHeadingProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -15,10 +18,10 @@ export default function SubHeading({
             viewport={{ once: true, amount: 0.3 }}
             className="text-center mb-16"
         >
-            <h2 className="text-3xl md:text-4xl font-futura font-bold mb-4 tracking-tight text-[color:var(--primary-foreground)]">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[color:var(--primary-foreground)]">
                 {title}
             </h2>
-            <p className="text-xl md:text-md font-light tracking-normal text-[color:var(--secondary-foreground)] max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[color:var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
                 {description}
             </p>
         </motion.div>
