@@ -61,7 +61,7 @@ export default function Footer() {
     }
 
     return (
-        <footer className="bg-gray-50 pt-16 pb-8 border-t border-gray-100">
+        <footer className="bg-[color:var(--bg-subtle)] pt-20 pb-10 border-t border-[color:var(--border)]">
             <div className="max-w-6xl mx-auto px-6 md:px-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     <div>
@@ -72,10 +72,10 @@ export default function Footer() {
                             viewport={{ once: true, amount: 0.5 }}
                             className="mb-6"
                         >
-                            <h2 className="text-xl font-bold font-futura text-[color:var(--primary-foreground)] mb-1">
+                            <h2 className="text-2xl font-bold text-[color:var(--primary-foreground)] mb-2">
                                 Daniel Akoko
                             </h2>
-                            <p className="text-sm text-[color:var(--secondary-foreground)]">
+                            <p className="text-base text-[color:var(--text-secondary)] font-medium">
                                 Software Engineer
                             </p>
                         </motion.div>
@@ -84,7 +84,7 @@ export default function Footer() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
                             viewport={{ once: true, amount: 0.5 }}
-                            className="text-[color:var(--secondary-foreground)] mb-6 text-xs"
+                            className="text-[color:var(--text-secondary)] mb-6 text-sm leading-relaxed"
                         >
                             Building elegant, user-centric digital experiences
                             with modern web technologies.
@@ -94,7 +94,7 @@ export default function Footer() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                             viewport={{ once: true, amount: 0.5 }}
-                            className="flex space-x-4"
+                            className="flex space-x-3"
                         >
                             {socialLinks.map((link) => (
                                 <a
@@ -102,7 +102,7 @@ export default function Footer() {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="bg-gray-200 hover:text-[color:var(--accent-foreground)] p-2 rounded-full transition-colors duration-300 hover:bg-[color:(rgb(106,126,255))] text-[color:var(--secondary-foreground)]"
+                                    className="bg-white border border-[color:var(--border)] text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] hover:border-[color:var(--accent)] p-3 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
                                     aria-label={link.name}
                                 >
                                     <SocialIcon type={link.icon} />
@@ -117,7 +117,7 @@ export default function Footer() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true, amount: 0.5 }}
-                            className="text-base font-semibold font-futura text-gray-900 mb-6"
+                            className="text-lg font-bold text-[color:var(--primary-foreground)] mb-6"
                         >
                             Quick Links
                         </motion.h3>
@@ -127,12 +127,12 @@ export default function Footer() {
                             transition={{ duration: 0.5, delay: 0.1 }}
                             viewport={{ once: true, amount: 0.5 }}
                         >
-                            <ul className="space-y-3">
+                            <ul className="space-y-4">
                                 {footerLinks.map((link) => (
                                     <li key={link.name}>
                                         <Link
                                             to={link.path}
-                                            className="text-sm text-gray-600 hover:text-[color:var(--accent-foreground)] transition-colors duration-300"
+                                            className="text-sm font-medium text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] transition-colors duration-300"
                                         >
                                             {link.name}
                                         </Link>
@@ -148,7 +148,7 @@ export default function Footer() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true, amount: 0.5 }}
-                            className="text-base font-semibold font-futura text-[color:var(--primary-foreground)] mb-6"
+                            className="text-lg font-bold text-[color:var(--primary-foreground)] mb-6"
                         >
                             Get In Touch
                         </motion.h3>
@@ -157,20 +157,17 @@ export default function Footer() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
                             viewport={{ once: true, amount: 0.5 }}
-                            className="space-y-3"
+                            className="space-y-4"
                         >
-                            <p className="text-sm text-[color:var(--secondary-foreground)]">
-                                Want to collaboration or just chat?
+                            <p className="text-sm text-[color:var(--text-secondary)] leading-relaxed">
+                                Want to collaborate or just chat?
                             </p>
-                            <p className="text-sm text-[color:var(--secondary-foreground)]">
                             <Link
                                 to={`mailto:${contactInfo.email}`}
-                                className="hover:underline"
-                                style={{ color: 'var(--badge-text)' }}
+                                className="inline-block text-sm font-semibold text-[color:var(--accent)] hover:text-[color:var(--pink-foreground)] transition-colors"
                             >
                                 {contactInfo.email}
                             </Link>
-                            </p>
                         </motion.div>
                     </div>
                 </div>
@@ -180,12 +177,12 @@ export default function Footer() {
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     viewport={{ once: true, amount: 0.5 }}
-                    className="pt-8 mt-8 border-t border-gray-200 text-center text-gray-500 text-xs flex items-center justify-center gap-5"
+                    className="pt-8 mt-8 border-t border-[color:var(--border)] text-center text-[color:var(--text-muted)] text-sm flex flex-col md:flex-row items-center justify-center gap-3 md:gap-5"
                 >
                     <p>
                         &copy; {currentYear} Daniel Akoko. All rights reserved.
                     </p>
-                    <p className="border-l-2 border-l-[color:var(--secondary-foreground)] pl-5">
+                    <p className="md:border-l-2 md:border-l-[color:var(--border)] md:pl-5">
                         Powered by too much coffee
                     </p>
                 </motion.div>
