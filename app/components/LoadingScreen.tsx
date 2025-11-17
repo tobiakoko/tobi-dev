@@ -31,42 +31,59 @@ type LoadWithVideoProps = {
 export function Load({ videoSrc, videoRef }: LoadWithVideoProps) {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white"
-      initial={{ opacity: 1, y: "-100%" }}  // Start from above the viewport
-      animate={{ opacity: 1, y: 0 }}        // Animate to center
-      exit={{ opacity: 1, y: "-100%" }}     // Exit back to above
-      transition={{ 
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1] 
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[color:var(--background)]"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1]
       }}
     >
       <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{
-          scale: 1,
-          opacity: 1
-        }}
-        exit={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{
-          duration: 0.5,
-          ease: [0.22, 1, 0.36, 1],
-          exit: { delay: 0.5 }
+          duration: 0.3,
+          ease: [0.22, 1, 0.36, 1]
         }}
-        className="w-64 h-64 md:w-96 md:h-96 relative"
+        className="flex flex-col items-center"
       >
-        {/* Video element for the animation */}
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          playsInline
-          loop
-          preload="metadata"
+        {/* Logo/Icon */}
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="mb-8"
         >
-          <source src={videoSrc} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          <div className="w-20 h-20 rounded-lg bg-[color:var(--badge-bg)] border-2 border-[color:var(--accent)] flex items-center justify-center">
+            <span className="text-[color:var(--accent)] font-mono font-bold text-3xl">DA</span>
+          </div>
+        </motion.div>
+
+        {/* Loading indicator */}
+        <div className="flex space-x-2">
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+            className="w-2 h-2 rounded-full bg-[color:var(--accent)]"
+          />
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 0.6, repeat: Infinity, delay: 0.1 }}
+            className="w-2 h-2 rounded-full bg-[color:var(--accent)]"
+          />
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+            className="w-2 h-2 rounded-full bg-[color:var(--accent)]"
+          />
+        </div>
       </motion.div>
     </motion.div>
   );
@@ -84,17 +101,17 @@ export default function Loading({
 
   useEffect(() => {
     setIsLoading(true);
-    
+
     if (videoRef.current) {
       videoRef.current.play().catch(error => {
         console.error("Error playing video:", error);
       });
     }
-    
+
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
-    
+    }, 800);
+
     return () => clearTimeout(timer);
   }, []);
 

@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
-import Badge from '~/components/Badge'
-import LogosCarousel from '~/components/StackCarousel'
-import { fadeInUp, fadeIn, staggerContainer } from '~/utils/animations'
 
 interface HeroSectionProps {
     isLoaded: boolean
@@ -10,134 +7,116 @@ interface HeroSectionProps {
 
 export function HeroSection({ isLoaded }: HeroSectionProps) {
     return (
-        <motion.div
-            className="min-h-screen flex items-center px-6 md:px-10 pt-32 pb-16"
-            initial="hidden"
-            animate={isLoaded ? 'visible' : 'hidden'}
-            variants={staggerContainer}
+        <motion.section
+            className="min-h-screen flex items-center px-6 md:px-12 pt-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLoaded ? 1 : 0 }}
+            transition={{ duration: 0.6 }}
         >
-            <div className="max-w-6xl mx-auto w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <motion.span
-                            className="inline-block py-2 px-4 rounded-full bg-[color:var(--badge-bg)] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] font-medium text-sm mb-6"
-                            custom={0.3}
-                            variants={fadeInUp}
-                        >
-                            Software Engineer
-                        </motion.span>
+            <div className="max-w-5xl mx-auto w-full">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                    <p className="font-mono text-[color:var(--accent)] text-base mb-6">
+                        Hi, my name is
+                    </p>
+                </motion.div>
 
-                        <motion.p
-                            className="text-md md:text-md font-normal text-[color:var(--text-secondary)] mb-2"
-                            custom={0.5}
-                            variants={fadeInUp}
-                        >
-                            Hi there, I&apos;m
-                        </motion.p>
+                <motion.h1
+                    className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-[color:var(--text-heading)]"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                    Daniel Akoko.
+                </motion.h1>
 
-                        <motion.h1
-                            className="text-5xl md:text-7xl font-bold mb-6 text-[color:var(--primary-foreground)]"
-                            custom={0.7}
-                            variants={fadeInUp}
-                        >
-                            Daniel Akoko,
-                        </motion.h1>
+                <motion.h2
+                    className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-[color:var(--text-secondary)]"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                    I build exceptional digital experiences.
+                </motion.h2>
 
-                        <motion.p
-                            className="text-lg md:text-xl font-normal text-[color:var(--text-secondary)] mb-8 max-w-prose"
-                            custom={0.9}
-                            variants={fadeInUp}
-                        >
-                            a{' '}
-                            <strong className="text-[color:var(--primary)] font-semibold">
-                                Full-Stack Software Developer
-                            </strong>
-                            , and{' '}
-                            <strong className="text-[color:var(--primary)] font-semibold">
-                                Program Manager
-                            </strong>{' '}
-                            based in Tampa Florida. I&apos;m a dedicated
-                            problem-solver who thrives on learning and building.
-                        </motion.p>
+                <motion.p
+                    className="text-lg text-[color:var(--text-secondary)] mb-12 max-w-2xl leading-relaxed"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                    I'm a <span className="text-[color:var(--text-primary)] font-semibold">software engineer</span> specializing in building
+                    scalable web applications. Currently focused on creating accessible,
+                    user-centered products using modern technologies like{' '}
+                    <span className="text-[color:var(--accent)]">React</span>,{' '}
+                    <span className="text-[color:var(--accent)]">TypeScript</span>, and{' '}
+                    <span className="text-[color:var(--accent)]">Node.js</span>.
+                </motion.p>
 
-                        <motion.div
-                            className="flex flex-wrap gap-4"
-                            custom={1.0}
-                            variants={fadeInUp}
-                        >
-                            <Link
-                                to="/about"
-                                className="px-8 py-4 rounded-xl bg-[color:var(--accent)] text-white font-semibold transition-all duration-300 hover:bg-[color:var(--accent-foreground)] hover:shadow-lg hover:-translate-y-0.5"
-                            >
-                                About Me →
-                            </Link>
-                            <Link
-                                to="/contact"
-                                className="px-8 py-4 rounded-xl border-2 border-[color:var(--pink)] text-[color:var(--pink-foreground)] font-semibold transition-all duration-300 hover:bg-[color:var(--pink-light)]"
-                            >
-                                Message Me
-                            </Link>
-                        </motion.div>
-                    </div>
-
-                    <motion.div
-                        custom={1.3}
-                        variants={fadeIn}
-                        className="hidden md:block"
+                <motion.div
+                    className="flex flex-wrap gap-4"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                    <Link
+                        to="/projects"
+                        className="px-8 py-4 rounded border-2 border-[color:var(--accent)] text-[color:var(--accent)] font-semibold transition-all duration-200 hover:bg-[color:var(--badge-bg)] hover:shadow-lg"
                     >
-                        <div className="relative bg-gradient-to-br from-[color:var(--blue-light)] to-[color:var(--pink-light)] backdrop-blur-sm rounded-2xl border border-[color:var(--border)] overflow-hidden p-8 shadow-xl">
-                            <svg
-                                className="absolute -z-10 top-0 right-0 opacity-30"
-                                width="404"
-                                height="404"
-                                fill="none"
-                                viewBox="0 0 404 404"
-                            >
-                                <defs>
-                                    <pattern
-                                        id="hero-pattern"
-                                        x="0"
-                                        y="0"
-                                        width="20"
-                                        height="20"
-                                        patternUnits="userSpaceOnUse"
-                                    >
-                                        <rect
-                                            x="0"
-                                            y="0"
-                                            width="4"
-                                            height="4"
-                                            className="text-[color:var(--accent)]"
-                                            fill="currentColor"
-                                        />
-                                    </pattern>
-                                </defs>
-                                <rect
-                                    width="404"
-                                    height="404"
-                                    fill="url(#hero-pattern)"
-                                />
-                            </svg>
-                            <Badge badge="Tech Stack" />
-                            <div className="flex flex-col gap-4">
-                                <div className="rounded-xl overflow-hidden bg-white/80 p-6 backdrop-blur-md shadow-md">
-                                    <LogosCarousel />
-                                </div>
-                                <div className="rounded-xl overflow-hidden bg-white/80 p-6 backdrop-blur-md shadow-md">
-                                    <p className="text-lg font-bold mb-2">
-                                        Tech stack I&apos;m familiar with
-                                    </p>
-                                    <p className="text-sm text-[color:var(--text-secondary)]">
-                                        I work a lot in the JavaScript
-                                        ecosystem, however, I am eager to learn
-                                        new technologies
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
+                        View My Work
+                    </Link>
+                </motion.div>
+
+                {/* Decorative Element */}
+                <motion.div
+                    className="absolute left-0 md:left-12 bottom-20 hidden lg:flex flex-col items-center gap-3 after:content-[''] after:w-px after:h-24 after:bg-[color:var(--text-muted)]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 1 }}
+                >
+                    <a
+                        href="https://github.com/tobiakoko"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] hover:-translate-y-1 transition-all"
+                        aria-label="GitHub"
+                    >
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a
+                        href="https://linkedin.com/in/daniel-akoko"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] hover:-translate-y-1 transition-all"
+                        aria-label="LinkedIn"
+                    >
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                </motion.div>
+
+                {/* Email Side Element */}
+                <motion.div
+                    className="fixed right-12 bottom-0 hidden lg:flex flex-col items-center gap-6 after:content-[''] after:w-px after:h-24 after:bg-[color:var(--text-muted)]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 1 }}
+                >
+                    <a
+                        href="mailto:hello@tobiakoko.com"
+                        className="text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] transition-all font-mono text-sm"
+                        style={{ writingMode: 'vertical-rl' }}
+                    >
+                        hello@tobiakoko.com
+                    </a>
+                </motion.div>
             </div>
-        </motion.div>
+        </motion.section>
     )
 }

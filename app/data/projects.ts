@@ -3,34 +3,41 @@ export interface Project {
     description: string
     tags: string[]
     link: string
+    category?: string
+    image?: string
 }
 
 export const projects: Project[] = [
     {
-        title: 'The Law',
+        title: 'OseiPrempeh Law Firm',
         description:
-            'OseiPrempei.com built with React router v7 Framework mode, Typescript and Tailwind CSS',
-        tags: ['React', 'React router', 'Typescript', 'Tailwind CSS'],
+            'Modern law firm website built with React Router v7 featuring dynamic routing, responsive design, and optimized performance. Showcases legal services with elegant UI/UX.',
+        tags: ['React Router v7', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
         link: 'https://www.oseiprempeh.com/',
+        category: 'Web Application',
     },
     {
-        title: 'Church Website',
+        title: 'DLBC Tampa',
         description:
-            'DLBC Tampa church website built with Next.js and Tailwind CSS',
-        tags: ['Nextjs', 'Tailwind CSS'],
+            'Full-featured church website with event management, sermon archive, and community engagement features. Built for scalability and ease of content management.',
+        tags: ['Next.js', 'React', 'Tailwind CSS', 'CMS'],
         link: 'https://www.dlbctampa.org/',
+        category: 'Web Application',
     },
     {
-        title: 'FreeWillPay Dashboard',
-        description: 'Dashboard for managing payments and transactions',
-        tags: ['TypeScript', 'React', 'Java', 'Tailwind CSS'],
-        link: '#',
-    },
-    {
-        title: 'Ask Kumuyi Ai Interface',
+        title: 'Ask Kumuyi AI',
         description:
-            'Chatbot trained on the teachings of Pastor Dr. W.F. Kumuyi',
-        tags: ['jQuery', 'BootStrap', 'Python', 'Azure'],
+            'AI-powered chatbot interface trained on religious teachings, featuring natural language processing and context-aware responses. Deployed on Azure with scalable architecture.',
+        tags: ['Python', 'Azure AI', 'React', 'REST API'],
         link: 'https://askkumuyi.ai/',
+        category: 'AI/ML Application',
+    },
+    {
+        title: 'Portfolio Website',
+        description:
+            'Personal portfolio website built with React Router v7, featuring smooth animations, responsive design, and modern UI patterns. Showcases projects and technical skills.',
+        tags: ['React Router v7', 'TypeScript', 'Tailwind CSS', 'Vite'],
+        link: 'https://tobiakoko.com',
+        category: 'Web Application',
     },
 ]

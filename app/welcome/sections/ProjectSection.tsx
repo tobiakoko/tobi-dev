@@ -1,69 +1,100 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router'
-import SubHeading from '~/components/SubHeading'
-import { SecondaryBadge } from '~/components/Badge'
 import { projects, type Project } from '~/data/projects'
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
     return (
-        <motion.div
+        <motion.article
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
                 duration: 0.5,
                 delay: index * 0.1,
             }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group border border-[color:var(--border)]"
+            viewport={{ once: true, amount: 0.2 }}
+            className="group relative bg-[color:var(--card)] rounded-lg p-6 border border-[color:var(--border)] hover:border-[color:var(--accent)] transition-all duration-300 hover:shadow-glow"
         >
-            <div className="aspect-w-16 aspect-h-9 bg-gradient-to-br from-[color:var(--blue-light)] to-[color:var(--pink-light)] relative overflow-hidden h-48">
-                <div className="absolute inset-0 bg-[color:var(--accent)] opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-            </div>
-            <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                        <SecondaryBadge key={tag} badge={tag} />
-                    ))}
+            <div className="flex flex-col h-full">
+                <div className="flex justify-between items-start mb-6">
+                    <div className="p-3 bg-[color:var(--badge-bg)] rounded-lg">
+                        <svg
+                            className="w-6 h-6 text-[color:var(--accent)]"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                            />
+                        </svg>
+                    </div>
+                    <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] transition-colors"
+                        aria-label={`View ${project.title}`}
+                    >
+                        <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                            />
+                        </svg>
+                    </a>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-[color:var(--primary-foreground)] group-hover:text-[color:var(--accent)] transition-colors">
+
+                <h3 className="text-xl font-bold mb-3 text-[color:var(--text-heading)] group-hover:text-[color:var(--accent)] transition-colors">
                     {project.title}
                 </h3>
-                <p className="text-[color:var(--text-secondary)] mb-4 text-sm leading-relaxed">
+
+                <p className="text-[color:var(--text-secondary)] mb-6 leading-relaxed text-sm flex-grow">
                     {project.description}
                 </p>
-                <Link
-                    to={project.link}
-                    target="_blank"
-                    className="text-[color:var(--accent)] text-sm font-semibold inline-flex items-center hover:text-[color:var(--accent-foreground)] transition-colors"
-                >
-                    View Project
-                    <svg
-                        className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
-                </Link>
+
+                <div className="flex flex-wrap gap-3 mt-auto">
+                    {project.tags.map((tag) => (
+                        <span
+                            key={tag}
+                            className="font-mono text-xs text-[color:var(--text-secondary)]"
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
             </div>
-        </motion.div>
+        </motion.article>
     )
 }
 
 export function ProjectSection() {
     return (
-        <section id="projects" className="py-24 px-6 md:px-10 bg-[color:var(--bg-subtle)]">
-            <div className="max-w-6xl mx-auto">
-                <SubHeading
-                    title="Featured Projects"
-                    description="A selection of my latest work crafted with attention to detail and modern technologies."
-                />
+        <section id="projects" className="py-32 px-6 md:px-12">
+            <div className="max-w-5xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="mb-16"
+                >
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[color:var(--text-heading)] flex items-center gap-4">
+                        <span className="section-number">02.</span>
+                        Featured Work
+                    </h2>
+                    <div className="w-full max-w-xs h-px bg-[color:var(--border)]" />
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {projects.map((project, index) => (
                         <ProjectCard
                             key={project.title}
