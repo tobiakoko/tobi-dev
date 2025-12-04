@@ -1,12 +1,12 @@
 {
     "name": "tobi-dev",
-    "homepage": "https://tobiakoko.github.io/tobi-dev/",
+    "homepage": "https://tobiakoko.com",
     "private": true,
     "description": "Daniel Akoko's Portfolio webiste",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": {
         "name": "Daniel Akoko",
-        "email": "hello@tobiakoko.com",
+        "email": "enquiries@tobiakoko.com",
         "url": "https://tobiakoko.com"
     },
     "bugs": {
@@ -41,7 +41,9 @@
         "@react-router/node": "^7.5.0",
         "@react-router/serve": "^7.5.0",
         "@vercel/analytics": "^1.5.0",
+        "gray-matter": "^4.0.3",
         "isbot": "^5.1.17",
+        "marked": "^17.0.1",
         "path": "^0.12.7",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
@@ -52,6 +54,7 @@
         "@eslint/js": "^9.25.1",
         "@react-router/dev": "^7.5.0",
         "@tailwindcss/vite": "^4.0.0",
+        "@types/marked": "^6.0.0",
         "@types/node": "^20",
         "@types/react": "^19.0.1",
         "@types/react-dom": "^19.0.1",

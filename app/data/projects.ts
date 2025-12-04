@@ -9,6 +9,14 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        title: 'Afromerica Entertainment',
+        description:
+            'Afromerica Entertainment\'s web platform, designed to support content management, event ticketing, artist showcasing, and administrative functions',
+        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Vercel'],
+        link: 'https://www.afromericaent.com/',
+        category: 'Full-Stack Web Application',
+    },
+    {
         title: 'OseiPrempeh Law Firm',
         description:
             'Modern law firm website built with React Router v7 featuring dynamic routing, responsive design, and optimized performance. Showcases legal services with elegant UI/UX.',

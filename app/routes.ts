@@ -11,9 +11,7 @@ export default [
         route('about', 'routes/about.tsx'),
         route('projects', 'routes/projects.tsx'),
         route('blog', 'routes/blog.tsx'),
-        route('blog/:id', 'routes/blog-post.tsx'),
+        route('blog/:slug', 'routes/blog-post.tsx'),
         route('contact', 'routes/contact.tsx'),
-        route('books', 'routes/books.tsx'),
-        route('books/:id', 'routes/book.tsx'),
     ]),
 ] satisfies RouteConfig
