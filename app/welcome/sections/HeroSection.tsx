@@ -109,11 +109,11 @@ export function HeroSection({ isLoaded }: HeroSectionProps) {
                     transition={{ duration: 0.6, delay: 1 }}
                 >
                     <a
-                        href="mailto:hello@tobiakoko.com"
+                        href="mailto:enquiries@tobiakoko.com"
                         className="text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] transition-all font-mono text-sm"
                         style={{ writingMode: 'vertical-rl' }}
                     >
-                        hello@tobiakoko.com
+                        enquiries@tobiakoko.com
                     </a>
                 </motion.div>
             </div>
