@@ -1,36 +1,44 @@
 import { Link, useParams } from 'react-router'
 import { motion } from 'framer-motion'
 import type { Route } from './+types/blog-post'
-import { getPostBySlug } from '~/utils/blog.server'
-import { data } from 'react-router'
+import { getPostBySlug } from '~/utils/blog'
  
-export async function loader({ params }: Route.LoaderArgs) {
-    const { slug } = params
-    const post = await getPostBySlug(slug)
- 
-    if (!post) {
-        throw data('Post not found', { status: 404 })
-    }
- 
-    return { post }
-}
- 
-export function meta({ data }: Route.MetaArgs) {
-    if (!data || !data.post) {
-        return [{ title: 'Post Not Found' }]
-    }
- 
-    const { post } = data
- 
+export function meta({}: Route.MetaArgs) {
     return [
-        { name: 'author', content: post.author },
-        { title: `${post.title} - Daniel Akoko` },
-        { name: 'description', content: post.excerpt },
+        { name: 'author', content: 'Daniel Akoko' },
+        { title: 'Blog Post - Daniel Akoko' },
+        {
+            name: 'description',
+            content: 'Read my latest thoughts on software engineering.',
+        },
     ]
 }
  
-export default function BlogPost({ loaderData }: Route.ComponentProps) {
-    const { post } = loaderData
+export default function BlogPost() {
+    const { slug } = useParams<{ slug: string }>()
+ 
+    const post = getPostBySlug(slug || '')
+ 
+    if (!post) {
+        return (
+            <div className="min-h-screen py-32 px-6 md:px-12 flex items-center justify-center">
+                <div className="text-center">
+                    <h1 className="text-4xl font-bold mb-4 text-[color:var(--text-heading)]">
+                        Post Not Found
+                    </h1>
+                    <p className="text-[color:var(--text-secondary)] mb-6">
+                        The blog post you're looking for doesn't exist.
+                    </p>
+                    <Link
+                        to="/blog"
+                        className="inline-flex items-center text-[color:var(--accent)] hover:underline"
+                    >
+                        ← Back to Blog
+                    </Link>
+                </div>
+            </div>
+        )
+    }
  
     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
         year: 'numeric',

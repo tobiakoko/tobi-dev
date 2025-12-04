@@ -1,12 +1,7 @@
 import { Link } from 'react-router'
 import { motion } from 'framer-motion'
 import type { Route } from './+types/blog'
-import { getAllPosts, type BlogPost } from '~/utils/blog.server'
- 
-export async function loader() {
-    const posts = await getAllPosts()
-    return { posts }
-}
+import { getAllPosts, type BlogPost } from '~/utils/blog'
  
 export function meta({}: Route.MetaArgs) {
     return [
@@ -73,8 +68,8 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
     )
 }
  
-export default function Blog({ loaderData }: Route.ComponentProps) {
-    const { posts } = loaderData
+export default function Blog() {
+    const posts = getAllPosts()
  
     return (
         <div className="min-h-screen py-32 px-6 md:px-12">
