@@ -57,9 +57,9 @@ export default function SocialIcon({
         linkedin: linkedinIcon,
     }
 
-    const baseClasses = 'p-2 rounded-full transition-colors duration-300'
+    const baseClasses = 'p-2.5 rounded-lg transition-all duration-300 border-2'
     const colorClasses =
-        'bg-gray-200 text-gray-700 hover:bg-blue-600 hover:text-white'
+        'bg-[color:var(--badge-bg)] text-[color:var(--accent)] border-[color:var(--accent)]/30 hover:bg-[color:var(--accent)] hover:text-[color:var(--accent-foreground)] hover:border-[color:var(--accent)] hover:shadow-glow'
 
     return (
         <motion.a
@@ -73,7 +73,8 @@ export default function SocialIcon({
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
         >
             {iconMap[icon as SocialType]}
         </motion.a>

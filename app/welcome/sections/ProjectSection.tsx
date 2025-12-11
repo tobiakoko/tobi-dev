@@ -11,9 +11,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 delay: index * 0.1,
             }}
             viewport={{ once: true, amount: 0.2 }}
-            className="group relative bg-[color:var(--card)] rounded-lg p-6 border border-[color:var(--border)] hover:border-[color:var(--accent)] transition-all duration-300 hover:shadow-glow"
+            className="group relative bg-[color:var(--card)] rounded-lg border border-[color:var(--border)] hover:border-[color:var(--accent)] transition-all duration-300 hover:shadow-glow"
         >
-            <div className="flex flex-col h-full">
+            <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col h-full p-6"
+                aria-label={`View ${project.title} project`}
+            >
                 <div className="flex justify-between items-start mb-6">
                     <div className="p-3 bg-[color:var(--badge-bg)] rounded-lg">
                         <svg
@@ -30,27 +36,19 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                             />
                         </svg>
                     </div>
-                    <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] transition-colors"
-                        aria-label={`View ${project.title}`}
+                    <svg
+                        className="w-5 h-5 text-[color:var(--text-secondary)] group-hover:text-[color:var(--accent)] transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                     >
-                        <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={1.5}
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                        </svg>
-                    </a>
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                    </svg>
                 </div>
 
                 <h3 className="text-xl font-bold mb-3 text-[color:var(--text-heading)] group-hover:text-[color:var(--accent)] transition-colors">
@@ -71,7 +69,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                         </span>
                     ))}
                 </div>
-            </div>
+            </a>
         </motion.article>
     )
 }

@@ -46,7 +46,7 @@ export default function Tooltip({
         </span>
         
         {isVisible && (
-          <div className={`absolute inline-block z-50 py-3 px-2 bg-[rgb(245, 245, 253)] [box-shadow:inset_0_0_12px_#8092ff4d] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] bg-white font-light font-futura text-sm rounded-lg shadow-md w-144 md:max-w-2xl lg:max-w-3xl
+          <div className={`absolute inline-block z-50 py-3 px-4 bg-[color:var(--card)] border-2 border-[color:var(--accent)] text-[color:var(--text-primary)] font-normal font-futura text-sm rounded-lg shadow-xl backdrop-blur-sm w-144 md:max-w-2xl lg:max-w-3xl
             ${positionClasses[position] || positionClasses.top}`}>
             {content}
           </div>

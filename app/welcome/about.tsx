@@ -13,14 +13,16 @@ export interface ContactInfo {
 
 export const contactInfo: ContactInfo = {
     email: 'enquiries@tobiakoko.com',
-    location: 'Tampa, Florida',
+    location: 'Dallas, Texas',
 }
 
 export const works = {
-    askKumuyi: "I got wind of this project right after my graduation, in oct '24, during their soft launch / beta test phase and I didn't like how the front end design looked so I built something, sent it to the team and the rest is history.",
-    dlbcTampa: "As a PK --IYKYK :)-- in a small assembly, you do what you have to to help out when the need arises. Came up with the idea to build this because there's another organization that has a really similar name to ours and a lot of people complain they get misdirected there when navigating to our church location. Had to learn SEO, how gtm works, google business profile, quite a lot. I should writing a book on my experiences :)",
-    freeWillPay: "After the Ask-Kumuyi Project was finished, I got the figma files for this fullstack project (dashboard, landing & info pages) and I can't say much more as it is still in development",
-    theLaw: "I built this website for a friend who is a lawyer and wanted to have an online presence. I used React, React Router v7, Typescript and Tailwind CSS to build it. It was a fun project and I learned a lot about freelance, business requirements and building websites with these technologies.",
+    afromericaEnt: "Built a comprehensive entertainment platform with real-time updates, secure authentication, and scalable cloud infrastructure. Enabled seamless content management, event ticketing, and artist promotion using Next.js, TypeScript, Tailwind CSS, and Supabase.",
+    ronsBodyShop: "Developed a premium automotive service website featuring immersive animations and responsive design. Implemented smooth scroll interactions and dynamic service galleries with React, Vite, TypeScript, Tailwind CSS, GSAP, and Framer Motion for exceptional performance.",
+    oseiPrempeh: "Delivered a professional legal services platform leveraging React Router v7 for fluid navigation and dynamic content delivery. Combined sophisticated UI/UX design with performance optimization to create an elegant, trustworthy client experience using TypeScript and Tailwind CSS.",
+    dlbcTampa: "Architected a community-focused church platform integrating event management, multimedia sermon archives, and member engagement tools. Built for growth with intuitive content management and seamless mobile accessibility using Next.js and Tailwind CSS.",
+    askKumuyi: "Engineered an intelligent conversational AI powered by Azure, delivering context-aware spiritual guidance through advanced natural language processing. Implemented sophisticated prompt engineering, vector-based knowledge retrieval, and enterprise-grade cloud deployment using Python, Azure AI, React, and REST API.",
+    portfolio: "Designed and built a modern developer portfolio showcasing technical expertise through performant animations, responsive layouts, and clean architecture. Optimized for speed, accessibility, and visual impact using React Router v7, TypeScript, Tailwind CSS, and Vite.",
 }
 
 export function AboutMe() {
@@ -85,78 +87,116 @@ export function AboutMe() {
                         variants={fadeInUp}
                     >
                         <Badge badge={'About Me'} />
-                        <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 tracking-tight text-gray-900">
+                        <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 tracking-tight text-[color:var(--text-heading)]">
                             Daniel Akoko
                         </h1>
-                        <p className="text-xl md:text-md font-light tracking-tight text-gray-600 mb-8 max-w-2xl mx-auto">
+                        <p className="text-xl md:text-md font-light tracking-tight text-[color:var(--text-secondary)] mb-8 max-w-2xl mx-auto">
                             Software Engineer | Full Stack Developer
                         </p>
                     </motion.div>
 
                     {/* About Content */}
                     <div className="grid md:grid-cols-3 gap-12 items-start">
-                        {/* Image Column */}
+                        {/* Sidebar Column */}
                         <motion.div
                             custom={1}
                             variants={fadeInUp}
                             className="md:col-span-1"
                         >
-                            <div className="relative">
-                                <div className="aspect-w-4 aspect-h-5 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-100 to-blue-50 shadow-lg">
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        {/* 
-                    <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100 opacity-50">
-                      <img src={Image} alt="Daniel Akoko" className="w-full h-full object-cover object-center" />
-                    </div> 
-                    */}
-                                        <div className="absolute inset-0 bg-blue-600 opacity-3"></div>
+                            <div className="sticky top-8">
+                                {/* Profile Card */}
+                                <div className="bg-[color:var(--card)] border-2 border-[color:var(--accent)] rounded-2xl p-6 shadow-xl mb-6">
+                                    <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[color:var(--accent)]/20 to-[color:var(--card)] mb-6 border border-[color:var(--accent)]/30">
+                                        <div className="relative w-full h-full flex items-center justify-center">
+                                            {/*
+                                            <img src={Image} alt="Daniel Akoko" className="w-full h-full object-cover object-center" />
+                                            */}
+                                            <div className="text-6xl font-bold text-[color:var(--accent)]">DA</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Quick Info */}
+                                    <div className="space-y-4">
+                                        <div>
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <svg className="w-4 h-4 text-[color:var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                                </svg>
+                                                <h3 className="text-xs font-semibold text-[color:var(--accent)] uppercase tracking-wider">
+                                                    Based In
+                                                </h3>
+                                            </div>
+                                            <p className="text-sm text-[color:var(--text-primary)] ml-6">
+                                                {contactInfo.location}
+                                            </p>
+                                        </div>
+
+                                        <div className="border-t border-[color:var(--border)] pt-4">
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <svg className="w-4 h-4 text-[color:var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                                                </svg>
+                                                <h3 className="text-xs font-semibold text-[color:var(--accent)] uppercase tracking-wider">
+                                                    Email
+                                                </h3>
+                                            </div>
+                                            <a href={`mailto:${contactInfo.email}`} className="text-sm text-[color:var(--text-primary)] hover:text-[color:var(--accent)] transition-colors ml-6 break-all">
+                                                {contactInfo.email}
+                                            </a>
+                                        </div>
+
+                                        <div className="border-t border-[color:var(--border)] pt-4">
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <svg className="w-4 h-4 text-[color:var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                </svg>
+                                                <h3 className="text-xs font-semibold text-[color:var(--accent)] uppercase tracking-wider">
+                                                    Tech Stack
+                                                </h3>
+                                            </div>
+                                            <div className="flex flex-wrap gap-2 ml-6">
+                                                {['TypeScript', 'JavaScript', 'Python', 'Java'].map((lang) => (
+                                                    <span key={lang} className="text-xs px-2.5 py-1 bg-[color:var(--badge-bg)] border border-[color:var(--accent)]/30 text-[color:var(--accent)] rounded-md font-medium">
+                                                        {lang}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <div className="border-t border-[color:var(--border)] pt-4">
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <svg className="w-4 h-4 text-[color:var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                                </svg>
+                                                <h3 className="text-xs font-semibold text-[color:var(--accent)] uppercase tracking-wider">
+                                                    Socials
+                                                </h3>
+                                            </div>
+                                            <div className="flex gap-3 ml-6">
+                                                {socialLinks.map((link) => (
+                                                    <SocialIcon
+                                                        key={link.name}
+                                                        name={link.name}
+                                                        url={link.url}
+                                                        icon={link.icon}
+                                                    />
+                                                ))}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Contact Info Cards */}
-                                <div className="mt-8 space-y-4 font-futura">
-                                    <div className="p-4 bg-white">
-                                        <h3 className="text-xs font-medium text-gray-500 mb-2">
-                                            Location
-                                        </h3>
-                                        <p className="text-sm text-gray-900">
-                                            {contactInfo.location}
-                                        </p>
+                                {/* Availability Badge */}
+                                <div className="bg-[color:var(--card)] border border-[color:var(--accent)]/30 rounded-xl p-4 text-center">
+                                    <div className="flex items-center justify-center gap-2 mb-2">
+                                        <div className="w-2 h-2 rounded-full bg-[color:var(--success)] animate-pulse"></div>
+                                        <span className="text-xs font-semibold text-[color:var(--accent)] uppercase tracking-wider">
+                                            Available for Work
+                                        </span>
                                     </div>
-
-                                    <div className="p-4 bg-white">
-                                        <h3 className="text-xs font-medium text-gray-500 mb-2">
-                                            Email
-                                        </h3>
-                                        <p className="text-sm text-gray-900">
-                                            {contactInfo.email}
-                                        </p>
-                                    </div>
-
-                                    <div className="p-4 bg-white">
-                                        <h3 className="text-xs font-medium text-gray-500 mb-2">
-                                            Languages
-                                        </h3>
-                                        <p className="text-sm text-gray-900">
-                                            English, React, TypeScript, Java
-                                        </p>
-                                    </div>
-
-                                    <div className="p-4 bg-white">
-                                        <h3 className="text-xs font-medium text-gray-500 mb-2">
-                                            Socials
-                                        </h3>
-                                        <p className="text-sm text-gray-900 flex space-x-4 items-center">
-                                            {socialLinks.map((link) => (
-                                                <SocialIcon
-                                                    key={link.name}
-                                                    name={link.name}
-                                                    url={link.url}
-                                                    icon={link.icon}
-                                                />
-                                            ))}
-                                        </p>
-                                    </div>
+                                    <p className="text-xs text-[color:var(--text-secondary)]">
+                                        Open to new opportunities
+                                    </p>
                                 </div>
                             </div>
                         </motion.div>
@@ -167,64 +207,115 @@ export function AboutMe() {
                             variants={fadeInUp}
                             className="md:col-span-2 px-4 md:px-20"
                         >
-                            <div className="prose max-w-prose text-sm/6 text-slate-500">
-                                <h2 className="text-3xl font-serif font-bold mb-6 text-gray-900">
-                                    My Story
+                            <div className="prose max-w-prose text-sm/6 text-[color:var(--text-secondary)]">
+                                <h2 className="text-3xl font-serif font-bold mb-6 text-[color:var(--text-heading)]">
+                                    Professional Overview
                                 </h2>
 
                                 <p className="mb-4">
-                                    Hello and welcome! My name is Daniel Akoko and I&apos;m a Software Engineer currently based 
-                                    in <Tooltip content="I shunt between Tampa, Dallas & LA frequently" position="top" className="decoration-dashed">Tampa, Florida</Tooltip>.
+                                    I&apos;m a Full Stack Software Engineer based in Dallas, Texas, specializing in building high-performance,
+                                    accessible web applications using modern technologies. With expertise spanning enterprise platforms, AI-powered
+                                    solutions, and client-focused applications, I deliver scalable solutions that prioritize user experience and technical excellence.
                                 </p>
-                                
+
+                                <h3 className="text-xl font-serif font-semibold mb-4 mt-8 text-[color:var(--text-heading)]">
+                                    Recent Projects
+                                </h3>
+
                                 <p className="mb-4">
-                                    I&apos;m gaining experience as a Full Stack Engineer working 
-                                    on <Link to="#" className="tip decoration-double"><Tooltip content={works.freeWillPay} className="decoration-double" position="top" >FreeWillPay</Tooltip></Link>, 
-                                    where I&apos;m building the frontend landing page, blog and dashboard. Prior to this, I 
-                                    independly developed <Link to="https://www.oseiprempeh.com/" className="tip decoration-double"><Tooltip content={works.theLaw} className="decoration-double" position="top" >The Law</Tooltip></Link>, {' '}
-                                     <Link to="#" className="tip decoration-double"><Tooltip content={works.dlbcTampa} className="decoration-double" position="top" >dlbcTampa</Tooltip></Link>, and 
-                                    the frontend UI for <Link to="https://askkumuyi.ai/" className="tip"><Tooltip content={works.askKumuyi} className="decoration-double" position="top" >askKumuyi</Tooltip></Link>.
-                                    Flexing my concept to implementation (0 to 1) skills.
-                                    
+                                    I&apos;ve successfully delivered diverse full-stack applications across multiple industries. Notable projects include {' '}
+                                    <Link to="https://www.afromericaent.com/" target="_blank" className="tip decoration-double">
+                                        <Tooltip content={works.afromericaEnt} className="decoration-double" position="top">Afromerica Entertainment</Tooltip>
+                                    </Link>, a comprehensive platform featuring real-time updates and cloud infrastructure; {' '}
+                                    <Link to="https://www.ronsbodyshop.net/" target="_blank" className="tip decoration-double">
+                                        <Tooltip content={works.ronsBodyShop} className="decoration-double" position="top">Ron&apos;s Body Shop</Tooltip>
+                                    </Link>, showcasing advanced animations and performance optimization; and {' '}
+                                    <Link to="https://www.oseiprempeh.com/" target="_blank" className="tip decoration-double">
+                                        <Tooltip content={works.oseiPrempeh} className="decoration-double" position="top">OseiPrempeh Law Firm</Tooltip>
+                                    </Link>, demonstrating sophisticated UI/UX design.
                                 </p>
 
                                 <p className="mb-4">
-                                    My background includes a Bachelor of Science in Computer Science from Western Governors University 
-                                    (<Link to="https://www.wgu.edu/" target='_blank' className="tip">WGU</Link>), 
-                                    providing a strong theoretical foundation in software engineering principles, data structures, algorithms, computer architecture, 
-                                    operating systems and AI/ML. I also hold a Bachelor of General Studies in Criminology from the 
-                                    University of South Florida (<Link to="https://www.usf.edu/" target='_blank' className="tip">USF</Link>), and 
-                                    an Associate of Science in Electrical Engineering from the Community College of Baltimore County 
-                                    (<Link to="https://ccbcmd.edu/" target='_blank' className="tip">CCBC</Link>).
+                                    My work extends to community platforms like {' '}
+                                    <Link to="https://www.dlbctampa.org/" target="_blank" className="tip decoration-double">
+                                        <Tooltip content={works.dlbcTampa} className="decoration-double" position="top">DLBC Tampa</Tooltip>
+                                    </Link>, integrating event management and multimedia capabilities, and AI-powered solutions such as {' '}
+                                    <Link to="https://askkumuyi.ai/" target="_blank" className="tip">
+                                        <Tooltip content={works.askKumuyi} className="decoration-double" position="top">Ask Kumuyi AI</Tooltip>
+                                    </Link>, featuring enterprise-grade Azure deployment and advanced natural language processing. My {' '}
+                                    <Link to="https://tobiakoko.com" target="_blank" className="tip">
+                                        <Tooltip content={works.portfolio} className="decoration-double" position="top">portfolio website</Tooltip>
+                                    </Link> itself demonstrates my commitment to clean architecture and optimal performance.
+                                </p>
+
+                                <h3 className="text-xl font-serif font-semibold mb-4 mt-8 text-[color:var(--text-heading)]">
+                                    Education & Background
+                                </h3>
+
+                                <p className="mb-4">
+                                    I hold a Bachelor of Science in Computer Science from <Link to="https://www.wgu.edu/" target='_blank' className="tip">Western Governors University</Link>,
+                                    providing comprehensive knowledge in software engineering principles, data structures, algorithms, computer architecture,
+                                    operating systems, and artificial intelligence. My interdisciplinary education includes a Bachelor of General Studies in
+                                    Criminology from the <Link to="https://www.usf.edu/" target='_blank' className="tip">University of South Florida</Link> and
+                                    an Associate of Science in Electrical Engineering from the {' '}
+                                    <Link to="https://ccbcmd.edu/" target='_blank' className="tip">Community College of Baltimore County</Link>.
                                 </p>
 
                                 <p className="mb-4">
-                                    My previous experience in the hospitality industry has influenced and uniquely shaped my approach to software development. 
-                                    The customer service and teamwork skills, as well as my attention to detail and experience working under 
-                                    pressure I developed translate directly into a focus on effective collaboration, user-centric design and 
-                                    creating intuitive, accessible applications while making impact and meeting deadline.
+                                    This diverse academic foundation, combined with professional experience in hospitality management, has shaped my
+                                    approach to software development. I bring exceptional attention to detail, strong collaboration skills, and the ability
+                                    to deliver high-quality solutions under tight deadlines—all while maintaining a user-centric focus that ensures
+                                    applications are both technically sound and intuitively designed.
+                                </p>
+
+                                <h3 className="text-xl font-serif font-semibold mb-4 mt-8 text-[color:var(--text-heading)]">
+                                    Technical Expertise
+                                </h3>
+
+                                <p className="mb-4">
+                                    My expertise centers on building performant, accessible web applications using React, TypeScript, and modern JavaScript
+                                    frameworks. I specialize in frontend architecture, state management, performance optimization, and responsive design,
+                                    with strong proficiency in Next.js, React Router, Tailwind CSS, and animation libraries like Framer Motion and GSAP.
+                                    My backend capabilities include Node.js, REST API development, and database design with MySQL and Supabase.
                                 </p>
 
                                 <p className="mb-4">
-                                    I&apos;m particularly enthusiastic about building performant and accessible web applications that show exceptional user experiences.
-                                    My technical interests extend to exploring build tools (like Webpack, and Vite), cloud containerization and the possibilities of AI integrations in software.
-                                    
+                                    I&apos;m passionate about emerging technologies, particularly AI integration, cloud containerization, and modern build
+                                    tools (Webpack, Vite). I maintain current knowledge of industry best practices in accessibility (WCAG), SEO, security,
+                                    and performance optimization, ensuring every project meets professional standards and delivers exceptional user experiences.
                                 </p>
+
+                                <h3 className="text-xl font-serif font-semibold mb-4 mt-8 text-[color:var(--text-heading)]">
+                                    Community Involvement
+                                </h3>
 
                                 <p className="mb-4">
-                                    Outside of coding, I help lead the <Link to="https://www.dlya.org/giving" className="tip">DLYA Fundraising Team</Link>, <Link to="https://www.deeperlifedc.org" className="tip">the DLBC Tampa</Link> 
-                                    <Tooltip content={"church video & sound"} position={'top'}>media</Tooltip>, <Tooltip content={"choir director"} position={'top'}>choir</Tooltip>, and <Tooltip content={"social media, youtube & zoom livestream"} position={'top'}>online</Tooltip> teams.
+                                    Beyond software development, I actively contribute to my community through leadership roles at the {' '}
+                                    <Link to="https://www.dlya.org/giving" className="tip">DLYA Fundraising Team</Link> and {' '}
+                                    <Link to="https://www.deeperlifedc.org" className="tip">DLBC Tampa</Link>, where I oversee {' '}
+                                    <Tooltip content={"video and sound production"} position={'top'}>media production</Tooltip>, {' '}
+                                    <Tooltip content={"musical direction and coordination"} position={'top'}>choir direction</Tooltip>, and {' '}
+                                    <Tooltip content={"social media management, YouTube content, and live streaming"} position={'top'}>digital streaming services</Tooltip>.
+                                    These responsibilities have strengthened my project management, team leadership, and multimedia production skills.
                                 </p>
 
-                                <p className="mb-1 font-medium">Favourite Stack&#58;</p>
-                                <p className="mb-4 ml-4">TypeScript, React, Vite, Nodejs, Tailwind CSS, React-Router, MySQL</p>
-                                
+                                <div className="mt-8 p-6 bg-[color:var(--card)] border border-[color:var(--border)] rounded-lg">
+                                    <p className="mb-2 font-semibold text-[color:var(--text-heading)]">Preferred Technology Stack</p>
+                                    <p className="text-sm">TypeScript, React, Next.js, Vite, Node.js, Tailwind CSS, React Router, Framer Motion, MySQL, Supabase</p>
+                                </div>
+
                                 <div className="flex space-x-4 mt-8">
                                     <Link
                                         to="/books"
-                                        className="px-6 py-3 rounded-lg bg-blue-600 text-sm text-white font-medium transition-all duration-300 hover:bg-blue-700 hover:shadow-lg"
+                                        className="px-6 py-3 rounded-lg bg-[color:var(--accent)] text-sm text-[color:var(--accent-foreground)] font-medium transition-all duration-300 hover:bg-[color:var(--accent)]/90 hover:shadow-glow"
                                     >
-                                        See My Library
+                                        Explore My Library
+                                    </Link>
+                                    <Link
+                                        to="/projects"
+                                        className="px-6 py-3 rounded-lg border border-[color:var(--border)] text-sm text-[color:var(--text-primary)] font-medium transition-all duration-300 hover:bg-[color:var(--card)] hover:shadow-lg"
+                                    >
+                                        View All Projects
                                     </Link>
                                 </div>
                             </div>
@@ -239,7 +330,7 @@ export function AboutMe() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true, amount: 0.3 }}
-                className="py-24 px-6 md:px-10 bg-gray-50"
+                className="py-24 px-6 md:px-10 bg-[color:var(--bg-subtle)]"
             >
                 <div className="max-w-6xl mx-auto">
                     <SubHeading
@@ -247,27 +338,27 @@ export function AboutMe() {
                         description="Core principles that guide my approach to development and design."
                     />
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        className="bg-[rgba(245,245,253,0.5)] backdrop-blur-sm max-w-2xl mx-auto rounded-2xl [box-shadow:inset_0_0_302px_#8092ff4d] border border-[color:var(--badge-border)] text-[color:var(--badge-text)] font-futura p-8 shadow-sm hover:shadow-md transition-all duration-300"
+                        className="bg-[color:var(--card)] backdrop-blur-sm max-w-3xl mx-auto rounded-2xl border-2 border-[color:var(--accent)] text-[color:var(--text-primary)] font-futura p-10 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-300"
                     >
-                        <blockquote className="text-center sm:px-7">
-                            <p className="font-medium md:text-md md:leading-normal xl:leading-normal p-4 lg:p-10 max-w-prose">
-                                
-                                &ldquo;I didn&apos;t invent the language or mathematics I used. I make little of my one food, 
-                                none of my own clothes. Everything I do depends on other members of our species and the 
-                                shoulders that we stand on. And a lot of us want to contribute something back to our species 
-                                and to add something to the flow. It&apos;s about trying to express something in the only 
-                                way that most of us know how because we can&apos;t write Bob Dylan songs or Tom Stoppard 
-                                plays. We try to use the talents we do have to express our deep feelings, to show our 
-                                appreciation of all the contributions that came before us, and to add something to 
+                        <blockquote className="text-center">
+                            <p className="text-base md:text-lg leading-relaxed md:leading-relaxed italic mb-6">
+                                &ldquo;I didn&apos;t invent the language or mathematics I used. I make little of my own food,
+                                none of my own clothes. Everything I do depends on other members of our species and the
+                                shoulders that we stand on. And a lot of us want to contribute something back to our species
+                                and to add something to the flow. It&apos;s about trying to express something in the only
+                                way that most of us know how because we can&apos;t write Bob Dylan songs or Tom Stoppard
+                                plays. We try to use the talents we do have to express our deep feelings, to show our
+                                appreciation of all the contributions that came before us, and to add something to
                                 that flow. That&apos;s what has driven me.&rdquo;
-                                         
                             </p>
-                            <p className="mt-5 italic">&mdash;{' '} Steve Jobs</p>
+                            <p className="text-sm md:text-base text-[color:var(--accent)] font-semibold tracking-wide">
+                                &mdash; Steve Jobs
+                            </p>
                         </blockquote>
                     </motion.div>
                     {/*                

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { projects } from '~/data/projects'
 import type { Route } from './+types/projects'
- 
+
 export function meta({}: Route.MetaArgs) {
     return [
         { name: 'author', content: 'Daniel Akoko' },
@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
         },
     ]
 }
- 
+
 function ProjectCard({
     project,
     index,
@@ -30,9 +30,15 @@ function ProjectCard({
                 delay: index * 0.1,
             }}
             viewport={{ once: true, amount: 0.2 }}
-            className="group relative bg-[color:var(--card)] rounded-lg p-6 border border-[color:var(--border)] hover:border-[color:var(--accent)] transition-all duration-300 hover:shadow-glow"
+            className="group relative bg-[color:var(--card)] rounded-lg border border-[color:var(--border)] hover:border-[color:var(--accent)] transition-all duration-300 hover:shadow-glow"
         >
-            <div className="flex flex-col h-full">
+            <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col h-full p-6"
+                aria-label={`View ${project.title} project`}
+            >
                 <div className="flex justify-between items-start mb-6">
                     <div className="p-3 bg-[color:var(--badge-bg)] rounded-lg">
                         <svg
@@ -49,43 +55,35 @@ function ProjectCard({
                             />
                         </svg>
                     </div>
-                    <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] transition-colors"
-                        aria-label={`View ${project.title}`}
+                    <svg
+                        className="w-5 h-5 text-[color:var(--text-secondary)] group-hover:text-[color:var(--accent)] transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                     >
-                        <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={1.5}
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                        </svg>
-                    </a>
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                    </svg>
                 </div>
- 
+
                 <h3 className="text-xl font-bold mb-3 text-[color:var(--text-heading)] group-hover:text-[color:var(--accent)] transition-colors">
                     {project.title}
                 </h3>
- 
+
                 <p className="text-[color:var(--text-secondary)] mb-4 leading-relaxed text-sm flex-grow">
                     {project.description}
                 </p>
- 
+
                 {project.category && (
                     <span className="text-xs text-[color:var(--accent)] font-medium mb-4">
                         {project.category}
                     </span>
                 )}
- 
+
                 <div className="flex flex-wrap gap-3 mt-auto">
                     {project.tags.map((tag) => (
                         <span
@@ -96,11 +94,11 @@ function ProjectCard({
                         </span>
                     ))}
                 </div>
-            </div>
+            </a>
         </motion.article>
     )
 }
- 
+
 export default function Projects() {
     return (
         <div className="min-h-screen py-32 px-6 md:px-12">
@@ -122,7 +120,7 @@ export default function Projects() {
                         and best practices.
                     </p>
                 </motion.div>
- 
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {projects.map((project, index) => (
                         <ProjectCard

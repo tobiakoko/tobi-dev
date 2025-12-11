@@ -11,15 +11,23 @@ export const projects: Project[] = [
     {
         title: 'Afromerica Entertainment',
         description:
-            'Afromerica Entertainment\'s web platform, designed to support content management, event ticketing, artist showcasing, and administrative functions',
+            'A comprehensive entertainment platform enabling seamless content management, event ticketing, and artist promotion. Built with modern full-stack architecture featuring real-time updates, secure authentication, and scalable cloud infrastructure.',
         tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Vercel'],
         link: 'https://www.afromericaent.com/',
         category: 'Full-Stack Web Application',
     },
     {
+        title: 'Ron\'s Body Shop',
+        description:
+            'Premium automotive service website showcasing collision repair expertise through immersive animations and responsive design. Features smooth scroll interactions, dynamic service galleries, and optimized performance for exceptional user experience.',
+        tags: ['React', 'Vite','TypeScript', 'Tailwind CSS', 'GSAP','Framer Motion'],
+        link: 'https://www.ronsbodyshop.net/',
+        category: 'Web Application',
+    },
+    {
         title: 'OseiPrempeh Law Firm',
         description:
-            'Modern law firm website built with React Router v7 featuring dynamic routing, responsive design, and optimized performance. Showcases legal services with elegant UI/UX.',
+            'Professional legal services platform leveraging React Router v7 for fluid navigation and dynamic content delivery. Combines sophisticated UI/UX design with performance optimization to deliver an elegant, trustworthy client experience.',
         tags: ['React Router v7', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
         link: 'https://www.oseiprempeh.com/',
         category: 'Web Application',
@@ -27,7 +35,7 @@ export const projects: Project[] = [
     {
         title: 'DLBC Tampa',
         description:
-            'Full-featured church website with event management, sermon archive, and community engagement features. Built for scalability and ease of content management.',
+            'Community-focused church platform integrating event management, multimedia sermon archives, and member engagement tools. Architected for growth with intuitive content management and seamless mobile accessibility.',
         tags: ['Next.js', 'React', 'Tailwind CSS', 'CMS'],
         link: 'https://www.dlbctampa.org/',
         category: 'Web Application',
@@ -35,7 +43,7 @@ export const projects: Project[] = [
     {
         title: 'Ask Kumuyi AI',
         description:
-            'AI-powered chatbot interface trained on religious teachings, featuring natural language processing and context-aware responses. Deployed on Azure with scalable architecture.',
+            'Intelligent conversational AI powered by Azure, delivering context-aware spiritual guidance through advanced natural language processing. Features sophisticated prompt engineering, vector-based knowledge retrieval, and enterprise-grade cloud deployment.',
         tags: ['Python', 'Azure AI', 'React', 'REST API'],
         link: 'https://askkumuyi.ai/',
         category: 'AI/ML Application',
@@ -43,7 +51,7 @@ export const projects: Project[] = [
     {
         title: 'Portfolio Website',
         description:
-            'Personal portfolio website built with React Router v7, featuring smooth animations, responsive design, and modern UI patterns. Showcases projects and technical skills.',
+            'Modern developer portfolio showcasing technical expertise through performant animations, responsive layouts, and clean architecture. Built with cutting-edge React Router v7 and optimized for speed, accessibility, and visual impact.',
         tags: ['React Router v7', 'TypeScript', 'Tailwind CSS', 'Vite'],
         link: 'https://tobiakoko.com',
         category: 'Web Application',

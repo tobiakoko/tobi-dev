@@ -7,7 +7,7 @@ export function meta({}: Route.MetaArgs) {
         { name: 'author', content: 'Daniel Akoko'},
         { title: 'Daniel Akoko Website' },
         { name: 'description', content: "Daniel Akoko's Portfolio website"},
-        { name: 'description', content: "Daniel Akoko is a new grad full stack react developer software engineer and project manager with typescript nodejs web development web performance optimization accessibility wcag, restful apis, version control git skills and is based in tampa florida, dallas texas, baltimore md, atlanta georgia and los angeles california" },
+        { name: 'description', content: "Daniel Akoko is a Full Stack Software Engineer based in Dallas, Texas, specializing in React, TypeScript, Next.js, and modern web technologies. Experienced in building enterprise platforms, AI-powered solutions, and performant, accessible web applications." },
     ]
 }
 
