@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!--
+    Open Graph card. Mirrors the site's editorial system: paper ground, ink
+    text, sharp corners, 300-weight display type, wide-tracked micro-labels.
+    Rasterize with:  rsvg-convert -w 1200 -h 630 assets/og.svg -o public/og.png
+  -->
+  <rect width="1200" height="630" fill="#faf9f6"/>
+
+  <!-- Hairline frame, echoing the site's 1px rules -->
+  <rect x="64" y="64" width="1072" height="502" fill="none" stroke="#e3e1d9" stroke-width="1"/>
+
+  <!-- Eyebrow -->
+  <text x="120" y="184"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="20" font-weight="400" letter-spacing="4" fill="#6d6d66">
+    SOFTWARE ENGINEER · DALLAS, TEXAS
+  </text>
+
+  <!-- Name -->
+  <text x="120" y="300"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="86" font-weight="300" letter-spacing="-1.5" fill="#1c1c1a">
+    Daniel “Tobi” Akoko
+  </text>
+
+  <!-- Accent rule -->
+  <rect x="120" y="348" width="96" height="3" fill="#1f7f89"/>
+
+  <!-- Supporting line -->
+  <text x="120" y="424"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="30" font-weight="300" fill="#6d6d66">
+    Full Stack Software Engineer
+  </text>
+  <text x="120" y="470"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="30" font-weight="300" fill="#6d6d66">
+    React · TypeScript · Next.js · Node.js
+  </text>
+
+  <!-- Domain -->
+  <text x="120" y="522"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="20" font-weight="400" letter-spacing="3" fill="#1f7f89">
+    TOBIAKOKO.COM
+  </text>
+</svg>

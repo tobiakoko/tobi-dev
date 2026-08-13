@@ -4,3 +4,8 @@
 # React Router
 /.react-router/
 /build/
+
+# Environment — never commit real values; see .env.example
+.env
+.env.*
+!.env.example
