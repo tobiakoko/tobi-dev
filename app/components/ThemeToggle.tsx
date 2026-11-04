@@ -19,11 +19,14 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
     <button
       type="button"
       onClick={toggle}
-      aria-label="Toggle color theme"
-      className={`text-ink transition-colors hover:text-accent ${className}`}
+      className={`flex h-11 w-11 items-center justify-center hover:text-accent ${className}`}
     >
+      {/* The name states the action. Both exist; CSS shows the right one, like the icons. */}
+      <span className="sr-only dark:hidden">Switch to dark theme</span>
+      <span className="sr-only hidden dark:inline">Switch to light theme</span>
       {/* Sun — shown in light mode, offering the switch to dark */}
       <svg
+        aria-hidden="true"
         className="h-[18px] w-[18px] dark:hidden"
         viewBox="0 0 24 24"
         fill="none"
@@ -36,6 +39,7 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
       </svg>
       {/* Moon — shown in dark mode */}
       <svg
+        aria-hidden="true"
         className="hidden h-[18px] w-[18px] dark:block"
         viewBox="0 0 24 24"
         fill="none"

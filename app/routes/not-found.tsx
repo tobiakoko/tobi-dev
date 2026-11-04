@@ -1,4 +1,5 @@
-import { Link } from 'react-router';
+import { Container } from '~/components/Layout';
+import TextLinks from '~/components/TextLinks';
 
 export function meta() {
   return [
@@ -14,19 +15,17 @@ export function meta() {
  */
 export default function NotFound() {
   return (
-    <section className="mx-auto max-w-[1200px] px-6 py-32 md:px-12">
-      <h1 className="text-[clamp(44px,6vw,72px)] font-light tracking-[-0.02em]">Page not found</h1>
-      <p className="mt-5 max-w-[60ch] text-[17px] leading-[1.65] text-muted">
-        There&rsquo;s no page at this address.
-      </p>
-      <div className="mt-10 flex flex-wrap gap-4">
-        <Link to="/" className="btn-solid">
-          Home
-        </Link>
-        <Link to="/work" className="btn-outline">
-          Work
-        </Link>
-      </div>
+    <section className="pt-16 md:pt-24">
+      <Container className="flex flex-col gap-6">
+        <h1 className="text-title">Page not found</h1>
+        <p className="max-w-measure text-muted">There&rsquo;s no page at this address.</p>
+        <TextLinks
+          links={[
+            { label: 'Home', href: '/' },
+            { label: 'Work', href: '/work' },
+          ]}
+        />
+      </Container>
     </section>
   );
 }
