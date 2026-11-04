@@ -53,35 +53,39 @@ app/
 ├── routes.ts            # Route table
 ├── routes/
 │   ├── layout.tsx       # Header + <Outlet/> + Footer
-│   ├── home.tsx         # Hero, Selected Work, Studio teaser
-│   ├── projects.tsx     # Index with category filter
-│   ├── project-detail.tsx  # /projects/:slug
-│   ├── about.tsx        # "Studio" — bio, credentials, pull quote
+│   ├── home.tsx         # Hero, Selected work
+│   ├── work.tsx         # Work index
+│   ├── work-detail.tsx  # /work/:slug
+│   ├── about.tsx        # Bio
 │   └── contact.tsx      # Static contact panel (no form)
 ├── components/
 │   ├── Header.tsx  Footer.tsx  ThemeToggle.tsx
-│   ├── ProjectCard.tsx     # `featured` (home) and `index` (projects) variants
-│   └── HatchPlaceholder.tsx
+│   └── ProjectCard.tsx     # `featured` (home) and `index` (work) variants
 └── data/
     ├── projects.ts      # All project content
-    └── site.ts          # Email, location, social URLs
+    └── site.ts          # Name, title, email, location, links, résumé path
 ```
 
 ### Routes
 
-`/` · `/projects` · `/projects/:slug` · `/about` · `/contact`
+`/` · `/work` · `/work/:slug` · `/about` · `/contact`
+
+The old `/projects` and `/projects/:slug` URLs redirect permanently (308) to
+`/work` in [vercel.json](vercel.json).
 
 ## Editing content
 
-Nearly all copy lives in two files:
+Every word and fact comes from [docs/build/CONTENT.md](docs/build/CONTENT.md).
+In code, it lives in two files:
 
 - **[app/data/projects.ts](app/data/projects.ts)** — one object per project. Adding an entry
-  automatically creates its detail page, adds it to the index and filters, and
-  wires prev/next pagination. `slug` becomes the URL; `cat` must be one of
-  `fullstack` | `web` | `ai`.
-- **[app/data/site.ts](app/data/site.ts)** — email, location, GitHub/LinkedIn URLs.
+  automatically creates its detail page, adds it to the index, and wires
+  prev/next pagination. `slug` becomes the URL; `featured` puts it on Home.
+- **[app/data/site.ts](app/data/site.ts)** — name, title, email, location,
+  links, availability, booking link and résumé path. A `null` link hides
+  every place it would appear.
 
-Page prose (hero, bio, pull quote) is inline in its route file.
+Page prose (hero, bio) is inline in its route file.
 
 ## Theming
 
@@ -153,13 +157,10 @@ provides the SPA fallback.
 
 ## Known gaps
 
-- **`public/resume.pdf` does not exist.** The Résumé button in the header links
-  to it and currently 404s — add the file or remove the button.
-- **Imagery is placeholder.** Headshots and project screenshots render as
-  diagonal-hatch stand-ins via `HatchPlaceholder`. Replacing them is a
-  component swap, not a layout change.
-- **ESLint config is broken** (`Plugin "@typescript-eslint" not found`) despite
-  the plugins being installed. Use `npm run typecheck` meanwhile.
+- **`public/resume.pdf` does not exist yet.** Every résumé link is hidden until
+  `RESUME_URL` in `site.ts` is set.
+- **No imagery yet.** Cards and project pages are text-only until real
+  screenshots are added (see `docs/build/BUILD-PLAN.md`, Phase 3).
 
 ---
 
