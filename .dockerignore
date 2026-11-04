@@ -1,4 +1,11 @@
+.git
+.github
 .react-router
 build
 node_modules
 README.md
+
+# Never bake environment files into an image layer.
+.env
+.env.*
+!.env.example

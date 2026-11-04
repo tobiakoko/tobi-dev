@@ -1,48 +1,64 @@
-import type { Route } from './+types/home'
-import { Welcome } from '~/welcome/welcome'
-import Loading from '~/components/LoadingScreen'
-import favico from '/Logo-dark.ico'
+import { Link } from 'react-router';
+import ProjectCard from '~/components/ProjectCard';
+import { projects } from '~/data/projects';
+import { DISPLAY_NAME, EMAIL, LOCATION, pageMeta } from '~/data/site';
 
-export function meta({}: Route.MetaArgs) {
-    return [
-        { name: 'author', content: 'Daniel Akoko'},
-        { title: 'Daniel Akoko Website' },
-        { name: 'description', content: "Daniel Akoko's Portfolio website"},
-        { name: 'description', content: "Daniel Akoko is a Software Engineer and program Manager based in Tampa Florida and is a dedicated problem solver who thrives on learning and building" },
-    ]
+export function meta() {
+  return pageMeta({
+    title: 'Daniel (Tobi) Akoko · Software Engineer in Dallas',
+    description:
+      'Daniel (Tobi) Akoko is a software engineer in Dallas who plans, builds, tests and hands over web software for churches and small businesses.',
+    path: '/',
+    type: 'profile',
+  });
 }
-
-export function links() {
-    return [
-        {
-            rel: "icon",
-            href: favico,
-            type: "image/x-icon"
-        }
-    ]
-}
-
 
 export default function Home() {
-    return (
-        <Loading OGComponent={Welcome} />
-    )
+  const featured = projects.filter((p) => p.featured);
+
+  return (
+    <>
+      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-24 md:px-12 md:pt-[120px] md:pb-[100px]">
+        <p className="mb-7 text-xs tracking-[0.2em] text-muted uppercase">
+          {DISPLAY_NAME} &middot; {LOCATION}
+        </p>
+        {/* TODO(content): headline is option A until Daniel picks one (CONTENT.md §2.1). */}
+        <h1 className="max-w-[18ch] text-[clamp(44px,6vw,84px)] leading-[1.05] font-light tracking-[-0.02em] text-pretty">
+          From requirements to release.
+        </h1>
+        <p className="mt-9 max-w-[56ch] text-[19px] leading-[1.65] text-muted">
+          I&rsquo;m a software engineer who plans, builds, tests and hands over web software for
+          churches and small businesses. My work runs from paid voting and live leaderboards to
+          content systems that staff update themselves.
+        </p>
+        <div className="mt-11 flex flex-wrap gap-4">
+          <Link to="/work" className="btn-solid">
+            Work
+          </Link>
+          <Link to="/about" className="btn-outline">
+            About
+          </Link>
+          <a href={`mailto:${EMAIL}`} className="btn-outline">
+            Email
+          </a>
+        </div>
+      </section>
+
+      <section className="border-t border-line bg-bg-alt px-6 py-20 md:px-12 md:py-[90px]">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-12 flex flex-wrap items-baseline justify-between gap-6">
+            <h2 className="text-[34px] font-light tracking-[-0.01em]">Selected work</h2>
+            <Link to="/work" className="text-xs tracking-[0.16em] uppercase">
+              All work →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            {featured.map((project) => (
+              <ProjectCard key={project.slug} project={project} variant="featured" />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
-
-/* 
-FUTURE IMPROVEMENTS
-- Add a loading state to the welcome component
-- Add a loading state to the meta function
-- Add a loading state to the route function
-- Add a loading state to the page function
-- 
-
--- Get Templates of different business needs websites on chatgpt or claude, make it 
-   really slick and build a dashboard to manage the template content on the backend for 
-   businesses who do not want to tinker with the code. 
-
-- Add a cart and payment system to the website to allow users to purchase
-  templates and other products from the site.
-  lets say the main url is tobi.dev, the subdomain should be shop.tobi.dev
-
-*/
