@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '~/data/site';
+import { DISPLAY_NAME, EMAIL, FULL_NAME, GITHUB_URL, JOB_TITLE, LINKEDIN_URL, LOCATION } from '~/data/site';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,21 +8,21 @@ export default function Footer() {
     <footer className="border-t border-line bg-bg-alt px-6 pt-14 pb-10 md:px-12">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 md:grid-cols-[2fr_1fr_1fr] md:gap-12">
         <div className="flex flex-col gap-3">
-          <span className="text-base font-bold text-ink">Daniel &ldquo;Tobi&rdquo; Akoko</span>
+          <span className="text-base font-bold text-ink">{DISPLAY_NAME}</span>
           <span className="text-[13px] leading-[1.6] text-muted">
-            Full Stack Software Engineer
+            {JOB_TITLE}
             <br />
-            Dallas, Texas
+            {LOCATION}
           </span>
         </div>
 
         <div className="flex flex-col gap-3">
           <span className="label">Site</span>
           <Link to="/work" className="text-[13px] text-ink hover:text-accent">
-            Portfolio
+            Work
           </Link>
           <Link to="/about" className="text-[13px] text-ink hover:text-accent">
-            Studio
+            About
           </Link>
           <Link to="/contact" className="text-[13px] text-ink hover:text-accent">
             Contact
@@ -54,7 +54,7 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto mt-10 max-w-[1200px] border-t border-line pt-5 text-xs text-muted">
-        ©{currentYear} Daniel Akoko. All Rights Reserved
+        ©{currentYear} {FULL_NAME}. All Rights Reserved
       </div>
     </footer>
   );

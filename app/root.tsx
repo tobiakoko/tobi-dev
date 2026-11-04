@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
 } from 'react-router';
 import { Analytics } from '@vercel/analytics/react';
+import { allTechnologies } from '~/data/projects';
 import {
   ALT_NAME,
   EMAIL,
@@ -49,14 +50,8 @@ const personSchema = {
         addressCountry: 'US',
       },
       sameAs: [GITHUB_URL, LINKEDIN_URL],
-      knowsAbout: [
-        'React',
-        'TypeScript',
-        'Next.js',
-        'Node.js',
-        'Frontend Architecture',
-        'Web Accessibility',
-      ],
+      // Derived from the project stacks, so it lists only what the code uses.
+      knowsAbout: allTechnologies(),
     },
     {
       '@type': 'WebSite',

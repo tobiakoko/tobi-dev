@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
+import { FULL_NAME } from '~/data/site';
 import ThemeToggle from './ThemeToggle';
 
 const NAV = [
-  { label: 'Portfolio', to: '/work' },
-  { label: 'Studio', to: '/about' },
+  { label: 'Work', to: '/work' },
+  { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];
 
@@ -12,14 +13,14 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
-  // Portfolio stays lit on project detail pages, not just the index.
+  // Work stays lit on project detail pages, not just the index.
   const isActive = (to: string) =>
     to === '/work' ? pathname.startsWith('/work') : pathname === to;
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between gap-8 border-b border-line bg-bg px-6 py-6 md:px-12 md:py-7">
-      <Link to="/" className="text-[17px] font-bold tracking-[0.02em] text-ink hover:text-accent">
-        Daniel&nbsp;Akoko
+      <Link to="/" className="text-[17px] font-bold tracking-[0.02em] whitespace-nowrap text-ink hover:text-accent">
+        {FULL_NAME}
       </Link>
 
       {/* Desktop */}
@@ -35,14 +36,6 @@ export default function Header() {
             {item.label}
           </NavLink>
         ))}
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-accent px-5 py-2.5 text-[13px] tracking-[0.14em] text-accent-ink uppercase hover:text-accent-ink hover:opacity-85"
-        >
-          Résumé
-        </a>
         <ThemeToggle />
       </nav>
 
@@ -82,9 +75,6 @@ export default function Header() {
               {item.label}
             </NavLink>
           ))}
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-solid">
-            Résumé
-          </a>
         </nav>
       )}
     </header>
