@@ -60,7 +60,8 @@ Before every commit: `npm run typecheck && npm run lint && npm run build`.
 - `app/routes.ts`: Home, Work, Work detail, About, Contact
 - `app/routes/*.tsx`: route modules; each exports `meta()` built with `pageMeta()`
 - `app/data/site.ts`: personal facts and `pageMeta()`
-- `app/data/work.ts`: loads and types `content/work/*.md`
+- `app/data/work.ts`: types for `content/work/*.md` (safe for the browser)
+- `app/data/work.server.ts`: reads and validates `content/work/*.md` at build time; used only in loaders and `react-router.config.ts`
 - `app/components/`: Header, Footer, ThemeToggle and the components in `DESIGN-SYSTEM.md`
 - `content/work/`: one markdown file per case study
 - `public/work/<slug>/`: screenshots and diagrams for that case study

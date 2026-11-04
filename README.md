@@ -56,14 +56,16 @@ app/
 │   ├── home.tsx         # Hero, Selected work
 │   ├── work.tsx         # Work index
 │   ├── work-detail.tsx  # /work/:slug
-│   ├── about.tsx        # Bio
-│   └── contact.tsx      # Static contact panel (no form)
-├── components/
-│   ├── Header.tsx  Footer.tsx  ThemeToggle.tsx
-│   └── ProjectCard.tsx     # `featured` (home) and `index` (work) variants
+│   ├── about.tsx        # Label rail: bio, past, education, ...
+│   ├── contact.tsx      # Static contact list (no form)
+│   └── not-found.tsx    # Catch-all 404 inside the layout
+├── components/          # Header, Footer, ThemeToggle, Layout primitives,
+│                        # WorkRow, CaseStudyHeader, MetaGrid, Stats, Figure, ...
 └── data/
-    ├── projects.ts      # All project content
-    └── site.ts          # Name, title, email, location, links
+    ├── site.ts          # Name, title, email, location, links, pageMeta()
+    ├── work.ts          # Case study types (safe for the browser)
+    └── work.server.ts   # Reads + validates content/work/*.md at build time
+content/work/            # One markdown file per case study
 ```
 
 ### Routes
@@ -76,16 +78,18 @@ The old `/projects` and `/projects/:slug` URLs redirect permanently (308) to
 ## Editing content
 
 Every word and fact comes from [docs/build/CONTENT.md](docs/build/CONTENT.md).
-In code, it lives in two files:
+In code, it lives in two places:
 
-- **[app/data/projects.ts](app/data/projects.ts)** — one object per project. Adding an entry
-  automatically creates its detail page, adds it to the index, and wires
-  prev/next pagination. `slug` becomes the URL; `featured` puts it on Home.
+- **[content/work/](content/work/)** — one markdown file per case study, in the
+  format of [docs/build/CASE-STUDY-TEMPLATE.md](docs/build/CASE-STUDY-TEMPLATE.md).
+  Adding a file creates its page, adds it to Work and the sitemap, and wires the
+  "Next project" link. `featured` puts it on Home. The build fails on a missing
+  field, a missing image, raw HTML, or a stat that isn't in `CONTENT.md`.
 - **[app/data/site.ts](app/data/site.ts)** — name, title, email, location,
   links, availability and booking link. A `null` link hides
   every place it would appear.
 
-Page prose (hero, bio) is inline in its route file.
+Page prose (hero, About) is inline in its route file.
 
 ## Theming
 
@@ -118,7 +122,7 @@ crawler that doesn't run JavaScript. [react-router.config.ts](react-router.confi
 therefore sets `prerender`, which emits real HTML for all ten routes at build
 time while keeping client-side navigation.
 
-The route list is derived from `projects.ts`, so **adding a project
+The route list is derived from `content/work`, so **adding a case study
 automatically adds its page to both the prerender list and the sitemap** — the
 `buildEnd` hook generates `sitemap.xml` from the same array. Nothing to keep in
 sync by hand.

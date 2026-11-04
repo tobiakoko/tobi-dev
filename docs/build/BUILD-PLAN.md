@@ -56,19 +56,19 @@ Goal: a live site with no wrong facts, no placeholders and correct search metada
 Goal: the minimalist, spacious design from `DESIGN-SYSTEM.md`, the four-section structure, and case study pages driven by markdown.
 
 - [x] **2.0 Ask:** owner picks the headline from `CONTENT.md` §2.1 (default A).
-- [ ] **2.1** Tokens: update `app.css` to the color tokens in `DESIGN-SYSTEM.md` (light unchanged, dark becomes neutral). Add `@fontsource-variable/inter` and the type scale as utilities or `@theme` values.
-- [ ] **2.2** Contrast: measure every text/background pair in both themes; record the ratios in `DESIGN-SYSTEM.md`; adjust any that fail.
-- [ ] **2.3** Layout primitives: `Container` (wide), `Prose`, `LabelRail` (label column + content), `Section` (section gap). Skip link to `<main>`.
-- [ ] **2.4** `Header` and `Footer` per `DESIGN-SYSTEM.md`, including the mobile panel with focus return and Escape.
-- [ ] **2.5** Content loader: `content/work/<slug>.md` with front matter per `CASE-STUDY-TEMPLATE.md`; `app/data/work.ts` parses with `gray-matter`, renders markdown with `marked` at build time, validates required fields and fails the build on a missing field or cover file. Migrate the six projects' current text into these files. Prerender list and sitemap read from the loader.
-- [ ] **2.6** Components: `WorkRow`, `DisciplineTag`, `CaseStudyHeader`, `MetaGrid`, `Stats`, `Figure`, `FigurePair`, `ResultsTable`, `Callout`, `NextProject`, `TextLinks`.
-- [ ] **2.7** Home per `DESIGN-SYSTEM.md` and `CONTENT.md` §2: hero, Selected work, How I work, availability.
-- [ ] **2.8** Work index per §3.
-- [ ] **2.9** Case study page per `CASE-STUDY-TEMPLATE.md`, using the label rail. Sections with no content yet are hidden, not shown empty.
-- [ ] **2.10** About per §4 in the label rail: Bio, How I work, Present, Past, Origins, Education, Certifications, Community, closing line. Hide `TODO(content)` items.
-- [ ] **2.11** Contact per §5.
-- [ ] **2.12** 404 per `DESIGN-SYSTEM.md`.
-- [ ] **2.13** Check every page at 320, 375, 768 and 1280 px in both themes; no horizontal scroll; keyboard walk-through of header, menu, toggle and links.
+- [x] **2.1** Tokens: update `app.css` to the color tokens in `DESIGN-SYSTEM.md` (light unchanged, dark becomes neutral). Add `@fontsource-variable/inter` and the type scale as utilities or `@theme` values.
+- [x] **2.2** Contrast: measure every text/background pair in both themes; record the ratios in `DESIGN-SYSTEM.md`; adjust any that fail.
+- [x] **2.3** Layout primitives: `Container` (wide), `Prose`, `LabelRail` (label column + content), `Section` (section gap). Skip link to `<main>`.
+- [x] **2.4** `Header` and `Footer` per `DESIGN-SYSTEM.md`, including the mobile panel with focus return and Escape.
+- [x] **2.5** Content loader: `content/work/<slug>.md` with front matter per `CASE-STUDY-TEMPLATE.md`; `app/data/work.ts` parses with `gray-matter`, renders markdown with `marked` at build time, validates required fields and fails the build on a missing field or cover file. Migrate the six projects' current text into these files. Prerender list and sitemap read from the loader.
+- [x] **2.6** Components: `WorkRow`, `DisciplineTag`, `CaseStudyHeader`, `MetaGrid`, `Stats`, `Figure`, `FigurePair`, `ResultsTable`, `Callout`, `NextProject`, `TextLinks`.
+- [x] **2.7** Home per `DESIGN-SYSTEM.md` and `CONTENT.md` §2: hero, Selected work, How I work, availability.
+- [x] **2.8** Work index per §3.
+- [x] **2.9** Case study page per `CASE-STUDY-TEMPLATE.md`, using the label rail. Sections with no content yet are hidden, not shown empty.
+- [x] **2.10** About per §4 in the label rail: Bio, How I work, Present, Past, Origins, Education, Certifications, Community, closing line. Hide `TODO(content)` items.
+- [x] **2.11** Contact per §5.
+- [x] **2.12** 404 per `DESIGN-SYSTEM.md`.
+- [x] **2.13** Check every page at 320, 375, 768 and 1280 px in both themes; no horizontal scroll; keyboard walk-through of header, menu, toggle and links.
 
 **Gate 2:** every page matches `DESIGN-SYSTEM.md`; copy matches `CONTENT.md`; axe shows 0 violations on every page (manual run is fine until Phase 4).
 
@@ -79,7 +79,7 @@ Goal: the minimalist, spacious design from `DESIGN-SYSTEM.md`, the four-section 
 Goal: full case studies with real screenshots, diagrams and measured results.
 
 - [ ] **3.0 Ask:** owner confirms which clients have given permission to be named and shown (`CONTENT.md` §7). Don't publish screenshots of a client without it.
-- [ ] **3.1** `scripts/screenshots.ts` (Playwright): for each project, capture the pages listed in `CONTENT.md` at 1440×900 and 390×844, `deviceScaleFactor: 2`, WebP quality 80, into `public/work/<slug>/`. Add `npm run screenshots`. Mask any personal data with Playwright's `mask` option.
+- [ ] **3.1** `scripts/screenshots.ts` (Playwright): for each project, capture the pages listed in `CONTENT.md` at 1440×900 and 390×844, `deviceScaleFactor: 2`, WebP quality 80, into `public/work/<slug>/`. Add `npm run screenshots`. Mask any personal data with Playwright's `mask` option. Then make `cover` required in `work.server.ts` (it's optional during Phase 2).
 - [ ] **3.2** Mermaid: render each case study's ` ```mermaid ` block to `public/work/<slug>/architecture.svg` at build time with `@mermaid-js/mermaid-cli`, styled to the tokens; ship the SVG only.
 - [ ] **3.3** Write **Lewisville** from `CONTENT.md` §6.1. Before/after figures from the owner's Phase 4 captures (`docs/build/redesign-before/screens` and `redesign-after/screens` in the Lewisville repo, local only). **Ask** the owner to supply them.
 - [ ] **3.4** Write **Afromerica** from §6.2 (needs permission from 3.0).
