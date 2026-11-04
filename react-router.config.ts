@@ -11,9 +11,9 @@ import { SITE_URL } from './app/data/site';
 const routes = [
   '/',
   '/about',
-  '/projects',
+  '/work',
   '/contact',
-  ...projects.map((p) => `/projects/${p.slug}`),
+  ...projects.map((p) => `/work/${p.slug}`),
 ];
 
 function sitemap() {

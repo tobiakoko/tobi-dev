@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router';
 import ThemeToggle from './ThemeToggle';
 
 const NAV = [
-  { label: 'Portfolio', to: '/projects' },
+  { label: 'Portfolio', to: '/work' },
   { label: 'Studio', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];
@@ -14,7 +14,7 @@ export default function Header() {
 
   // Portfolio stays lit on project detail pages, not just the index.
   const isActive = (to: string) =>
-    to === '/projects' ? pathname.startsWith('/projects') : pathname === to;
+    to === '/work' ? pathname.startsWith('/work') : pathname === to;
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between gap-8 border-b border-line bg-bg px-6 py-6 md:px-12 md:py-7">

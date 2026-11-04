@@ -4,7 +4,7 @@ import HatchPlaceholder from './HatchPlaceholder';
 
 /**
  * `featured` (home) sits on a bordered card and highlights its border on hover.
- * `index` (projects page) is borderless and tints its whole text block instead.
+ * `index` (work page) is borderless and tints its whole text block instead.
  */
 export default function ProjectCard({
   project,
@@ -16,7 +16,7 @@ export default function ProjectCard({
   if (variant === 'featured') {
     return (
       <Link
-        to={`/projects/${project.slug}`}
+        to={`/work/${project.slug}`}
         className="group flex flex-col border border-line bg-card text-ink transition-colors hover:border-accent hover:text-ink"
       >
         <HatchPlaceholder note={project.imgNote} ratio="4/3" />
@@ -31,7 +31,7 @@ export default function ProjectCard({
 
   return (
     <Link
-      to={`/projects/${project.slug}`}
+      to={`/work/${project.slug}`}
       className="group flex flex-col text-ink transition-colors hover:text-accent"
     >
       <HatchPlaceholder note={project.imgNote} ratio="4/3" bordered />

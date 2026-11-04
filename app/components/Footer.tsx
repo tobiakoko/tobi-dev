@@ -18,7 +18,7 @@ export default function Footer() {
 
         <div className="flex flex-col gap-3">
           <span className="label">Site</span>
-          <Link to="/projects" className="text-[13px] text-ink hover:text-accent">
+          <Link to="/work" className="text-[13px] text-ink hover:text-accent">
             Portfolio
           </Link>
           <Link to="/about" className="text-[13px] text-ink hover:text-accent">

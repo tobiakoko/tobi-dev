@@ -3,14 +3,14 @@ import ProjectCard from '~/components/ProjectCard';
 import { filterDefs, projects } from '~/data/projects';
 import type { ProjectCategory } from '~/data/projects';
 import { pageMeta } from '~/data/site';
-import type { Route } from './+types/projects';
+import type { Route } from './+types/work';
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: 'Projects — Daniel “Tobi” Akoko',
     description:
       'Web applications, AI-powered solutions, and full-stack platforms — each designed and built end to end by Daniel Akoko.',
-    path: '/projects',
+    path: '/work',
   });
 }
 

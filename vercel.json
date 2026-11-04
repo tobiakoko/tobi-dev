@@ -6,7 +6,9 @@
             "has": [{ "type": "host", "value": "www.tobiakoko.com" }],
             "destination": "https://tobiakoko.com/:path*",
             "permanent": true
-        }
+        },
+        { "source": "/projects", "destination": "/work", "permanent": true },
+        { "source": "/projects/:slug", "destination": "/work/:slug", "permanent": true }
     ],
     "headers": [
         {

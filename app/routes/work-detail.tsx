@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import HatchPlaceholder from '~/components/HatchPlaceholder';
 import { projects } from '~/data/projects';
 import { pageMeta } from '~/data/site';
-import type { Route } from './+types/project-detail';
+import type { Route } from './+types/work-detail';
 
 export function meta({ params }: Route.MetaArgs) {
   const project = projects.find((p) => p.slug === params.slug);
@@ -12,7 +12,7 @@ export function meta({ params }: Route.MetaArgs) {
   return pageMeta({
     title: `${project.title} — Daniel “Tobi” Akoko`,
     description: `${project.tagline} Built by Daniel Akoko using ${project.stack}.`,
-    path: `/projects/${project.slug}`,
+    path: `/work/${project.slug}`,
     type: 'article',
   });
 }
@@ -31,7 +31,7 @@ export default function ProjectDetail({ params }: Route.ComponentProps) {
   return (
     <>
       <section className="mx-auto max-w-[1200px] px-6 pt-16 md:px-12 md:pt-[72px]">
-        <Link to="/projects" className="text-xs tracking-[0.16em] uppercase">
+        <Link to="/work" className="text-xs tracking-[0.16em] uppercase">
           ← All Projects
         </Link>
         <h1 className="mt-7 text-[clamp(38px,5vw,60px)] font-light tracking-[-0.02em]">
@@ -79,11 +79,11 @@ export default function ProjectDetail({ params }: Route.ComponentProps) {
 
       <section className="border-t border-line">
         <div className="mx-auto flex max-w-[1200px] justify-between gap-6 px-6 py-7 md:px-12">
-          <Link to={`/projects/${prev.slug}`} className="text-[13px] tracking-[0.1em] uppercase">
+          <Link to={`/work/${prev.slug}`} className="text-[13px] tracking-[0.1em] uppercase">
             ← {prev.title}
           </Link>
           <Link
-            to={`/projects/${next.slug}`}
+            to={`/work/${next.slug}`}
             className="text-right text-[13px] tracking-[0.1em] uppercase"
           >
             {next.title} →

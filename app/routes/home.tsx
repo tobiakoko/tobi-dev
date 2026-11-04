@@ -33,7 +33,7 @@ export default function Home() {
           with a rigorous, user-centered approach.
         </p>
         <div className="mt-11 flex flex-wrap gap-4">
-          <Link to="/projects" className="btn-solid">
+          <Link to="/work" className="btn-solid">
             View the Work
           </Link>
           <Link to="/about" className="btn-outline">
@@ -46,7 +46,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-12 flex flex-wrap items-baseline justify-between gap-6">
             <h2 className="text-[34px] font-light tracking-[-0.01em]">Selected Work</h2>
-            <Link to="/projects" className="text-xs tracking-[0.16em] uppercase">
+            <Link to="/work" className="text-xs tracking-[0.16em] uppercase">
               All Projects →
             </Link>
           </div>
