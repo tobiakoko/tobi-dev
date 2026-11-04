@@ -10,14 +10,14 @@ Starting point: `main` is the old dark template site (noindex, fake contact form
 
 Goal: a live site with no wrong facts, no placeholders and correct search metadata. Visual refinement comes in Phase 2.
 
-- [ ] **1.0** Check out `redesign/editorial-system-seo`, rebase on `main`, and add `CLAUDE.md` and `docs/build/*` in a `docs:` commit.
-- [ ] **1.1** Rename routes: `/projects` → `/work`, `/projects/:slug` → `/work/:slug`. Add permanent redirects for the old paths in `vercel.json`. Update the prerender list, sitemap, header and links. *Done when:* `/projects/afromerica` redirects 308 to `/work/afromerica`, and the sitemap lists only `/work` URLs.
-- [ ] **1.2** Header labels: **Work, About, Contact** (replacing "Portfolio" and "Studio"). Remove the Résumé button from the header; the footer gets it in Phase 2.
-- [ ] **1.3** Projects data: delete Ask Kumuyi; set every project's title, year, stack, location, role and outcome from `CONTENT.md` §6; order them per §6. *Done when:* each stack matches §6 exactly, and the sitemap has 10 URLs (4 pages + 6 projects).
-- [ ] **1.4** Remove every `HatchPlaceholder` from public pages. Cards and project pages are text-only until Phase 3 adds real screenshots. Delete the component when it's unused.
-- [ ] **1.5** Copy: replace Home, About and Contact text with the `CONTENT.md` §2.2, §4.1–4.2 and §5 copy (first person). Leave the other About sections for Phase 2.
-- [ ] **1.6** Résumé: if `public/resume.pdf` exists, link it from Contact; if not, hide every résumé link with `TODO(content)`. *Done when:* no link on the site returns 404.
-- [ ] **1.7** ESLint: replace `eslint.config.js` with the flat config below, set `"lint": "eslint ."`, and change `meta({}: Route.MetaArgs)` to `meta()` in the route files. *Done when:* `npm run lint` exits 0.
+- [x] **1.0** Check out `redesign/editorial-system-seo`, rebase on `main`, and add `CLAUDE.md` and `docs/build/*` in a `docs:` commit.
+- [x] **1.1** Rename routes: `/projects` → `/work`, `/projects/:slug` → `/work/:slug`. Add permanent redirects for the old paths in `vercel.json`. Update the prerender list, sitemap, header and links. *Done when:* `/projects/afromerica` redirects 308 to `/work/afromerica`, and the sitemap lists only `/work` URLs.
+- [x] **1.2** Header labels: **Work, About, Contact** (replacing "Portfolio" and "Studio"). Remove the Résumé button from the header; the footer gets it in Phase 2.
+- [x] **1.3** Projects data: delete Ask Kumuyi; set every project's title, year, stack, location, role and outcome from `CONTENT.md` §6; order them per §6. *Done when:* each stack matches §6 exactly, and the sitemap has 10 URLs (4 pages + 6 projects).
+- [x] **1.4** Remove every `HatchPlaceholder` from public pages. Cards and project pages are text-only until Phase 3 adds real screenshots. Delete the component when it's unused.
+- [x] **1.5** Copy: replace Home, About and Contact text with the `CONTENT.md` §2.2, §4.1–4.2 and §5 copy (first person). Leave the other About sections for Phase 2.
+- [x] **1.6** Résumé: if `public/resume.pdf` exists, link it from Contact; if not, hide every résumé link with `TODO(content)`. *Done when:* no link on the site returns 404.
+- [x] **1.7** ESLint: replace `eslint.config.js` with the flat config below, set `"lint": "eslint ."`, and change `meta({}: Route.MetaArgs)` to `meta()` in the route files. *Done when:* `npm run lint` exits 0.
 
   ```js
   import js from '@eslint/js';
@@ -40,9 +40,9 @@ Goal: a live site with no wrong facts, no placeholders and correct search metada
   );
   ```
 
-- [ ] **1.8** Dependencies and config: `npm audit fix` (no `--force`); move `terser` to `devDependencies` or remove it if the build doesn't need it; remove `gh-pages` and its script; fix "webiste" in `package.json`; delete `public/_headers` and `public/_redirects` (Vercel ignores them; headers live in `vercel.json`). *Done when:* `npm audit` shows 0 critical; the build passes from a clean `npm ci`.
-- [ ] **1.9** Add a global `prefers-reduced-motion: reduce` guard to `app.css` that removes transitions and smooth scrolling.
-- [ ] **1.10** `Person` JSON-LD: `jobTitle` "Software Engineer"; keep both names; `knowsAbout` from the stacks in `CONTENT.md` §6.
+- [x] **1.8** Dependencies and config: `npm audit fix` (no `--force`); move `terser` to `devDependencies` or remove it if the build doesn't need it; remove `gh-pages` and its script; fix "webiste" in `package.json`; delete `public/_headers` and `public/_redirects` (Vercel ignores them; headers live in `vercel.json`). *Done when:* `npm audit` shows 0 critical; the build passes from a clean `npm ci`.
+- [x] **1.9** Add a global `prefers-reduced-motion: reduce` guard to `app.css` that removes transitions and smooth scrolling.
+- [x] **1.10** `Person` JSON-LD: `jobTitle` "Software Engineer"; keep both names; `knowsAbout` from the stacks in `CONTENT.md` §6.
 - [ ] **1.11** Check the Vercel preview: every route returns 200 with its own title and canonical; an unknown URL shows the 404 inside the layout; the theme toggle works without a flash; the link preview shows correctly in LinkedIn Post Inspector.
 - [ ] **1.12 Ask:** owner reviews the preview and approves the merge.
 - [ ] **1.13** After merge: owner verifies `tobiakoko.com` in Google Search Console and submits `https://tobiakoko.com/sitemap.xml`.
