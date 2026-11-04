@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import ProjectCard from '~/components/ProjectCard';
 import { projects } from '~/data/projects';
-import { DISPLAY_NAME, EMAIL, LOCATION, RESUME_URL, pageMeta } from '~/data/site';
+import { DISPLAY_NAME, EMAIL, LOCATION, pageMeta } from '~/data/site';
 
 export function meta() {
   return pageMeta({
@@ -38,11 +38,6 @@ export default function Home() {
           <Link to="/about" className="btn-outline">
             About
           </Link>
-          {RESUME_URL && (
-            <a href={RESUME_URL} className="btn-outline">
-              Résumé
-            </a>
-          )}
           <a href={`mailto:${EMAIL}`} className="btn-outline">
             Email
           </a>

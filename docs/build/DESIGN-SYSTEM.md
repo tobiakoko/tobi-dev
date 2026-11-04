@@ -75,8 +75,8 @@ Build these and nothing else unless the plan adds one.
 
 | Component | Spec |
 | --- | --- |
-| `Header` | Name wordmark ("Daniel Akoko") left; **Work, About, Contact** and the theme toggle right. No Résumé button here (it's in the footer and on Contact). 72 px tall, no border until the page scrolls, then a `--line` bottom rule. Mobile: a `<button aria-expanded aria-controls>` opens a full-width panel; Escape closes it and focus returns to the button. |
-| `Footer` | One row on desktop: email, GitHub, LinkedIn, Résumé (PDF), and "© {current year} Daniel Akoko". Small size, `--muted`. Section gap above. |
+| `Header` | Name wordmark ("Daniel Akoko") left; **Work, About, Contact** and the theme toggle right. 72 px tall, no border until the page scrolls, then a `--line` bottom rule. Mobile: a `<button aria-expanded aria-controls>` opens a full-width panel; Escape closes it and focus returns to the button. |
+| `Footer` | One row on desktop: email, GitHub, LinkedIn, and "© {current year} Daniel Akoko". Small size, `--muted`. Section gap above. |
 | `SectionLabel` | Label style, `--muted`. Used in the label rail. |
 | `WorkRow` | One project as a row: title (H3 size), one-line outcome (body, `--muted`), then year and discipline tags in label style. Whole row is one link to `/work/:slug`. A `--line` rule between rows. Hover: title underlines and turns `--accent`. No image. |
 | `DisciplineTag` | Text label from a fixed set: **Engineering, Analysis, Implementation, Delivery**. Plain text separated by " · ", not pills. |
@@ -95,7 +95,7 @@ Build these and nothing else unless the plan adds one.
 
 **Home (`/`)**
 
-1. Hero: label "Daniel (Tobi) Akoko · Dallas, Texas"; display headline (chosen in `CONTENT.md`); two-sentence intro; `TextLinks`: Work, About, Résumé, Email.
+1. Hero: label "Daniel (Tobi) Akoko · Dallas, Texas"; display headline (chosen in `CONTENT.md`); two-sentence intro; `TextLinks`: Work, About, Email.
 2. "Selected work": 4 `WorkRow`s, then a "All work →" link.
 3. "How I work": four short items in a 2×2 grid (1 column on mobile), one per discipline (Engineering, Analysis, Implementation, Delivery). Each is a bold three-word line, one sentence, and one link to the case study that proves it.
 4. Availability line with the accent dot, then email and the booking link.
@@ -106,7 +106,7 @@ Build these and nothing else unless the plan adds one.
 
 **About (`/about`)**: label rail. Sections in order: Bio, How I work (three principles), Present, Past, Origins, Education, Certifications, Community, then a contact line. No photo.
 
-**Contact (`/contact`)**: page title, one sentence on what you're open to and response time, then a `MetaGrid`-style list: Email, Book a call, LinkedIn, GitHub, Résumé, Location.
+**Contact (`/contact`)**: page title, one sentence on what you're open to and response time, then a `MetaGrid`-style list: Email, Book a call, LinkedIn, GitHub, Location.
 
 **404**: inside the layout; title "Page not found", one sentence, links to Home and Work.
 

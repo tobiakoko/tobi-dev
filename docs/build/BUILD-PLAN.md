@@ -12,11 +12,11 @@ Goal: a live site with no wrong facts, no placeholders and correct search metada
 
 - [x] **1.0** Check out `redesign/editorial-system-seo`, rebase on `main`, and add `CLAUDE.md` and `docs/build/*` in a `docs:` commit.
 - [x] **1.1** Rename routes: `/projects` → `/work`, `/projects/:slug` → `/work/:slug`. Add permanent redirects for the old paths in `vercel.json`. Update the prerender list, sitemap, header and links. *Done when:* `/projects/afromerica` redirects 308 to `/work/afromerica`, and the sitemap lists only `/work` URLs.
-- [x] **1.2** Header labels: **Work, About, Contact** (replacing "Portfolio" and "Studio"). Remove the Résumé button from the header; the footer gets it in Phase 2.
+- [x] **1.2** Header labels: **Work, About, Contact** (replacing "Portfolio" and "Studio"). Remove the Résumé button from the header.
 - [x] **1.3** Projects data: delete Ask Kumuyi; set every project's title, year, stack, location, role and outcome from `CONTENT.md` §6; order them per §6. *Done when:* each stack matches §6 exactly, and the sitemap has 10 URLs (4 pages + 6 projects).
 - [x] **1.4** Remove every `HatchPlaceholder` from public pages. Cards and project pages are text-only until Phase 3 adds real screenshots. Delete the component when it's unused.
 - [x] **1.5** Copy: replace Home, About and Contact text with the `CONTENT.md` §2.2, §4.1–4.2 and §5 copy (first person). Leave the other About sections for Phase 2.
-- [x] **1.6** Résumé: if `public/resume.pdf` exists, link it from Contact; if not, hide every résumé link with `TODO(content)`. *Done when:* no link on the site returns 404.
+- [x] **1.6** Résumé: removed from the site by the owner's decision; experience, education and certifications live on About instead (2.10). *Done when:* no link on the site returns 404.
 - [x] **1.7** ESLint: replace `eslint.config.js` with the flat config below, set `"lint": "eslint ."`, and change `meta({}: Route.MetaArgs)` to `meta()` in the route files. *Done when:* `npm run lint` exits 0.
 
   ```js
@@ -59,7 +59,7 @@ Goal: the minimalist, spacious design from `DESIGN-SYSTEM.md`, the four-section 
 - [ ] **2.1** Tokens: update `app.css` to the color tokens in `DESIGN-SYSTEM.md` (light unchanged, dark becomes neutral). Add `@fontsource-variable/inter` and the type scale as utilities or `@theme` values.
 - [ ] **2.2** Contrast: measure every text/background pair in both themes; record the ratios in `DESIGN-SYSTEM.md`; adjust any that fail.
 - [ ] **2.3** Layout primitives: `Container` (wide), `Prose`, `LabelRail` (label column + content), `Section` (section gap). Skip link to `<main>`.
-- [ ] **2.4** `Header` and `Footer` per `DESIGN-SYSTEM.md`, including the mobile panel with focus return and Escape, and the footer résumé link.
+- [ ] **2.4** `Header` and `Footer` per `DESIGN-SYSTEM.md`, including the mobile panel with focus return and Escape.
 - [ ] **2.5** Content loader: `content/work/<slug>.md` with front matter per `CASE-STUDY-TEMPLATE.md`; `app/data/work.ts` parses with `gray-matter`, renders markdown with `marked` at build time, validates required fields and fails the build on a missing field or cover file. Migrate the six projects' current text into these files. Prerender list and sitemap read from the loader.
 - [ ] **2.6** Components: `WorkRow`, `DisciplineTag`, `CaseStudyHeader`, `MetaGrid`, `Stats`, `Figure`, `FigurePair`, `ResultsTable`, `Callout`, `NextProject`, `TextLinks`.
 - [ ] **2.7** Home per `DESIGN-SYSTEM.md` and `CONTENT.md` §2: hero, Selected work, How I work, availability.

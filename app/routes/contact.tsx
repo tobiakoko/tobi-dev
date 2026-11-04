@@ -4,7 +4,6 @@ import {
   GITHUB_URL,
   LINKEDIN_URL,
   LOCATION,
-  RESUME_URL,
   pageMeta,
 } from '~/data/site';
 
@@ -25,7 +24,6 @@ export default function Contact() {
     BOOKING_URL && { label: 'Book a call', href: BOOKING_URL, text: 'Book a call', ...external },
     { label: 'LinkedIn', href: LINKEDIN_URL, text: 'LinkedIn', ...external },
     { label: 'GitHub', href: GITHUB_URL, text: 'GitHub', ...external },
-    RESUME_URL && { label: 'Résumé', href: RESUME_URL, text: 'Résumé (PDF)' },
   ].filter((item) => !!item);
 
   return (

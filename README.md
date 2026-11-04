@@ -63,7 +63,7 @@ app/
 │   └── ProjectCard.tsx     # `featured` (home) and `index` (work) variants
 └── data/
     ├── projects.ts      # All project content
-    └── site.ts          # Name, title, email, location, links, résumé path
+    └── site.ts          # Name, title, email, location, links
 ```
 
 ### Routes
@@ -82,7 +82,7 @@ In code, it lives in two files:
   automatically creates its detail page, adds it to the index, and wires
   prev/next pagination. `slug` becomes the URL; `featured` puts it on Home.
 - **[app/data/site.ts](app/data/site.ts)** — name, title, email, location,
-  links, availability, booking link and résumé path. A `null` link hides
+  links, availability and booking link. A `null` link hides
   every place it would appear.
 
 Page prose (hero, bio) is inline in its route file.
@@ -157,8 +157,6 @@ provides the SPA fallback.
 
 ## Known gaps
 
-- **`public/resume.pdf` does not exist yet.** Every résumé link is hidden until
-  `RESUME_URL` in `site.ts` is set.
 - **No imagery yet.** Cards and project pages are text-only until real
   screenshots are added (see `docs/build/BUILD-PLAN.md`, Phase 3).
 

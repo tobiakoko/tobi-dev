@@ -8,15 +8,11 @@ export const JOB_TITLE = 'Software Engineer';
 export const EMAIL = 'enquiries@tobiakoko.com';
 export const LOCATION = 'Dallas, Texas';
 export const GITHUB_URL = 'https://github.com/tobiakoko';
-// TODO(content): Daniel to confirm this URL.
 export const LINKEDIN_URL = 'https://linkedin.com/in/daniel-akoko';
 export const AVAILABILITY = 'Open to full-time roles and freelance projects';
 
 // TODO(content): Cal.com or Calendly URL. Every "Book a call" link stays hidden while null.
 export const BOOKING_URL: string | null = null;
-// TODO(content): Daniel to supply public/resume.pdf, then set this to '/resume.pdf'.
-// Every résumé link stays hidden while null, so none can 404.
-export const RESUME_URL: string | null = null;
 
 const OG_IMAGE = '/og.png';
 

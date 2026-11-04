@@ -17,9 +17,8 @@ Facts about the projects were checked against each repository on 3 November 2026
 | Location | Dallas, Texas |
 | Email | enquiries@tobiakoko.com |
 | GitHub | https://github.com/tobiakoko |
-| LinkedIn | https://linkedin.com/in/daniel-akoko — `TODO(content): Daniel to confirm this URL` |
+| LinkedIn | https://linkedin.com/in/daniel-akoko |
 | Booking link | `TODO(content): Cal.com or Calendly URL` |
-| Résumé | `/resume.pdf` — `TODO(content): Daniel to supply the PDF` |
 | Site URL | https://tobiakoko.com |
 | Availability | Open to full-time roles and freelance projects |
 
@@ -59,7 +58,7 @@ Track-specific headlines (for a later version, or if Daniel narrows his search):
 
   > I'm a software engineer who plans, builds, tests and hands over web software for churches and small businesses. My work runs from paid voting and live leaderboards to content systems that staff update themselves.
 
-- Links: **Work** · **About** · **Résumé** · **Email**
+- Links: **Work** · **About** · **Email**
 
 ### 2.3 Selected work
 
@@ -134,7 +133,7 @@ A list, newest first. Each item: role, organisation, dates, one line.
 - **Freelance web developer** · Self-employed · `TODO(content): start year`–present · Church, legal, automotive and entertainment websites (see Work).
 - **Church technology and media** · Deeper Life Bible Church, Tampa and Dallas · `TODO(content): years` · Sound, media production, livestreaming and IT support.
 - **Hospitality** · `TODO(content): Daniel to choose whether to name employers` · `TODO(content): years` · Guest-facing service in high-volume restaurants.
-- `TODO(content): software engineering roles and dates exactly as they appear on the résumé.` Don't add any employer or platform that isn't on the résumé.
+- `TODO(content): software engineering roles and dates, as Daniel supplies them.` Don't add any employer or platform Daniel hasn't confirmed.
 
 ### 4.6 Origins (label: Origins)
 
@@ -171,7 +170,7 @@ A list, newest first. Each item: role, organisation, dates, one line.
 
 - H1: **Let's talk**
 - Line: `I'm open to full-time roles and freelance projects. Email is best, and I reply within two business days.`
-- List: Email · Book a call (hide until set) · LinkedIn · GitHub · Résumé (PDF) · Location: Dallas, Texas
+- List: Email · Book a call (hide until set) · LinkedIn · GitHub · Location: Dallas, Texas
 - Meta title: `Contact · Daniel (Tobi) Akoko`
 - Meta description: `Contact Daniel (Tobi) Akoko, a software engineer in Dallas, about full-time roles or freelance web projects.`
 
@@ -380,11 +379,9 @@ Short case study (about 300 words), from PR #4: home page body text in the prere
 ## 7. Still missing
 
 - [ ] Headline choice (2.1)
-- [ ] LinkedIn URL confirmed
 - [ ] Booking link
-- [ ] `resume.pdf`
 - [ ] MBA school and date; years for the BGS, AS and certifications
-- [ ] Software engineering roles and dates from the résumé
+- [ ] Software engineering roles and dates, from Daniel
 - [ ] Whether to name hospitality employers
 - [ ] Lewisville production URL; pastor's permission for names and photos
 - [ ] Afromerica: client permission, live status, repo visibility, any figures

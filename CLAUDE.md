@@ -26,7 +26,7 @@ The site has four sections only: **Home, Work (with a case study page per projec
 1. **Never invent facts.** No made-up metrics, dates, employers, job titles, clients, quotes, testimonials, awards, certifications, links or screenshots. If something is missing, leave a `TODO(content):` comment, hide the element, and add it to "Still missing" in `CONTENT.md`. Never ship lorem ipsum, placeholder images or `#` links.
 2. **Numbers come only from `CONTENT.md`.** Every figure in a case study is listed there with its source (a pull request, a metrics doc, a measurement). If a number isn't there, it doesn't go on the site.
 3. **Stacks must match the code.** A project's stack lists only what that project's `package.json` or code actually uses. `CONTENT.md` has the checked list.
-4. **One source for every fact.** Name, title, location, email, links, availability and the résumé path live in `app/data/site.ts`. Project metadata lives in the project's content file. No component hard-codes them.
+4. **One source for every fact.** Name, title, location, email, links and availability live in `app/data/site.ts`. Project metadata lives in the project's content file. No component hard-codes them.
 5. **First person, plain words.** Copy says "I", not "Daniel". No "exceptional", "sophisticated", "enterprise-grade", "seamless", "passionate" or "cutting-edge". Short sentences.
 6. **Client privacy.** No client staff names, member or customer data, voter emails or phone numbers in screenshots or text. Blur or crop them. Don't name a client or quote one unless `CONTENT.md` says permission was given.
 7. **Accessibility is required: WCAG 2.2 AA.** Keyboard access everywhere, visible focus, nothing on hover only, `prefers-reduced-motion` respected, real alt text, contrast from the design tokens only.
@@ -64,7 +64,6 @@ Before every commit: `npm run typecheck && npm run lint && npm run build`.
 - `app/components/`: Header, Footer, ThemeToggle and the components in `DESIGN-SYSTEM.md`
 - `content/work/`: one markdown file per case study
 - `public/work/<slug>/`: screenshots and diagrams for that case study
-- `public/resume.pdf`: the résumé
 - `react-router.config.ts`: prerender list and sitemap, both built from the same route list
 
 ## How to work
