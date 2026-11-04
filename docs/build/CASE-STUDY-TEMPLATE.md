@@ -38,7 +38,9 @@ stats:
 
 Types live in `app/data/work.ts`. The loader validates front matter at build time and **fails the build** if a required field is missing, a `cover` file doesn't exist, or a `stats` entry isn't also listed in `CONTENT.md` (check by exact string).
 
-Required fields: `slug`, `title`, `outcome`, `order`, `year`, `role`, `timeline`, `stack`, `disciplines`, `cover`. Optional: `featured`, `team`, `links`, `stats`.
+Required fields: `slug`, `title`, `outcome`, `order`, `year`, `role`, `timeline`, `stack`, `disciplines`, `cover`. Optional: `featured`, `team`, `location`, `links`, `stats`.
+
+**Until Phase 3:** `cover` is optional (no screenshots exist yet) and is validated only when present; `outcome` is optional for Ron's Body Shop, whose outcome is a `TODO(content)`. Task 3.1 makes `cover` required again.
 
 ## Section order
 

@@ -1,19 +1,19 @@
 import type { Config } from '@react-router/dev/config';
 import { copyFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { projects } from './app/data/projects';
+import { getAllWork } from './app/data/work.server';
 import { SITE_URL } from './app/data/site';
 
 /**
- * Every route that should ship real HTML. Derived from projects.ts so adding a
- * project can never silently leave its page out of the build.
+ * Every route that should ship real HTML. Derived from content/work so adding a
+ * case study can never silently leave its page out of the build.
  */
 const routes = [
   '/',
   '/about',
   '/work',
   '/contact',
-  ...projects.map((p) => `/work/${p.slug}`),
+  ...getAllWork().map((w) => `/work/${w.slug}`),
 ];
 
 function sitemap() {
