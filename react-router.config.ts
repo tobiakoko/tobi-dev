@@ -1,5 +1,5 @@
 import type { Config } from '@react-router/dev/config';
-import { writeFile } from 'node:fs/promises';
+import { copyFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { projects } from './app/data/projects';
 import { SITE_URL } from './app/data/site';
@@ -39,8 +39,14 @@ export default {
   // Generated from the same `routes` array that drives prerendering, so the
   // sitemap cannot drift out of sync with what the site actually ships.
   buildEnd: async ({ reactRouterConfig }) => {
-    const out = path.join(reactRouterConfig.buildDirectory, 'client', 'sitemap.xml');
+    const client = path.join(reactRouterConfig.buildDirectory, 'client');
+    const out = path.join(client, 'sitemap.xml');
     await writeFile(out, sitemap(), 'utf8');
     console.log(`Wrote sitemap with ${routes.length} URLs -> ${out}`);
+
+    // Vercel serves 404.html, with a 404 status, for any path with no file.
+    // The SPA fallback hydrates there and the router renders the catch-all
+    // not-found route inside the layout.
+    await copyFile(path.join(client, '__spa-fallback.html'), path.join(client, '404.html'));
   },
 } satisfies Config;
