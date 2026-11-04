@@ -55,7 +55,7 @@ Goal: a live site with no wrong facts, no placeholders and correct search metada
 
 Goal: the minimalist, spacious design from `DESIGN-SYSTEM.md`, the four-section structure, and case study pages driven by markdown.
 
-- [ ] **2.0 Ask:** owner picks the headline from `CONTENT.md` §2.1 (default A).
+- [x] **2.0 Ask:** owner picks the headline from `CONTENT.md` §2.1 (default A).
 - [ ] **2.1** Tokens: update `app.css` to the color tokens in `DESIGN-SYSTEM.md` (light unchanged, dark becomes neutral). Add `@fontsource-variable/inter` and the type scale as utilities or `@theme` values.
 - [ ] **2.2** Contrast: measure every text/background pair in both themes; record the ratios in `DESIGN-SYSTEM.md`; adjust any that fail.
 - [ ] **2.3** Layout primitives: `Container` (wide), `Prose`, `LabelRail` (label column + content), `Section` (section gap). Skip link to `<main>`.

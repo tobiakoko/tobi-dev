@@ -22,7 +22,6 @@ export default function Home() {
         <p className="mb-7 text-xs tracking-[0.2em] text-muted uppercase">
           {DISPLAY_NAME} &middot; {LOCATION}
         </p>
-        {/* TODO(content): headline is option A until Daniel picks one (CONTENT.md §2.1). */}
         <h1 className="max-w-[18ch] text-[clamp(44px,6vw,84px)] leading-[1.05] font-light tracking-[-0.02em] text-pretty">
           From requirements to release.
         </h1>

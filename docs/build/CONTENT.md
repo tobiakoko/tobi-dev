@@ -28,7 +28,7 @@ Facts about the projects were checked against each repository on 3 November 2026
 
 ### 2.1 Headline
 
-**Ask:** Daniel picks one before Phase 2. Until then, use **A**.
+**Chosen: A** (Daniel, 3 November 2026).
 
 General headlines (work for every career track):
 
@@ -378,7 +378,6 @@ Short case study (about 300 words), from PR #4: home page body text in the prere
 
 ## 7. Still missing
 
-- [ ] Headline choice (2.1)
 - [ ] Booking link
 - [ ] MBA school and date; years for the BGS, AS and certifications
 - [ ] Software engineering roles and dates, from Daniel
