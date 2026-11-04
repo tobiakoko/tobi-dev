@@ -19,7 +19,7 @@
         "preview": "vite preview",
         "typecheck": "react-router typegen && tsc",
         "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md}\"",
-        "eslint": "eslint **/*.{ts,tsx}"
+        "lint": "eslint ."
     },
     "repository": {
         "type": "git",
