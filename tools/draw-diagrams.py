@@ -131,10 +131,36 @@ def afromerica(theme):
     return d.svg()
 
 
+def led_wall_ports(theme):
+    d = D(1600, 740, theme, "LED wall port map: a NovaStar VX1000 Pro feeds 24 cabinets in a 6 by 4 grid as 8 horizontal chains of 3; the left half runs on power supply A from odd ports, the right half on supply B from even ports")
+    t = d.t
+    cw, ch, gap = 150, 112, 40          # cabinet 512 x 384 px is 4:3
+    gx, gy = 470, 100                   # top-left of the grid
+    halves = (("Power supply A \u00b7 odd ports", gx), ("Power supply B \u00b7 even ports", gx + 3 * cw + gap))
+    for label, hx in halves:
+        d.panel(hx - 20, gy - 60, 3 * cw + 40, 4 * ch + 80, label)
+        for row in range(4):
+            y = gy + row * ch
+            for col in range(3):
+                d.parts.append(f'<rect x="{hx + col * cw + 6}" y="{y + 6}" width="{cw - 12}" height="{ch - 12}" fill="{t["card"]}" stroke="{t["line"]}"/>')
+            # One chain = one row of three cabinets in this half.
+            d.parts.append(f'<rect x="{hx}" y="{y}" width="{3 * cw}" height="{ch}" fill="none" stroke="{t["accent"]}" stroke-width="1.75"/>')
+            label = "chain of 3 \u00b7 589,824 px (91%)"
+            lw = len(label) * 6.9 + 18
+            d.parts.append(f'<rect x="{hx + 3 * cw / 2 - lw / 2}" y="{y + ch / 2 - 12}" width="{lw}" height="22" rx="2" fill="{t["bg"]}"/>')
+            d.note(hx + 3 * cw / 2, y + ch / 2 + 4, label, 13, "middle")
+    d.node(70, gy + 2 * ch - 60, 250, 120, "NovaStar VX1000 Pro", ("8 of 10 ports used", "2 spare"), strong=True)
+    d.edge([(320, gy + 2 * ch - 20), (gx - 22, gy + 2 * ch - 20)], "odd ports", at=(395, gy + 2 * ch - 20))
+    right_mid = gx + 3 * cw + gap + 3 * cw / 2
+    d.edge([(320, gy + 2 * ch + 30), (380, gy + 2 * ch + 30), (380, gy + 4 * ch + 80), (right_mid, gy + 4 * ch + 80), (right_mid, gy + 4 * ch + 22)],
+           "even ports", at=(right_mid - 300, gy + 4 * ch + 80))
+    d.note(70, 690, "24 cabinets (6 \u00d7 4), 3072 \u00d7 1536 px canvas at 60 Hz. If exactly half the wall goes dark, check that half's power supply first.", 14)
+    return d.svg()
+
 if __name__ == "__main__":
     import sys
     out = sys.argv[1]
-    for name, fn in (("lewisville", lewisville), ("afromerica", afromerica)):
+    for name, fn in (("lewisville", lewisville), ("afromerica", afromerica), ("led-wall-ports", led_wall_ports)):
         for theme in THEMES:
             with open(f"{out}/{name}-architecture-{theme}.svg", "w") as f:
                 f.write(fn(theme))
