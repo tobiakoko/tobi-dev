@@ -112,7 +112,7 @@ Meta title: `About · Daniel (Tobi) Akoko`. Meta description: `Daniel (Tobi) Ako
 
 > I'm Daniel Akoko, and most people call me Tobi. I'm a software engineer in Dallas, Texas. I build web software for churches and small businesses, and I care most about the parts people only notice when they break: the facts on the page, the error messages, the tests and the handover.
 >
-> My path here wasn't a straight line. I studied electrical engineering, then criminology, then computer science, and I worked in hospitality, where I learned to stay calm under pressure and look after people. For years I've also run sound, media and livestreaming at my church. All of it shows up in how I work: I listen first, I plan in steps, and I don't call something done until it works for the person using it.
+> My path here wasn't a straight line. I studied electrical engineering, then criminal justice, then computer science, and I worked in hospitality, where I learned to stay calm under pressure and look after people. For years I've also run sound, media and livestreaming at my church. All of it shows up in how I work: I listen first, I plan in steps, and I don't call something done until it works for the person using it.
 
 ### 4.3 How I work (label: How I work)
 
@@ -164,7 +164,7 @@ A list, newest first. Each item: role, organisation, location, dates, then 2–4
 
 ### 4.6 Origins (label: Origins)
 
-> I started in electrical engineering at the Community College of Baltimore County, moved into criminology at the University of South Florida, and found my way to computer science at Western Governors University. Music has been a constant: I direct choirs and help run music and media for church events.
+> I started in electrical engineering at the Community College of Baltimore County, moved into criminal justice at the University of South Florida, and found my way to computer science at Western Governors University. Music has been a constant: I direct choirs and help run music and media for church events.
 
 ### 4.7 Education (label: Education)
 
@@ -175,7 +175,7 @@ A list, newest first. Each item: role, organisation, location, dates, then 2–4
 | Bachelor of Arts (BA), Criminal Justice | University of South Florida | Sep 2018 – Dec 2022 |
 | Associate of Science (AS), Electrical Engineering | Community College of Baltimore County | Aug 2015 – May 2018 |
 
-Degree names and dates from Daniel (5 Nov 2026). `TODO(content): the Bio (§4.2) and Origins (§4.6) say "criminology"; the degree is Criminal Justice. Daniel to confirm which wording to use.`
+Degree names and dates from Daniel (5 Nov 2026). The Bio and Origins say "criminal justice" to match the degree (Daniel, 5 Nov 2026).
 
 ### 4.8 Certifications (label: Certifications)
 
@@ -298,7 +298,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 - timeline: `Oct – Dec 2025`
 - stack: Next.js 16, React 19, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind CSS 4, Vercel
 - links: live `https://www.afromericaent.com/`; code `https://github.com/tobiakoko/afromerica-ent` (link it only after the repo clean-up in BUILD-PLAN "Outside this repo": root fix notes moved, `.backup` file removed)
-- stats (system facts until the client supplies figures): `60 / 40` judges / audience weighting in stages 1–3 · `23` API routes · `10 min` one-time-code expiry. `TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them`
+- stats (system facts until the client supplies figures): `35 / 10 / 30 / 25` final weighting: paid votes / public / judges / performance · `23` API routes · `10 min` one-time-code expiry. The weighting is from the live Final Results page (`/events/december-showcase-2025/leaderboard`, captured 5 Nov 2026); Daniel confirmed it replaces the earlier 60 / 40 figure. `TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them`
 - Permission: given by the client (5 Nov 2026) to name them and use screenshots, including the artists page with contestants' photos and names (Daniel, 5 Nov 2026). Still blur voter names, emails and phone numbers.
 - The live site's footer credits **Arko Media Labs**: Daniel's own company, which he's building into a web development studio (Daniel, 5 Nov 2026). It doesn't contradict "Sole developer".
 
@@ -323,7 +323,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 
 **Figures.** `public/work/afromerica/architecture-light.svg` and `-dark.svg` (supplied). Screenshots: `TODO(content): run tools/capture-kit against the live site`.
 
-**Outcome.** Scoring: stages 1–3 weighted judges 60% and online votes 40%; stage 4 was 100% judges. In-house votes were removed and online voting codes disabled during the final week. Figures: event page, vote flow with the code step, checkout, live leaderboard, judge scoring screen, admin finale panel, winners screen. Blur all voter data.
+**Outcome.** Final scoring: paid votes 35%, public score 10%, judges 30% and performance 25% (source: the live Final Results page). In-house votes were removed and online voting codes disabled during the final week. Figures: event page, vote flow with the code step, checkout, live leaderboard, judge scoring screen, admin finale panel, winners screen. Blur all voter data.
 
 **Reflection.** `What I'd do next:` add automated tests for the scoring function and the webhook, compare signatures with a timing-safe check, and move the fix notes out of the repo root.
 
@@ -495,7 +495,7 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [x] MBA and B.S. dates
 - [x] B.A. and A.S. names and dates (§4.7)
 - [ ] Years for both certifications
-- [ ] "Criminology" in the Bio and Origins vs the Criminal Justice degree (§4.7 note)
+- [x] Bio and Origins use "criminal justice"
 - [x] Roles and dates (§4.5)
 - [ ] DLBC ICT role: a link to the donation project, or rewritten bullets (§4.5 comment)
 - [ ] Afromerica: a source for any performance or traffic figures before they return
@@ -511,7 +511,7 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
 - [x] LED wall: pastor's permission to publish
 - [ ] LED wall: timeline (months), photos (front of the working wall, rear cabling, Mapping test, receiving-card self-test before and after; no congregation faces); the two diagrams redrawn as SVG
-- [ ] Arko Media Labs: whether to name it on the site (for example as the organisation for the freelance role) and its URL, if any
+- [x] Arko Media Labs: not on the site yet (Daniel, 5 Nov 2026)
 
 ---
 

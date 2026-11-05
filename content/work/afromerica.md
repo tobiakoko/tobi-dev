@@ -26,7 +26,10 @@ links:
 # System facts until the client supplies figures.
 # TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them
 stats:
-  - { value: '60 / 40', label: 'judges / audience weighting in stages 1–3' }
+  - {
+      value: '35 / 10 / 30 / 25',
+      label: 'final weighting: paid votes / public / judges / performance',
+    }
   - { value: '23', label: 'API routes' }
   - { value: '10 min', label: 'one-time-code expiry' }
 ---

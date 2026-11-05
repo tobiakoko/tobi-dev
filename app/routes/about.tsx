@@ -175,11 +175,11 @@ export default function About() {
             </p>
             <p>
               My path here wasn&rsquo;t a straight line. I studied electrical engineering, then
-              criminology, then computer science, and I worked in hospitality, where I learned to
-              stay calm under pressure and look after people. For years I&rsquo;ve also run sound,
-              media and livestreaming at my church. All of it shows up in how I work: I listen
-              first, I plan in steps, and I don&rsquo;t call something done until it works for the
-              person using it.
+              criminal justice, then computer science, and I worked in hospitality, where I learned
+              to stay calm under pressure and look after people. For years I&rsquo;ve also run
+              sound, media and livestreaming at my church. All of it shows up in how I work: I
+              listen first, I plan in steps, and I don&rsquo;t call something done until it works
+              for the person using it.
             </p>
           </Prose>
         </LabelRailRow>
@@ -229,7 +229,7 @@ export default function About() {
           <Prose>
             <p>
               I started in electrical engineering at the Community College of Baltimore County,
-              moved into criminology at the University of South Florida, and found my way to
+              moved into criminal justice at the University of South Florida, and found my way to
               computer science at Western Governors University. Music has been a constant: I direct
               choirs and help run music and media for church events.
             </p>
