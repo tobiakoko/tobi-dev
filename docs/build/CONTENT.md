@@ -321,7 +321,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 - *Chose idempotent webhooks:* each Paystack event is logged and checked against the vote or ticket before it's applied, so retries can't double-count.
 - *Chose email one-time codes for voters:* 6 digits, 10-minute expiry, per-email limits.
 
-**Figures.** `public/work/afromerica/architecture-light.svg` and `-dark.svg` (supplied). Screenshots: `TODO(content): run tools/capture-kit against the live site`.
+**Figures.** `public/work/afromerica/architecture-light.svg` and `-dark.svg` (supplied). Screenshots captured from the live site on 5 Nov 2026 (home, finale voting, Final Results, artists, about) and checked for voter data. `TODO(content): vote flow, checkout, judge scoring, admin finale panel and winners screen need an account.`
 
 **Outcome.** Final scoring: paid votes 35%, public score 10%, judges 30% and performance 25% (source: the live Final Results page). In-house votes were removed and online voting codes disabled during the final week. Figures: event page, vote flow with the code step, checkout, live leaderboard, judge scoring screen, admin finale panel, winners screen. Blur all voter data.
 
@@ -337,6 +337,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 - stack: Vite, React 18, React Router 6, TypeScript, Tailwind CSS 4, Sanity, Framer Motion, Formspree
 - links: live `https://www.dlbctampa.org/`; code `https://github.com/tobiakoko/dlbc-template`
 - stats: `−87%` entry JavaScript · `−79%` image payload · `2.2:1 → 5.5:1` button contrast
+- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown.
 - Note: Daniel is upgrading this site. Write about the current version; add "A new version is in progress" at the end when it starts.
 
 **Context.** The Tampa congregation's site, with sermons, events, ministries, a gallery and an embedded Sanity Studio at `/studio`.
@@ -378,6 +379,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 - stack: React 19, Vite, TypeScript, Tailwind CSS 4, Vercel Analytics
 - location: Torrance, California
 - links: live `https://www.ronsbodyshop.net/`; code `https://github.com/tobiakoko/RonsBodyShop`
+- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown. Numbers still need the owner's OK.
 
 **Facts available now:** a collision-repair shop in Torrance, California; video hero; services, gallery, story and contact sections; Vercel Analytics tracks "Request Estimate" clicks; 44 commits from August 2025 to January 2026.
 
@@ -413,7 +415,7 @@ Short case study (about 300 words), from PR #4: home page body text in the prere
 
 ### 6.7 Extending a church LED wall (Deeper Life Bible Church Lewisville)
 
-Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November 2026). Every figure below comes from it.
+Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November 2026), plus his fact sheet of 5 November 2026 (photo timestamps and the project notes; kept locally in `assets/originals/led-wall/`, not committed). Every figure below comes from them.
 
 **Front matter**
 
@@ -421,13 +423,14 @@ Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November
 - outcome: `I took a church's LED wall from a failed extension, with scrambled and repeated content, to one working 3072 × 1536 display.`
 - role: `Diagnosis, system design, controller and receiving-card configuration, vendor follow-up`
 - team: `Solo, with the church and the equipment vendor`
-- timeline: `2026` — `TODO(content): months`
+- timeline: `Sep – Oct 2026` (hands-on 2 September to 3 October 2026; ordered March 2026)
 - stack label: **Tools and hardware** (not "Stack")
 - stack: NovaStar VX1000 Pro (replacing a VX600), 24 NovaStar A7s Plus receiving cards, NovaLCT V5.9.2, NovaStar Mapping test, receiving-card self-tests
 - disciplines: Analysis, Implementation, Delivery
 - links: none
 - stats: `16 → 24` cabinets running · `+50%` screen (3072 × 1536 px) · `9` separate faults found and fixed
-- Permission: given by the pastor (Daniel, 5 Nov 2026) to publish this case study. Photos only with no congregation faces.
+- cover: `01-working-wall`, alt `Straight-on view of a wide LED wall showing a live church broadcast edge to edge, framed by a black wall`
+- Permission: given by the pastor (Daniel, 5 Nov 2026) to publish this case study. Photos only with no congregation faces. The photos have none; the working-wall and Mapping-test photos show the public broadcast on the screen (the preacher and a sign-language interpreter). Daniel confirmed both are fine to show (5 Nov 2026).
 
 **Context.** The church's LED wall started as 16 cabinets (4 × 4, 2048 × 1536 px), driven by a NovaStar VX600 over six Ethernet ports. To make it bigger, the church added 8 cabinets as two new columns: 24 cabinets, 6 × 4, 3840 × 1920 mm, P1.25 indoor. After the install, the wall no longer showed one clean picture. Sections repeated, froze or showed the wrong part of the image.
 
@@ -463,7 +466,33 @@ Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November
 - *Chose to keep each chain inside one power half:* a power fault can never be mistaken for a data fault.
 - *Chose the manufacturer's profile over editing settings by hand:* PWM driver chips need factory register settings.
 
-**Issues log.** Use the 9-row table from the source (symptom, root cause, fix): stale map and over-capacity; no controller shipped; a missing module; stranded top-row cabinets; only the top-left region addressed; "Device overloaded" from 3D; Image Mosaic and PIP left on; module size entered as cabinet size; the wrong receiving-card profile.
+**The five configuration layers** (numbered from the bottom up; each depends on the one below):
+
+| # | Layer | What it controls | Fault found | Fix |
+| --- | --- | --- | --- | --- |
+| 1 | Receiving cards | Chip, scan and timing | Generic common-chip, static-scan profile on all 24 cards | Factory ICND2165, 1/64-scan profile loaded and saved |
+| 2 | Cabinet definition | Pixels per receiving card | Module size 256 × 128 entered as the cabinet size | 512 × 384 per cabinet (2 × 3 modules) |
+| 3 | Screen connection | Port-to-cabinet map | Vertical chains of 3 on 4 rows; grid still set to 4 × 2 | 8 horizontal chains of 3; 6 × 4 grid matched to cabling |
+| 4 | Controller output | Total pixels it can drive | VX600 rated 3.9M px, wall is 4.7M; on the Pro, 3D halved capacity | VX1000 Pro (6.5M px), 3D off, 3072 × 1536 @ 60 Hz |
+| 5 | Input and layers | What goes on the canvas | Image Mosaic and PIP 1, 2 on; main layer only 2048 × 768 | Mosaic and PIP off; full-screen 3072 × 1536 layer |
+
+**Issues log.** Nine faults, in the order they were found.
+
+| # | Symptom | Root cause | Fix |
+| --- | --- | --- | --- |
+| 1 | Repeated and frozen content after the extension | Stale 2048 × 1536 map, 4 cabinets per port over the port limit, wall 21% over the VX600's rating | Moved to a VX1000 Pro with 3 cabinets per port |
+| 2 | No controller to move to | The VX1000 on the packing list was never shipped | Raised with the vendor; reduced layout on the VX600 in the meantime |
+| 3 | A cabinet reporting a partial load | A module missing, exposing the receiving card | Module reinstalled from the spares kit |
+| 4 | Six top-row cabinets stranded on ports 7 and 8 | Vertical chains of 3 on a 4-row wall | Re-cabled as 8 horizontal chains of 3 |
+| 5 | Only the top-left region addressed | Quick Configuration still set to 4 × 2, 2 per port, 2048 × 768 layer | Set to 6 × 4, 3 per port, 3072 × 1536 layer |
+| 6 | "Device overloaded" | 3D enabled, halving output capacity | 3D off |
+| 7 | Extra processing on the image | Image Mosaic and PIP 1 and 2 left on | Turned off |
+| 8 | Cabinet geometry wrong | Module size (256 × 128) entered as cabinet size | Set to 512 × 384 |
+| 9 | Stripes, repeated columns and mirrored text in the self-test; height capped at 256 px | Generic common-chip, static-scan profile on the receiving cards | Factory ICND2165, 1/64-scan profile loaded and saved |
+
+**Timeline.** March 2026: extension ordered (8 cabinets, a VX1000 on the packing list). April 2026: module batch O182 made (carton dated 28 April). 2 Sep: original 16-cabinet image still at 4:3. 5 Sep: extended wall shows repeated, frozen content. 7 Sep: modules pulled, 6 × 4 grid confirmed. September: capacity analysis, missing VX1000, reduced stopgap layout. 24 Sep: VX1000 Pro in place; Mapping test shows the stranded top row. Late September: re-cabled to 8 horizontal chains; 3D, Image Mosaic and PIP off. 3 Oct: wrong module profile found, module identified, red self-test confirms it. 3 Oct, evening: factory profile in place, full wall live. November 2026: case study written.
+
+**Photos** (perspective-corrected and cropped, location metadata removed; serial label and QR code blurred in `09`, controller network address blurred in `06`). Used on the page: `01` working wall (cover, and the "after" in the self-test pair), `03` repeated content (The problem), `04` cabinets open (Discovery), `05` Mapping test (Controller setup), `06` NovaLCT profile with `08` module marking (Receiving cards), `10` self-test before (Outcome). Not used: `02` original wall, `07` module back, `09` receiving card. Captions and alt text are in the case study file.
 
 **Outcome.**
 
@@ -504,13 +533,16 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [x] Lewisville URL and permission
 - [x] Afromerica permission and live URL
 - [ ] Afromerica repo clean-up before linking the code
+- [ ] Lewisville: the Phase 4 before/after captures and a Studio editing screen
+- [ ] DLBC Tampa: material for Process and Architecture (§6.3 has none)
 - [ ] Ron's Body Shop: fixes done, then numbers and owner's OK
 - [ ] OseiPrempeh: firm's approval of statistics and testimonials
 - [x] Lighthouse scores (§8)
-- [ ] Afromerica screenshots from the live site (capture kit)
+- [x] Afromerica screenshots from the live site (capture kit)
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
 - [x] LED wall: pastor's permission to publish
-- [ ] LED wall: timeline (months), photos (front of the working wall, rear cabling, Mapping test, receiving-card self-test before and after; no congregation faces); the two diagrams redrawn as SVG
+- [x] LED wall: issues log, the five configuration layers, timeline, photos and both diagrams (5 Nov 2026)
+- [ ] LED wall: a straight-on photo of the red self-test after the fix (the working-wall photo stands in as the "after")
 - [x] Arko Media Labs: not on the site yet (Daniel, 5 Nov 2026)
 
 ---

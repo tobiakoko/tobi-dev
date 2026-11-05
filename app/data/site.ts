@@ -29,14 +29,19 @@ export function pageMeta({
   description,
   path,
   type = 'website',
+  image: imagePath = OG_IMAGE,
+  imageAlt = `${FULL_NAME} (${ALT_NAME}) — ${JOB_TITLE}`,
 }: {
   title: string;
   description: string;
   path: string;
   type?: 'website' | 'article' | 'profile';
+  /** A 1200 x 630 image in public/; defaults to the site-wide preview. */
+  image?: string;
+  imageAlt?: string;
 }) {
   const url = path === '/' ? SITE_URL : `${SITE_URL}${path}`;
-  const image = `${SITE_URL}${OG_IMAGE}`;
+  const image = `${SITE_URL}${imagePath}`;
 
   return [
     { title },
@@ -54,7 +59,7 @@ export function pageMeta({
     { property: 'og:image:height', content: '630' },
     {
       property: 'og:image:alt',
-      content: `${FULL_NAME} (${ALT_NAME}) — ${JOB_TITLE}`,
+      content: imageAlt,
     },
     { property: 'og:locale', content: 'en_US' },
 

@@ -11,6 +11,7 @@ Supplied by Daniel on 5 Nov 2026. Images are in `public/work/<slug>/`, the captu
 | `public/work/dlbc-tampa/` | 7 pages × desktop + phone, `cover.webp` | Production build of `dlbc-template` `main` |
 | `public/work/rons-body-shop/` | Home desktop + phone, `cover.webp` | Production build of `RonsBodyShop` `main` |
 | `public/work/oseiprempeh/` | Home desktop + phone + full page, `cover.webp` | Production build of `D-Law` `main` |
+| `public/work/led-wall/` | `cover.webp` and 7 photos (each with a `-1x` copy), port map and configuration-layers diagrams (light and dark SVG), `og.jpg` | Daniel's photos, 2 Sep – 3 Oct 2026. Full-resolution originals and the source fact sheet are in `assets/originals/led-wall/` (git-ignored, local only) |
 | `tools/capture-kit/` | Screenshot and Lighthouse scripts for the live sites | — |
 | `tools/draw-diagrams.py` | Source for the two diagrams (`python3 draw-diagrams.py <out-dir>`) | — |
 
@@ -29,8 +30,8 @@ All screenshots: 1440 × 900 desktop and 390 × 844 phone, at 2× pixel density,
 Show the light or dark SVG to match the site's theme, e.g. render both and hide one with CSS:
 
 ```html
-<img class="theme-light" src="/work/lewisville/architecture-light.svg" alt="…" width="1600" height="980">
-<img class="theme-dark"  src="/work/lewisville/architecture-dark.svg"  alt="…" width="1600" height="980">
+<img class="theme-light" src="/work/lewisville/architecture-light.svg" alt="…" width="720" height="1180">
+<img class="theme-dark"  src="/work/lewisville/architecture-dark.svg"  alt="…" width="720" height="1180">
 ```
 
 ```css

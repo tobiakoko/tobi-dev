@@ -239,10 +239,22 @@
     height: auto;
   }
 
+  /* A phone shot never needs to be wider than a phone. */
+  .figure--portrait .figure-frame img {
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+
   .figure figcaption {
     font-size: var(--text-small);
     line-height: var(--text-small--line-height);
     color: var(--muted);
+  }
+
+  /* Diagrams ship light and dark files; show the one for the current theme. */
+  [data-theme='dark'] .theme-light,
+  :root:not([data-theme='dark']) .theme-dark {
+    display: none;
   }
 
   /* FigurePair: side by side from 768 px, stacked below. */
@@ -258,19 +270,29 @@
     }
 
     .figure-pair {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: start;
+    }
+
+    /* Desktop + phone: the desktop shot takes the wider column. */
+    .figure-pair:has(.figure--portrait) {
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
+    }
+
+    .figure-pair .figure-frame {
+      padding: 1.5rem;
     }
   }
 
   /* ResultsTable: scrolls inside its own box, never the page. */
   .results-table,
-  .table {
+  .data-table {
     overflow-x: auto;
     max-width: 100%;
   }
 
   .results-table table,
-  .table table {
+  .data-table table {
     width: 100%;
     min-width: 32rem;
     border-collapse: collapse;
@@ -281,8 +303,8 @@
 
   .results-table th,
   .results-table td,
-  .table th,
-  .table td {
+  .data-table th,
+  .data-table td {
     text-align: left;
     vertical-align: top;
     padding: 0.75rem 1rem;
@@ -290,13 +312,13 @@
   }
 
   .results-table thead th,
-  .table thead th {
+  .data-table thead th {
     background: var(--bg-alt);
     font-weight: 500;
   }
 
   .results-table tbody th,
-  .table tbody th {
+  .data-table tbody th {
     font-weight: 500;
   }
 }
