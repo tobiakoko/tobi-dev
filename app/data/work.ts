@@ -16,8 +16,11 @@ export interface Stat {
 export interface Cover {
   src: string;
   alt: string;
+  /** Read from the image file at build time. */
   width: number;
   height: number;
+  /** Set when a half-width -1x copy exists (tools/capture-kit/prepare.mjs). */
+  srcSet?: string;
 }
 
 /** Front matter, per docs/build/CASE-STUDY-TEMPLATE.md. */
@@ -39,8 +42,10 @@ export interface WorkMeta {
   stackLabel?: string;
   disciplines: Discipline[];
   links: { live?: string; code?: string };
-  /** TODO(content): required from Phase 3, when screenshots exist. */
+  /** TODO(content): optional until the LED wall and OseiPrempeh have usable covers. */
   cover?: Cover;
+  /** 1200 x 630 link preview made from the cover (tools/capture-kit/prepare.mjs). */
+  ogImage?: string;
   stats: Stat[];
 }
 

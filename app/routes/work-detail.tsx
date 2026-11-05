@@ -22,6 +22,8 @@ export function meta({ loaderData }: Route.MetaArgs) {
       `${work.title}${work.location ? `, ${work.location}` : ''}: built by ${FULL_NAME}.`,
     path: `/work/${work.slug}`,
     type: 'article',
+    image: work.ogImage,
+    imageAlt: work.ogImage ? work.cover?.alt : undefined,
   });
 }
 

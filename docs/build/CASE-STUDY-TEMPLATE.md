@@ -66,7 +66,7 @@ Use `##` for these headings, in this order. Skip a section only where `CONTENT.m
 - Tables become `ResultsTable` when the header row is `Measure | Before | After`.
 - Mermaid: a fenced ` ```mermaid ` block is rendered to SVG at build time with `@mermaid-js/mermaid-cli` and saved to `public/work/<slug>/architecture.svg`. Ship the SVG, not the Mermaid runtime. Diagrams come in two files, `architecture-light.svg` and `architecture-dark.svg`; the page shows the one that matches the current theme.
 - Callout: a blockquote that starts with `**What I'd do next**`.
-- No raw HTML other than `<div data-pair>`.
+- No raw HTML other than `<div data-pair>`, and `<!-- TODO(content): … -->` comments, which render as nothing.
 
 ## Screenshots
 

@@ -41,22 +41,96 @@ function publicFileExists(src: string) {
   return src.startsWith('/') && existsSync(path.join(PUBLIC_DIR, src));
 }
 
+/** Pixel size of a WebP or SVG in public/, read from the file header. */
+function imageSize(file: string, src: string): { width: number; height: number } {
+  const buf = readFileSync(path.join(PUBLIC_DIR, src));
+  if (src.endsWith('.svg')) {
+    const head = buf.toString('utf8', 0, 600);
+    const w = head.match(/\swidth="(\d+)"/);
+    const h = head.match(/\sheight="(\d+)"/);
+    if (w && h) return { width: +w[1], height: +h[1] };
+  } else if (buf.toString('ascii', 0, 4) === 'RIFF' && buf.toString('ascii', 8, 12) === 'WEBP') {
+    const chunk = buf.toString('ascii', 12, 16);
+    if (chunk === 'VP8X')
+      return { width: 1 + buf.readUIntLE(24, 3), height: 1 + buf.readUIntLE(27, 3) };
+    if (chunk === 'VP8 ')
+      return { width: buf.readUInt16LE(26) & 0x3fff, height: buf.readUInt16LE(28) & 0x3fff };
+    if (chunk === 'VP8L') {
+      const bits = buf.readUInt32LE(21);
+      return { width: 1 + (bits & 0x3fff), height: 1 + ((bits >> 14) & 0x3fff) };
+    }
+  }
+  fail(file, `can't read the size of ${src}`);
+}
+
+// Figures span the wide container (70rem); below that they're full width.
+const SIZES = '(min-width: 70rem) 70rem, 100vw';
+
+/**
+ * srcset for a 2x screenshot when tools/capture-kit/prepare.mjs has made its
+ * half-width -1x copy, so phones and 1x screens get the smaller file.
+ */
+function srcSet(src: string, width: number) {
+  const small = src.replace(/\.webp$/, '-1x.webp');
+  if (small === src || !publicFileExists(small)) return undefined;
+  return `${small} ${Math.round(width / 2)}w, ${src} ${width}w`;
+}
+
+function imgTag(file: string, src: string, alt: string, className = '') {
+  const { width, height } = imageSize(file, src);
+  const set = srcSet(src, width);
+  return [
+    `<img src="${escape(src)}"`,
+    set && `srcset="${escape(set)}" sizes="${SIZES}"`,
+    `width="${width}" height="${height}" alt="${escape(alt)}"`,
+    className && `class="${className}"`,
+    'loading="lazy" decoding="async" />',
+  ]
+    .filter(Boolean)
+    .join(' ');
+}
+
 function markdown(file: string) {
   return new Marked({
     gfm: true,
     renderer: {
       // An image with a title becomes a Figure; the title is the caption.
+      // A `-light.svg` diagram also loads its `-dark.svg` twin, and CSS shows
+      // the one that matches the theme.
       image({ href, title, text }: Tokens.Image) {
         if (!publicFileExists(href)) fail(file, `image ${href} not found in public/`);
         if (!text) fail(file, `image ${href} has no alt text`);
-        // TODO(content): width and height from the file once screenshots exist (Phase 3).
-        const img = `<img src="${escape(href)}" alt="${escape(text)}" loading="lazy" decoding="async" />`;
+        let img: string;
+        if (href.endsWith('-light.svg')) {
+          const dark = href.replace(/-light\.svg$/, '-dark.svg');
+          if (!publicFileExists(dark)) fail(file, `${dark} not found in public/`);
+          // Both carry the alt text: display:none removes the hidden one from
+          // the accessibility tree, so screen readers hear it once either way.
+          img = imgTag(file, href, text, 'theme-light') + imgTag(file, dark, text, 'theme-dark');
+        } else {
+          img = imgTag(file, href, text);
+        }
         if (!title) return img;
-        return `<figure class="figure"><div class="figure-frame">${img}</div><figcaption>${escape(title)}</figcaption></figure>`;
+        // Portrait (phone) shots get their own class so a pair can size them
+        // against a desktop shot.
+        const { width, height } = imageSize(file, href);
+        const kind = height > width ? ' figure--portrait' : '';
+        return `<figure class="figure${kind}"><div class="figure-frame">${img}</div><figcaption>${escape(title)}</figcaption></figure>`;
+      },
+      // A paragraph that holds only figures renders without the <p>: a
+      // <figure> can't sit inside a paragraph.
+      paragraph({ tokens }: Tokens.Paragraph) {
+        const onlyImages = tokens.every(
+          (t) => t.type === 'image' || (t.type === 'text' && !t.raw.trim()) || t.type === 'br',
+        );
+        const inline = this.parser.parseInline(tokens);
+        return onlyImages ? inline.replace(/<br>/g, '') : `<p>${inline}</p>\n`;
       },
       // Only `<div data-pair>` is allowed as raw HTML (CASE-STUDY-TEMPLATE.md).
+      // Comments carry TODO(content) notes and render as nothing.
       html({ text }: Tokens.HTML | Tokens.Tag) {
         const tag = text.trim();
+        if (tag.startsWith('<!--') && tag.endsWith('-->')) return '';
         if (tag === '<div data-pair>') return '<div class="figure-pair">';
         if (tag === '</div>') return '</div>';
         fail(file, `raw HTML is not allowed: ${tag.slice(0, 40)}`);
@@ -72,9 +146,11 @@ function markdown(file: string) {
               `<tr>${row.map((c, i) => (i === 0 ? `<th scope="row">${cell(c)}</th>` : `<td>${cell(c)}</td>`)).join('')}</tr>`,
           )
           .join('');
+        const [m, b, a] = token.header.map((c) => c.text.trim());
+        // Measure | Before | After, where Before and After may carry a date.
         const isResults =
-          token.header.map((c) => c.text.trim()).join('|') === 'Measure|Before|After';
-        return `<div class="${isResults ? 'results-table' : 'table'}" tabindex="0"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+          token.header.length === 3 && m === 'Measure' && /^Before\b/.test(b) && /^After\b/.test(a);
+        return `<div class="${isResults ? 'results-table' : 'data-table'}" tabindex="0"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
       },
     },
   });
@@ -134,14 +210,11 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
   let cover: Cover | undefined;
   if (data.cover !== undefined) {
     const c = data.cover as Record<string, unknown>;
-    cover = {
-      src: requireString(file, c, 'src'),
-      alt: requireString(file, c, 'alt'),
-      width: Number(c.width),
-      height: Number(c.height),
-    };
-    if (!cover.width || !cover.height) fail(file, 'cover needs width and height');
-    if (!publicFileExists(cover.src)) fail(file, `cover ${cover.src} not found in public/`);
+    const src = requireString(file, c, 'src');
+    if (!publicFileExists(src)) fail(file, `cover ${src} not found in public/`);
+    // width and height come from the file, so they can't drift from it.
+    const { width, height } = imageSize(file, src);
+    cover = { src, alt: requireString(file, c, 'alt'), width, height, srcSet: srcSet(src, width) };
   }
 
   const stats: Stat[] = ((data.stats ?? []) as Record<string, unknown>[]).map((s) => {
@@ -150,6 +223,8 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
       fail(file, `stat "${stat.value}" isn't in docs/build/CONTENT.md`);
     return stat;
   });
+
+  const og = `/work/${slug}/og.jpg`;
 
   const meta: WorkMeta = {
     slug,
@@ -167,6 +242,7 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     disciplines: disciplines as Discipline[],
     links: { live, code },
     cover,
+    ogImage: publicFileExists(og) ? og : undefined,
     stats,
   };
 
