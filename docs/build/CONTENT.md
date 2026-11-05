@@ -337,6 +337,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 - stack: Vite, React 18, React Router 6, TypeScript, Tailwind CSS 4, Sanity, Framer Motion, Formspree
 - links: live `https://www.dlbctampa.org/`; code `https://github.com/tobiakoko/dlbc-template`
 - stats: `−87%` entry JavaScript · `−79%` image payload · `2.2:1 → 5.5:1` button contrast
+- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown.
 - Note: Daniel is upgrading this site. Write about the current version; add "A new version is in progress" at the end when it starts.
 
 **Context.** The Tampa congregation's site, with sermons, events, ministries, a gallery and an embedded Sanity Studio at `/studio`.
@@ -378,6 +379,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 - stack: React 19, Vite, TypeScript, Tailwind CSS 4, Vercel Analytics
 - location: Torrance, California
 - links: live `https://www.ronsbodyshop.net/`; code `https://github.com/tobiakoko/RonsBodyShop`
+- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown. Numbers still need the owner's OK.
 
 **Facts available now:** a collision-repair shop in Torrance, California; video hero; services, gallery, story and contact sections; Vercel Analytics tracks "Request Estimate" clicks; 44 commits from August 2025 to January 2026.
 
