@@ -501,7 +501,34 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [ ] Afromerica repo clean-up before linking the code
 - [ ] Ron's Body Shop: fixes done, then numbers and owner's OK
 - [ ] OseiPrempeh: firm's approval of statistics and testimonials
-- [ ] Lighthouse scores: run `tools/capture-kit/lighthouse.mjs` and paste `scores.md` here
+- [x] Lighthouse scores for client sites (§8); this portfolio still to measure once the domain loop is fixed
 - [ ] Afromerica screenshots from the live site (capture kit)
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
 - [ ] LED wall: timeline (months), photos (front of the working wall, rear cabling, Mapping test, receiving-card self-test before and after), confirmation that the pastor's 5 Nov permission covers this write-up; the two diagrams redrawn as SVG
+
+---
+
+## 8. Lighthouse scores
+
+Measured from Daniel's machine with `tools/capture-kit/lighthouse.mjs` on 5 Nov 2026. Lighthouse 12, median of 3 runs. These are measurements of the live sites; quote them only with the date.
+
+| Project | Page | Form | Perf | A11y | BP | SEO | LCP | CLS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| lewisville | / | mobile | 79 | 100 | 100 | 100 | 4.5 s | 0.005 |
+| lewisville | / | desktop | 99 | 100 | 100 | 100 | 1.0 s | 0.005 |
+| lewisville | /visit | mobile | 88 | 100 | 96 | 100 | 3.6 s | 0 |
+| lewisville | /visit | desktop | 99 | 100 | 96 | 100 | 0.7 s | 0.054 |
+| afromerica | / | mobile | 84 | 100 | 96 | 100 | 2.4 s | 0 |
+| afromerica | / | desktop | 100 | 96 | 96 | 100 | 0.5 s | 0 |
+| afromerica | /events | mobile | 95 | 98 | 100 | 92 | 2.4 s | 0 |
+| afromerica | /events | desktop | 100 | 98 | 100 | 92 | 0.5 s | 0 |
+| dlbc-tampa | / | mobile | 69 | 89 | 100 | 83 | 6.4 s | 0 |
+| dlbc-tampa | / | desktop | 96 | 89 | 100 | 83 | 1.3 s | 0 |
+| dlbc-tampa | /contact | mobile | 66 | 97 | 100 | 92 | 6.8 s | 0 |
+| dlbc-tampa | /contact | desktop | 98 | 97 | 100 | 92 | 1.0 s | 0 |
+| rons-body-shop | / | mobile | 89 | 92 | 100 | 100 | 3.0 s | 0 |
+| rons-body-shop | / | desktop | 99 | 92 | 100 | 100 | 0.9 s | 0 |
+| oseiprempeh | / | mobile | 98 | 77 | 96 | 92 | 1.7 s | 0.087 |
+| oseiprempeh | / | desktop | 99 | 84 | 100 | 92 | 0.4 s | 0.083 |
+
+`TODO(content): this portfolio (tobiakoko.com). The 5 Nov run hit a redirect loop between tobiakoko.com and www.tobiakoko.com (SEO 0, /about failed), so its row is left out. Rerun after the Vercel domain fix.`

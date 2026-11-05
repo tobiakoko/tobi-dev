@@ -19,9 +19,8 @@
       { "name": "home", "path": "/", "full": true },
       { "name": "events", "path": "/events" },
       { "name": "event", "discover": "a[href^='/events/']", "full": true },
-      { "name": "leaderboard", "discover": "a[href^='/events/']", "suffix": "/leaderboard" },
+      { "name": "leaderboard", "path": "/events/december-showcase-2025/leaderboard" },
       { "name": "artists", "path": "/artists" },
-      { "name": "artist", "discover": "a[href^='/artists/']" },
       { "name": "about", "path": "/about" }
     ],
     "mask": [],
