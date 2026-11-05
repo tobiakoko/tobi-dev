@@ -84,7 +84,7 @@ Goal: full case studies with real screenshots, diagrams and measured results.
 - [ ] **3.3** Write **Lewisville** (*written 5 Nov 2026; before/after pairs still to add*) from `CONTENT.md` §6.1. Before/after figures from the owner's Phase 4 captures (`docs/build/redesign-before/screens` and `redesign-after/screens` in the Lewisville repo, local only). **Ask** the owner to supply them.
 - [x] **3.4** Write **Afromerica** from §6.2 (needs permission from 3.0).
 - [x] **3.5** Write **DLBC Tampa** from §6.3.
-- [ ] **3.5a** Write **LED wall** from §6.7. (*Written 5 Nov 2026 with the port map; still needs the five-layer diagram, the issues log table and photos.*) Redraw its two diagrams (the five-layer configuration stack and the final port map) as SVG to the design tokens. Use only photos the owner supplies, with no congregation faces.
+- [x] **3.5a** Write **LED wall** from §6.7. (*Done 5 Nov 2026: port map, five-layer diagram, issues log, cover and six photos. The self-test "after" photo is still to come; the working wall stands in.*) Redraw its two diagrams (the five-layer configuration stack and the final port map) as SVG to the design tokens. Use only photos the owner supplies, with no congregation faces.
 - [x] **3.6** Write **Portfolio** from §6.6.
 - [ ] **3.7** **Ron's Body Shop** and **OseiPrempeh:** (*Ron's short version with screenshots done 5 Nov 2026; OseiPrempeh waits on the firm.*) write only after the client fixes in "Outside this repo" below are done and the owner supplies the results. Until then their pages show the short version with screenshots.
 - [x] **3.8** Per-project link-preview image (1200×630) generated from the cover at build time; `og:image` per case study.

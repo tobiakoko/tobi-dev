@@ -157,10 +157,40 @@ def led_wall_ports(theme):
     d.note(70, 690, "24 cabinets (6 \u00d7 4), 3072 \u00d7 1536 px canvas at 60 Hz. If exactly half the wall goes dark, check that half's power supply first.", 14)
     return d.svg()
 
+
+def led_wall_layers(theme):
+    d = D(1600, 880, theme, "LED wall configuration layers: five layers from receiving cards up to input and layers, each with the fault found and the fix applied")
+    t = d.t
+    rows = (
+        ("5 · Input and layers", "What goes on the canvas", ("Image Mosaic and PIP 1, 2 on;", "main layer only 2048 × 768"), ("Mosaic and PIP off;", "full-screen 3072 × 1536 layer")),
+        ("4 · Controller output", "Total pixels it can drive", ("VX600 rated 3.9M px, wall is 4.7M;", "on the Pro, 3D halved capacity"), ("VX1000 Pro (6.5M px), 3D off,", "3072 × 1536 @ 60 Hz")),
+        ("3 · Screen connection", "Port-to-cabinet map", ("Vertical chains of 3 on 4 rows;", "grid still set to 4 × 2"), ("8 horizontal chains of 3;", "6 × 4 grid matched to cabling")),
+        ("2 · Cabinet definition", "Pixels per receiving card", ("Module size 256 × 128 entered", "as the cabinet size"), ("512 × 384 per cabinet", "(2 × 3 modules)")),
+        ("1 · Receiving cards", "Chip, scan and timing", ("Generic common-chip, static-scan", "profile on all 24 cards"), ("Factory ICND2165, 1/64-scan", "profile loaded and saved")),
+    )
+    cols = ((70, 400, "Layer"), (500, 500, "Fault found"), (1030, 500, "Fix"))
+    for x, _, label in cols:
+        d.parts.append(f'<text x="{x}" y="80" font-size="13" letter-spacing="1.8" font-weight="600" fill="{t["muted"]}">{html.escape(label.upper())}</text>')
+    rh, gap, top = 116, 18, 104
+    for i, (name, role, fault, fix) in enumerate(rows):
+        y = top + i * (rh + gap)
+        (lx, lw, _), (fx, fw, _), (xx, xw, _) = cols
+        d.parts.append(f'<rect x="{lx}" y="{y}" width="{lw}" height="{rh}" fill="{t["panel"]}" stroke="{t["line"]}"/>')
+        d.parts.append(f'<rect x="{fx}" y="{y}" width="{fw}" height="{rh}" fill="{t["card"]}" stroke="{t["edge"]}" stroke-width="1.25" stroke-dasharray="5 5"/>')
+        d.parts.append(f'<rect x="{xx}" y="{y}" width="{xw}" height="{rh}" fill="{t["card"]}" stroke="{t["accent"]}" stroke-width="1.75"/>')
+        d.parts.append(f'<text x="{lx + 24}" y="{y + 50}" font-size="18" font-weight="600" fill="{t["ink"]}">{html.escape(name)}</text>')
+        d.note(lx + 24, y + 78, role, 15)
+        for x, lines in ((fx, fault), (xx, fix)):
+            for j, ln in enumerate(lines):
+                d.parts.append(f'<text x="{x + 24}" y="{y + 50 + j * 26}" font-size="16" fill="{t["ink"]}">{html.escape(ln)}</text>')
+        d.edge([(fx + fw, y + rh / 2), (xx - 4, y + rh / 2)])
+    d.note(70, 840, "Each layer relies on the one below it, and every layer held its own fault.", 14)
+    return d.svg()
+
 if __name__ == "__main__":
     import sys
     out = sys.argv[1]
-    for name, fn in (("lewisville", lewisville), ("afromerica", afromerica), ("led-wall-ports", led_wall_ports)):
+    for name, fn in (("lewisville", lewisville), ("afromerica", afromerica), ("led-wall-ports", led_wall_ports), ("led-wall-layers", led_wall_layers)):
         for theme in THEMES:
             with open(f"{out}/{name}-architecture-{theme}.svg", "w") as f:
                 f.write(fn(theme))

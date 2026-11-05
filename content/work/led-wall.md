@@ -7,8 +7,7 @@ featured: true
 year: '2026'
 role: Diagnosis, system design, controller and receiving-card configuration, vendor follow-up
 team: Solo, with the church and the equipment vendor
-# TODO(content): months
-timeline: '2026'
+timeline: Sep – Oct 2026
 stackLabel: Tools and hardware
 stack:
   - NovaStar VX1000 Pro (replacing a VX600)
@@ -19,7 +18,9 @@ stack:
   - Claude for spec research and diagnostic cross-checks
 disciplines: [Analysis, Implementation, Delivery]
 # Permission: given by the pastor (5 Nov 2026). Photos only with no congregation faces.
-# TODO(content): cover photo of the working wall (no congregation faces).
+cover:
+  src: /work/led-wall/cover.webp
+  alt: 'Straight-on view of a wide LED wall showing a live church broadcast edge to edge, framed by a black wall'
 stats:
   - { value: '16 → 24', label: 'cabinets running' }
   - { value: '+50%', label: 'screen (3072 × 1536 px)' }
@@ -39,6 +40,8 @@ The wall grew by 50% while its controller and configuration stayed sized for the
 - **Stale map:** the controller still held the 2048 × 1536 map.
 - **Wrong module profile:** the receiving cards were set for a different module, which scrambled the picture, capped cabinet height at 256 px and ran a 480 Hz refresh that risked banding on camera.
 - **Missing controller:** the packing list included a VX1000, but none was shipped.
+
+![LED wall where the lyric "GLORY GLORY GLO" is duplicated and the background breaks into mismatched blocks](/work/led-wall/repeated-content.webp 'After the extension: lyrics repeat and blocks of the image freeze.')
 
 ## My role
 
@@ -68,6 +71,8 @@ The system is a stack of five configuration layers, each relying on the one belo
 
 The physical evidence: the module label R1.25/64S 256X128; 640 mm and 955 mm mounting bars giving 640 × 480 mm, 512 × 384 px cabinets; A7s Plus cards; a 6 × 4 grid; and the VX600 still showing 2048x1536@60.
 
+![Grid of 24 open LED cabinets showing blue receiving-card boards, power supplies and data cables](/work/led-wall/cabinets-open.webp 'Modules removed: one A7s Plus receiving card and power supply per cabinet, 6 × 4.')
+
 ### Capacity
 
 Cabinets per port: 2 per port is 393,216 px (60%), 3 is 589,824 px (91%), and 4 is 786,432 px (121%, over).
@@ -80,9 +85,18 @@ Cabinets per port: 2 per port is 393,216 px (60%), 3 is 589,824 px (91%), and 4 
 
 Three passes. Vertical chains failed because 3 doesn't divide 4 rows; the grid still described a 4 × 2 wall; and "Device overloaded" came from 3D being on, which halves capacity.
 
+![LED wall with port and card labels such as "P:01 #003" printed over each cabinet; some cabinets are open](/work/led-wall/mapping-test.webp 'Mapping test on the first VX1000 Pro pass: vertical chains left the top row stranded on ports 7 and 8.')
+
 ### Receiving cards
 
 The cards held a generic common-chip, static-scan profile; the module is a Chipone ICND2165 PWM driver at 1/64 scan. I resisted cutting the cabinet height to clear a red warning, which would have hidden a third of every cabinet, and loaded the factory profile instead.
+
+<div data-pair>
+
+![NovaLCT Receiving Card tab with module settings and a red-outlined height field reading 384](/work/led-wall/novalct-profile.webp 'NovaLCT showed a common-chip, 32 × 16, static-scan profile and flagged the 384 px height in red.')
+![Close-up of a circuit board with the silkscreen "S-R-pro-P1.25-256X128-64S1010-V1.1.0" and Chipone driver chips](/work/led-wall/module-marking.webp 'The board marking that identified the module: S-R-pro-P1.25-256X128-64S1010.')
+
+</div>
 
 ### Validation and handover
 
@@ -90,11 +104,11 @@ A Mapping walk, full-colour tests, a camera check at 1/60 and 1/120 shutter, a p
 
 ## Architecture
 
+![LED wall configuration layers, from the bottom up. 1, receiving cards: a generic common-chip, static-scan profile, fixed with the factory ICND2165, 1/64-scan profile. 2, cabinet definition: the module size entered as the cabinet size, fixed to 512 × 384 per cabinet. 3, screen connection: vertical chains of 3 on 4 rows and a 4 × 2 grid, fixed with 8 horizontal chains of 3 on a 6 × 4 grid. 4, controller output: the VX600 over its rating and 3D halving the Pro's capacity, fixed with the VX1000 Pro, 3D off, at 3072 × 1536 @ 60 Hz. 5, input and layers: Image Mosaic and PIP on and a 2048 × 768 main layer, fixed by turning them off and using a full-screen 3072 × 1536 layer.](/work/led-wall/layers-light.svg 'Every layer of the configuration had its own fault.')
+
 ![LED wall port map: a NovaStar VX1000 Pro feeds 24 cabinets in a 6 by 4 grid as 8 horizontal chains of 3; the left half runs on power supply A from odd ports, the right half on supply B from even ports.](/work/led-wall/ports-light.svg 'The final port map: 8 chains of 3 cabinets, split across two power halves.')
 
 The VX1000 Pro feeds 8 of its 10 Gigabit ports, each carrying one horizontal chain of three cabinets at 589,824 px, 91% of a port's limit. Odd ports sit on power supply A and even ports on supply B, so a supply failure darkens exactly one half of the wall.
-
-<!-- TODO(content): the five-layer configuration stack diagram, with the fault found at each layer. Needs the layer names from the source case study. -->
 
 ## Key decisions
 
@@ -114,7 +128,21 @@ A power fault can never be mistaken for a data fault.
 
 PWM driver chips need factory register settings.
 
-<!-- TODO(content): Issues log (Symptom / Root cause / Fix, 9 rows) from the source case study: stale map and over-capacity; no controller shipped; a missing module; stranded top-row cabinets; only the top-left region addressed; "Device overloaded" from 3D; Image Mosaic and PIP left on; module size entered as cabinet size; the wrong receiving-card profile. -->
+## Issues log
+
+Nine faults, in the order I found them.
+
+| Symptom                                                                               | Root cause                                                                                       | Fix                                                                 |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| Repeated and frozen content after the extension                                       | Stale 2048 × 1536 map, 4 cabinets per port over the port limit, wall 21% over the VX600’s rating | Moved to a VX1000 Pro with 3 cabinets per port                      |
+| No controller to move to                                                              | The VX1000 on the packing list was never shipped                                                 | Raised with the vendor; reduced layout on the VX600 in the meantime |
+| A cabinet reporting a partial load                                                    | A module missing, exposing the receiving card                                                    | Module reinstalled from the spares kit                              |
+| Six top-row cabinets stranded on ports 7 and 8                                        | Vertical chains of 3 on a 4-row wall                                                             | Re-cabled as 8 horizontal chains of 3                               |
+| Only the top-left region addressed                                                    | Quick Configuration still set to 4 × 2, 2 per port, 2048 × 768 layer                             | Set to 6 × 4, 3 per port, 3072 × 1536 layer                         |
+| “Device overloaded”                                                                   | 3D enabled, halving output capacity                                                              | 3D off                                                              |
+| Extra processing on the image                                                         | Image Mosaic and PIP 1 and 2 left on                                                             | Turned off                                                          |
+| Cabinet geometry wrong                                                                | Module size (256 × 128) entered as cabinet size                                                  | Set to 512 × 384                                                    |
+| Stripes, repeated columns and mirrored text in the self-test; height capped at 256 px | Generic common-chip, static-scan profile on the receiving cards                                  | Factory ICND2165, 1/64-scan profile loaded and saved                |
 
 ## Outcome
 
@@ -129,7 +157,14 @@ PWM driver chips need factory register settings.
 
 Settings are saved to the controller and the cards and survived a power cycle. The handover note for the church team: "If exactly half the wall goes dark, check that half's power supply first."
 
-<!-- TODO(content): photos of the working wall, rear cabling, the Mapping test and the receiving-card self-test before and after (no congregation faces). -->
+<div data-pair>
+
+![LED wall in a red test pattern with horizontal stripes and the same narrow label repeated across each section](/work/led-wall/self-test-before.webp 'Before: the red self-test showed stripes, repeated columns and doubled text.')
+![The finished LED wall showing a live church broadcast edge to edge](/work/led-wall/cover.webp 'After: all 24 cabinets as one 3072 × 1536 canvas.')
+
+</div>
+
+<!-- TODO(content): a straight-on photo of the red self-test after the fix, to replace the working-wall stand-in in this pair. -->
 
 ## Reflection
 
