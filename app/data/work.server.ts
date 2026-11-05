@@ -112,9 +112,9 @@ function markdown(file: string) {
         }
         if (!title) return img;
         // Portrait (phone) shots get their own class so a pair can size them
-        // against a desktop shot.
+        // against a desktop shot. Tall diagrams keep the full width.
         const { width, height } = imageSize(file, href);
-        const kind = height > width ? ' figure--portrait' : '';
+        const kind = height > width && !href.endsWith('.svg') ? ' figure--portrait' : '';
         return `<figure class="figure${kind}"><div class="figure-frame">${img}</div><figcaption>${escape(title)}</figcaption></figure>`;
       },
       // A paragraph that holds only figures renders without the <p>: a

@@ -132,59 +132,52 @@ def afromerica(theme):
 
 
 def led_wall_ports(theme):
-    d = D(1600, 740, theme, "LED wall port map: a NovaStar VX1000 Pro feeds 24 cabinets in a 6 by 4 grid as 8 horizontal chains of 3; the left half runs on power supply A from odd ports, the right half on supply B from even ports")
+    # Narrow and tall, so the labels stay readable in the page's figure column.
+    d = D(720, 720, theme, "LED wall port map: a NovaStar VX1000 Pro feeds 24 cabinets in a 6 by 4 grid as 8 horizontal chains of 3; the left half runs on power supply A from odd ports, the right half on supply B from even ports")
     t = d.t
-    cw, ch, gap = 150, 112, 40          # cabinet 512 x 384 px is 4:3
-    gx, gy = 470, 100                   # top-left of the grid
-    halves = (("Power supply A \u00b7 odd ports", gx), ("Power supply B \u00b7 even ports", gx + 3 * cw + gap))
-    for label, hx in halves:
-        d.panel(hx - 20, gy - 60, 3 * cw + 40, 4 * ch + 80, label)
+    d.node(210, 24, 300, 96, "NovaStar VX1000 Pro", ("8 of 10 ports used, 2 spare",), strong=True)
+    pw, ph, gap, px0, py = 315, 404, 30, 30, 210
+    cw = (pw - 30) / 3
+    chh = cw * 0.75 + 8          # cabinet 640 x 480 mm is 4:3
+    for h, label in enumerate(("Power supply A \u00b7 odd ports", "Power supply B \u00b7 even ports")):
+        x = px0 + h * (pw + gap)
+        d.panel(x, py, pw, ph, label)
+        d.edge([(360 + (h * 2 - 1) * 60, 120), (360 + (h * 2 - 1) * 60, 150), (x + pw / 2, 150), (x + pw / 2, py - 4)])
         for row in range(4):
-            y = gy + row * ch
+            y = py + 52 + row * (chh + 4)
             for col in range(3):
-                d.parts.append(f'<rect x="{hx + col * cw + 6}" y="{y + 6}" width="{cw - 12}" height="{ch - 12}" fill="{t["card"]}" stroke="{t["line"]}"/>')
+                d.parts.append(f'<rect x="{x + 15 + col * cw + 4}" y="{y + 4}" width="{cw - 8}" height="{chh - 8}" fill="{t["card"]}" stroke="{t["line"]}"/>')
             # One chain = one row of three cabinets in this half.
-            d.parts.append(f'<rect x="{hx}" y="{y}" width="{3 * cw}" height="{ch}" fill="none" stroke="{t["accent"]}" stroke-width="1.75"/>')
-            label = "chain of 3 \u00b7 589,824 px (91%)"
-            lw = len(label) * 6.9 + 18
-            d.parts.append(f'<rect x="{hx + 3 * cw / 2 - lw / 2}" y="{y + ch / 2 - 12}" width="{lw}" height="22" rx="2" fill="{t["bg"]}"/>')
-            d.note(hx + 3 * cw / 2, y + ch / 2 + 4, label, 13, "middle")
-    d.node(70, gy + 2 * ch - 60, 250, 120, "NovaStar VX1000 Pro", ("8 of 10 ports used", "2 spare"), strong=True)
-    d.edge([(320, gy + 2 * ch - 20), (gx - 22, gy + 2 * ch - 20)], "odd ports", at=(395, gy + 2 * ch - 20))
-    right_mid = gx + 3 * cw + gap + 3 * cw / 2
-    d.edge([(320, gy + 2 * ch + 30), (380, gy + 2 * ch + 30), (380, gy + 4 * ch + 80), (right_mid, gy + 4 * ch + 80), (right_mid, gy + 4 * ch + 22)],
-           "even ports", at=(right_mid - 300, gy + 4 * ch + 80))
-    d.note(70, 690, "24 cabinets (6 \u00d7 4), 3072 \u00d7 1536 px canvas at 60 Hz. If exactly half the wall goes dark, check that half's power supply first.", 14)
+            d.parts.append(f'<rect x="{x + 15}" y="{y}" width="{3 * cw}" height="{chh}" fill="none" stroke="{t["accent"]}" stroke-width="1.75"/>')
+            d.parts.append(f'<text x="{x + pw / 2}" y="{y + chh / 2 + 7}" text-anchor="middle" font-size="19" font-weight="600" fill="{t["ink"]}">Port {row * 2 + h + 1}</text>')
+    d.note(30, 660, "Each chain: 3 cabinets, 589,824 px, 91% of a port\u2019s limit.", 16)
+    d.note(30, 690, "24 cabinets (6 \u00d7 4), 3072 \u00d7 1536 px at 60 Hz.", 16)
     return d.svg()
 
 
 def led_wall_layers(theme):
-    d = D(1600, 880, theme, "LED wall configuration layers: five layers from receiving cards up to input and layers, each with the fault found and the fix applied")
+    d = D(720, 1290, theme, "LED wall configuration layers: five layers from receiving cards up to input and layers, each with the fault found and the fix applied")
     t = d.t
     rows = (
-        ("5 · Input and layers", "What goes on the canvas", ("Image Mosaic and PIP 1, 2 on;", "main layer only 2048 × 768"), ("Mosaic and PIP off;", "full-screen 3072 × 1536 layer")),
-        ("4 · Controller output", "Total pixels it can drive", ("VX600 rated 3.9M px, wall is 4.7M;", "on the Pro, 3D halved capacity"), ("VX1000 Pro (6.5M px), 3D off,", "3072 × 1536 @ 60 Hz")),
-        ("3 · Screen connection", "Port-to-cabinet map", ("Vertical chains of 3 on 4 rows;", "grid still set to 4 × 2"), ("8 horizontal chains of 3;", "6 × 4 grid matched to cabling")),
-        ("2 · Cabinet definition", "Pixels per receiving card", ("Module size 256 × 128 entered", "as the cabinet size"), ("512 × 384 per cabinet", "(2 × 3 modules)")),
-        ("1 · Receiving cards", "Chip, scan and timing", ("Generic common-chip, static-scan", "profile on all 24 cards"), ("Factory ICND2165, 1/64-scan", "profile loaded and saved")),
+        ("5 \u00b7 Input and layers", "What goes on the canvas", ("Image Mosaic and PIP 1, 2 on;", "main layer only 2048 \u00d7 768"), ("Mosaic and PIP off;", "full-screen 3072 \u00d7 1536 layer")),
+        ("4 \u00b7 Controller output", "Total pixels it can drive", ("VX600 rated 3.9M px, wall is 4.7M;", "on the Pro, 3D halved capacity"), ("VX1000 Pro (6.5M px), 3D off,", "3072 \u00d7 1536 @ 60 Hz")),
+        ("3 \u00b7 Screen connection", "Port-to-cabinet map", ("Vertical chains of 3 on 4 rows;", "grid still set to 4 \u00d7 2"), ("8 horizontal chains of 3;", "6 \u00d7 4 grid matched to cabling")),
+        ("2 \u00b7 Cabinet definition", "Pixels per receiving card", ("Module size 256 \u00d7 128 entered", "as the cabinet size"), ("512 \u00d7 384 per cabinet", "(2 \u00d7 3 modules)")),
+        ("1 \u00b7 Receiving cards", "Chip, scan and timing", ("Generic common-chip, static-scan", "profile on all 24 cards"), ("Factory ICND2165, 1/64-scan", "profile loaded and saved")),
     )
-    cols = ((70, 400, "Layer"), (500, 500, "Fault found"), (1030, 500, "Fix"))
-    for x, _, label in cols:
-        d.parts.append(f'<text x="{x}" y="80" font-size="13" letter-spacing="1.8" font-weight="600" fill="{t["muted"]}">{html.escape(label.upper())}</text>')
-    rh, gap, top = 116, 18, 104
+    x, w, h, gap, top = 30, 660, 226, 16, 30
     for i, (name, role, fault, fix) in enumerate(rows):
-        y = top + i * (rh + gap)
-        (lx, lw, _), (fx, fw, _), (xx, xw, _) = cols
-        d.parts.append(f'<rect x="{lx}" y="{y}" width="{lw}" height="{rh}" fill="{t["panel"]}" stroke="{t["line"]}"/>')
-        d.parts.append(f'<rect x="{fx}" y="{y}" width="{fw}" height="{rh}" fill="{t["card"]}" stroke="{t["edge"]}" stroke-width="1.25" stroke-dasharray="5 5"/>')
-        d.parts.append(f'<rect x="{xx}" y="{y}" width="{xw}" height="{rh}" fill="{t["card"]}" stroke="{t["accent"]}" stroke-width="1.75"/>')
-        d.parts.append(f'<text x="{lx + 24}" y="{y + 50}" font-size="18" font-weight="600" fill="{t["ink"]}">{html.escape(name)}</text>')
-        d.note(lx + 24, y + 78, role, 15)
-        for x, lines in ((fx, fault), (xx, fix)):
+        y = top + i * (h + gap)
+        d.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{t["card"]}" stroke="{t["line"]}"/>')
+        d.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="60" fill="{t["panel"]}" stroke="{t["line"]}"/>')
+        d.parts.append(f'<text x="{x + 24}" y="{y + 38}" font-size="21" font-weight="600" fill="{t["ink"]}">{html.escape(name)}</text>')
+        d.note(x + w - 24, y + 38, role, 16, "end")
+        for (label, lines, ly, colour) in (("Fault", fault, y + 96, t["muted"]), ("Fix", fix, y + 172, t["accent"])):
+            d.parts.append(f'<text x="{x + 24}" y="{ly}" font-size="13" letter-spacing="1.8" font-weight="600" fill="{colour}">{label.upper()}</text>')
             for j, ln in enumerate(lines):
-                d.parts.append(f'<text x="{x + 24}" y="{y + 50 + j * 26}" font-size="16" fill="{t["ink"]}">{html.escape(ln)}</text>')
-        d.edge([(fx + fw, y + rh / 2), (xx - 4, y + rh / 2)])
-    d.note(70, 840, "Each layer relies on the one below it, and every layer held its own fault.", 14)
+                d.parts.append(f'<text x="{x + 110}" y="{ly + j * 26}" font-size="18" fill="{t["ink"]}">{html.escape(ln)}</text>')
+        d.parts.append(f'<rect x="{x + 96}" y="{y + 152}" width="3" height="56" fill="{t["accent"]}"/>')
+    d.note(x, top + 5 * (h + gap) + 24, "Each layer relies on the one below it, and every layer held its own fault.", 16)
     return d.svg()
 
 if __name__ == "__main__":
