@@ -17,10 +17,12 @@ Facts about the projects were checked against each repository on 3 November 2026
 | Location | Dallas, Texas |
 | Email | enquiries@tobiakoko.com |
 | GitHub | https://github.com/tobiakoko |
-| LinkedIn | https://linkedin.com/in/daniel-akoko |
-| Booking link | `TODO(content): Cal.com or Calendly URL` |
+| LinkedIn | https://www.linkedin.com/in/daniel-akoko/ (confirmed by Daniel, 5 Nov 2026) |
+| Booking link | `TODO(content): optional. A scheduling page (Cal.com or Calendly, both free) where a visitor picks a 20-minute slot from Daniel's calendar. Hide every "Book a call" link until it exists; email alone is fine` |
 | Site URL | https://tobiakoko.com |
 | Availability | Open to full-time roles and freelance projects |
+
+No résumé on the site (Daniel's decision, 3 Nov 2026): experience, education and certifications live on About instead.
 
 ---
 
@@ -62,7 +64,7 @@ Track-specific headlines (for a later version, or if Daniel narrows his search):
 
 ### 2.3 Selected work
 
-Heading: **Selected work**. Show the four `featured` projects in `order`: Lewisville, Afromerica, DLBC Tampa, Ron's Body Shop. Then the link **All work →**.
+Heading: **Selected work**. Show the four `featured` projects in `order`: Lewisville, Afromerica, the Lewisville LED wall, DLBC Tampa. The LED wall shows range beyond web code: diagnosis, systems design and hardware configuration. Then the link **All work →**.
 
 ### 2.4 How I work
 
@@ -122,18 +124,43 @@ Three principles, each a bold line and one sentence:
 
 ### 4.4 Present (label: Present)
 
-> I build websites and digital services for churches and small businesses, and I'm completing an MBA. I'm open to full-time roles in software engineering, business and systems analysis, implementation, and project delivery.
-
-`TODO(content): Daniel to confirm the MBA school and expected completion date.`
+> I build websites and digital services for churches and small businesses, and I'm studying for an MBA at Western Governors University (expected June 2027). I'm open to full-time roles in software engineering, business and systems analysis, implementation, and project delivery.
 
 ### 4.5 Past (label: Past)
 
-A list, newest first. Each item: role, organisation, dates, one line.
+A list, newest first. Each item: role, organisation, location, dates, then 2–4 bullets. Roles and dates are from Daniel (5 Nov 2026). Bullets are Daniel's, edited where the code shows something different; edits are noted in the comments under each role and must not be reverted without checking the repo.
 
-- **Freelance web developer** · Self-employed · `TODO(content): start year`–present · Church, legal, automotive and entertainment websites (see Work).
-- **Church technology and media** · Deeper Life Bible Church, Tampa and Dallas · `TODO(content): years` · Sound, media production, livestreaming and IT support.
-- **Hospitality** · `TODO(content): Daniel to choose whether to name employers` · `TODO(content): years` · Guest-facing service in high-volume restaurants.
-- `TODO(content): software engineering roles and dates, as Daniel supplies them.` Don't add any employer or platform Daniel hasn't confirmed.
+**Senior Full-Stack Developer** · Afromerica Entertainment · Remote · Aug 2025 – Dec 2025
+
+- Built a competition and events platform in React, TypeScript and Next.js, from the database and APIs to the admin dashboard.
+- Delivered paid voting with a live leaderboard, an event management dashboard and ticket checkout with Paystack.
+- Built REST APIs on PostgreSQL (Supabase) with signed, idempotent payment webhooks and real-time updates.
+
+<!-- Edits from Daniel's draft: "Stripe" changed to Paystack (the repo uses Paystack, lib/paystack/*; no Stripe code). "Serving thousands of concurrent users" and "<200 ms API response times (75% improvement)" are removed until Daniel has a measurement to cite (Vercel Analytics, Supabase logs or Sentry). TODO(content): add them back only with a source. "Service-oriented architecture" removed: the backend is Next.js API routes on Supabase. -->
+
+**Software Engineer (Full-Stack)** · DLBC ICT · Dallas, TX · Nov 2024 – Sep 2025
+
+- Built web applications in React, TypeScript, Node.js, Tailwind CSS and shadcn/ui for church donation platforms.
+- Turned Figma wireframes into accessible components (WCAG 2.1), working with stakeholders and designers on feedback.
+- Integrated Stripe payments with error boundaries, fallback UI and clear error handling.
+- Improved server-side rendering and search performance, and pushed for refactors that made the code easier to maintain.
+
+<!-- TODO(content): none of the repositories reviewed (dlbc-template, dclm-lewisville) contain Stripe or a donation platform, and the Nov 2024 – Sep 2025 dates come before the earliest commits in those repos (Dec 2025 and Nov 2025). Before publishing, Daniel links the donation project (repo or live URL) or a case study, or rewrites these bullets to match work that can be shown. -->
+
+**IT & AV Systems Lead** · Deeper Life Bible Church · Tampa, FL and Dallas, TX · 2018 – present
+
+- Run IT across two church locations: workstations, networks and Wi-Fi, printers, and hardware and software troubleshooting.
+- Designed and installed the AV and livestream system (cameras, audio mixers, microphones, monitors and streaming encoders) for weekly services broadcast online. See the LED wall case study.
+- Lead and train a volunteer electronics team, with standard operating procedures and documentation.
+- Maintain the church website and its security, and keep network diagrams, equipment inventories, troubleshooting guides, backups and account policies up to date.
+
+**Freelance Web Developer** · Self-employed · Remote · 2025 – present
+
+- Websites for a Tampa law practice and a Torrance, California collision-repair shop (see Work).
+
+**Hospitality** · Dallas, TX · `TODO(content): years` · Guest-facing service in high-volume restaurants. (Daniel's decision: don't name the employers.)
+
+<!-- TODO(content): employment type for each role (full-time, contract, part-time, volunteer). Recruiters and background checks verify titles and dates, so the type should match what an employer reference would say. -->
 
 ### 4.6 Origins (label: Origins)
 
@@ -143,8 +170,8 @@ A list, newest first. Each item: role, organisation, dates, one line.
 
 | Degree | School | Year |
 | --- | --- | --- |
-| MBA (in progress) | `TODO(content)` | `TODO(content)` |
-| B.S. Computer Science | Western Governors University | 2024 |
+| Master of Business Administration (in progress) | Western Governors University | Jun 2026 – Jun 2027 (expected) |
+| B.S. Computer Science | Western Governors University | Apr 2023 – Sep 2024 |
 | B.G.S. Criminology | University of South Florida | `TODO(content)` |
 | A.S. Electrical Engineering | Community College of Baltimore County | `TODO(content)` |
 
@@ -184,10 +211,13 @@ Order and front matter. `featured: true` for the first four.
 | --- | --- | --- | --- | --- |
 | 1 | `lewisville` | Deeper Life Bible Church Lewisville | 2025–2026 | Engineering, Analysis, Implementation, Delivery |
 | 2 | `afromerica` | Afromerica Entertainment | 2025 | Engineering, Implementation |
-| 3 | `dlbc-tampa` | Deeper Life Bible Church Tampa | 2025–2026 | Engineering, Analysis, Implementation |
-| 4 | `rons-body-shop` | Ron's Body Shop | 2025–2026 | Engineering, Implementation |
-| 5 | `oseiprempeh` | OseiPrempeh Law Firm | 2025 | Engineering |
-| 6 | `portfolio` | This portfolio | 2025–2026 | Engineering |
+| 3 | `led-wall` | Extending a church LED wall | 2026 | Analysis, Implementation, Delivery |
+| 4 | `dlbc-tampa` | Deeper Life Bible Church Tampa | 2025–2026 | Engineering, Analysis, Implementation |
+| 5 | `rons-body-shop` | Ron's Body Shop | 2025–2026 | Engineering, Implementation |
+| 6 | `oseiprempeh` | OseiPrempeh Law Firm | 2025 | Engineering |
+| 7 | `portfolio` | This portfolio | 2025–2026 | Engineering |
+
+Section numbers below don't follow display order; `order` decides it. The LED wall is §6.7.
 
 Ask Kumuyi AI is **not** included (deployment is down).
 
@@ -200,9 +230,9 @@ Ask Kumuyi AI is **not** included (deployment is down).
 - team: `Solo, with the pastor and church staff`
 - timeline: `Nov 2025 – Nov 2026`
 - stack: Next.js 16, React 19, TypeScript, Sanity 6, Tailwind CSS 4, Resend, Upstash, Jest, Playwright, Vercel
-- links: code `https://github.com/tobiakoko/dclm-lewisville`; live `TODO(content): production URL once the domain moves to deeperlifelewisville.org`
+- links: live `https://dclm-lewisville.vercel.app/` (switch to `https://deeperlifelewisville.org` when the domain moves); code `https://github.com/tobiakoko/dclm-lewisville`
 - stats: `109 → 333` unit tests · `13 → 0` wrong facts in the home page HTML · `360` browser test runs with accessibility checks
-- Permission: `TODO(content): pastor's OK to name leaders and show congregation photos`
+- Permission: given by the pastor (5 Nov 2026) to name leaders and show photos from the site.
 
 **Context.** Deeper Life Bible Church Lewisville is a local congregation of an international church. Most first-time visitors find it on a phone and need to know, within seconds, when and where it meets and what to expect.
 
@@ -251,7 +281,7 @@ Ask Kumuyi AI is **not** included (deployment is down).
 
 `TODO(content): Lighthouse and Core Web Vitals after deploy; final npm audit count.`
 
-Figures: Phase 4 before/after captures (Home, Visit, Contact, mobile menu), the architecture diagram, the Studio editing screen.
+Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit, about, ministries, events, contact and give at desktop and phone; full-page home, visit and contact; `architecture-light.svg` and `architecture-dark.svg`. The `sermons-*` shots show the honest "couldn't load videos" state; use them only as the figure for the "honest failure" decision. Still wanted: the Phase 4 before captures (owner, local only) and a Studio editing screen.
 
 **Reflection.** `What I'd do next:` measure Core Web Vitals on real phones, and add calendar export for events once the church approves it. And next time, audit before adding features, not a year later.
 
@@ -265,9 +295,9 @@ Figures: Phase 4 before/after captures (Home, Visit, Contact, mobile menu), the 
 - role: `Sole developer`
 - timeline: `Oct – Dec 2025`
 - stack: Next.js 16, React 19, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind CSS 4, Vercel
-- links: live `https://www.afromericaent.com/` (`TODO(content): confirm still live`); code `https://github.com/tobiakoko/afromerica-ent` (`TODO(content): Daniel to decide if the repo is public`)
-- stats: `TODO(content): votes cast, tickets sold, payments processed, peak voters — only with the client's permission`
-- Permission: `TODO(content): client OK to name them and use screenshots`
+- links: live `https://www.afromericaent.com/`; code `https://github.com/tobiakoko/afromerica-ent` (link it only after the repo clean-up in BUILD-PLAN "Outside this repo": root fix notes moved, `.backup` file removed)
+- stats (system facts until the client supplies figures): `60 / 40` judges / audience weighting in stages 1–3 · `23` API routes · `10 min` one-time-code expiry. `TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them`
+- Permission: given by the client (5 Nov 2026) to name them and use screenshots. Still blur voter names, emails and phone numbers.
 
 **Context.** Afromerica Entertainment runs a music talent competition with public events, artist profiles, ticket sales and fan voting, ending in a live grand finale.
 
@@ -287,6 +317,8 @@ Figures: Phase 4 before/after captures (Home, Visit, Contact, mobile menu), the 
 - *Chose scoring in Postgres functions over app code:* one place computes every stage's weighted score, so the leaderboard, admin panel and winners screen always agree.
 - *Chose idempotent webhooks:* each Paystack event is logged and checked against the vote or ticket before it's applied, so retries can't double-count.
 - *Chose email one-time codes for voters:* 6 digits, 10-minute expiry, per-email limits.
+
+**Figures.** `public/work/afromerica/architecture-light.svg` and `-dark.svg` (supplied). Screenshots: `TODO(content): run tools/capture-kit against the live site`.
 
 **Outcome.** Scoring: stages 1–3 weighted judges 60% and online votes 40%; stage 4 was 100% judges. In-house votes were removed and online voting codes disabled during the final week. Figures: event page, vote flow with the code step, checkout, live leaderboard, judge scoring screen, admin finale panel, winners screen. Blur all voter data.
 
@@ -327,6 +359,8 @@ Figures: Phase 4 before/after captures (Home, Visit, Contact, mobile menu), the 
 | Call-to-action contrast | 2.2:1 | 5.5:1 |
 | Nav dropdowns | Hover only | Keyboard and Escape |
 
+**Figures.** `public/work/dlbc-tampa/` (supplied, from a local build): cover and seven pages at desktop and phone. The full home page is held back: the home Events cards show "NaN" dates (see BUILD-PLAN "Outside this repo").
+
 **Reflection.** `What I'd do next:` the audit approach here became the systematic one I used on Lewisville. Link to the Lewisville case study.
 
 ### 6.4 Ron's Body Shop
@@ -360,7 +394,7 @@ Figures: Phase 4 before/after captures (Home, Visit, Contact, mobile menu), the 
 
 Short case study (300–400 words): context, my role, practice-area structure (immigration, personal injury, international business, family law, contract disputes, criminal defense), search metadata and link previews, screenshots desktop and phone.
 
-`TODO(content): the firm must approve the statistics and testimonials shown on its site before any screenshot that includes them is used.`
+`TODO(content): the firm must approve the statistics and testimonials shown on its site before any screenshot that includes them is used.` The supplied screenshots show both, so they're held in `assets/public/work/oseiprempeh/` (not deployed) until the firm approves.
 
 ### 6.6 This portfolio
 
@@ -374,16 +408,100 @@ Short case study (300–400 words): context, my role, practice-area structure (i
 
 Short case study (about 300 words), from PR #4: home page body text in the prerendered HTML went from 92 to 1,416 characters; a site-wide canonical told search engines every page was the home page; both names added to the structured data; `app/` from 106 to 71 files; runtime dependencies from 11 to 7. `TODO(content): Lighthouse scores after launch.`
 
+### 6.7 Extending a church LED wall (Deeper Life Bible Church Lewisville)
+
+Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November 2026). Every figure below comes from it.
+
+**Front matter**
+
+- title: `Extending a church LED wall`
+- outcome: `I took a church's LED wall from a failed extension, with scrambled and repeated content, to one working 3072 × 1536 display.`
+- role: `Diagnosis, system design, controller and receiving-card configuration, vendor follow-up`
+- team: `Solo, with the church and the equipment vendor`
+- timeline: `2026` — `TODO(content): months`
+- stack label: **Tools and hardware** (not "Stack")
+- stack: NovaStar VX1000 Pro (replacing a VX600), 24 NovaStar A7s Plus receiving cards, NovaLCT V5.9.2, NovaStar Mapping test, receiving-card self-tests
+- disciplines: Analysis, Implementation, Delivery
+- links: none
+- stats: `16 → 24` cabinets running · `+50%` screen (3072 × 1536 px) · `9` separate faults found and fixed
+- Permission: `TODO(content): pastor's OK to publish; photos only with no congregation faces`
+
+**Context.** The church's LED wall started as 16 cabinets (4 × 4, 2048 × 1536 px), driven by a NovaStar VX600 over six Ethernet ports. To make it bigger, the church added 8 cabinets as two new columns: 24 cabinets, 6 × 4, 3840 × 1920 mm, P1.25 indoor. After the install, the wall no longer showed one clean picture. Sections repeated, froze or showed the wrong part of the image.
+
+**The problem.** The wall grew by 50% while its controller and configuration stayed sized for the original screen. The wall carries lyrics, sermon slides, camera close-ups and what the livestream audience sees, so services ran on a reduced layout with part of the wall dark, and the new cabinets added nothing.
+
+- **Over capacity:** the full wall is 4,718,592 px; the VX600 is rated for 3.9 million, about 21% over.
+- **Over per-port bandwidth:** six ports for 24 cabinets meant 4 cabinets (786,432 px) per chain, against about 650,000 px per Gigabit port.
+- **Stale map:** the controller still held the 2048 × 1536 map.
+- **Wrong module profile:** the receiving cards were set for a different module, which scrambled the picture, capped cabinet height at 256 px and ran a 480 Hz refresh that risked banding on camera.
+- **Missing controller:** the packing list included a VX1000, but none was shipped.
+
+**My role.**
+
+- Analysis: rebuilt the specification from physical evidence (carton labels, circuit-board markings, mounting bars, the packing list) instead of trusting stored settings; worked out the pixel and port maths that showed it was a hardware limit; reconstructed the original installer's port map.
+- Implementation: designed a new data topology; configured the VX1000 Pro (grid, cabinets per port, map, output); identified the module's driver chip and loaded the manufacturer's receiving-card profile on all 24 cards.
+- Delivery: raised the missing controller and the profile request with the vendor under the order number; kept services running on a reduced layout in the meantime; validated and documented the handover.
+
+**Process.** Six phases. Frame them with the idea from the source: the system is a stack of five configuration layers, each relying on the one below, and every layer held its own fault.
+
+1. *Discovery:* the physical evidence table (module label R1.25/64S 256X128; 640 mm and 955 mm mounting bars giving 640 × 480 mm, 512 × 384 px cabinets; A7s Plus cards; a 6 × 4 grid; the VX600 still showing 2048x1536@60).
+2. *Capacity:* the cabinets-per-port table: 2 per port = 393,216 px (60%), 3 = 589,824 px (91%), 4 = 786,432 px (121%, over).
+3. *Topology:* 8 horizontal chains of 3 cabinets. Odd ports feed the left power supply and even ports the right, so no chain crosses the power boundary.
+4. *Controller setup:* three passes. Vertical chains failed because 3 doesn't divide 4 rows; the grid still described a 4 × 2 wall; "Device overloaded" came from 3D being on, which halves capacity.
+5. *Receiving cards:* the cards held a generic common-chip, static-scan profile; the module is a Chipone ICND2165 PWM driver at 1/64 scan. Daniel resisted cutting the cabinet height to clear a red warning, which would have hidden a third of every cabinet, and loaded the factory profile instead.
+6. *Validation and handover:* Mapping walk, full-colour tests, a camera check at 1/60 and 1/120 shutter, a power cycle to confirm persistence, and written records.
+
+**Architecture.** Two diagrams, redrawn as SVG: (1) the five-layer configuration stack with the fault found at each layer; (2) the final port map: 24 cabinets, 8 chains of 3, two power halves. Text: "The VX1000 Pro feeds 8 of its 10 Gigabit ports, each carrying one horizontal chain of three cabinets at 589,824 px, 91% of a port's limit. Odd ports sit on power supply A and even ports on supply B, so a supply failure darkens exactly one half of the wall."
+
+**Key decisions.**
+
+- *Chose a bigger controller over more tuning:* no port arrangement on a VX600 could carry 24 of these cabinets.
+- *Chose horizontal chains of three over vertical chains:* three divides the 6 columns, not the 4 rows.
+- *Chose to keep each chain inside one power half:* a power fault can never be mistaken for a data fault.
+- *Chose the manufacturer's profile over editing settings by hand:* PWM driver chips need factory register settings.
+
+**Issues log.** Use the 9-row table from the source (symptom, root cause, fix): stale map and over-capacity; no controller shipped; a missing module; stranded top-row cabinets; only the top-left region addressed; "Device overloaded" from 3D; Image Mosaic and PIP left on; module size entered as cabinet size; the wrong receiving-card profile.
+
+**Outcome.**
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Cabinets | 24 installed, picture broken | 24 (6 × 4) running as one canvas |
+| Canvas | 2048 × 1536, stale | 3072 × 1536 @ 60 Hz |
+| Controller | VX600, 21% over its 3.9M px rating | VX1000 Pro, 73% of its 6.5M px rating |
+| Heaviest port load | 786,432 px (121%) | 589,824 px (91%) |
+| Ports in use | 6 of 6 | 8 of 10 (2 spare) |
+| Receiving-card profile | Generic common-chip, static scan | Chipone ICND2165, 1/64 scan |
+
+Settings are saved to the controller and the cards and survived a power cycle. Handover note for the church team: "If exactly half the wall goes dark, check that half's power supply first."
+
+**Reflection.** Use the source's lessons, condensed: do the pixel maths before mounting anything; trust physical evidence over stored settings; test one layer at a time; treat a warning as a symptom; ask for factory files with the order.
+
+**Writing note.** The source writes each section twice, once "for church leadership" and once as a "technical view". On the portfolio, keep that idea in a lighter form: open each section with the plain-language sentence, then the technical detail. That shows the same skill analyst and implementation roles look for: explaining one problem to two audiences.
+
+**AI note.** The source lists "Claude for spec research and diagnostic cross-checks" under tools. Keep it in the tools line.
+
 ---
 
 ## 7. Still missing
 
-- [ ] Booking link
-- [ ] MBA school and date; years for the BGS, AS and certifications
-- [ ] Software engineering roles and dates, from Daniel
-- [ ] Whether to name hospitality employers
-- [ ] Lewisville production URL; pastor's permission for names and photos
-- [ ] Afromerica: client permission, live status, repo visibility, any figures
+- [x] Headline choice (2.1): A
+- [x] LinkedIn URL confirmed
+- [ ] Booking link (optional; see §1)
+- [x] Résumé: not used (§1)
+- [x] MBA and B.S. dates
+- [ ] Years for the B.G.S., the A.S. and both certifications
+- [x] Roles and dates (§4.5)
+- [ ] DLBC ICT role: a link to the donation project, or rewritten bullets (§4.5 comment)
+- [ ] Afromerica: a source for any performance or traffic figures before they return
+- [ ] Employment type for each role
+- [x] Hospitality employers: not named
+- [x] Lewisville URL and permission
+- [x] Afromerica permission and live URL
+- [ ] Afromerica repo clean-up before linking the code
 - [ ] Ron's Body Shop: fixes done, then numbers and owner's OK
 - [ ] OseiPrempeh: firm's approval of statistics and testimonials
-- [ ] Lighthouse scores for every project after screenshots are taken
+- [ ] Lighthouse scores: run `tools/capture-kit/lighthouse.mjs` and paste `scores.md` here
+- [ ] Afromerica screenshots from the live site (capture kit)
+- [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
+- [ ] LED wall: timeline (months), photos (front of the working wall, rear cabling, Mapping test, receiving-card self-test before and after), confirmation that the pastor's 5 Nov permission covers this write-up; the two diagrams redrawn as SVG

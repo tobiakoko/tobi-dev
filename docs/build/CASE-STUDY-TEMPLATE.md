@@ -38,7 +38,7 @@ stats:
 
 Types live in `app/data/work.ts`. The loader validates front matter at build time and **fails the build** if a required field is missing, a `cover` file doesn't exist, or a `stats` entry isn't also listed in `CONTENT.md` (check by exact string).
 
-Required fields: `slug`, `title`, `outcome`, `order`, `year`, `role`, `timeline`, `stack`, `disciplines`, `cover`. Optional: `featured`, `team`, `location`, `links`, `stats`.
+Required fields: `slug`, `title`, `outcome`, `order`, `year`, `role`, `timeline`, `stack`, `disciplines`, `cover`. Optional: `featured`, `team`, `location`, `links`, `stats`, `stackLabel` (the `MetaGrid` label for `stack`; default "Stack", use "Tools and hardware" for non-software projects).
 
 **Until Phase 3:** `cover` is optional (no screenshots exist yet) and is validated only when present; `outcome` is optional for Ron's Body Shop, whose outcome is a `TODO(content)`. Task 3.1 makes `cover` required again.
 
@@ -55,6 +55,7 @@ Use `##` for these headings, in this order. Skip a section only where `CONTENT.m
 | 4 | **Process** | Subsections in time order (`### Discovery`, `### Audit`, `### Plan`, `### Build`, `### Test`, `### Handover`, as relevant). 40–80 words each, with a `Figure` where it helps | 3–6 subsections |
 | 5 | **Architecture** | Diagram (Mermaid source rendered at build time, or committed SVG) plus a paragraph that describes it in words | Diagram + 60–100 words |
 | 6 | **Key decisions** | 2–4 decisions. Each: `### Chose X over Y`, then why in 2–3 sentences | 2–4 subsections |
+| 6a | **Issues log** (optional) | A Symptom / Root cause / Fix table, for diagnosis-heavy projects | Table, up to 10 rows |
 | 7 | **Outcome** | `ResultsTable` (Measure / Before / After) and `FigurePair`s. Only numbers from `CONTENT.md` | Table + 2–4 pairs |
 | 8 | **Reflection** | What Daniel would do next or differently, in a `Callout` | 40–80 words |
 | — | Footer | `NextProject` | — |
@@ -63,7 +64,7 @@ Use `##` for these headings, in this order. Skip a section only where `CONTENT.m
 
 - Figures: `![alt text](/work/<slug>/file.webp "Caption")`. The renderer turns an image with a title into a `Figure`. Two figures on consecutive lines inside `<div data-pair>` become a `FigurePair`.
 - Tables become `ResultsTable` when the header row is `Measure | Before | After`.
-- Mermaid: a fenced ` ```mermaid ` block is rendered to SVG at build time with `@mermaid-js/mermaid-cli` and saved to `public/work/<slug>/architecture.svg`. Ship the SVG, not the Mermaid runtime.
+- Mermaid: a fenced ` ```mermaid ` block is rendered to SVG at build time with `@mermaid-js/mermaid-cli` and saved to `public/work/<slug>/architecture.svg`. Ship the SVG, not the Mermaid runtime. Diagrams come in two files, `architecture-light.svg` and `architecture-dark.svg`; the page shows the one that matches the current theme.
 - Callout: a blockquote that starts with `**What I'd do next**`.
 - No raw HTML other than `<div data-pair>`.
 
