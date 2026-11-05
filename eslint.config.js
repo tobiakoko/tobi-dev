@@ -5,7 +5,8 @@ import react from 'eslint-plugin-react';
 import prettier from 'eslint-config-prettier/flat';
 
 export default tseslint.config(
-  { ignores: ['build', '.react-router', 'node_modules'] },
+  // tools/ holds standalone Node scripts with their own package.json.
+  { ignores: ['build', '.react-router', 'node_modules', 'tools'] },
   js.configs.recommended,
   tseslint.configs.recommended,
   react.configs.flat.recommended,

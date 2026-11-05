@@ -1,0 +1,62 @@
+{
+  "lewisville": {
+    "base": "https://dclm-lewisville.vercel.app",
+    "pages": [
+      { "name": "home", "path": "/", "full": true },
+      { "name": "visit", "path": "/visit", "full": true },
+      { "name": "about", "path": "/about" },
+      { "name": "ministries", "path": "/ministries" },
+      { "name": "sermons", "path": "/sermons" },
+      { "name": "events", "path": "/events" },
+      { "name": "contact", "path": "/contact", "full": true },
+      { "name": "give", "path": "/give" }
+    ],
+    "lighthouse": ["/", "/visit"]
+  },
+  "afromerica": {
+    "base": "https://www.afromericaent.com",
+    "pages": [
+      { "name": "home", "path": "/", "full": true },
+      { "name": "events", "path": "/events" },
+      { "name": "event", "discover": "a[href^='/events/']", "full": true },
+      { "name": "leaderboard", "discover": "a[href^='/events/']", "suffix": "/leaderboard" },
+      { "name": "artists", "path": "/artists" },
+      { "name": "artist", "discover": "a[href^='/artists/']" },
+      { "name": "about", "path": "/about" }
+    ],
+    "mask": [],
+    "lighthouse": ["/", "/events"]
+  },
+  "dlbc-tampa": {
+    "base": "https://www.dlbctampa.org",
+    "pages": [
+      { "name": "home", "path": "/", "full": true },
+      { "name": "about", "path": "/about" },
+      { "name": "ministries", "path": "/ministries" },
+      { "name": "sermons", "path": "/sermons" },
+      { "name": "events", "path": "/events" },
+      { "name": "gallery", "path": "/gallery" },
+      { "name": "contact", "path": "/contact" }
+    ],
+    "lighthouse": ["/", "/contact"]
+  },
+  "rons-body-shop": {
+    "base": "https://www.ronsbodyshop.net",
+    "pages": [{ "name": "home", "path": "/", "full": true }],
+    "lighthouse": ["/"]
+  },
+  "oseiprempeh": {
+    "base": "https://www.oseiprempeh.com",
+    "pages": [{ "name": "home", "path": "/", "full": true }],
+    "lighthouse": ["/"]
+  },
+  "portfolio": {
+    "base": "https://tobiakoko.com",
+    "pages": [
+      { "name": "home", "path": "/", "full": true },
+      { "name": "work", "path": "/work" },
+      { "name": "about", "path": "/about" }
+    ],
+    "lighthouse": ["/", "/about"]
+  }
+}
