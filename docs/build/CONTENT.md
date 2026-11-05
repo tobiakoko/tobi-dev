@@ -172,8 +172,10 @@ A list, newest first. Each item: role, organisation, location, dates, then 2–4
 | --- | --- | --- |
 | Master of Business Administration (in progress) | Western Governors University | Jun 2026 – Jun 2027 (expected) |
 | B.S. Computer Science | Western Governors University | Apr 2023 – Sep 2024 |
-| B.G.S. Criminology | University of South Florida | `TODO(content)` |
-| A.S. Electrical Engineering | Community College of Baltimore County | `TODO(content)` |
+| Bachelor of Arts (BA), Criminal Justice | University of South Florida | Sep 2018 – Dec 2022 |
+| Associate of Science (AS), Electrical Engineering | Community College of Baltimore County | Aug 2015 – May 2018 |
+
+Degree names and dates from Daniel (5 Nov 2026). `TODO(content): the Bio (§4.2) and Origins (§4.6) say "criminology"; the degree is Criminal Justice. Daniel to confirm which wording to use.`
 
 ### 4.8 Certifications (label: Certifications)
 
@@ -297,7 +299,8 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 - stack: Next.js 16, React 19, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind CSS 4, Vercel
 - links: live `https://www.afromericaent.com/`; code `https://github.com/tobiakoko/afromerica-ent` (link it only after the repo clean-up in BUILD-PLAN "Outside this repo": root fix notes moved, `.backup` file removed)
 - stats (system facts until the client supplies figures): `60 / 40` judges / audience weighting in stages 1–3 · `23` API routes · `10 min` one-time-code expiry. `TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them`
-- Permission: given by the client (5 Nov 2026) to name them and use screenshots. Still blur voter names, emails and phone numbers.
+- Permission: given by the client (5 Nov 2026) to name them and use screenshots, including the artists page with contestants' photos and names (Daniel, 5 Nov 2026). Still blur voter names, emails and phone numbers.
+- The live site's footer credits **Arko Media Labs**: Daniel's own company, which he's building into a web development studio (Daniel, 5 Nov 2026). It doesn't contradict "Sole developer".
 
 **Context.** Afromerica Entertainment runs a music talent competition with public events, artist profiles, ticket sales and fan voting, ending in a live grand finale.
 
@@ -424,7 +427,7 @@ Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November
 - disciplines: Analysis, Implementation, Delivery
 - links: none
 - stats: `16 → 24` cabinets running · `+50%` screen (3072 × 1536 px) · `9` separate faults found and fixed
-- Permission: `TODO(content): pastor's OK to publish; photos only with no congregation faces`
+- Permission: given by the pastor (Daniel, 5 Nov 2026) to publish this case study. Photos only with no congregation faces.
 
 **Context.** The church's LED wall started as 16 cabinets (4 × 4, 2048 × 1536 px), driven by a NovaStar VX600 over six Ethernet ports. To make it bigger, the church added 8 cabinets as two new columns: 24 cabinets, 6 × 4, 3840 × 1920 mm, P1.25 indoor. After the install, the wall no longer showed one clean picture. Sections repeated, froze or showed the wrong part of the image.
 
@@ -490,7 +493,9 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [ ] Booking link (optional; see §1)
 - [x] Résumé: not used (§1)
 - [x] MBA and B.S. dates
-- [ ] Years for the B.G.S., the A.S. and both certifications
+- [x] B.A. and A.S. names and dates (§4.7)
+- [ ] Years for both certifications
+- [ ] "Criminology" in the Bio and Origins vs the Criminal Justice degree (§4.7 note)
 - [x] Roles and dates (§4.5)
 - [ ] DLBC ICT role: a link to the donation project, or rewritten bullets (§4.5 comment)
 - [ ] Afromerica: a source for any performance or traffic figures before they return
@@ -504,7 +509,9 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [x] Lighthouse scores (§8)
 - [ ] Afromerica screenshots from the live site (capture kit)
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
-- [ ] LED wall: timeline (months), photos (front of the working wall, rear cabling, Mapping test, receiving-card self-test before and after), confirmation that the pastor's 5 Nov permission covers this write-up; the two diagrams redrawn as SVG
+- [x] LED wall: pastor's permission to publish
+- [ ] LED wall: timeline (months), photos (front of the working wall, rear cabling, Mapping test, receiving-card self-test before and after; no congregation faces); the two diagrams redrawn as SVG
+- [ ] Arko Media Labs: whether to name it on the site (for example as the organisation for the freelance role) and its URL, if any
 
 ---
 

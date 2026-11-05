@@ -123,10 +123,16 @@ const education: Degree[] = [
     school: 'Western Governors University',
     dates: 'Apr 2023 – Sep 2024',
   },
-  // TODO(content): years.
-  { degree: 'B.G.S. Criminology', school: 'University of South Florida' },
-  // TODO(content): years.
-  { degree: 'A.S. Electrical Engineering', school: 'Community College of Baltimore County' },
+  {
+    degree: 'Bachelor of Arts (BA), Criminal Justice',
+    school: 'University of South Florida',
+    dates: 'Sep 2018 – Dec 2022',
+  },
+  {
+    degree: 'Associate of Science (AS), Electrical Engineering',
+    school: 'Community College of Baltimore County',
+    dates: 'Aug 2015 – May 2018',
+  },
 ];
 
 // TODO(content): years earned.

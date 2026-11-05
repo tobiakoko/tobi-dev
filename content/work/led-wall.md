@@ -18,7 +18,7 @@ stack:
   - receiving-card self-tests
   - Claude for spec research and diagnostic cross-checks
 disciplines: [Analysis, Implementation, Delivery]
-# TODO(content): pastor's OK to publish; photos only with no congregation faces
+# Permission: given by the pastor (5 Nov 2026). Photos only with no congregation faces.
 stats:
   - { value: '16 → 24', label: 'cabinets running' }
   - { value: '+50%', label: 'screen (3072 × 1536 px)' }
