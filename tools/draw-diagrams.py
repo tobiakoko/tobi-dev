@@ -9,14 +9,14 @@ FONT = "Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
 
 
 class D:
-    def __init__(self, w, h, t, title):
-        self.w, self.h, self.t, self.title = w, h, THEMES[t], title
+    def __init__(self, w, h, t, title, scale=1):
+        self.w, self.h, self.t, self.title, self.s = w, h, THEMES[t], title, scale
         self.parts = []
 
     def panel(self, x, y, w, h, label):
         t = self.t
         self.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{t["panel"]}" stroke="{t["line"]}"/>')
-        self.parts.append(f'<text x="{x+20}" y="{y+30}" font-size="13" letter-spacing="1.8" font-weight="600" fill="{t["muted"]}">{html.escape(label.upper())}</text>')
+        self.parts.append(f'<text x="{x+20}" y="{y+30*self.s}" font-size="{13*self.s:g}" letter-spacing="1.8" font-weight="600" fill="{t["muted"]}">{html.escape(label.upper())}</text>')
 
     def node(self, x, y, w, h, title, lines=(), shape="box", strong=False):
         t = self.t
@@ -28,11 +28,11 @@ class D:
         else:
             self.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{t["card"]}" stroke="{t["accent"] if strong else t["ink"]}" stroke-width="{1.75 if strong else 1.25}"/>')
         n = 1 + len(lines)
-        lh = 21
-        top = y + h / 2 - (n * lh) / 2 + 15 + (6 if shape == "db" else 0)
-        self.parts.append(f'<text x="{x+w/2}" y="{top}" text-anchor="middle" font-size="16" font-weight="600" fill="{t["ink"]}">{html.escape(title)}</text>')
+        lh = 21 * self.s
+        top = y + h / 2 - (n * lh) / 2 + 15 * self.s + (6 if shape == "db" else 0)
+        self.parts.append(f'<text x="{x+w/2}" y="{top:g}" text-anchor="middle" font-size="{16*self.s:g}" font-weight="600" fill="{t["ink"]}">{html.escape(title)}</text>')
         for i, ln in enumerate(lines):
-            self.parts.append(f'<text x="{x+w/2}" y="{top+(i+1)*lh}" text-anchor="middle" font-size="14" fill="{t["muted"]}">{html.escape(ln)}</text>')
+            self.parts.append(f'<text x="{x+w/2}" y="{top+(i+1)*lh:g}" text-anchor="middle" font-size="{14*self.s:g}" fill="{t["muted"]}">{html.escape(ln)}</text>')
 
     def edge(self, pts, label=None, at=None, dashed=False, anchor="middle"):
         t = self.t
@@ -41,10 +41,14 @@ class D:
         self.parts.append(f'<path d="{d}" fill="none" stroke="{t["edge"]}" stroke-width="1.5"{dash} marker-end="url(#arrow)"/>')
         if label:
             lx, ly = at if at else ((pts[0][0] + pts[-1][0]) / 2, (pts[0][1] + pts[-1][1]) / 2)
-            wpx = len(label) * 7.1 + 14
+            wpx = (len(label) * 7.1 + 14) * self.s
             x0 = lx - wpx / 2 if anchor == "middle" else (lx if anchor == "start" else lx - wpx)
-            self.parts.append(f'<rect x="{x0}" y="{ly-13}" width="{wpx}" height="22" rx="2" fill="{t["bg"]}"/>')
-            self.parts.append(f'<text x="{x0+wpx/2}" y="{ly+3}" text-anchor="middle" font-size="13" fill="{t["ink"]}">{html.escape(label)}</text>')
+            self.parts.append(f'<rect x="{x0:g}" y="{ly-13*self.s:g}" width="{wpx:g}" height="{22*self.s:g}" rx="2" fill="{t["bg"]}"/>')
+            self.parts.append(f'<text x="{x0+wpx/2:g}" y="{ly+4*self.s:g}" text-anchor="middle" font-size="{13*self.s:g}" fill="{t["ink"]}">{html.escape(label)}</text>')
+
+    def line(self, pts):
+        d = "M" + " L".join(f"{x},{y}" for x, y in pts)
+        self.parts.append(f'<path d="{d}" fill="none" stroke="{self.t["edge"]}" stroke-width="1.5"/>')
 
     def note(self, x, y, text, size=13, anchor="start"):
         self.parts.append(f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-size="{size}" fill="{self.t["muted"]}">{html.escape(text)}</text>')
@@ -60,74 +64,78 @@ class D:
         return head + "".join(self.parts) + "</svg>"
 
 
+# The site diagrams are 720 wide with text at 1.2x, two columns that read top to
+# bottom, so labels stay readable in the page's figure column.
+L, R, CW = 30, 415, 275          # left column x, right column x, column width
+LN, RN, NW = 50, 435, 235        # node x in each column, node width
+
+
 def lewisville(theme):
-    d = D(1600, 980, theme, "Lewisville church website architecture: Next.js on Vercel reading Sanity, with webhook revalidation, a contact API and YouTube")
-    d.node(60, 80, 250, 84, "Church staff", ["edit in Sanity Studio"])
-    d.node(60, 300, 250, 84, "Visitors", ["phones and desktops"])
+    d = D(720, 1180, theme, "Lewisville church website architecture: Next.js on Vercel reading Sanity, with webhook revalidation, a contact API and YouTube", 1.2)
+    d.node(L, 24, CW, 90, "Church staff", ["edit in Sanity Studio"])
+    d.node(R, 24, CW, 90, "Visitors", ["phones and desktops"])
 
-    d.panel(370, 40, 560, 900, "Vercel")
-    d.node(420, 96, 440, 100, "/api/revalidate", ["checks Sanity's signature,", "refreshes only what changed"])
-    d.node(420, 262, 440, 116, "Next.js 16 App Router", ["static, cached pages", "Home and Sermons refresh every 60 s"], strong=True)
-    d.node(420, 470, 440, 104, "/api/contact", ["Zod validation, origin check,", "a typed result for each status code"])
-    d.node(420, 664, 440, 84, "/api/live", ["live-stream check, cached 60 s"])
-    d.note(420, 812, "Every pull request (GitHub Actions, Node 22 and 24):", 13)
-    d.note(420, 836, "typecheck, lint, 333 unit tests, 360 browser runs with axe", 13)
-    d.note(420, 860, "Preview deployment before each phase merges", 13)
+    d.panel(L, 170, CW, 310, "Sanity")
+    d.node(LN, 225, NW, 230, "Content Lake", ["6 fixed pages", "7 lists: leaders,", "ministries, outreach,", "doctrines, events,", "sermons, testimonies"], shape="db")
 
-    d.panel(1000, 40, 540, 300, "Sanity")
-    d.node(1050, 112, 440, 150, "Content Lake", ["6 fixed pages", "7 lists: leaders, ministries, outreach,", "doctrines, events, sermons, testimonies"], shape="db")
+    d.panel(L, 520, CW, 420, "Services")
+    d.node(LN, 575, NW, 90, "Upstash Redis", ["rate limiting"])
+    d.node(LN, 685, NW, 100, "Resend", ["form email to the", "church inbox"])
+    d.node(LN, 805, NW, 110, "YouTube", ["public channel feed;", "player loads on Play"])
 
-    d.panel(1000, 400, 540, 540, "Services")
-    d.node(1050, 456, 440, 80, "Upstash Redis", ["rate limiting"])
-    d.node(1050, 566, 440, 80, "Resend", ["form email to the church inbox"])
-    d.node(1050, 676, 440, 80, "YouTube", ["public channel feed; player loads on Play"])
-    d.node(1050, 786, 440, 80, "Google Analytics", ["loaded in the browser only after consent"])
+    d.panel(R, 170, CW, 710, "Vercel")
+    d.node(RN, 225, NW, 130, "Next.js 16", ["static, cached pages;", "Home and Sermons", "refresh every 60 s"], strong=True)
+    d.node(RN, 395, NW, 125, "/api/revalidate", ["checks Sanity\u2019s", "signature, refreshes", "only what changed"])
+    d.node(RN, 560, NW, 150, "/api/contact", ["Zod validation,", "origin check, a typed", "result per status code"])
+    d.node(RN, 750, NW, 100, "/api/live", ["live-stream check,", "cached 60 s"])
 
-    # staff -> Sanity, over the top
-    d.edge([(310, 122), (340, 122), (340, 18), (1270, 18), (1270, 112)], "publish", at=(800, 18))
-    d.edge([(1050, 160), (860, 150)], "signed webhook", at=(955, 140))
-    d.edge([(640, 196), (640, 262)], "revalidateTag", at=(652, 230), anchor="start")
-    d.edge([(860, 300), (1050, 222)], "reads via lib/data.ts", at=(955, 282))
-    d.edge([(310, 330), (420, 330)], "pages", at=(365, 316))
-    d.edge([(310, 362), (360, 362), (360, 520), (420, 520)], "forms", at=(338, 450))
-    d.edge([(860, 500), (1050, 496)])
-    d.edge([(860, 540), (1050, 606)])
-    d.edge([(860, 350), (895, 350), (895, 690), (860, 690)])
-    d.edge([(860, 722), (1050, 716)])
+    d.edge([(167, 114), (167, 166)], "publish", at=(180, 142), anchor="start")
+    d.edge([(552, 114), (552, 221)], "pages and forms", at=(564, 142), anchor="start")
+    d.edge([(LN + NW, 440), (RN - 4, 440)], "webhook", at=(360, 440))
+    d.edge([(RN, 290), (LN + NW + 4, 290)], "reads", at=(360, 290))
+    d.edge([(552, 395), (552, 359)])
+    d.edge([(RN, 620), (LN + NW + 4, 620)])
+    d.edge([(RN, 700), (LN + NW + 4, 700)])
+    d.edge([(RN, 830), (LN + NW + 4, 830)])
+    d.note(L, 990, "Google Analytics loads in the browser only after consent.", 18)
+    d.note(L, 1050, "Every pull request (GitHub Actions, Node 22 and 24):", 18)
+    d.note(L, 1078, "typecheck, lint, 333 unit tests, 360 browser runs with axe.", 18)
+    d.note(L, 1106, "Preview deployment before each phase merges.", 18)
     return d.svg()
 
 
 def afromerica(theme):
-    d = D(1600, 900, theme, "Afromerica competition platform architecture: Next.js on Vercel with Supabase, Paystack, Resend and Sentry")
-    d.node(60, 90, 250, 80, "Fans", ["vote and buy tickets"])
-    d.node(60, 230, 250, 80, "Judges", ["score with a voter code"])
-    d.node(60, 370, 250, 80, "Admins", ["events, artists, finale"])
+    d = D(720, 970, theme, "Afromerica competition platform architecture: Next.js on Vercel with Supabase, Paystack, Resend and Sentry", 1.2)
+    for x, title, line in ((30, "Fans", "vote, buy tickets"), (257, "Judges", "score with a code"), (484, "Admins", "events and finale")):
+        d.node(x, 24, 206, 90, title, [line])
+        d.line([(x + 103, 114), (x + 103, 142)])
+    d.line([(133, 142), (587, 142)])
+    d.edge([(552, 142), (552, 221)])
 
-    d.panel(370, 40, 560, 820, "Vercel")
-    d.node(420, 100, 440, 110, "Next.js 16", ["public pages, voting screens,", "admin dashboard"], strong=True)
-    d.node(420, 310, 440, 124, "API routes (23)", ["votes, tickets, finale scoring,", "one-time codes, payments"])
-    d.node(420, 560, 440, 124, "/api/payments/webhook", ["HMAC-SHA512 signature, idempotent,", "records the payment in Postgres"])
+    d.panel(L, 170, CW, 440, "Supabase")
+    d.node(LN, 225, NW, 90, "Realtime", ["pushes score changes"])
+    d.node(LN, 345, NW, 150, "Postgres", ["row-level security,", "weighted scoring", "functions"], shape="db")
+    d.node(LN, 515, NW, 64, "Auth", [])
 
-    d.panel(1000, 40, 540, 420, "Supabase")
-    d.node(1050, 96, 440, 76, "Realtime", ["pushes score changes"])
-    d.node(1050, 210, 440, 124, "Postgres", ["row-level security,", "weighted scoring functions"], shape="db")
-    d.node(1050, 366, 440, 64, "Auth", [])
+    d.panel(L, 640, CW, 300, "Services")
+    d.node(LN, 695, NW, 100, "Resend", ["one-time codes and", "confirmations"])
+    d.node(LN, 815, NW, 100, "Sentry", ["errors from server", "and browser"])
 
-    d.panel(1000, 500, 540, 360, "Services")
-    d.node(1050, 552, 440, 76, "Paystack", ["checkout for votes and tickets"])
-    d.node(1050, 656, 440, 76, "Resend", ["one-time codes and confirmations"])
-    d.node(1050, 760, 440, 76, "Sentry", ["errors from server and browser"])
+    d.panel(R, 170, CW, 595, "Vercel")
+    d.node(RN, 225, NW, 110, "Next.js 16", ["public pages, voting,", "admin dashboard"], strong=True)
+    d.node(RN, 375, NW, 180, "API routes (23)", ["votes, tickets, finale", "scoring, one-time", "codes, payments"])
+    d.node(RN, 600, NW, 135, "Payment webhook", ["HMAC-SHA512 signature,", "idempotent, recorded", "in Postgres"])
 
-    for y in (130, 270, 410):
-        d.edge([(310, y), (420, 155 + (y - 270) / 8)])
-    d.edge([(640, 210), (640, 310)])
-    d.edge([(1050, 134), (860, 150)], "live leaderboard", at=(955, 128))
-    d.edge([(1270, 210), (1270, 172)])
-    d.edge([(860, 350), (1050, 272)], "queries", at=(955, 300))
-    d.edge([(860, 400), (1050, 398)], "sessions", at=(955, 386))
-    d.edge([(860, 425), (900, 425), (900, 590), (1050, 590)], "start payment", at=(965, 578))
-    d.edge([(1050, 610), (860, 615)], "charge.success", at=(955, 632))
-    d.edge([(860, 660), (1050, 694)], "confirmations", at=(955, 692))
+    d.panel(R, 795, CW, 145, "Payments")
+    d.node(RN, 850, NW, 80, "Paystack", ["votes and tickets"])
+
+    d.edge([(LN + NW, 270), (RN - 4, 270)], "live scores", at=(360, 270))
+    d.edge([(167, 345), (167, 319)])
+    d.edge([(RN, 420), (LN + NW + 4, 420)], "queries", at=(360, 420))
+    d.edge([(RN, 545), (LN + NW + 4, 545)], "sessions", at=(360, 545))
+    d.edge([(RN, 715), (LN + NW + 4, 715)], "email", at=(360, 715))
+    d.edge([(RN + NW, 450), (705, 450), (705, 890), (RN + NW + 4, 890)])
+    d.edge([(552, 850), (552, 739)], "charge.success", at=(552, 780))
     return d.svg()
 
 

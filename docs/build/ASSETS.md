@@ -30,8 +30,8 @@ All screenshots: 1440 × 900 desktop and 390 × 844 phone, at 2× pixel density,
 Show the light or dark SVG to match the site's theme, e.g. render both and hide one with CSS:
 
 ```html
-<img class="theme-light" src="/work/lewisville/architecture-light.svg" alt="…" width="1600" height="980">
-<img class="theme-dark"  src="/work/lewisville/architecture-dark.svg"  alt="…" width="1600" height="980">
+<img class="theme-light" src="/work/lewisville/architecture-light.svg" alt="…" width="720" height="1180">
+<img class="theme-dark"  src="/work/lewisville/architecture-dark.svg"  alt="…" width="720" height="1180">
 ```
 
 ```css
