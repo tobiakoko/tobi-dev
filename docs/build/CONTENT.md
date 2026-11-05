@@ -321,7 +321,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 - *Chose idempotent webhooks:* each Paystack event is logged and checked against the vote or ticket before it's applied, so retries can't double-count.
 - *Chose email one-time codes for voters:* 6 digits, 10-minute expiry, per-email limits.
 
-**Figures.** `public/work/afromerica/architecture-light.svg` and `-dark.svg` (supplied). Screenshots: `TODO(content): run tools/capture-kit against the live site`.
+**Figures.** `public/work/afromerica/architecture-light.svg` and `-dark.svg` (supplied). Screenshots captured from the live site on 5 Nov 2026 (home, finale voting, Final Results, artists, about) and checked for voter data. `TODO(content): vote flow, checkout, judge scoring, admin finale panel and winners screen need an account.`
 
 **Outcome.** Final scoring: paid votes 35%, public score 10%, judges 30% and performance 25% (source: the live Final Results page). In-house votes were removed and online voting codes disabled during the final week. Figures: event page, vote flow with the code step, checkout, live leaderboard, judge scoring screen, admin finale panel, winners screen. Blur all voter data.
 
@@ -506,12 +506,15 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [x] Lewisville URL and permission
 - [x] Afromerica permission and live URL
 - [ ] Afromerica repo clean-up before linking the code
+- [ ] Lewisville: the Phase 4 before/after captures and a Studio editing screen
+- [ ] DLBC Tampa: material for Process and Architecture (§6.3 has none)
 - [ ] Ron's Body Shop: fixes done, then numbers and owner's OK
 - [ ] OseiPrempeh: firm's approval of statistics and testimonials
 - [x] Lighthouse scores (§8)
-- [ ] Afromerica screenshots from the live site (capture kit)
+- [x] Afromerica screenshots from the live site (capture kit)
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
 - [x] LED wall: pastor's permission to publish
+- [ ] LED wall: the issues log table (symptom, root cause, fix for all 9 rows) and the names of the five configuration layers, from the source case study
 - [ ] LED wall: timeline (months), photos (front of the working wall, rear cabling, Mapping test, receiving-card self-test before and after; no congregation faces); the two diagrams redrawn as SVG
 - [x] Arko Media Labs: not on the site yet (Daniel, 5 Nov 2026)
 
