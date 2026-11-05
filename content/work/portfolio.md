@@ -2,7 +2,7 @@
 slug: portfolio
 title: This portfolio
 outcome: Made my own site indexable and rebuilt it as a quiet, fast, prerendered portfolio.
-order: 6
+order: 7
 year: '2025–2026'
 role: Designer and developer
 timeline: 2025 – 2026

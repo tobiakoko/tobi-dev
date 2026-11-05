@@ -35,6 +35,8 @@ export interface WorkMeta {
   timeline: string;
   /** Exactly what the project's own code uses. */
   stack: string[];
+  /** MetaGrid label for `stack`. Set for non-software projects ("Tools and hardware"). */
+  stackLabel?: string;
   disciplines: Discipline[];
   links: { live?: string; code?: string };
   /** TODO(content): required from Phase 3, when screenshots exist. */
@@ -54,13 +56,14 @@ export interface WorkStudy extends WorkMeta {
 }
 
 /**
- * Every technology across all projects, without version numbers or notes:
- * 'Supabase (Postgres, Auth, Realtime)' and 'Next.js 16' become 'Supabase'
- * and 'Next.js'. Feeds the Person schema's knowsAbout.
+ * Every software technology across all projects, without version numbers or
+ * notes: 'Supabase (Postgres, Auth, Realtime)' and 'Next.js 16' become
+ * 'Supabase' and 'Next.js'. Projects with a stackLabel list hardware and tools,
+ * not a software stack, so they're left out. Feeds the Person schema's knowsAbout.
  */
 export function technologies(work: WorkMeta[]) {
-  const names = work.flatMap((w) =>
-    w.stack.map((s) => s.replace(/\s*\(.*\)$/, '').replace(/\s+\d+$/, '')),
-  );
+  const names = work
+    .filter((w) => !w.stackLabel)
+    .flatMap((w) => w.stack.map((s) => s.replace(/\s*\(.*\)$/, '').replace(/\s+\d+$/, '')));
   return [...new Set(names)];
 }

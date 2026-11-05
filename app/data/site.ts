@@ -8,7 +8,7 @@ export const JOB_TITLE = 'Software Engineer';
 export const EMAIL = 'enquiries@tobiakoko.com';
 export const LOCATION = 'Dallas, Texas';
 export const GITHUB_URL = 'https://github.com/tobiakoko';
-export const LINKEDIN_URL = 'https://linkedin.com/in/daniel-akoko';
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/daniel-akoko/';
 export const AVAILABILITY = 'Open to full-time roles and freelance projects';
 
 // TODO(content): Cal.com or Calendly URL. Every "Book a call" link stays hidden while null.

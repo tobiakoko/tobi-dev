@@ -23,7 +23,8 @@ stack:
   ]
 disciplines: [Engineering, Analysis, Implementation, Delivery]
 links:
-  # TODO(content): live URL once the domain moves to deeperlifelewisville.org
+  # Switch to https://deeperlifelewisville.org when the domain moves.
+  live: https://dclm-lewisville.vercel.app/
   code: https://github.com/tobiakoko/dclm-lewisville
 stats:
   - { value: '109 → 333', label: 'unit tests' }

@@ -163,6 +163,7 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     location: optionalString(file, data, 'location'),
     timeline: requireString(file, data, 'timeline'),
     stack: requireStrings(file, data, 'stack'),
+    stackLabel: optionalString(file, data, 'stackLabel'),
     disciplines: disciplines as Discipline[],
     links: { live, code },
     cover,

@@ -14,9 +14,12 @@ export default function MetaGrid({ items }: { items: MetaItem[] }) {
       {items
         .filter((item) => item.value)
         .map((item) => (
-          <div key={item.label} className={`flex min-w-0 flex-col gap-1 ${item.wide ? 'col-span-2' : ''}`}>
+          <div
+            key={item.label}
+            className={`flex min-w-0 flex-col gap-1 ${item.wide ? 'col-span-2' : ''}`}
+          >
             <dt className="label">{item.label}</dt>
-            <dd className="text-small tabular-nums [overflow-wrap:anywhere]">{item.value}</dd>
+            <dd className="text-small [overflow-wrap:anywhere] tabular-nums">{item.value}</dd>
           </div>
         ))}
     </dl>

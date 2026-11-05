@@ -12,7 +12,7 @@ export function meta() {
 }
 
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
-const bare = (url: string) => url.replace(/^https?:\/\//, '');
+const bare = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 export default function Contact() {
   return (

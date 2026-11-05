@@ -32,7 +32,7 @@ export default function CaseStudyHeader({ work }: { work: WorkMeta }) {
         </Link>
         <h1 className="max-w-[18ch] text-title text-balance">{work.title}</h1>
         {work.outcome && (
-          <p className="line-clamp-2 max-w-measure text-h2 text-muted">{work.outcome}</p>
+          <p className="max-w-[48rem] text-h2 text-balance text-muted">{work.outcome}</p>
         )}
       </div>
       <MetaGrid
@@ -43,7 +43,7 @@ export default function CaseStudyHeader({ work }: { work: WorkMeta }) {
           { label: 'Location', value: work.location },
           { label: 'Disciplines', value: <DisciplineTag disciplines={work.disciplines} /> },
           { label: 'Links', value: links },
-          { label: 'Stack', value: work.stack.join(', '), wide: true },
+          { label: work.stackLabel ?? 'Stack', value: work.stack.join(', '), wide: true },
         ]}
       />
       {work.cover && <Figure image={work.cover} eager />}

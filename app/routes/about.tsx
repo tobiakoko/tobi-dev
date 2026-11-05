@@ -37,52 +37,95 @@ const principles = [
 interface Role {
   role: string;
   org?: string;
+  location: string;
   dates?: string;
-  line: ReactNode;
+  bullets: ReactNode[];
 }
 
-// TODO(content): software engineering roles and dates, as Daniel supplies them.
+// CONTENT.md §4.5, newest first. TODO(content): employment type for each role.
 const past: Role[] = [
   {
-    role: 'Freelance web developer',
-    org: 'Self-employed',
-    // TODO(content): start year, then dates: `${start}–present`
-    line: (
+    role: 'Senior Full-Stack Developer',
+    org: 'Afromerica Entertainment',
+    location: 'Remote',
+    dates: 'Aug 2025 – Dec 2025',
+    bullets: [
+      'Built a competition and events platform in React, TypeScript and Next.js, from the database and APIs to the admin dashboard.',
+      'Delivered paid voting with a live leaderboard, an event management dashboard and ticket checkout with Paystack.',
+      'Built REST APIs on PostgreSQL (Supabase) with signed, idempotent payment webhooks and real-time updates.',
+    ],
+  },
+  {
+    role: 'Software Engineer (Full-Stack)',
+    org: 'DLBC ICT',
+    location: 'Dallas, TX',
+    dates: 'Nov 2024 – Sep 2025',
+    // TODO(content): bullets stay hidden until Daniel links the donation project or
+    // rewrites them to match work that can be shown (CONTENT.md §4.5 comment).
+    bullets: [],
+  },
+  {
+    role: 'IT & AV Systems Lead',
+    org: 'Deeper Life Bible Church',
+    location: 'Tampa, FL and Dallas, TX',
+    dates: '2018 – present',
+    bullets: [
+      'Run IT across two church locations: workstations, networks and Wi-Fi, printers, and hardware and software troubleshooting.',
       <>
-        Church, legal, automotive and entertainment websites (see{' '}
+        Designed and installed the AV and livestream system (cameras, audio mixers, microphones,
+        monitors and streaming encoders) for weekly services broadcast online. See the{' '}
+        <Link to="/work/led-wall" className="link">
+          LED wall case study
+        </Link>
+        .
+      </>,
+      'Lead and train a volunteer electronics team, with standard operating procedures and documentation.',
+      'Maintain the church website and its security, and keep network diagrams, equipment inventories, troubleshooting guides, backups and account policies up to date.',
+    ],
+  },
+  {
+    role: 'Freelance Web Developer',
+    org: 'Self-employed',
+    location: 'Remote',
+    dates: '2025 – present',
+    bullets: [
+      <>
+        Websites for a Tampa law practice and a Torrance, California collision-repair shop (see{' '}
         <Link to="/work" className="link">
           Work
         </Link>
         ).
-      </>
-    ),
-  },
-  {
-    role: 'Church technology and media',
-    org: 'Deeper Life Bible Church, Tampa and Dallas',
-    // TODO(content): years
-    line: 'Sound, media production, livestreaming and IT support.',
+      </>,
+    ],
   },
   {
     role: 'Hospitality',
-    // TODO(content): Daniel to choose whether to name employers; years
-    line: 'Guest-facing service in high-volume restaurants.',
+    location: 'Dallas, TX',
+    // TODO(content): years. Employers are deliberately not named.
+    bullets: ['Guest-facing service in high-volume restaurants.'],
   },
 ];
 
 interface Degree {
   degree: string;
   school?: string;
-  year?: string;
+  dates?: string;
 }
 
 const education: Degree[] = [
-  // TODO(content): MBA school and expected completion date.
-  { degree: 'MBA (in progress)' },
-  { degree: 'B.S. Computer Science', school: 'Western Governors University', year: '2024' },
-  // TODO(content): year.
+  {
+    degree: 'Master of Business Administration (in progress)',
+    school: 'Western Governors University',
+    dates: 'Jun 2026 – Jun 2027 (expected)',
+  },
+  {
+    degree: 'B.S. Computer Science',
+    school: 'Western Governors University',
+    dates: 'Apr 2023 – Sep 2024',
+  },
+  // TODO(content): years.
   { degree: 'B.G.S. Criminology', school: 'University of South Florida' },
-  // TODO(content): year.
+  // TODO(content): years.
   { degree: 'A.S. Electrical Engineering', school: 'Community College of Baltimore County' },
 ];
 
@@ -149,8 +192,9 @@ export default function About() {
           <Prose>
             <p>
               I build websites and digital services for churches and small businesses, and I&rsquo;m
-              completing an MBA. I&rsquo;m open to full-time roles in software engineering, business
-              and systems analysis, implementation, and project delivery.
+              studying for an MBA at Western Governors University (expected June 2027). I&rsquo;m
+              open to full-time roles in software engineering, business and systems analysis,
+              implementation, and project delivery.
             </p>
           </Prose>
         </LabelRailRow>
@@ -159,11 +203,17 @@ export default function About() {
           <RuledList>
             {past.map((r) => (
               <RuledItem key={r.role}>
-                <p className="font-medium">{r.role}</p>
-                {(r.org || r.dates) && (
-                  <p className="text-small text-muted tabular-nums">{join(r.org, r.dates)}</p>
+                <h3 className="font-medium">{r.role}</h3>
+                <p className="text-small text-muted tabular-nums">
+                  {join(r.org, r.location, r.dates)}
+                </p>
+                {r.bullets.length > 0 && (
+                  <ul className="mt-2 flex list-disc flex-col gap-1.5 pl-5 text-small marker:text-muted">
+                    {r.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
                 )}
-                <p className="text-small">{r.line}</p>
               </RuledItem>
             ))}
           </RuledList>
@@ -185,8 +235,8 @@ export default function About() {
             {education.map((d) => (
               <RuledItem key={d.degree}>
                 <p className="font-medium">{d.degree}</p>
-                {(d.school || d.year) && (
-                  <p className="text-small text-muted tabular-nums">{join(d.school, d.year)}</p>
+                {(d.school || d.dates) && (
+                  <p className="text-small text-muted tabular-nums">{join(d.school, d.dates)}</p>
                 )}
               </RuledItem>
             ))}

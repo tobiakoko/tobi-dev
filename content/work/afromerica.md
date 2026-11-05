@@ -21,10 +21,14 @@ stack:
   ]
 disciplines: [Engineering, Implementation]
 links:
-  # TODO(content): confirm still live
   live: https://www.afromericaent.com/
-  # TODO(content): Daniel to decide if https://github.com/tobiakoko/afromerica-ent is public
-# TODO(content): stats only with the client's permission
+  # TODO(content): code link after the repo clean-up (BUILD-PLAN "Outside this repo")
+# System facts until the client supplies figures.
+# TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them
+stats:
+  - { value: '60 / 40', label: 'judges / audience weighting in stages 1–3' }
+  - { value: '23', label: 'API routes' }
+  - { value: '10 min', label: 'one-time-code expiry' }
 ---
 
 ## Context

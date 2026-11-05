@@ -2,7 +2,7 @@
 slug: oseiprempeh
 title: OseiPrempeh Law Firm
 outcome: A single-page site for a Tampa law practice, delivered in three weeks.
-order: 5
+order: 6
 year: '2025'
 role: Sole developer
 timeline: May – Jun 2025
