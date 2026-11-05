@@ -430,7 +430,7 @@ Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November
 - links: none
 - stats: `16 → 24` cabinets running · `+50%` screen (3072 × 1536 px) · `9` separate faults found and fixed
 - cover: `01-working-wall`, alt `Straight-on view of a wide LED wall showing a live church broadcast edge to edge, framed by a black wall`
-- Permission: given by the pastor (Daniel, 5 Nov 2026) to publish this case study. Photos only with no congregation faces. The photos have none; the working-wall and Mapping-test photos show the public broadcast on the screen (the preacher and a sign-language interpreter).
+- Permission: given by the pastor (Daniel, 5 Nov 2026) to publish this case study. Photos only with no congregation faces. The photos have none; the working-wall and Mapping-test photos show the public broadcast on the screen (the preacher and a sign-language interpreter). Daniel confirmed both are fine to show (5 Nov 2026).
 
 **Context.** The church's LED wall started as 16 cabinets (4 × 4, 2048 × 1536 px), driven by a NovaStar VX600 over six Ethernet ports. To make it bigger, the church added 8 cabinets as two new columns: 24 cabinets, 6 × 4, 3840 × 1920 mm, P1.25 indoor. After the install, the wall no longer showed one clean picture. Sections repeated, froze or showed the wrong part of the image.
 
