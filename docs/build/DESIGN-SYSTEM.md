@@ -29,6 +29,19 @@ The dark theme is neutral near-black, replacing PR #4's navy, so screenshots loo
 
 **Contrast check (task 2.2):** measure every text/background pair in both themes and record the ratios in this file. Body text and `--muted` text must reach 4.5:1; the focus ring must reach 3:1 against `--bg`. If a value fails, darken or lighten it and record the new value.
 
+Measured 3 November 2026 (WCAG 2.x relative luminance; accents converted from oklch to sRGB: light ≈ `#006e6f`, dark ≈ `#70d9cc`). Every pair passes; no values changed.
+
+| Pair | Light | Dark | Needs |
+| --- | --- | --- | --- |
+| `--ink` on `--bg` | 16.21 | 16.11 | 4.5 |
+| `--ink` on `--bg-alt` | 14.84 | 14.86 | 4.5 |
+| `--muted` on `--bg` | 4.95 | 7.45 | 4.5 |
+| `--muted` on `--bg-alt` | 4.53 | 6.87 | 4.5 |
+| `--accent` on `--bg` (link hover, focus ring) | 5.75 | 11.28 | 4.5 text / 3 ring |
+| `--accent` on `--bg-alt` | 5.26 | 10.40 | 4.5 text / 3 ring |
+
+`--muted` on `--bg-alt` in light is the tightest pair (4.53). Don't put `--muted` text on anything lighter than `--bg-alt`, and don't lighten `--muted`.
+
 ## Typography
 
 One family: **Inter Variable**, self-hosted with `@fontsource-variable/inter` (pre-approved), `font-display: swap`. Fallback: `ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif`. Mono for meta values and code: `ui-monospace, SFMono-Regular, Menlo, monospace`.

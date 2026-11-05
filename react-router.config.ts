@@ -1,28 +1,61 @@
 import type { Config } from '@react-router/dev/config';
+import { execFileSync } from 'node:child_process';
 import { copyFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { projects } from './app/data/projects';
+import { getAllWork } from './app/data/work.server';
 import { SITE_URL } from './app/data/site';
 
 /**
- * Every route that should ship real HTML. Derived from projects.ts so adding a
- * project can never silently leave its page out of the build.
+ * Every route that should ship real HTML. Derived from content/work so adding a
+ * case study can never silently leave its page out of the build.
  */
-const routes = [
-  '/',
-  '/about',
-  '/work',
-  '/contact',
-  ...projects.map((p) => `/work/${p.slug}`),
+const work = getAllWork();
+const ALL_CONTENT = work.map((w) => `content/work/${w.slug}.md`);
+
+/**
+ * Every route that should ship real HTML, with the source files whose changes
+ * change that page. Derived from content/work so adding a case study can never
+ * silently leave its page out of the build or the sitemap.
+ */
+const routes: { path: string; sources: string[] }[] = [
+  // Home lists the featured case studies, so their files count too.
+  { path: '/', sources: ['app/routes/home.tsx', ...ALL_CONTENT] },
+  { path: '/about', sources: ['app/routes/about.tsx'] },
+  { path: '/work', sources: ['app/routes/work.tsx', ...ALL_CONTENT] },
+  { path: '/contact', sources: ['app/routes/contact.tsx'] },
+  ...work.map((w) => ({
+    path: `/work/${w.slug}`,
+    sources: ['app/routes/work-detail.tsx', `content/work/${w.slug}.md`],
+  })),
 ];
 
+/**
+ * The date of the last commit that touched any of `files`, as YYYY-MM-DD.
+ *
+ * A build-date lastmod would mark every page changed on every deploy, and
+ * search engines stop trusting lastmod on sites that do that. Vercel clones
+ * only recent history, so a file whose last change is older than the clone
+ * has no date; the URL then omits lastmod rather than guessing.
+ */
+function lastCommitDate(files: string[]): string | undefined {
+  try {
+    const date = execFileSync('git', ['log', '-1', '--format=%cs', '--', ...files], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+// priority and changefreq are left out: Google and Bing ignore both.
 function sitemap() {
-  const lastmod = new Date().toISOString().slice(0, 10);
   const urls = routes
-    .map((route) => {
+    .map(({ path: route, sources }) => {
       const loc = route === '/' ? SITE_URL : `${SITE_URL}${route}`;
-      const priority = route === '/' ? '1.0' : '0.8';
-      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <priority>${priority}</priority>\n  </url>`;
+      const lastmod = lastCommitDate(sources);
+      return `  <url>\n    <loc>${loc}</loc>\n${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ''}  </url>`;
     })
     .join('\n');
 
@@ -34,7 +67,7 @@ export default {
   // No server at runtime — but prerender still emits static HTML per route at
   // build time, so crawlers get real content instead of an empty SPA shell.
   ssr: false,
-  prerender: () => routes,
+  prerender: () => routes.map((r) => r.path),
 
   // Generated from the same `routes` array that drives prerendering, so the
   // sitemap cannot drift out of sync with what the site actually ships.

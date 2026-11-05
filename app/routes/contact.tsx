@@ -1,11 +1,6 @@
-import {
-  BOOKING_URL,
-  EMAIL,
-  GITHUB_URL,
-  LINKEDIN_URL,
-  LOCATION,
-  pageMeta,
-} from '~/data/site';
+import { Container } from '~/components/Layout';
+import MetaGrid from '~/components/MetaGrid';
+import { BOOKING_URL, EMAIL, GITHUB_URL, LINKEDIN_URL, LOCATION, pageMeta } from '~/data/site';
 
 export function meta() {
   return pageMeta({
@@ -17,43 +12,55 @@ export function meta() {
 }
 
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
+const bare = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 export default function Contact() {
-  const items = [
-    { label: 'Email', href: `mailto:${EMAIL}`, text: EMAIL },
-    BOOKING_URL && { label: 'Book a call', href: BOOKING_URL, text: 'Book a call', ...external },
-    { label: 'LinkedIn', href: LINKEDIN_URL, text: 'LinkedIn', ...external },
-    { label: 'GitHub', href: GITHUB_URL, text: 'GitHub', ...external },
-  ].filter((item) => !!item);
-
   return (
-    <section className="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-12 px-6 pt-24 pb-28 md:grid-cols-2 md:gap-20 md:px-12 md:pt-[100px] md:pb-[120px]">
-      <div className="flex flex-col gap-7">
-        <h1 className="text-[clamp(44px,6vw,72px)] font-light tracking-[-0.02em]">
-          Let&rsquo;s talk
-        </h1>
-        <p className="max-w-[46ch] text-[17px] leading-[1.7] text-muted">
+    <Container className="flex flex-col gap-12 pt-16 md:gap-18 md:pt-24">
+      <header className="flex flex-col gap-6">
+        <h1 className="text-title">Let&rsquo;s talk</h1>
+        <p className="max-w-measure text-muted">
           I&rsquo;m open to full-time roles and freelance projects. Email is best, and I reply
           within two business days.
         </p>
-      </div>
-
-      <dl className="flex flex-col gap-7 border-t-2 border-ink pt-7">
-        {items.map(({ label, text, ...link }) => (
-          <div key={label} className="flex flex-col gap-1.5">
-            <dt className="label">{label}</dt>
-            <dd className="m-0">
-              <a {...link} className="text-base">
-                {text}
+      </header>
+      <MetaGrid
+        items={[
+          {
+            label: 'Email',
+            value: (
+              <a href={`mailto:${EMAIL}`} className="link">
+                {EMAIL}
               </a>
-            </dd>
-          </div>
-        ))}
-        <div className="flex flex-col gap-1.5">
-          <dt className="label">Location</dt>
-          <dd className="m-0 text-base text-ink">{LOCATION}</dd>
-        </div>
-      </dl>
-    </section>
+            ),
+          },
+          {
+            label: 'Book a call',
+            value: BOOKING_URL && (
+              <a href={BOOKING_URL} className="link" {...external}>
+                Book a call
+              </a>
+            ),
+          },
+          {
+            label: 'LinkedIn',
+            value: (
+              <a href={LINKEDIN_URL} className="link" {...external}>
+                {bare(LINKEDIN_URL)}
+              </a>
+            ),
+          },
+          {
+            label: 'GitHub',
+            value: (
+              <a href={GITHUB_URL} className="link" {...external}>
+                {bare(GITHUB_URL)}
+              </a>
+            ),
+          },
+          { label: 'Location', value: LOCATION },
+        ]}
+      />
+    </Container>
   );
 }

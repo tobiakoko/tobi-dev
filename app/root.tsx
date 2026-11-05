@@ -6,9 +6,11 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteLoaderData,
 } from 'react-router';
 import { Analytics } from '@vercel/analytics/react';
-import { allTechnologies } from '~/data/projects';
+import { technologies } from '~/data/work';
+import { getAllWork } from '~/data/work.server';
 import {
   ALT_NAME,
   EMAIL,
@@ -18,6 +20,7 @@ import {
   LINKEDIN_URL,
   SITE_URL,
 } from '~/data/site';
+import interFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import Logo from '/Logo-dark.ico';
 import type { Route } from './+types/root';
 import './app.css';
@@ -25,44 +28,55 @@ import './app.css';
 // No canonical here — a root-level canonical applies to every route and would
 // tell search engines the whole site is one page. Each route emits its own via
 // pageMeta() in app/data/site.ts.
-export const links: Route.LinksFunction = () => [{ rel: 'icon', type: 'image/x-icon', href: Logo }];
+export const links: Route.LinksFunction = () => [
+  { rel: 'icon', type: 'image/x-icon', href: Logo },
+  // The one font file; app.css declares the same URL in @font-face.
+  { rel: 'preload', href: interFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
+];
+
+/** Runs at build time. The stacks live in content/work, read by work.server.ts. */
+export function loader() {
+  return { knowsAbout: technologies(getAllWork()) };
+}
 
 /**
  * Person schema. This is what lets Google resolve "Daniel Akoko" and
  * "Tobi Akoko" to a single entity, so a search for either name can surface
  * this site. Rendered into every prerendered page.
  */
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Person',
-      '@id': `${SITE_URL}/#person`,
-      name: FULL_NAME,
-      alternateName: [ALT_NAME, 'Daniel Tobi Akoko'],
-      url: SITE_URL,
-      jobTitle: JOB_TITLE,
-      email: `mailto:${EMAIL}`,
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Dallas',
-        addressRegion: 'TX',
-        addressCountry: 'US',
+function personSchema(knowsAbout: string[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': `${SITE_URL}/#person`,
+        name: FULL_NAME,
+        alternateName: [ALT_NAME, 'Daniel Tobi Akoko'],
+        url: SITE_URL,
+        jobTitle: JOB_TITLE,
+        email: `mailto:${EMAIL}`,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Dallas',
+          addressRegion: 'TX',
+          addressCountry: 'US',
+        },
+        sameAs: [GITHUB_URL, LINKEDIN_URL],
+        // Derived from the project stacks, so it lists only what the code uses.
+        knowsAbout,
       },
-      sameAs: [GITHUB_URL, LINKEDIN_URL],
-      // Derived from the project stacks, so it lists only what the code uses.
-      knowsAbout: allTechnologies(),
-    },
-    {
-      '@type': 'WebSite',
-      '@id': `${SITE_URL}/#website`,
-      url: SITE_URL,
-      name: `${FULL_NAME} — ${JOB_TITLE}`,
-      publisher: { '@id': `${SITE_URL}/#person` },
-      inLanguage: 'en-US',
-    },
-  ],
-};
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: `${FULL_NAME} — ${JOB_TITLE}`,
+        publisher: { '@id': `${SITE_URL}/#person` },
+        inLanguage: 'en-US',
+      },
+    ],
+  };
+}
 
 /*
  * Applies the stored theme synchronously, before first paint. Without this the
@@ -77,6 +91,10 @@ try {
 `;
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  // Undefined only if the root loader didn't run (an error page); the schema
+  // then omits knowsAbout rather than the whole block.
+  const data = useRouteLoaderData<typeof loader>('root');
+
   return (
     <html lang="en">
       <head>
@@ -86,7 +104,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema(data?.knowsAbout ?? [])) }}
         />
         <Meta />
         <Links />
@@ -124,11 +142,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="mx-auto max-w-[1200px] px-6 py-32 md:px-12">
-      <h1 className="text-[clamp(44px,6vw,72px)] font-light tracking-[-0.02em]">{message}</h1>
-      <p className="mt-5 max-w-[60ch] text-[17px] leading-[1.65] text-muted">{details}</p>
-      <Link to="/" className="btn-solid mt-10">
-        Back Home
+    <main className="mx-auto max-w-wide px-6 py-24 md:px-12 md:py-40">
+      <h1 className="text-title">{message}</h1>
+      <p className="mt-6 max-w-measure text-muted">{details}</p>
+      <Link to="/" className="link mt-10 inline-block">
+        Home
       </Link>
       {stack && (
         <pre className="mt-10 w-full overflow-x-auto border border-line p-4 text-xs">
