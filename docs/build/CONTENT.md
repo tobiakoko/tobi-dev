@@ -501,7 +501,7 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [ ] Afromerica repo clean-up before linking the code
 - [ ] Ron's Body Shop: fixes done, then numbers and owner's OK
 - [ ] OseiPrempeh: firm's approval of statistics and testimonials
-- [x] Lighthouse scores for client sites (§8); this portfolio still to measure once the domain loop is fixed
+- [x] Lighthouse scores (§8)
 - [ ] Afromerica screenshots from the live site (capture kit)
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
 - [ ] LED wall: timeline (months), photos (front of the working wall, rear cabling, Mapping test, receiving-card self-test before and after), confirmation that the pastor's 5 Nov permission covers this write-up; the two diagrams redrawn as SVG
@@ -531,4 +531,11 @@ Measured from Daniel's machine with `tools/capture-kit/lighthouse.mjs` on 5 Nov 
 | oseiprempeh | / | mobile | 98 | 77 | 96 | 92 | 1.7 s | 0.087 |
 | oseiprempeh | / | desktop | 99 | 84 | 100 | 92 | 0.4 s | 0.083 |
 
-`TODO(content): this portfolio (tobiakoko.com). The 5 Nov run hit a redirect loop between tobiakoko.com and www.tobiakoko.com (SEO 0, /about failed), so its row is left out. Rerun after the Vercel domain fix.`
+This portfolio (`tobiakoko.com`, the Phase 1 build on `main`), rerun 5 Nov 2026 after the domain redirect fix:
+
+| Project | Page | Form | Perf | A11y | BP | SEO | LCP | CLS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| portfolio | / | mobile | 99 | 100 | 100 | 100 | 1.7 s | 0 |
+| portfolio | / | desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 |
+| portfolio | /about | mobile | 100 | 100 | 100 | 100 | 1.4 s | 0 |
+| portfolio | /about | desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 |
