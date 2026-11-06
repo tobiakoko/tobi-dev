@@ -15,6 +15,7 @@ import {
   ALT_NAME,
   EMAIL,
   FULL_NAME,
+  GA_ID,
   GITHUB_URL,
   JOB_TITLE,
   LINKEDIN_URL,
@@ -79,6 +80,24 @@ function personSchema(knowsAbout: string[]) {
 }
 
 /*
+ * Google's gtag.js setup, run only on the production domain so localhost and
+ * Vercel previews don't count as visits. GA4's enhanced measurement records
+ * client-side navigations from browser history, so one config call covers
+ * every route.
+ */
+const gaScript = `
+if (location.hostname === '${new URL(SITE_URL).hostname}') {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_ID}';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${GA_ID}');
+}
+`;
+
+/*
  * Applies the stored theme synchronously, before first paint. Without this the
  * light palette renders for a frame and dark-mode visitors get a white flash.
  */
@@ -104,6 +123,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: gaScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema(data?.knowsAbout ?? [])) }}
