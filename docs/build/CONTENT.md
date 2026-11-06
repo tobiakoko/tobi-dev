@@ -203,6 +203,13 @@ Degree names and dates from Daniel (5 Nov 2026). The Bio and Origins say "crimin
 - Meta title: `Contact · Daniel (Tobi) Akoko`
 - Meta description: `Contact Daniel (Tobi) Akoko, a software engineer in Dallas, about full-time roles or freelance web projects.`
 
+### 5.1 Footer privacy note
+
+Shown on every page, under the footer links. Google's Analytics terms require telling visitors that the site uses Google Analytics and cookies. The owner chose this note over a cookie banner (6 Nov 2026): visitors are mostly in the US, where no banner is required.
+
+- Text: `This site uses Google Analytics, which sets cookies, to count visits. Vercel Analytics counts visits too, without cookies.`
+- Link: `How Google uses this data` → `https://policies.google.com/technologies/partner-sites`
+
 ---
 
 ## 6. Case studies

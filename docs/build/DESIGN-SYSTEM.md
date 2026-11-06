@@ -89,7 +89,7 @@ Build these and nothing else unless the plan adds one.
 | Component | Spec |
 | --- | --- |
 | `Header` | Name wordmark ("Daniel Akoko") left; **Work, About, Contact** and the theme toggle right. 72 px tall, no border until the page scrolls, then a `--line` bottom rule. Mobile: a `<button aria-expanded aria-controls>` opens a full-width panel; Escape closes it and focus returns to the button. |
-| `Footer` | One row on desktop: email, GitHub, LinkedIn, and "© {current year} Daniel Akoko". Small size, `--muted`. Section gap above. |
+| `Footer` | One row on desktop: email, GitHub, LinkedIn, and "© {current year} Daniel Akoko". Below it, the privacy note (`CONTENT.md` §5.1). Small size, `--muted`. Section gap above. |
 | `SectionLabel` | Label style, `--muted`. Used in the label rail. |
 | `WorkRow` | One project as a row: title (H3 size), one-line outcome (body, `--muted`), then year and discipline tags in label style. Whole row is one link to `/work/:slug`. A `--line` rule between rows. Hover: title underlines and turns `--accent`. No image. |
 | `DisciplineTag` | Text label from a fixed set: **Engineering, Analysis, Implementation, Delivery**. Plain text separated by " · ", not pills. |
