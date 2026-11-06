@@ -17,11 +17,13 @@ const ALL_CONTENT = work.map((w) => `content/work/${w.slug}.md`);
  * change that page. Derived from content/work so adding a case study can never
  * silently leave its page out of the build or the sitemap.
  */
+// In navigation order, then the case studies in their `order`; the sitemap
+// lists them the same way.
 const routes: { path: string; sources: string[] }[] = [
   // Home lists the featured case studies, so their files count too.
   { path: '/', sources: ['app/routes/home.tsx', ...ALL_CONTENT] },
-  { path: '/about', sources: ['app/routes/about.tsx'] },
   { path: '/work', sources: ['app/routes/work.tsx', ...ALL_CONTENT] },
+  { path: '/about', sources: ['app/routes/about.tsx'] },
   { path: '/contact', sources: ['app/routes/contact.tsx'] },
   ...work.map((w) => ({
     path: `/work/${w.slug}`,
@@ -49,7 +51,8 @@ function lastCommitDate(files: string[]): string | undefined {
   }
 }
 
-// priority and changefreq are left out: Google and Bing ignore both.
+// priority and changefreq are left out: Google and Bing ignore both. The
+// stylesheet only changes how a browser shows the file (public/sitemap.css).
 function sitemap() {
   const urls = routes
     .map(({ path: route, sources }) => {
@@ -59,7 +62,7 @@ function sitemap() {
     })
     .join('\n');
 
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/css" href="/sitemap.css"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
 
 export default {

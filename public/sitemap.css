@@ -1,0 +1,97 @@
+/*
+ * Browser view of /sitemap.xml, linked with <?xml-stylesheet?>. CSS styles the
+ * XML elements directly (urlset > url > loc, lastmod); search engines ignore
+ * it. The page has no theme toggle, so it follows the system setting. Colors
+ * match the tokens in app/app.css.
+ */
+urlset {
+  --bg: #faf9f6;
+  --bg-alt: #f1efe9;
+  --ink: #1c1c1a;
+  --muted: #6d6d66;
+  --line: #e3e1d9;
+  color-scheme: light;
+
+  display: block;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 4rem 1rem 6rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  counter-reset: page;
+}
+
+@media (prefers-color-scheme: dark) {
+  urlset {
+    --bg: #111110;
+    --bg-alt: #1a1a18;
+    --ink: #ededea;
+    --muted: #a3a39c;
+    --line: #2a2a27;
+    color-scheme: dark;
+  }
+}
+
+urlset::before {
+  content: 'Sitemap';
+  display: block;
+  margin-bottom: 2.5rem;
+  font-size: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+  font-weight: 350;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+urlset::after {
+  content: 'Every public page on tobiakoko.com, in the order the site lists them. Search engines read this file.';
+  display: block;
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+url {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+  counter-increment: page;
+}
+
+url:first-of-type {
+  border-top: 1px solid var(--line);
+}
+
+url::before {
+  content: counter(page, decimal-leading-zero);
+  width: 1.75rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+loc {
+  display: block;
+  flex: 1 1 14rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+lastmod {
+  display: block;
+  /* Lines up under the URL when it wraps on narrow screens. */
+  padding-left: 2.75rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+lastmod::before {
+  content: 'Updated ';
+}
