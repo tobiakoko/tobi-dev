@@ -14,6 +14,9 @@ export const AVAILABILITY = 'Open to full-time roles and freelance projects';
 // TODO(content): Cal.com or Calendly URL. Every "Book a call" link stays hidden while null.
 export const BOOKING_URL: string | null = null;
 
+/** Google Analytics 4 measurement ID. Loaded only on the production domain. */
+export const GA_ID = 'G-GE9DBZB0X1';
+
 const OG_IMAGE = '/og.png';
 
 /**
