@@ -102,7 +102,7 @@ Goal: apply the Warm Editorial system (`DESIGN-SYSTEM.md`) to the existing app, 
 - [x] **R.1** Foundation (§2–6): install Manrope and DM Sans, remove Inter; warm light palette and the new tokens; headings in Manrope 500; 11px eyebrows; acid `::selection`; square form controls; 1320 px wide container. Contrast ratios are in `DESIGN-SYSTEM.md`.
 - [ ] **R.2** Data (§13–14): `proposition` required in `WorkMeta` and validated in `work.server.ts` (*the seven lines are in the content files and `CONTENT.md` §6, 7 Nov 2026*); hero, proof strip, services and capabilities copy in `CONTENT.md` and `app/data/*`.
 - [x] **R.3** Header and Footer (§7). (*Done 7 Nov 2026: brand with teal period, underline-grow nav, round toggle, Menu/Close drawer below 1000 px; footer CTA band and three-column bottom bar, dark in both themes.*)
-- [ ] **R.4** Home (§8) with `ProjectCard` (§9), `ProofStrip`, `SectionHeading`, `ServiceGrid`; hero photo placeholder and `TODO(content)` until R.0 (c).
+- [x] **R.4** Home (§8) with `ProjectCard` (§9), `ProofStrip`, `SectionHeading`, `ServiceGrid`; hero photo placeholder and `TODO(content)` until R.0 (c). (*Done 7 Nov 2026; the photo and credit switch on from `HERO_PHOTO` in `app/data/home.ts`.*)
 - [ ] **R.5** Work index and case study page (§9–10): `PageHeader`, `CaseFacts`, `CaseSection`, `ProjectPagination`.
 - [ ] **R.6** About (§11): `Rail`, `Capabilities`, `Timeline`, `TwoColDivided`, `AboutCtaBand`.
 - [ ] **R.7** Contact (§12): `DirectList`, `ContactForm` (mailto, no fake success), `CalloutQuote`.

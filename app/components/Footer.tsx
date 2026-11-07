@@ -49,7 +49,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href={LINKEDIN_URL} className="hover:text-footer-ink hover:underline" {...external}>
+              <a
+                href={LINKEDIN_URL}
+                className="hover:text-footer-ink hover:underline"
+                {...external}
+              >
                 LinkedIn
               </a>
             </li>

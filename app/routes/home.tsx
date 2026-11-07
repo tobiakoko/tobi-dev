@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
-import { Container, Section } from '~/components/Layout';
-import TextLinks from '~/components/TextLinks';
-import { WorkList } from '~/components/WorkRow';
+import ProjectCard from '~/components/ProjectCard';
+import SectionHeading from '~/components/SectionHeading';
+import { HERO, HERO_PHOTO, PROOF_STRIP, SERVICES, SERVICES_LEAD } from '~/data/home';
 import { getAllWork } from '~/data/work.server';
 import { AVAILABILITY, BOOKING_URL, DISPLAY_NAME, EMAIL, LOCATION, pageMeta } from '~/data/site';
 import type { Route } from './+types/home';
@@ -18,121 +18,142 @@ export function meta() {
 
 export function loader() {
   const work = getAllWork();
-  const title = (slug: string) => work.find((w) => w.slug === slug)?.title ?? slug;
+  const titleOf = (slug: string) => work.find((w) => w.slug === slug)?.title ?? slug;
   return {
-    featured: work.filter((w) => w.featured),
-    proof: { lewisville: title('lewisville'), afromerica: title('afromerica') },
+    // Each card keeps its place in the full list, so it reads "03 / 07".
+    featured: work.flatMap((w, i) => (w.featured ? [{ work: w, number: i + 1 }] : [])),
+    total: work.length,
+    services: SERVICES.map((s) => ({ ...s, proof: titleOf(s.slug) })),
   };
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  const { featured, proof } = loaderData;
-
-  // CONTENT.md §2.4: one line per discipline, each with the case study that proves it.
-  const disciplines = [
-    {
-      name: 'Engineering',
-      line: 'Build it properly.',
-      sentence:
-        'Typed APIs, real tests and pages that load fast, in Next.js, React, TypeScript and Postgres.',
-      slug: 'afromerica',
-      proof: proof.afromerica,
-    },
-    {
-      name: 'Analysis',
-      line: 'Get the facts right.',
-      sentence:
-        'I start with discovery and an audit, then write requirements with acceptance criteria someone can check.',
-      slug: 'lewisville',
-      proof: proof.lewisville,
-    },
-    {
-      name: 'Implementation',
-      line: 'Hand it over.',
-      sentence:
-        'Content systems, integrations, a runbook and training, so non-technical staff can run what I build.',
-      slug: 'lewisville',
-      proof: proof.lewisville,
-    },
-    {
-      name: 'Delivery',
-      line: 'Ship in phases.',
-      sentence: 'Small, gated releases with a clear status and a sign-off at each step.',
-      slug: 'lewisville',
-      proof: proof.lewisville,
-    },
-  ];
+  const { featured, total, services } = loaderData;
 
   return (
     <>
-      <section className="flex min-h-[70svh] flex-col justify-end pt-24 pb-12 md:pb-20">
-        <Container className="flex flex-col gap-6 md:gap-8">
-          <p className="label">
-            {DISPLAY_NAME} · {LOCATION}
-          </p>
-          <h1 className="max-w-[18ch] text-display text-balance">From requirements to release.</h1>
-          <p className="max-w-measure text-muted">
-            I&rsquo;m a software engineer who plans, builds, tests and hands over web software for
-            churches and small businesses. My work runs from paid voting and live leaderboards to
-            content systems that staff update themselves.
-          </p>
-          <TextLinks
-            links={[
-              { label: 'Work', href: '/work' },
-              { label: 'About', href: '/about' },
-              { label: 'Email', href: `mailto:${EMAIL}` },
-            ]}
-          />
-        </Container>
+      <section className="hero shell" aria-labelledby="hero-title">
+        <p className="label">
+          {DISPLAY_NAME} · {LOCATION}
+        </p>
+        <div>
+          <h1 id="hero-title">{HERO.headline}</h1>
+          <p className="hero-intro">{HERO.intro}</p>
+          <div className="hero-actions">
+            <a href="#selected-work" className="btn btn-primary">
+              View selected work <span aria-hidden="true">↓</span>
+            </a>
+            <span className="flex gap-[1.1rem] font-semibold">
+              <Link to="/about" className="ulink">
+                About
+              </Link>
+              <Link to="/contact" className="ulink">
+                Contact
+              </Link>
+            </span>
+          </div>
+        </div>
+        <figure className="hero-visual">
+          <div className="hero-photo">
+            {HERO_PHOTO && (
+              <img
+                src={HERO_PHOTO.src}
+                width={HERO_PHOTO.width}
+                height={HERO_PHOTO.height}
+                alt={HERO_PHOTO.alt}
+                fetchPriority="high"
+              />
+            )}
+          </div>
+          <figcaption>
+            <span className="hero-caption">
+              <span>{HERO.caption[0]}</span>
+              <span>{HERO.caption[1]}</span>
+            </span>
+            {/* The credit shows only once the photographer is known (CONTENT.md §2.2). */}
+            {HERO_PHOTO && (
+              <span className="hero-credit">
+                Editorial photo by {HERO_PHOTO.photographer} on Unsplash
+              </span>
+            )}
+          </figcaption>
+        </figure>
       </section>
 
-      <Section aria-labelledby="selected-work">
-        <h2 id="selected-work" className="mb-8 text-h2">
-          Selected work
-        </h2>
-        <WorkList work={featured} />
-        <Link to="/work" className="link mt-8 inline-block">
-          All work →
-        </Link>
-      </Section>
+      <section className="proof-strip" aria-label="Experience highlights">
+        <ul className="proof-grid shell">
+          {PROOF_STRIP.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
 
-      <Section aria-labelledby="how-i-work">
-        <h2 id="how-i-work" className="mb-8 text-h2 md:mb-12">
-          How I work
-        </h2>
-        <ul className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-18">
-          {disciplines.map((d) => (
-            <li key={d.name} className="flex flex-col gap-3">
-              <p className="label">{d.name}</p>
-              <h3 className="text-h3">{d.line}</h3>
-              <p className="text-muted">{d.sentence}</p>
-              <Link to={`/work/${d.slug}`} className="link self-start text-small">
-                {d.proof} →
-              </Link>
+      <section
+        className="band band--first shell scroll-mt-20"
+        id="selected-work"
+        aria-labelledby="selected-work-title"
+      >
+        <SectionHeading
+          id="selected-work-title"
+          eyebrow="01 / Work"
+          title="Selected work"
+          aside={
+            <Link to="/work" className="arrowlink ulink">
+              All work <span aria-hidden="true">↗</span>
+            </Link>
+          }
+        />
+        <ul className="work-grid">
+          {featured.map(({ work, number }) => (
+            <li key={work.slug} className="min-w-0">
+              <ProjectCard work={work} number={number} total={total} />
             </li>
           ))}
         </ul>
-      </Section>
+      </section>
 
-      <Section aria-label="Availability">
-        <p className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-          <span className="flex items-baseline gap-3">
-            <span
-              aria-hidden="true"
-              className="inline-block h-2 w-2 shrink-0 rounded-full bg-accent"
-            />
-            {AVAILABILITY}.
-          </span>
-          <a href={`mailto:${EMAIL}`} className="link">
-            {EMAIL}
+      <section className="band shell" aria-labelledby="services-title">
+        <SectionHeading
+          id="services-title"
+          eyebrow="02 / Capabilities"
+          title="How I can help"
+          aside={<p className="section-heading__lead">{SERVICES_LEAD}</p>}
+        />
+        <ol className="service">
+          {services.map((s, i) => (
+            <li key={s.slug}>
+              <p className="label tabular-nums">{String(i + 1).padStart(2, '0')}</p>
+              <div className="service__body">
+                <h3>{s.title}</h3>
+                <p>{s.sentence}</p>
+                <Link to={`/work/${s.slug}`} className="arrowlink ulink mt-1 self-start">
+                  {s.proof} <span aria-hidden="true">↗</span>
+                </Link>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="band shell" aria-label="Availability">
+        <p className="availability">
+          <span aria-hidden="true" className="inline-block h-[9px] w-[9px] shrink-0 bg-accent" />
+          <span>{AVAILABILITY}.</span>
+          <a href={`mailto:${EMAIL}`} className="arrowlink ulink">
+            {EMAIL} <span aria-hidden="true">↗</span>
           </a>
           {BOOKING_URL && (
-            <a href={BOOKING_URL} className="link" target="_blank" rel="noopener noreferrer">
-              Book a call
+            <a
+              href={BOOKING_URL}
+              className="arrowlink ulink"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a call <span aria-hidden="true">↗</span>
             </a>
           )}
         </p>
-      </Section>
+      </section>
     </>
   );
 }
