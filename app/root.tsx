@@ -21,7 +21,7 @@ import {
   LINKEDIN_URL,
   SITE_URL,
 } from '~/data/site';
-import interFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import bodyFont from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
 import Logo from '/Logo-dark.ico';
 import type { Route } from './+types/root';
 import './app.css';
@@ -31,8 +31,8 @@ import './app.css';
 // pageMeta() in app/data/site.ts.
 export const links: Route.LinksFunction = () => [
   { rel: 'icon', type: 'image/x-icon', href: Logo },
-  // The one font file; app.css declares the same URL in @font-face.
-  { rel: 'preload', href: interFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
+  // The body font paints first; app.css declares the same URL in @font-face.
+  { rel: 'preload', href: bodyFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
 ];
 
 /** Runs at build time. The stacks live in content/work, read by work.server.ts. */

@@ -20,7 +20,7 @@ export default function Figure({
         <img
           src={image.src}
           srcSet={image.srcSet}
-          sizes={image.srcSet ? '(min-width: 70rem) 70rem, 100vw' : undefined}
+          sizes={image.srcSet ? '(min-width: 82.5rem) 82.5rem, 100vw' : undefined}
           alt={image.alt}
           width={image.width}
           height={image.height}

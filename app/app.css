@@ -4,15 +4,28 @@
 @custom-variant dark ([data-theme='dark'] &);
 
 /*
- * One font file: Inter Variable, Latin subset, all weights. Self-hosted so
- * font-src can stay 'self'. root.tsx preloads the same file.
+ * Two font files, Latin subset, all weights: Manrope Variable for headings and
+ * DM Sans Variable for body text. Self-hosted so font-src can stay 'self'.
+ * root.tsx preloads DM Sans (the first text to paint).
  */
 @font-face {
-  font-family: 'Inter Variable';
+  font-family: 'Manrope Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 100 900;
-  src: url('../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2')
+  font-weight: 200 800;
+  src: url('../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'DM Sans Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url('../node_modules/@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2')
     format('woff2-variations');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -26,12 +39,25 @@
  * Contrast ratios for every pair are recorded in docs/build/DESIGN-SYSTEM.md.
  */
 :root {
-  --bg: #faf9f6;
-  --bg-alt: #f1efe9;
-  --ink: #1c1c1a;
-  --muted: #6d6d66;
-  --line: #e3e1d9;
+  --bg: #f2f0e9;
+  --bg-alt: #fbfaf6;
+  --ink: #171714;
+  --muted: #5c5b55;
+  --line: #cbc8bd;
   --accent: oklch(0.48 0.1 195);
+  /* Highlight only, always behind ink text (::selection, <mark>). Never text. */
+  --acid: #d9ff54;
+  --on-acid: #171714;
+  /* The proof strip inverts per theme so it stays legible in both. */
+  --inverse-bg: #1a1a16;
+  --inverse-text: #fbfaf6;
+  --inverse-line: rgb(251 250 246 / 0.22);
+  /* The footer is dark in both themes. */
+  --footer-bg: #1a1a16;
+  --footer-line: #3d3d38;
+  --footer-ink: #fbfaf6;
+  /* About CTA band: teal. */
+  --band: oklch(0.48 0.1 195);
 }
 
 [data-theme='dark'] {
@@ -41,6 +67,10 @@
   --muted: #a3a39c;
   --line: #2a2a27;
   --accent: oklch(0.82 0.1 185);
+  --inverse-bg: #f2f0e9;
+  --inverse-text: #171714;
+  --inverse-line: rgb(23 23 20 / 0.18);
+  --band: oklch(0.82 0.1 185);
 }
 
 @theme inline {
@@ -50,44 +80,61 @@
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-accent: var(--accent);
+  --color-acid: var(--acid);
+  --color-on-acid: var(--on-acid);
+  --color-inverse-bg: var(--inverse-bg);
+  --color-inverse-text: var(--inverse-text);
+  --color-inverse-line: var(--inverse-line);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-line: var(--footer-line);
+  --color-footer-ink: var(--footer-ink);
+  --color-band: var(--band);
 
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans:
+    'DM Sans Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Type scale (DESIGN-SYSTEM.md). Each size carries its own line height,
-     tracking and weight, so `text-title` is the whole role in one class. */
-  --text-display: clamp(2.5rem, 2rem + 3.5vw, 4.5rem);
-  --text-display--line-height: 1.05;
-  --text-display--letter-spacing: -0.025em;
-  --text-display--font-weight: 350;
+     tracking and weight, so `text-title` is the whole role in one class.
+     Headings are Manrope 500 at -0.045em; the per-component sizes from the
+     redesign arrive with each component. The phone minimums sit below the
+     design system's so the longest heading word fits at 320 px without
+     sideways scrolling (WCAG 1.4.10); from ~600 px up the sizes match. */
+  --text-display: clamp(2.25rem, 7.8vw, 7.375rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.045em;
+  --text-display--font-weight: 500;
 
-  --text-title: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
-  --text-title--line-height: 1.1;
-  --text-title--letter-spacing: -0.02em;
-  --text-title--font-weight: 350;
+  --text-title: clamp(2.25rem, 12vw, 10.625rem);
+  --text-title--line-height: 1.02;
+  --text-title--letter-spacing: -0.045em;
+  --text-title--font-weight: 500;
 
-  --text-h2: 1.75rem;
-  --text-h2--line-height: 1.25;
-  --text-h2--letter-spacing: -0.01em;
-  --text-h2--font-weight: 400;
+  --text-h2: clamp(1.8125rem, 3.3vw, 2.75rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.045em;
+  --text-h2--font-weight: 500;
 
-  --text-h3: 1.25rem;
-  --text-h3--line-height: 1.4;
+  --text-h3: clamp(1.3125rem, 2.6vw, 1.875rem);
+  --text-h3--line-height: 1.1;
+  --text-h3--letter-spacing: -0.045em;
   --text-h3--font-weight: 500;
 
   --text-body: 1.125rem;
-  --text-body--line-height: 1.7;
+  --text-body--line-height: 1.6;
 
   --text-small: 0.9375rem;
-  --text-small--line-height: 1.6;
+  --text-small--line-height: 1.55;
 
-  --text-label: 0.75rem;
-  --text-label--line-height: 1.4;
+  /* Eyebrow: the one sub-14px size, on purpose. */
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.2;
   --text-label--letter-spacing: 0.14em;
-  --text-label--font-weight: 500;
+  --text-label--font-weight: 600;
 
   /* Widths */
-  --container-wide: 70rem;
+  --container-wide: 82.5rem; /* 1320px */
   --container-measure: 40rem;
 }
 
@@ -111,6 +158,25 @@
     margin: 0;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  /* Square corners; pills opt back in with rounded-full. */
+  button,
+  input,
+  select,
+  textarea {
+    border-radius: 0;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -121,9 +187,10 @@
     outline-offset: 3px;
   }
 
+  /* Acid is a highlighter: selected text is ink in both themes. */
   ::selection {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--acid);
+    color: var(--on-acid);
   }
 }
 

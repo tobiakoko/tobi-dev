@@ -104,6 +104,8 @@ the editorial system).
 | Small, captions | DM Sans 400 | 13–15px | 0 |
 | Eyebrow | DM Sans 600, uppercase | 11px / 1.2 | 0.14em |
 
+Phone minimums: the Hero, Page title and Case-study H1 floors drop to 36px below ~600px, so the longest heading word ("Entertainment", "requirements") fits at 320px without sideways scrolling (WCAG 1.4.10). From ~600px up the sizes match the table.
+
 Rules: headlines `text-wrap: balance`; prose measure ~65ch; `tabular-nums` in meta,
 facts and results tables; prose links `--ink` underlined, hover `--accent`.
 

@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
  * these instead of repeating gutters, widths and section gaps.
  */
 
-/** Wide container: 70rem, centered, with the page gutter. */
+/** Wide container: 82.5rem (1320px), centered, with the page gutter. */
 export function Container({
   children,
   className = '',
