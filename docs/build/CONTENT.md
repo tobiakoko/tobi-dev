@@ -235,6 +235,7 @@ Ask Kumuyi AI is **not** included (deployment is down).
 **Front matter**
 
 - outcome: `I built a church website, audited it a year later, then rebuilt it in four gated phases.`
+- proposition: `A church website planned and built around clear information and dependable access.`
 - role: `Sole developer, analyst and project lead`
 - team: `Solo, with the pastor and church staff`
 - timeline: `Nov 2025 – Nov 2026`
@@ -301,6 +302,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 **Front matter**
 
 - outcome: `A talent-competition platform with paid voting, ticketing and a live judged finale, with scoring computed in the database.`
+- proposition: `A competition and events platform with paid voting, live results and ticket checkout.`
 - role: `Sole developer`
 - timeline: `Oct – Dec 2025`
 - stack: Next.js 16, React 19, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind CSS 4, Vercel
@@ -339,6 +341,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 **Front matter**
 
 - outcome: `An audit-driven pass that cut the entry bundle by 87% and made every form actually deliver.`
+- proposition: `A church website focused on making essential information easier to find and support.`
 - role: `Sole developer`
 - timeline: `Dec 2025 – Aug 2026`
 - stack: Vite, React 18, React Router 6, TypeScript, Tailwind CSS 4, Sanity, Framer Motion, Formspree
@@ -381,6 +384,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 **Front matter**
 
 - outcome (after fixes): `TODO(content): e.g. "A collision-repair site that now delivers every estimate request" — only once the form fix is live`
+- proposition: `A small-business website for a collision-repair shop in Torrance, California.`
 - role: `Sole developer`
 - timeline: `Aug 2025 – Jan 2026`
 - stack: React 19, Vite, TypeScript, Tailwind CSS 4, Vercel Analytics
@@ -399,6 +403,7 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 **Front matter**
 
 - outcome: `A single-page site for a Tampa law practice, delivered in three weeks.`
+- proposition: `A straightforward web presence for a Tampa law practice.`
 - role: `Sole developer`
 - timeline: `May – Jun 2025`
 - stack: React Router 7, React 19, TypeScript, Tailwind CSS 4, Radix UI, Embla Carousel
@@ -413,6 +418,7 @@ Short case study (300–400 words): context, my role, practice-area structure (i
 **Front matter**
 
 - outcome: `Made my own site indexable and rebuilt it as a quiet, fast, prerendered portfolio.`
+- proposition: `A content-first portfolio designed to make the work, process and range clear.`
 - role: `Designer and developer`
 - timeline: `2025 – 2026`
 - stack: React Router 7 (prerendered), React 19, TypeScript, Tailwind CSS 4, Vercel
@@ -428,6 +434,7 @@ Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November
 
 - title: `Extending a church LED wall`
 - outcome: `I took a church's LED wall from a failed extension, with scrambled and repeated content, to one working 3072 × 1536 display.`
+- proposition: `Diagnosing a display constraint and designing a practical path to extend a church LED wall.`
 - role: `Diagnosis, system design, controller and receiving-card configuration, vendor follow-up`
 - team: `Solo, with the church and the equipment vendor`
 - timeline: `Sep – Oct 2026` (hands-on 2 September to 3 October 2026; ordered March 2026)
