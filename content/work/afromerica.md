@@ -2,6 +2,7 @@
 slug: afromerica
 title: Afromerica Entertainment
 outcome: A talent-competition platform with paid voting, ticketing and a live judged finale, with scoring computed in the database.
+proposition: A competition and events platform with paid voting, live results and ticket checkout.
 order: 2
 featured: true
 year: '2025'

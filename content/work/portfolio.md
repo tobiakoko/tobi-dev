@@ -2,6 +2,7 @@
 slug: portfolio
 title: This portfolio
 outcome: Made my own site indexable and rebuilt it as a quiet, fast, prerendered portfolio.
+proposition: A content-first portfolio designed to make the work, process and range clear.
 order: 7
 year: '2025–2026'
 role: Designer and developer

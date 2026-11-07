@@ -94,9 +94,27 @@ Goal: full case studies with real screenshots, diagrams and measured results.
 
 ---
 
+## Phase R: Warm Editorial redesign (branch `redesign/warm-editorial`)
+
+Goal: apply the Warm Editorial system (`DESIGN-SYSTEM.md`) to the existing app, following `REDESIGN-IMPLEMENTATION.md` section by section. Same architecture: SPA mode with prerendering, `meta()` per route, markdown case studies. Phase 4 runs after this phase, on the new design.
+
+- [ ] **R.0 Ask:** (*7 Nov 2026: (a) received as `docs/build/prototype.html`; (b) taken from the prototype into `CONTENT.md` §2–5; (c) still to come.*) The owner supplies (a) the static prototype HTML (the pixel reference the redesign docs point to; it isn't in the repo), (b) the approved copy the docs reference but don't quote (About subheading and longer bio, service descriptions, page leads, the Contact callout quote), and (c) the hero photo with its photographer's name. Each new line goes into `CONTENT.md` before it goes on a page.
+- [x] **R.1** Foundation (§2–6): install Manrope and DM Sans, remove Inter; warm light palette and the new tokens; headings in Manrope 500; 11px eyebrows; acid `::selection`; square form controls; 1320 px wide container. Contrast ratios are in `DESIGN-SYSTEM.md`.
+- [x] **R.2** Data (§13–14): `proposition` required in `WorkMeta` and validated in `work.server.ts` (*the seven lines are in the content files and `CONTENT.md` §6, 7 Nov 2026*); hero, proof strip, services and capabilities copy in `CONTENT.md` and `app/data/*`. (*Done 7 Nov 2026: `app/data/home.ts`, `app/data/contact.ts`.*)
+- [x] **R.3** Header and Footer (§7). (*Done 7 Nov 2026: brand with teal period, underline-grow nav, round toggle, Menu/Close drawer below 1000 px; footer CTA band and three-column bottom bar, dark in both themes.*)
+- [x] **R.4** Home (§8) with `ProjectCard` (§9), `ProofStrip`, `SectionHeading`, `ServiceGrid`; hero photo placeholder and `TODO(content)` until R.0 (c). (*Done 7 Nov 2026; the photo and credit switch on from `HERO_PHOTO` in `app/data/home.ts`.*)
+- [x] **R.5** Work index and case study page (§9–10): `PageHeader`, `CaseFacts`, `CaseSection`, `ProjectPagination`. (*Done 7 Nov 2026. The markdown `##` sections render as case sections with their existing headings; the outcome line and stats form the Overview; timeline, team, location and links stay in the facts row so nothing is lost. OseiPrempeh's card is text-only until it has a cover.*)
+- [x] **R.6** About (§11): `Rail`, `Capabilities`, `Timeline`, `TwoColDivided`, `AboutCtaBand`. (*Done 7 Nov 2026. Rail labels are H2s styled as eyebrows and role titles H3s, for a clean heading outline. The teal band stays the darker teal in dark mode so white text passes contrast. The DLBC ICT role shows without bullets, as before, until its TODO is resolved.*)
+- [x] **R.7** Contact (§12): `DirectList`, `ContactForm` (mailto, no fake success), `CalloutQuote`. (*Done 7 Nov 2026. The draft is composed in `app/data/contact.ts`. Without JavaScript the form falls back to the browser's own mailto handling, so the CSP's `form-action` now allows `mailto:`. The 404 page moved to the new styles, and the old Layout, MetaGrid and TextLinks components are gone.*)
+- [x] **R.8** Tests and acceptance (§16–18): every page at 320, 375, 768 and 1280 px in both themes, hero on one screen at 390 px, axe 0 serious or critical with the drawer open, guards against blue, Inter and lorem. (*Done 7 Nov 2026: `npm run test:e2e`, 68 Playwright tests against the prerendered build served with the `vercel.json` headers. The doc's "unit" checks run in Playwright too, so no new test framework was needed. One acceptance item stays open: the case study spine headings.*)
+
+**Gate R:** the §18 acceptance list in `REDESIGN-IMPLEMENTATION.md` is ticked; typecheck, lint and build pass; copy matches `CONTENT.md`.
+
+---
+
 ## Phase 4: Quality and launch polish (branch `portfolio/phase-4-polish`)
 
-- [ ] **4.1** Playwright + `@axe-core/playwright`: every page returns 200, has one H1, its own title and canonical, 0 serious or critical axe violations, and no horizontal scroll at 320 px. Test the mobile menu by keyboard and the theme toggle. Unknown URLs return the 404 page. `/projects/*` redirects to `/work/*`.
+- [ ] **4.1** (*Mostly covered by R.8; still to add: the `/projects/*` redirect check, which needs Vercel's routing.*) Playwright + `@axe-core/playwright`: every page returns 200, has one H1, its own title and canonical, 0 serious or critical axe violations, and no horizontal scroll at 320 px. Test the mobile menu by keyboard and the theme toggle. Unknown URLs return the 404 page. `/projects/*` redirects to `/work/*`.
 - [ ] **4.2** GitHub Actions on pull requests: `npm ci`, typecheck, lint, build, Playwright, and Lighthouse CI (mobile) with the budgets in `DESIGN-SYSTEM.md`. Fail the PR if any fails.
 - [ ] **4.3** README: what the site is, stack, decisions, Lighthouse scores, how to run, a screenshot.
 - [ ] **4.4** Final pass: spell-check every page; check every external link; confirm copy matches `CONTENT.md`.

@@ -19,7 +19,7 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
     <button
       type="button"
       onClick={toggle}
-      className={`flex h-11 w-11 items-center justify-center hover:text-accent ${className}`}
+      className={`flex h-11 w-11 items-center justify-center rounded-full border border-line hover:text-accent ${className}`}
     >
       {/* The name states the action. Both exist; CSS shows the right one, like the icons. */}
       <span className="sr-only dark:hidden">Switch to dark theme</span>

@@ -1,6 +1,7 @@
 ---
 slug: rons-body-shop
 title: Ron's Body Shop
+proposition: A small-business website for a collision-repair shop in Torrance, California.
 # TODO(content): outcome, only once the estimate form fix is live
 order: 5
 year: '2025–2026'

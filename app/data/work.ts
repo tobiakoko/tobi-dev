@@ -29,6 +29,8 @@ export interface WorkMeta {
   title: string;
   /** TODO(content): required by the template; optional while Ron's Body Shop has none. */
   outcome?: string;
+  /** One-line proposition shown on Home, Work and the case study intro. Factual, no metrics. */
+  proposition: string;
   order: number;
   featured: boolean;
   year: string;
@@ -38,7 +40,7 @@ export interface WorkMeta {
   timeline: string;
   /** Exactly what the project's own code uses. */
   stack: string[];
-  /** MetaGrid label for `stack`. Set for non-software projects ("Tools and hardware"). */
+  /** Label for `stack` in the case study facts (default "Tools"). Set for non-software projects ("Tools and hardware"). */
   stackLabel?: string;
   disciplines: Discipline[];
   links: { live?: string; code?: string };

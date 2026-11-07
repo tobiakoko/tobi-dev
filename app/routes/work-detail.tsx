@@ -1,15 +1,15 @@
 import CaseStudyHeader from '~/components/CaseStudyHeader';
-import { Container, LabelRail, LabelRailRow } from '~/components/Layout';
-import NextProject from '~/components/NextProject';
+import ProjectPagination from '~/components/ProjectPagination';
+import Stats from '~/components/Stats';
 import NotFound from './not-found';
-import { getNextWork, getWorkBySlug } from '~/data/work.server';
+import { getWorkBySlug, getWorkPosition } from '~/data/work.server';
 import { FULL_NAME, pageMeta } from '~/data/site';
 import type { Route } from './+types/work-detail';
 
 export function loader({ params }: Route.LoaderArgs) {
   const work = getWorkBySlug(params.slug);
   if (!work) throw new Response('Not found', { status: 404 });
-  return { work, next: getNextWork(work.slug) };
+  return { work, ...getWorkPosition(work.slug) };
 }
 
 export function meta({ loaderData }: Route.MetaArgs) {
@@ -28,26 +28,36 @@ export function meta({ loaderData }: Route.MetaArgs) {
 }
 
 export default function WorkDetail({ loaderData }: Route.ComponentProps) {
-  const { work, next } = loaderData;
+  const { work, number, prev, next } = loaderData;
 
   return (
     <article>
-      <Container className="flex flex-col gap-24 pt-16 md:gap-40 md:pt-24">
-        <CaseStudyHeader work={work} />
+      <div className="page-top shell">
+        <CaseStudyHeader work={work} number={number} />
+      </div>
 
-        {/* TODO(content): the remaining template sections arrive in Phase 3; empty ones stay hidden. */}
-        {work.sections.length > 0 && (
-          <LabelRail>
-            {work.sections.map((section) => (
-              <LabelRailRow key={section.id} id={section.id} label={section.heading}>
-                <div className="prose" dangerouslySetInnerHTML={{ __html: section.html }} />
-              </LabelRailRow>
-            ))}
-          </LabelRail>
+      <div className="case-body shell">
+        {/* Overview: the outcome line and the key numbers. Hidden when neither exists. */}
+        {(work.outcome || work.stats.length > 0) && (
+          <div className="case-intro">
+            <p className="label">Overview</p>
+            <div>
+              {work.outcome && <p className="case-intro__text">{work.outcome}</p>}
+              <Stats stats={work.stats} />
+            </div>
+          </div>
         )}
 
-        <NextProject work={next} />
-      </Container>
+        {/* Each ## section of the markdown file; sections with no content don't exist. */}
+        {work.sections.map((section) => (
+          <section key={section.id} className="case-section" aria-labelledby={section.id}>
+            <h2 id={section.id}>{section.heading}</h2>
+            <div className="prose" dangerouslySetInnerHTML={{ __html: section.html }} />
+          </section>
+        ))}
+      </div>
+
+      <ProjectPagination prev={prev} next={next} />
     </article>
   );
 }

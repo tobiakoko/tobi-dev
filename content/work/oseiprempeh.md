@@ -2,6 +2,7 @@
 slug: oseiprempeh
 title: OseiPrempeh Law Firm
 outcome: A single-page site for a Tampa law practice, delivered in three weeks.
+proposition: A straightforward web presence for a Tampa law practice.
 order: 6
 year: '2025'
 role: Sole developer

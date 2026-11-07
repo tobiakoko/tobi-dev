@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-import { FULL_NAME } from '~/data/site';
+import { ALT_NAME } from '~/data/site';
 import ThemeToggle from './ThemeToggle';
 
 const NAV = [
@@ -47,26 +47,30 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 border-b bg-bg ${isScrolled || isMenuOpen ? 'border-line' : 'border-transparent'}`}
     >
-      <div className="mx-auto flex h-18 w-full max-w-wide items-center justify-between gap-8 px-6 md:px-12">
-        <Link to="/" className="font-medium whitespace-nowrap hover:text-accent">
-          {FULL_NAME}
+      <div className="shell flex h-18 items-center justify-between gap-6 min-[1000px]:h-[74px]">
+        {/* Brand: the name, with the trailing period in teal. */}
+        <Link
+          to="/"
+          className="font-display text-[1.15rem] font-semibold tracking-[-0.03em] whitespace-nowrap"
+        >
+          {ALT_NAME}
+          <span className="text-accent">.</span>
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
-          {NAV.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              aria-current={isActive(item.to) ? 'page' : undefined}
-              className={`text-small underline-offset-[0.2em] hover:text-accent ${isActive(item.to) ? 'underline decoration-1' : ''}`}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-          <ThemeToggle />
-        </nav>
-
-        <div className="flex items-center gap-2 md:hidden">
+        {/* Nav, theme toggle and (below 1000px) the menu button sit together on the right. */}
+        <div className="flex items-center gap-4 min-[1000px]:gap-[22px]">
+          <nav aria-label="Main" className="hidden items-center gap-7 min-[1000px]:flex">
+            {NAV.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                aria-current={isActive(item.to) ? 'page' : undefined}
+                className={`ulink text-[13px] ${isActive(item.to) ? 'text-accent' : 'text-muted hover:text-ink'}`}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
           <ThemeToggle />
           <button
             ref={menuButton}
@@ -74,20 +78,9 @@ export default function Header() {
             onClick={() => setIsMenuOpen((open) => !open)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            className="flex h-11 w-11 items-center justify-center hover:text-accent"
+            className="label grid h-11 place-items-center border border-line px-3.5 text-ink min-[1000px]:hidden"
           >
-            <span className="sr-only">Menu</span>
-            <svg
-              aria-hidden="true"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.5}
-              strokeLinecap="round"
-            >
-              {isMenuOpen ? <path d="M4 4l12 12M16 4L4 16" /> : <path d="M2 6h16M2 14h16" />}
-            </svg>
+            {isMenuOpen ? 'Close' : 'Menu'}
           </button>
         </div>
       </div>
@@ -96,15 +89,15 @@ export default function Header() {
         id="mobile-menu"
         aria-label="Main"
         hidden={!isMenuOpen}
-        className="border-t border-line bg-bg md:hidden"
+        className="border-t border-line bg-bg min-[1000px]:hidden"
       >
-        <ul className="mx-auto flex max-w-wide flex-col px-6 py-4">
+        <ul className="shell flex flex-col pt-6 pb-8">
           {NAV.map((item) => (
             <li key={item.to}>
               <NavLink
                 to={item.to}
                 aria-current={isActive(item.to) ? 'page' : undefined}
-                className={`flex min-h-11 items-center text-h3 underline-offset-[0.2em] hover:text-accent ${isActive(item.to) ? 'underline decoration-1' : ''}`}
+                className={`flex min-h-16 items-center font-display text-[1.9rem] font-medium tracking-[-0.03em] hover:text-ink ${isActive(item.to) ? 'text-ink' : 'text-muted'}`}
               >
                 {item.label}
               </NavLink>
