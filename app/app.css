@@ -195,6 +195,71 @@
 }
 
 @layer components {
+  /* Page wrapper: 1320px wide, 24px gutters that grow with the safe area. */
+  .shell {
+    width: 100%;
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+
+  /* Underline that grows left to right on hover and focus. */
+  .ulink {
+    position: relative;
+    display: inline-block;
+  }
+
+  .ulink::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .ulink:hover::after,
+  .ulink:focus-visible::after,
+  .ulink[aria-current='page']::after {
+    right: 0;
+  }
+
+  /* Teal, bold link with a trailing arrow (All work ↗, Read case study ↗). */
+  .arrowlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Square button; primary is ink-filled and inverts on hover. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 52px;
+    padding: 0 1.5rem;
+    border: 1.5px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn:hover,
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--ink);
+  }
+
   /* Uppercase micro-label: section labels, meta keys, discipline tags. */
   .label {
     font-size: var(--text-label);
@@ -390,14 +455,19 @@
   }
 }
 
-/* Hover and focus changes only: color and underline, 150 ms. */
+/* Hover and focus changes only: color, fill and underline, 150-200 ms. */
 @media (prefers-reduced-motion: no-preference) {
   a,
   button {
     transition:
       color 150ms ease-out,
+      background-color 150ms ease-out,
       text-decoration-color 150ms ease-out,
       border-color 150ms ease-out;
+  }
+
+  .ulink::after {
+    transition: right 200ms ease;
   }
 }
 

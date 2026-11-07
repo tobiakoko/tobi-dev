@@ -164,7 +164,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="mx-auto max-w-wide px-6 py-24 md:px-12 md:py-40">
+    <main className="shell py-24 md:py-40">
       <h1 className="text-title">{message}</h1>
       <p className="mt-6 max-w-measure text-muted">{details}</p>
       <Link to="/" className="link mt-10 inline-block">

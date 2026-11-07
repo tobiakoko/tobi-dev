@@ -98,10 +98,10 @@ Goal: full case studies with real screenshots, diagrams and measured results.
 
 Goal: apply the Warm Editorial system (`DESIGN-SYSTEM.md`) to the existing app, following `REDESIGN-IMPLEMENTATION.md` section by section. Same architecture: SPA mode with prerendering, `meta()` per route, markdown case studies. Phase 4 runs after this phase, on the new design.
 
-- [ ] **R.0 Ask:** the owner supplies (a) the static prototype HTML (the pixel reference the redesign docs point to; it isn't in the repo), (b) the approved copy the docs reference but don't quote (About subheading and longer bio, service descriptions, page leads, the Contact callout quote), and (c) the hero photo with its photographer's name. Each new line goes into `CONTENT.md` before it goes on a page.
+- [ ] **R.0 Ask:** (*7 Nov 2026: (a) received as `docs/build/prototype.html`; (b) taken from the prototype into `CONTENT.md` §2–5; (c) still to come.*) The owner supplies (a) the static prototype HTML (the pixel reference the redesign docs point to; it isn't in the repo), (b) the approved copy the docs reference but don't quote (About subheading and longer bio, service descriptions, page leads, the Contact callout quote), and (c) the hero photo with its photographer's name. Each new line goes into `CONTENT.md` before it goes on a page.
 - [x] **R.1** Foundation (§2–6): install Manrope and DM Sans, remove Inter; warm light palette and the new tokens; headings in Manrope 500; 11px eyebrows; acid `::selection`; square form controls; 1320 px wide container. Contrast ratios are in `DESIGN-SYSTEM.md`.
 - [ ] **R.2** Data (§13–14): `proposition` required in `WorkMeta` and validated in `work.server.ts` (*the seven lines are in the content files and `CONTENT.md` §6, 7 Nov 2026*); hero, proof strip, services and capabilities copy in `CONTENT.md` and `app/data/*`.
-- [ ] **R.3** Header and Footer (§7).
+- [x] **R.3** Header and Footer (§7). (*Done 7 Nov 2026: brand with teal period, underline-grow nav, round toggle, Menu/Close drawer below 1000 px; footer CTA band and three-column bottom bar, dark in both themes.*)
 - [ ] **R.4** Home (§8) with `ProjectCard` (§9), `ProofStrip`, `SectionHeading`, `ServiceGrid`; hero photo placeholder and `TODO(content)` until R.0 (c).
 - [ ] **R.5** Work index and case study page (§9–10): `PageHeader`, `CaseFacts`, `CaseSection`, `ProjectPagination`.
 - [ ] **R.6** About (§11): `Rail`, `Capabilities`, `Timeline`, `TwoColDivided`, `AboutCtaBand`.

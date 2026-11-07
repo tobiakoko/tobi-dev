@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
  * these instead of repeating gutters, widths and section gaps.
  */
 
-/** Wide container: 82.5rem (1320px), centered, with the page gutter. */
+/** Wide container: 1320px, centered, 24px gutters (the .shell class in app.css). */
 export function Container({
   children,
   className = '',
@@ -13,7 +13,7 @@ export function Container({
   children: ReactNode;
   className?: string;
 }) {
-  return <div className={`mx-auto w-full max-w-wide px-6 md:px-12 ${className}`}>{children}</div>;
+  return <div className={`shell ${className}`}>{children}</div>;
 }
 
 /** Prose column: 40rem, with the stack gap between paragraphs. */
