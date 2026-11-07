@@ -63,8 +63,8 @@ function imageSize(file: string, src: string): { width: number; height: number }
   fail(file, `can't read the size of ${src}`);
 }
 
-// Figures span the wide container (70rem); below that they're full width.
-const SIZES = '(min-width: 70rem) 70rem, 100vw';
+// Figures span the wide container (82.5rem); below that they're full width.
+const SIZES = '(min-width: 82.5rem) 82.5rem, 100vw';
 
 /**
  * srcset for a 2x screenshot when tools/capture-kit/prepare.mjs has made its
@@ -230,6 +230,7 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     slug,
     title: requireString(file, data, 'title'),
     outcome: optionalString(file, data, 'outcome'),
+    proposition: requireString(file, data, 'proposition'),
     order: data.order,
     featured: data.featured === true,
     year: requireString(file, data, 'year'),

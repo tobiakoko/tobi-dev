@@ -29,6 +29,8 @@ export interface WorkMeta {
   title: string;
   /** TODO(content): required by the template; optional while Ron's Body Shop has none. */
   outcome?: string;
+  /** One-line proposition shown on Home, Work and the case study intro. Factual, no metrics. */
+  proposition: string;
   order: number;
   featured: boolean;
   year: string;
