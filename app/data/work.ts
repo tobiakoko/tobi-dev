@@ -40,7 +40,7 @@ export interface WorkMeta {
   timeline: string;
   /** Exactly what the project's own code uses. */
   stack: string[];
-  /** MetaGrid label for `stack`. Set for non-software projects ("Tools and hardware"). */
+  /** Label for `stack` in the case study facts (default "Tools"). Set for non-software projects ("Tools and hardware"). */
   stackLabel?: string;
   disciplines: Discipline[];
   links: { live?: string; code?: string };

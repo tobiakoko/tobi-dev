@@ -63,8 +63,9 @@ function imageSize(file: string, src: string): { width: number; height: number }
   fail(file, `can't read the size of ${src}`);
 }
 
-// Figures span the wide container (82.5rem); below that they're full width.
-const SIZES = '(min-width: 82.5rem) 82.5rem, 100vw';
+// Figures sit in the case study's content column (2/3 of 1040px, about
+// 660px); below 760px the column is full width.
+const SIZES = '(min-width: 1040px) 660px, 100vw';
 
 /**
  * srcset for a 2x screenshot when tools/capture-kit/prepare.mjs has made its
@@ -273,9 +274,16 @@ export function getWorkBySlug(slug: string | undefined): WorkStudy | undefined {
   return found && { ...found.meta, sections: found.sections };
 }
 
-/** The case study after this one, wrapping to the first after the last. */
-export function getNextWork(slug: string): WorkMeta {
+/**
+ * A case study's neighbours and its 1-based place in display order. Previous
+ * and next wrap around the ends of the list.
+ */
+export function getWorkPosition(slug: string): { number: number; prev: WorkMeta; next: WorkMeta } {
   const all = getAllWork();
   const i = all.findIndex((w) => w.slug === slug);
-  return all[(i + 1) % all.length];
+  return {
+    number: i + 1,
+    prev: all[(i - 1 + all.length) % all.length],
+    next: all[(i + 1) % all.length],
+  };
 }
