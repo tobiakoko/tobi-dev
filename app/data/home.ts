@@ -3,6 +3,11 @@
  * route and its components don't hard-code it.
  */
 
+// Web copies of the original photo (2048 x 3072, kept out of the repo in
+// assets/public/): 640 and 1280 wide, WebP, so Vite fingerprints and caches them.
+import heroPhoto1280 from '~/assets/hero-dallas-1280.webp';
+import heroPhoto640 from '~/assets/hero-dallas-640.webp';
+
 export const HERO = {
   headline: 'I engineer software and systems people can rely on.',
   intro:
@@ -12,16 +17,22 @@ export const HERO = {
 
 export interface HeroPhoto {
   src: string;
+  srcSet: string;
   alt: string;
   width: number;
   height: number;
   photographer: string;
 }
 
-// TODO(content): the hero photo of Dallas and its photographer's name
-// (CONTENT.md §2.2). Until both arrive the hero shows a plain placeholder
-// panel and no credit line.
-export const HERO_PHOTO: HeroPhoto | null = null;
+/** CONTENT.md §2.2. Set to null to fall back to the plain panel with no credit. */
+export const HERO_PHOTO: HeroPhoto | null = {
+  src: heroPhoto640,
+  srcSet: `${heroPhoto640} 640w, ${heroPhoto1280} 1280w`,
+  alt: 'a tall glass building with Fountain Place in the background',
+  width: 640,
+  height: 960,
+  photographer: 'Walt Wellborn',
+};
 
 /** CONTENT.md §2.2a. */
 export const PROOF_STRIP = [

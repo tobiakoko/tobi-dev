@@ -78,7 +78,7 @@ export default function CaseStudyHeader({ work, number }: { work: WorkMeta; numb
           <img
             src={work.cover.src}
             srcSet={work.cover.srcSet}
-            sizes={work.cover.srcSet ? '(min-width: 82.5rem) 82.5rem, 100vw' : undefined}
+            sizes={work.cover.srcSet ? '(min-width: 78rem) 75rem, 100vw' : undefined}
             width={work.cover.width}
             height={work.cover.height}
             alt={work.cover.alt}

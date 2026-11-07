@@ -43,9 +43,9 @@ No résumé on the site (Daniel's decision, 3 Nov 2026): experience, education a
   > I'm a Dallas based software developer. I plan, build, test and support web products, payment flows, content platforms and live systems for churches, events and small businesses.
 
 - Actions: **View selected work ↓** (button, scrolls to Selected work) · **About** · **Contact**
-- Photo: one editorial photo of Dallas. `TODO(content): the photo file and the photographer's name. Show the placeholder until both arrive.`
+- Photo: one editorial photo of Dallas, by Walt Wellborn on Unsplash (supplied by Daniel, 7 Nov 2026). Alt text: `a tall glass building with Fountain Place in the background`. Original in `assets/public/hero-image-dallas.webp` (not in the repo); web copies in `app/assets/`.
 - Caption (two parts): **Based in Dallas** · **Working across software + systems**
-- Credit, under the caption: `Editorial photo by {photographer} on Unsplash`. Hidden until the photographer's name is known.
+- Credit, under the caption: `Editorial photo by Walt Wellborn on Unsplash`.
 
 ### 2.2a Proof strip
 
@@ -562,7 +562,7 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 ## 7. Still missing
 
 - [x] Headline choice (2.1): replaced in the redesign (7 Nov 2026)
-- [ ] Hero photo of Dallas and the photographer's name (§2.2)
+- [x] Hero photo of Dallas and the photographer's name (§2.2): Walt Wellborn, 7 Nov 2026
 - [x] LinkedIn URL confirmed
 - [ ] Booking link (optional; see §1)
 - [x] Résumé: not used (§1)

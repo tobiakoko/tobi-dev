@@ -111,7 +111,7 @@ facts and results tables; prose links `--ink` underlined, hover `--accent`.
 
 ## Layout
 
-- **Wide container:** `width: min(100% - 40px, 1320px)`, centred (≈20px gutters).
+- **Wide container:** 1200px of content with 24px gutters (`.shell`, max-width 1248px), centred. (Narrowed from 1320px on 7 Nov 2026 to suit the hero photo.)
 - **Prose column:** `max-width: 40rem`; case-study body `max-width: 1040px`.
 - **Grid:** 1 column on phones → a 12-column editorial grid on desktop. Key
   breakpoints: ~1000px (nav → drawer), ~860px (page-header stacks), ~760px (cards /
@@ -138,7 +138,7 @@ Build these; don't add others unless the plan does.
 
 | Component | Spec |
 | --- | --- |
-| `Header` | Brand `Tobi Akoko.` (period in `--accent`) left; pill nav Work/About/Contact with an **underline-grow hover** and `aria-current`; theme toggle + a **text "Menu"/"Close"** mobile button right. 78px tall, bottom rule on scroll. Drawer: large links, current page inked, others muted; Esc closes, focus returns. Keep the Radix/`aria-expanded` behaviour. |
+| `Header` | Brand `Tobi Akoko.` (period in `--accent`) left; nav Work/About/Contact (13px, `--muted`, current page teal) with an **underline-grow hover** and `aria-current`, grouped on the right with the theme toggle and a **text "Menu"/"Close"** mobile button. 74px tall (72px on phones), bottom rule on scroll. Drawer: large links, current page inked, others muted; Esc closes, focus returns. Keep the Radix/`aria-expanded` behaviour. |
 | `Footer` | Always dark. **CTA band:** eyebrow "Start a conversation", H2 "Have a role or project in mind?", one `Let's talk ↗` link. **Bottom bar** (3 cols): name/role stacked · Email/LinkedIn/GitHub · right-aligned `© {year}` + the GA/Vercel disclaimer (smaller, extra top margin, verbatim from `CONTENT.md`). |
 | `Eyebrow` | 11px bold uppercase `--muted`. Often numbered (`01 / Work`) or two-part (`Contact` / `Dallas, Texas`). A `<p>`/`<span>`, never a heading. |
 | `Button` | Square. `primary` = `--ink` fill, `--bg` text, inverts on hover. Hero CTA `View selected work ↓`. Links use `↗`. |
@@ -167,7 +167,11 @@ Build these; don't add others unless the plan does.
   → Footer. Hero: eyebrow, H1, intro, `View selected work ↓` + About/Contact; right
   a credited editorial Dallas photo with the two-span caption and the micro-colophon
   (`Editorial photo by {photographer} on Unsplash`, 11px, opacity .4). Hero fits one
-  screen (`min-height: calc(100svh - 78px)`); at 390px the name, headline and CTA show
+  screen (`min-height: calc(100svh - 74px)`); the eyebrow sits in the copy column
+  above the H1 (line-height 0.93, max 720px wide), the intro is up to 22px and 600px
+  wide, the CTA button is 46px tall with 14px text, and the photo column is 300px
+  wide with the photo up to 620px tall, aligned to the bottom; the two caption items
+  sit left-aligned with a 48px gap; at 390px the name, headline and CTA show
   without scrolling.
 - **Work (`/work`):** PageHeader (`Projects` / `01–NN`), all projects as staggered
   ProjectCards with boundary lines.

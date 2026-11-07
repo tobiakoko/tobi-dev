@@ -33,10 +33,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <section className="hero shell" aria-labelledby="hero-title">
-        <p className="label">
-          {DISPLAY_NAME} · {LOCATION}
-        </p>
-        <div>
+        <div className="hero__copy">
+          <p className="label">
+            {DISPLAY_NAME} · {LOCATION}
+          </p>
           <h1 id="hero-title">{HERO.headline}</h1>
           <p className="hero-intro">{HERO.intro}</p>
           <div className="hero-actions">
@@ -58,6 +58,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             {HERO_PHOTO && (
               <img
                 src={HERO_PHOTO.src}
+                srcSet={HERO_PHOTO.srcSet}
+                sizes="(min-width: 901px) 300px, 100vw"
                 width={HERO_PHOTO.width}
                 height={HERO_PHOTO.height}
                 alt={HERO_PHOTO.alt}

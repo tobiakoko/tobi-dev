@@ -47,7 +47,7 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 border-b bg-bg ${isScrolled || isMenuOpen ? 'border-line' : 'border-transparent'}`}
     >
-      <div className="shell flex h-18 items-center justify-between gap-6 min-[1000px]:h-[78px]">
+      <div className="shell flex h-18 items-center justify-between gap-6 min-[1000px]:h-[74px]">
         {/* Brand: the name, with the trailing period in teal. */}
         <Link
           to="/"
@@ -57,20 +57,20 @@ export default function Header() {
           <span className="text-accent">.</span>
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-[1.9rem] min-[1000px]:flex">
-          {NAV.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              aria-current={isActive(item.to) ? 'page' : undefined}
-              className={`ulink text-[0.95rem] font-medium ${isActive(item.to) ? 'text-accent' : ''}`}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-4">
+        {/* Nav, theme toggle and (below 1000px) the menu button sit together on the right. */}
+        <div className="flex items-center gap-4 min-[1000px]:gap-[22px]">
+          <nav aria-label="Main" className="hidden items-center gap-7 min-[1000px]:flex">
+            {NAV.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                aria-current={isActive(item.to) ? 'page' : undefined}
+                className={`ulink text-[13px] ${isActive(item.to) ? 'text-accent' : 'text-muted hover:text-ink'}`}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
           <ThemeToggle />
           <button
             ref={menuButton}
