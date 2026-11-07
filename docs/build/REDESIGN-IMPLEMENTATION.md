@@ -347,27 +347,32 @@ until then the placeholder has empty `alt` (decorative) and a `TODO(content)`.
 
 ## 18. Acceptance (Gate)
 
-- [ ] Home order: hero → proof strip → selected work → how I can help → availability.
-- [ ] Brand `Tobi Akoko.` with teal period; mobile button toggles Menu/Close; drawer
+- [x] Home order: hero → proof strip → selected work → how I can help → availability.
+- [x] Brand `Tobi Akoko.` with teal period; mobile button toggles Menu/Close; drawer
       marks the current page.
-- [ ] Hero fits one screen at 390px (name, Sunday-less: headline + CTA visible);
+- [x] Hero fits one screen at 390px (name, Sunday-less: headline + CTA visible);
       micro-colophon placed under the caption; placeholder + `TODO(content)`.
-- [ ] Selected work / Work: staggered cards, number+year overlay, `NN / 07`,
+      (*The credit line stays hidden until the photographer's name is known, rather
+      than show "[photographer]".*)
+- [x] Selected work / Work: staggered cards, number+year overlay, `NN / 07`,
       `Read case study ↗`, real disciplines; Work page has per-card boundary lines.
-- [ ] How I can help: `02 / Capabilities`, right lead, bottom-aligned stagger, your
+- [x] How I can help: `02 / Capabilities`, right lead, bottom-aligned stagger, your
       order + proof links.
 - [ ] Project detail: `Case study NN`, `Year · Work · Tools` row, editorial spine
       with architecture + results table + CWV note, prev/next pagination; unknown
-      slug → 404.
-- [ ] About: "The person behind the work", pill capabilities, timeline
+      slug → 404. (*7 Nov 2026: everything but the spine headings is done. The
+      case study sections still use their existing markdown headings (Context, The
+      problem, Architecture…); renaming them to the five spine headings is a copy
+      change across seven files, waiting on the owner.*)
+- [x] About: "The person behind the work", pill capabilities, timeline
       (dates/location → role/org/bullets), Origins "my church's events",
       Certifications + Community side-by-side, teal CTA band.
-- [ ] Contact: `Let's talk`, `Direct` ruled rows, `Message` form with placeholders +
+- [x] Contact: `Let's talk`, `Direct` ruled rows, `Message` form with placeholders +
       "What's this about?" (Other plain), `Open email draft ↗`, callout quote;
       mailto correct; no fake success.
-- [ ] Footer: "Have a role or project in mind?" + `Let's talk ↗`; 3-col bottom bar
+- [x] Footer: "Have a role or project in mind?" + `Let's talk ↗`; 3-col bottom bar
       with the right-aligned GA disclaimer.
-- [ ] No blue, no Inter, no invented facts. Self-hosted Manrope + DM Sans
+- [x] No blue, no Inter, no invented facts. Self-hosted Manrope + DM Sans
       (`font-src 'self'`). Light + dark both clean. `typecheck/lint/build/test` green.
 
 ## Open `TODO(content)`
