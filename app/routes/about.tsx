@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
-import { Container, LabelRail, LabelRailRow, Prose } from '~/components/Layout';
+import PageHeader from '~/components/PageHeader';
 import { EMAIL, pageMeta } from '~/data/site';
 
 export function meta() {
@@ -18,20 +18,14 @@ export function meta() {
  * that would show it is hidden; each gap is a TODO(content) below.
  */
 
-const principles = [
-  {
-    line: 'Get the facts right.',
-    sentence: 'Every fact lives in one place, and a test fails if a wrong one comes back.',
-  },
-  {
-    line: 'Fail honestly.',
-    sentence: "A form that can't send says so, and shows another way to reach a person.",
-  },
-  {
-    line: 'Leave it runnable.',
-    sentence:
-      'Documentation, a runbook and training mean the client never depends on me to change a service time.',
-  },
+const capabilities = [
+  'Full-stack engineering',
+  'Front-end development',
+  'Systems analysis',
+  'Implementation',
+  'Payments',
+  'IT & AV systems',
+  'Documentation & handover',
 ];
 
 interface Role {
@@ -145,142 +139,168 @@ const community = [
 
 const join = (...parts: (string | undefined)[]) => parts.filter(Boolean).join(' · ');
 
-function RuledList({ children }: { children: ReactNode }) {
-  return <ul className="flex flex-col border-t border-line">{children}</ul>;
-}
-
-function RuledItem({ children }: { children: ReactNode }) {
-  return <li className="flex flex-col gap-1 border-b border-line py-4">{children}</li>;
+/*
+ * Rail labels are H2s styled as eyebrows, and role titles are H3s, so the
+ * page reads as a proper outline to screen readers.
+ */
+function Rail({ label, first, children }: { label: string; first?: boolean; children: ReactNode }) {
+  return (
+    <section className={`rail ${first ? 'rail--first' : ''}`} aria-label={label}>
+      <h2 className="label">{label}</h2>
+      <div>{children}</div>
+    </section>
+  );
 }
 
 export default function About() {
   return (
-    <Container className="flex flex-col gap-24 pt-16 md:gap-40 md:pt-24">
-      <header className="flex flex-col gap-6">
-        <h1 className="text-title">About</h1>
-        <p className="max-w-measure text-h2 text-muted">
-          I build software that tells the truth: correct facts, honest error messages, and a
-          handover the client can actually run.
-        </p>
-      </header>
+    <>
+      <div className="page-top shell">
+        <PageHeader
+          eyebrow="The person behind the work"
+          title="About"
+          lead={
+            <p className="about-sub">
+              I came to software through engineering, hospitality and hands-on systems work. That
+              mix taught me to listen first, make the complicated clear and stay with a problem
+              until it works.
+            </p>
+          }
+        />
 
-      <LabelRail>
-        <LabelRailRow label="Bio">
-          <Prose>
+        <Rail label="Bio" first>
+          <div className="prose">
             <p>
-              I&rsquo;m Daniel Akoko, and most people call me Tobi. I&rsquo;m a software engineer in
-              Dallas, Texas. I build web software for churches and small businesses, and I care most
-              about the parts people only notice when they break: the facts on the page, the error
-              messages, the tests and the handover.
+              I&rsquo;m Daniel Akoko, though most people call me Tobi. I&rsquo;m a software engineer
+              in Dallas, Texas. I build web software for churches and small businesses, and I pay
+              close attention to the parts people usually notice only when they fail: the
+              information on the page, the error message after a wrong turn, the test that catches a
+              regression and the documentation someone needs after handover.
             </p>
             <p>
-              My path here wasn&rsquo;t a straight line. I studied electrical engineering, then
-              criminal justice, then computer science, and I worked in hospitality, where I learned
-              to stay calm under pressure and look after people. For years I&rsquo;ve also run
-              sound, media and livestreaming at my church. All of it shows up in how I work: I
-              listen first, I plan in steps, and I don&rsquo;t call something done until it works
-              for the person using it.
+              My route into software was not a straight line. I studied electrical engineering, then
+              criminal justice, then computer science. I worked in hospitality, where I learned to
+              stay calm when the room is busy and take care of the person in front of me. For years
+              I have also run sound, media and livestreaming at church.
             </p>
-          </Prose>
-        </LabelRailRow>
+            <p>
+              That mix shapes how I work now. I listen before I propose, turn complicated work into
+              clear steps and stay with a project through testing, launch and handover. The goal is
+              not simply to ship software. It is to leave people with something they can understand,
+              use and depend on.
+            </p>
+          </div>
+        </Rail>
 
-        <LabelRailRow label="How I work">
-          <ol className="flex max-w-measure flex-col gap-4 md:gap-6">
-            {principles.map((p) => (
-              <li key={p.line}>
-                <strong className="font-semibold">{p.line}</strong> {p.sentence}
-              </li>
+        <Rail label="Capabilities">
+          <ul className="caps">
+            {capabilities.map((c) => (
+              <li key={c}>{c}</li>
             ))}
-          </ol>
-        </LabelRailRow>
+          </ul>
+        </Rail>
 
-        <LabelRailRow label="Present">
-          <Prose>
+        <Rail label="Present">
+          <div className="prose">
             <p>
               I build websites and digital services for churches and small businesses, and I&rsquo;m
               studying for an MBA at Western Governors University (expected June 2027). I&rsquo;m
               open to full-time roles in software engineering, business and systems analysis,
               implementation, and project delivery.
             </p>
-          </Prose>
-        </LabelRailRow>
+          </div>
+        </Rail>
 
-        <LabelRailRow label="Past">
-          <RuledList>
+        <Rail label="Past">
+          <ol>
             {past.map((r) => (
-              <RuledItem key={r.role}>
-                <h3 className="font-medium">{r.role}</h3>
-                <p className="text-small text-muted tabular-nums">
-                  {join(r.org, r.location, r.dates)}
+              <li key={r.role} className="timeline-item">
+                <p className="timeline-meta">
+                  {r.dates && (
+                    <>
+                      {r.dates}
+                      <br />
+                    </>
+                  )}
+                  {r.location}
                 </p>
-                {r.bullets.length > 0 && (
-                  <ul className="mt-2 flex list-disc flex-col gap-1.5 pl-5 text-small marker:text-muted">
-                    {r.bullets.map((b, i) => (
-                      <li key={i}>{b}</li>
-                    ))}
-                  </ul>
-                )}
-              </RuledItem>
+                <div>
+                  <h3>{r.role}</h3>
+                  {r.org && <p className="mt-1 text-muted">{r.org}</p>}
+                  {r.bullets.length > 0 && (
+                    <ul>
+                      {r.bullets.map((b, i) => (
+                        <li key={i}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
             ))}
-          </RuledList>
-        </LabelRailRow>
+          </ol>
+        </Rail>
 
-        <LabelRailRow label="Origins">
-          <Prose>
+        <Rail label="Origins">
+          <div className="prose">
             <p>
               I started in electrical engineering at the Community College of Baltimore County,
               moved into criminal justice at the University of South Florida, and found my way to
               computer science at Western Governors University. Music has been a constant: I direct
-              choirs and help run music and media for church events.
+              choirs and help run music and media for my church&rsquo;s events.
             </p>
-          </Prose>
-        </LabelRailRow>
+          </div>
+        </Rail>
 
-        <LabelRailRow label="Education">
-          <RuledList>
+        <Rail label="Education">
+          <ul className="ruled">
             {education.map((d) => (
-              <RuledItem key={d.degree}>
-                <p className="font-medium">{d.degree}</p>
+              <li key={d.degree}>
+                <span className="ruled__main">{d.degree}</span>
                 {(d.school || d.dates) && (
-                  <p className="text-small text-muted tabular-nums">{join(d.school, d.dates)}</p>
+                  <span className="ruled__note">{join(d.school, d.dates)}</span>
                 )}
-              </RuledItem>
+              </li>
             ))}
-          </RuledList>
-        </LabelRailRow>
+          </ul>
+        </Rail>
 
-        <LabelRailRow label="Certifications">
-          <RuledList>
-            {certifications.map((c) => (
-              <RuledItem key={c}>
-                <p>{c}</p>
-              </RuledItem>
-            ))}
-          </RuledList>
-        </LabelRailRow>
+        <div className="two-col-divided">
+          <section aria-label="Certifications">
+            <h2 className="label">Certifications</h2>
+            <ul className="ruled">
+              {certifications.map((c) => (
+                <li key={c}>
+                  <span className="ruled__main">{c}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section aria-label="Community">
+            <h2 className="label">Community</h2>
+            <ul className="ruled">
+              {community.map((c) => (
+                <li key={c}>
+                  <span className="ruled__main">{c}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      </div>
 
-        <LabelRailRow label="Community">
-          <RuledList>
-            {community.map((c) => (
-              <RuledItem key={c}>
-                <p>{c}</p>
-              </RuledItem>
-            ))}
-          </RuledList>
-        </LabelRailRow>
-      </LabelRail>
-
-      <p className="text-h3">
-        Want to work together?{' '}
-        <a href={`mailto:${EMAIL}`} className="link">
-          Email me
-        </a>{' '}
-        or{' '}
-        <Link to="/work" className="link">
-          see my work
-        </Link>
-        .
-      </p>
-    </Container>
+      <section className="about-cta-band" aria-labelledby="work-together">
+        <div className="about-cta-band__inner shell">
+          <h2 id="work-together">Want to work together?</h2>
+          <p className="flex flex-wrap gap-x-[26px] gap-y-2 font-semibold">
+            <a href={`mailto:${EMAIL}`} className="ulink">
+              Email me <span aria-hidden="true">↗</span>
+            </a>
+            <Link to="/work" className="ulink">
+              See my work <span aria-hidden="true">↗</span>
+            </Link>
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

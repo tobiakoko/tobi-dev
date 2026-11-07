@@ -45,7 +45,7 @@ the light palette warms up, plus new tokens.**
 | `--inverse-bg` | `#1a1a16` | `#f2f0e9` | Proof strip (inverts per theme so it stays legible) |
 | `--inverse-text` | `#fbfaf6` | `#171714` | Text on the inverse band |
 | `--inverse-line` | `rgb(251 250 246 / .22)` | `rgb(23 23 20 / .18)` | Dividers on the inverse band |
-| `--band` | `oklch(0.48 0.1 195)` | `oklch(0.82 0.1 185)` | About CTA band fill (= teal) |
+| `--band` | `oklch(0.48 0.1 195)` | `oklch(0.48 0.1 195)` | About CTA band fill (= teal). Same dark teal in both themes, as in the prototype: white text on the dark-theme teal would be about 1.6:1. |
 
 Footer is always dark: `--footer-bg #1a1a16`, `--footer-line #3d3d38`,
 `--footer-ink #fbfaf6` in both themes.
@@ -73,7 +73,7 @@ pair passes; body and `--muted` need 4.5, the focus ring 3, white-on-band 4.5.
 | `--muted` on `--bg-alt` | 6.52 | 6.87 | 4.5 |
 | `--accent` on `--bg` (link, focus ring) | 5.32 | 11.28 | 4.5 / 3 |
 | `--accent` on `--bg-alt` | 5.81 | 10.40 | 4.5 / 3 |
-| white on `--band` (teal CTA band) | 6.07 | — | 4.5 |
+| white on `--band` (teal CTA band) | 6.07 | 6.07 | 4.5 |
 | `--on-acid` on `--acid` (selection) | 15.72 | 15.72 | 4.5 |
 | `--inverse-text` on `--inverse-bg` (proof strip) | 16.71 | 16.11 | 4.5 |
 
