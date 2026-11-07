@@ -846,6 +846,23 @@
     }
   }
 
+  /*
+   * Inline variant (About): the H1 at its natural width with the lead about
+   * 75px to its right, bottoms aligned, and a tighter eyebrow-to-H1 gap.
+   */
+  @media (min-width: 861px) {
+    .page-header--inline {
+      grid-template-columns: auto minmax(0, 460px);
+      justify-content: start;
+      column-gap: 75px;
+      row-gap: 44px;
+    }
+
+    .page-header--inline h1 {
+      font-size: clamp(2.25rem, 12vw, 10rem);
+    }
+  }
+
   /* Top padding for inner pages (Work, case study, About, Contact). */
   .page-top {
     padding-top: 70px;
@@ -1077,14 +1094,12 @@
     }
   }
 
-  /* About: the subheading in the page header's right column. */
+  /* About: the subheading beside the H1, in the body font. */
   .about-sub {
+    max-width: 460px;
     color: var(--ink);
-    font-family: var(--font-display);
-    font-size: clamp(21px, 2.4vw, 32px);
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
+    font-size: clamp(17px, 1.4vw, 19px);
+    line-height: 1.55;
   }
 
   /* Rail: label column and content, a hairline between rows. */

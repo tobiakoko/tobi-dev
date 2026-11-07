@@ -179,7 +179,7 @@ Build these; don't add others unless the plan does.
   (Why this mattered · What I needed to solve · How I approached it · What I
   delivered · Result & handoff). Technical depth (architecture, results table,
   Lighthouse/CWV) lives inside those sections. Unknown slug → real 404.
-- **About (`/about`):** eyebrow "The person behind the work"; Rails for Bio,
+- **About (`/about`):** eyebrow "The person behind the work"; the PageHeader's inline variant (H1 up to 160px at its natural width, the subheading beside it in DM Sans up to 19px and 460px wide, 75px apart, bottoms aligned); Rails for Bio,
   Capabilities (pills), Present; Past (Timeline); Origins; Education (ruled,
   "Year to be confirmed" where unknown); Certifications + Community (TwoColDivided);
   the teal CTA band.

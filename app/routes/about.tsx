@@ -159,6 +159,7 @@ export default function About() {
         <PageHeader
           eyebrow="The person behind the work"
           title="About"
+          inline
           lead={
             <p className="about-sub">
               I came to software through engineering, hospitality and hands-on systems work. That

@@ -8,13 +8,16 @@ export default function PageHeader({
   eyebrow,
   title,
   lead,
+  inline = false,
 }: {
   eyebrow: string | [string, string];
   title: string;
   lead?: ReactNode;
+  /** Lead sits right beside the H1 instead of in the far right column (About). */
+  inline?: boolean;
 }) {
   return (
-    <header className="page-header">
+    <header className={`page-header ${inline ? 'page-header--inline' : ''}`}>
       <p className="label">
         {typeof eyebrow === 'string' ? (
           eyebrow
