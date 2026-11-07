@@ -109,7 +109,7 @@
   --text-display--letter-spacing: -0.045em;
   --text-display--font-weight: 500;
 
-  --text-title: clamp(2.25rem, 12vw, 10.625rem);
+  --text-title: clamp(2.25rem, 12vw, 10rem);
   --text-title--line-height: 1.02;
   --text-title--letter-spacing: -0.045em;
   --text-title--font-weight: 500;
@@ -261,6 +261,19 @@
   .btn-primary:hover {
     background: transparent;
     color: var(--ink);
+  }
+
+  /* Smaller button: the Home hero and the Contact form. */
+  .btn--sm {
+    min-height: 46px;
+    padding: 0 1.15rem;
+    font-size: 14px;
+  }
+
+  /* A smaller, slightly lowered ↗ beside link and button text. */
+  .arrow-sm {
+    font-size: 0.75em;
+    vertical-align: -0.1em;
   }
 
   /* Uppercase micro-label: section labels, meta keys, discipline tags. */
@@ -540,13 +553,6 @@
     margin-top: 42px;
   }
 
-  /* A smaller button than the default, to suit the narrower hero. */
-  .hero-actions .btn {
-    min-height: 46px;
-    padding: 0 1.15rem;
-    font-size: 14px;
-  }
-
   .hero-visual {
     align-self: end;
     margin: 0;
@@ -809,11 +815,15 @@
     }
   }
 
-  /* PageHeader: eyebrow across, H1 left, lead right; stacks below 860px. */
+  /*
+   * PageHeader: eyebrow across, H1 left, lead right (its bottom level with the
+   * H1's), and an optional smaller note under the lead; stacks below 860px.
+   */
   .page-header {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
-    gap: 60px;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+    column-gap: 60px;
+    row-gap: 44px;
     align-items: end;
     margin-bottom: 110px;
     padding-bottom: 50px;
@@ -822,10 +832,6 @@
 
   .page-header > .label {
     grid-column: 1 / -1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 16px;
   }
 
   .page-header h1 {
@@ -834,8 +840,17 @@
 
   .page-header__lead {
     color: var(--muted);
-    font-size: clamp(18px, 2vw, 24px);
-    line-height: 1.5;
+    font-size: clamp(17px, 1.4vw, 19px);
+    line-height: 1.55;
+  }
+
+  /* The note sits under the lead in the same column, about 50px below it. */
+  .page-header__note {
+    grid-column: 2;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   @media (max-width: 860px) {
@@ -843,6 +858,11 @@
       grid-template-columns: 1fr;
       gap: 28px;
       margin-bottom: 70px;
+    }
+
+    .page-header__note {
+      grid-column: auto;
+      margin-top: 0;
     }
   }
 
@@ -855,11 +875,6 @@
       grid-template-columns: auto minmax(0, 460px);
       justify-content: start;
       column-gap: 75px;
-      row-gap: 44px;
-    }
-
-    .page-header--inline h1 {
-      font-size: clamp(2.25rem, 12vw, 10rem);
     }
   }
 
@@ -1277,8 +1292,8 @@
   /* Contact: Direct list left, the form right; stacks below 860px. */
   .contact {
     display: grid;
-    grid-template-columns: 0.78fr 1.22fr;
-    gap: clamp(2rem, 4vw, 4rem);
+    grid-template-columns: minmax(0, 410px) minmax(0, 1fr);
+    gap: clamp(2rem, 7vw, 90px);
     align-items: start;
   }
 
@@ -1292,24 +1307,38 @@
     }
   }
 
-  /* DirectList: label left, value right, on ruled rows. */
+  /* DirectList: a narrow label column, the value left-aligned beside it. */
   .direct-list > div {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    align-items: baseline;
+    gap: 1rem;
     padding: 18px 0;
     border-bottom: 1px solid var(--line);
   }
 
   .direct-list dt {
     color: var(--muted);
+    font-size: 12px;
   }
 
   .direct-list dd {
     margin: 0;
     min-width: 0;
-    text-align: right;
+    font-size: 15px;
     overflow-wrap: anywhere;
+  }
+
+  /* The form sits on the lighter surface as a panel. */
+  .contact-panel {
+    padding: 40px;
+    background: var(--bg-alt);
+  }
+
+  @media (max-width: 640px) {
+    .contact-panel {
+      padding: 24px;
+    }
   }
 
   .form-head {
@@ -1336,7 +1365,7 @@
 
   .field label {
     color: var(--muted);
-    font-size: 0.875rem;
+    font-size: 12px;
   }
 
   .field input,
@@ -1367,17 +1396,11 @@
     resize: vertical;
   }
 
-  /* CalloutQuote: the closing pull-quote, teal rule on the left. */
-  .callout-quote {
-    margin-inline: 0;
-    padding: 1.7rem 1.9rem;
-    border-left: 3px solid var(--accent);
-    background: var(--bg-alt);
-    font-family: var(--font-display);
-    font-size: clamp(23px, 2.6vw, 34px);
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
+  /* The form's button: arrow pushed to the right edge. */
+  .form .btn {
+    justify-content: space-between;
+    min-width: 197px;
+    font-size: 13px;
   }
 
   /* Availability: bordered panel with a square teal dot. */

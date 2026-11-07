@@ -15,6 +15,12 @@ const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
 /** The last path segment of a profile URL: "daniel-akoko", "tobiakoko". */
 const handle = (url: string) => url.replace(/\/$/, '').split('/').pop() ?? url;
 
+const Arrow = () => (
+  <span aria-hidden="true" className="arrow-sm">
+    ↗
+  </span>
+);
+
 export default function Contact() {
   return (
     <div className="page-top shell">
@@ -23,9 +29,13 @@ export default function Contact() {
         title="Let’s talk"
         lead={
           <p className="page-header__lead">
-            Tell me about the role, project or problem you&rsquo;re working through. I&rsquo;m open
-            to full-time roles and freelance projects — email is best, and I reply within two
-            business days.
+            Tell me about the role, project or problem you&rsquo;re working through.
+          </p>
+        }
+        note={
+          <p className="page-header__note">
+            I&rsquo;m open to full-time roles and freelance projects. Email is best, and I reply
+            within two business days.
           </p>
         }
       />
@@ -49,7 +59,7 @@ export default function Contact() {
                 <dt>Book a call</dt>
                 <dd>
                   <a href={BOOKING_URL} className="ulink" {...external}>
-                    Pick a time <span aria-hidden="true">↗</span>
+                    Pick a time <Arrow />
                   </a>
                 </dd>
               </div>
@@ -58,7 +68,7 @@ export default function Contact() {
               <dt>LinkedIn</dt>
               <dd>
                 <a href={LINKEDIN_URL} className="ulink" {...external}>
-                  {handle(LINKEDIN_URL)} <span aria-hidden="true">↗</span>
+                  {handle(LINKEDIN_URL)} <Arrow />
                 </a>
               </dd>
             </div>
@@ -66,7 +76,7 @@ export default function Contact() {
               <dt>GitHub</dt>
               <dd>
                 <a href={GITHUB_URL} className="ulink" {...external}>
-                  {handle(GITHUB_URL)} <span aria-hidden="true">↗</span>
+                  {handle(GITHUB_URL)} <Arrow />
                 </a>
               </dd>
             </div>
@@ -77,21 +87,10 @@ export default function Contact() {
           </dl>
         </section>
 
-        <ContactForm />
+        <div className="contact-panel">
+          <ContactForm />
+        </div>
       </div>
-
-      <blockquote className="callout-quote mt-14">
-        <p>
-          <span aria-hidden="true" className="text-accent">
-            &ldquo;
-          </span>
-          I build software that tells the truth — correct facts, honest errors, and a handover you
-          can actually run.
-          <span aria-hidden="true" className="text-accent">
-            &rdquo;
-          </span>
-        </p>
-      </blockquote>
     </div>
   );
 }

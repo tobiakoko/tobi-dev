@@ -109,7 +109,7 @@ Meta title: `About · Daniel (Tobi) Akoko`. Meta description: `Daniel (Tobi) Ako
 - H1: **About**
 - Subheading: **I came to software through engineering, hospitality and hands-on systems work. That mix taught me to listen first, make the complicated clear and stay with a problem until it works.**
 
-(The previous subheading, "I build software that tells the truth…", moved to the Contact quote in §5.)
+(The previous subheading, "I build software that tells the truth…", moved to the Contact quote in §5, which was later removed.)
 
 ### 4.2 Bio (label: Bio)
 
@@ -210,9 +210,10 @@ Teal band: **Want to work together?** · **Email me ↗** · **See my work ↗**
 
 ## 5. Contact
 
-- Eyebrow: **Contact** · **Dallas, Texas**
+- Eyebrow: **Contact / Dallas, Texas**
 - H1: **Let's talk**
-- Lead: `Tell me about the role, project or problem you're working through. I'm open to full-time roles and freelance projects — email is best, and I reply within two business days.`
+- Lead: `Tell me about the role, project or problem you're working through.`
+- Note, under the lead in smaller type: `I'm open to full-time roles and freelance projects. Email is best, and I reply within two business days.` (Split and reworded by Daniel, 7 Nov 2026.)
 - Direct (label: Direct): Email · LinkedIn ↗ · GitHub ↗ · Location: Dallas, Texas · Book a call (hide until set)
 - Form (label: Message, with **About a minute** beside it):
   - Name, placeholder `Your name`
@@ -222,7 +223,7 @@ Teal band: **Want to work together?** · **Email me ↗** · **See my work ↗**
   - Note: `Sending opens your email app with this message filled in. Nothing is submitted in the browser.`
   - Button: **Open email draft ↗**
   - Email subject: `[Portfolio enquiry] {What's this about?} from {Name}`. Body: name, reply-to email, type, message. No "sent" message on the page.
-- Quote: `I build software that tells the truth — correct facts, honest errors, and a handover you can actually run.`
+- Quote: removed by Daniel (7 Nov 2026); the form panel runs straight to the footer.
 - Meta title: `Contact · Daniel (Tobi) Akoko`
 - Meta description: `Contact Daniel (Tobi) Akoko, a software engineer in Dallas, about full-time roles or freelance web projects.`
 

@@ -74,12 +74,15 @@ export default function ContactForm() {
             required
           />
         </div>
-        <p className="text-[0.85rem] text-muted">
+        <p className="text-[12px] text-muted">
           Sending opens your email app with this message filled in. Nothing is submitted in the
           browser.
         </p>
-        <button type="submit" className="btn btn-primary self-start">
-          Open email draft <span aria-hidden="true">↗</span>
+        <button type="submit" className="btn btn-primary btn--sm self-start">
+          Open email draft{' '}
+          <span aria-hidden="true" className="arrow-sm">
+            ↗
+          </span>
         </button>
       </div>
     </form>

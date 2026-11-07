@@ -139,14 +139,14 @@ Build these; don't add others unless the plan does.
 | Component | Spec |
 | --- | --- |
 | `Header` | Brand `Tobi Akoko.` (period in `--accent`) left; nav Work/About/Contact (13px, `--muted`, current page teal) with an **underline-grow hover** and `aria-current`, grouped on the right with the theme toggle and a **text "Menu"/"Close"** mobile button. 74px tall (72px on phones), bottom rule on scroll. Drawer: large links, current page inked, others muted; Esc closes, focus returns. Keep the Radix/`aria-expanded` behaviour. |
-| `Footer` | Always dark. **CTA band:** eyebrow "Start a conversation", H2 "Have a role or project in mind?", one `Let's talk ↗` link. **Bottom bar** (3 cols): name/role stacked · Email/LinkedIn/GitHub · right-aligned `© {year}` + the GA/Vercel disclaimer (smaller, extra top margin, verbatim from `CONTENT.md`). |
+| `Footer` | Always dark. **CTA band:** eyebrow "Start a conversation", H2 "Have a role or project in mind?", one `Let's talk ↗` link (DM Sans 17px semibold, underlined). Name in semibold, role below, both 13px. **Bottom bar** (3 cols): name/role stacked · Email/LinkedIn/GitHub · right-aligned `© {year}` + the GA/Vercel disclaimer (smaller, extra top margin, verbatim from `CONTENT.md`). |
 | `Eyebrow` | 11px bold uppercase `--muted`. Often numbered (`01 / Work`) or two-part (`Contact` / `Dallas, Texas`). A `<p>`/`<span>`, never a heading. |
 | `Button` | Square. `primary` = `--ink` fill, `--bg` text, inverts on hover. Hero CTA `View selected work ↓`. Links use `↗`. |
 | `ProofStrip` | Full-width inverse band; 3 cells (14px) with 1px `--inverse-line` left dividers (34px pad); theme-aware; stacks ≤640px. |
 | `SectionHeading` | Flex row, align-end: left = numbered eyebrow + H2 (`clamp(44,6vw,82)`); right = a lead (`max 310px`, `--muted`) or an `All work ↗` link. |
 | `ProjectCard` | One link to `/work/:slug`. Media (4/3, `object-cover`, hover `scale(1.05)`+saturate under reduced-motion-OK; bottom scrim) with **number (bottom-left) + year (bottom-right)** overlaid, white 11px. Body grid `1fr auto`: left = `NN / 07` index, H3 title, one-line `proposition`, `Read case study ↗`; right = year + disciplines (joined ` · `), right-aligned 11px uppercase. On `/work`, add a 1px `--line` top border per card. Even cards offset down 72px on desktop (stagger). |
 | `ServiceGrid` | How-I-can-help: 3 columns, 1px `--ink` top border, 1px `--line` column dividers, each item **bottom-aligned** (number top; title/desc/proof pushed down, `min-height ~330px`) for the stagger. |
-| `PageHeader` | Grid `1.4fr / 0.6fr`, align-end, 1px `--line` bottom rule. Full-width eyebrow, H1 (`clamp(72,12vw,170)`), lead/subheading in the right column. |
+| `PageHeader` | Grid `1fr / minmax(280px, 420px)`, 1px `--line` bottom rule. Full-width eyebrow (two parts read `Contact / Dallas, Texas`), H1 (up to 160px), lead in the right column (DM Sans up to 19px, `--muted`) with its bottom level with the H1's, and an optional 14px note under it (Contact). About uses an inline variant (see Pages). |
 | `CaseFacts` | `dl`, 3 cols `0.5/1.2/1.3`: `Year | Work | Tools`, each `dt` 11px uppercase + `dd` 13px; 1px top rule; stacks on phones. |
 | `CaseSection` | `1fr/2fr`: H2 left, prose right (`#3f3f3a` light / `#c9c9c2` dark, 18px), 1px top rule, 70px block padding. Figures/tables/panels sit in the right column beside their text. |
 | `ProjectPagination` | 2 cols: Previous (left) / Next (right), each a tall link with a small label + project name (Manrope 500 `clamp(22,3vw,38)`) and an arrow. |
@@ -155,9 +155,8 @@ Build these; don't add others unless the plan does.
 | `Timeline` | Past: `0.8/2.2`. Left = dates + location (11–12px uppercase). Right = role H2 → org (`--muted`) → bullets. First item no top rule. |
 | `TwoColDivided` | Certifications + Community side by side with a 1px `--line` vertical divider; each a ruled list. |
 | `AboutCtaBand` | Full-width **teal** band, white text: "Want to work together?" + `Email me ↗` / `See my work ↗`. |
-| `ContactForm` | Underlined fields + placeholders: Name, Email, `What's this about?` (select: Full-time role / Freelance project / Other — plain), Message. Header: `Message` eyebrow + "About a minute". Submit `Open email draft ↗`. Composes a `mailto:` (subject `[Portfolio enquiry] {what's-this-about} from {name}`); **no fake success state**; email visible as fallback. |
-| `DirectList` | Contact ruled rows: label left, value right (LinkedIn/GitHub get `↗`). |
-| `CalloutQuote` | Standout pull-quote, 3px teal left rule, `--bg-alt` fill, Manrope 500. |
+| `ContactForm` | On a `--bg-alt` panel with 40px padding. Underlined fields with 12px labels and placeholders: Name, Email, `What's this about?` (select: Full-time role / Freelance project / Other — plain), Message. Header: `Message` eyebrow + "About a minute". Submit `Open email draft ↗` (46px, 13px, arrow at the right edge); the note is 12px. Composes a `mailto:` (subject `[Portfolio enquiry] {what's-this-about} from {name}`); **no fake success state**; email visible as fallback. |
+| `DirectList` | Contact ruled rows: a 100px label column (12px, `--muted`) and the value left-aligned beside it (15px); LinkedIn/GitHub get a small `↗`. |
 | `Figure` / `FigurePair` / `ResultsTable` / `Callout` | As before: screenshots/diagrams on `--bg-alt`, 1px `--line`, sharp corners, captions in small `--muted`; before/after pairs; tabular results table; "What I'd do next" callout. |
 | `ThemeToggle` | Keep PR #4's toggle + pre-paint script; round, accessible name stating the action. |
 
@@ -184,7 +183,7 @@ Build these; don't add others unless the plan does.
   "Year to be confirmed" where unknown); Certifications + Community (TwoColDivided);
   the teal CTA band.
 - **Contact (`/contact`):** eyebrow `Contact` / `Dallas, Texas`, H1 "Let's talk";
-  DirectList + ContactForm; CalloutQuote.
+  DirectList (410px) and the ContactForm panel, 90px apart. No quote (removed 7 Nov 2026).
 - **404:** inside the layout; title, one sentence, links to Home and Work.
 
 ## Motion

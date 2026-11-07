@@ -26,18 +26,19 @@ export default function Footer() {
           </h2>
           <Link
             to="/contact"
-            className="font-display text-[clamp(20px,2.4vw,30px)] font-medium tracking-[-0.03em] underline underline-offset-[6px] hover:text-accent"
+            className="text-[17px] font-semibold underline underline-offset-[5px] hover:text-accent"
           >
-            Let’s talk <span aria-hidden="true">↗</span>
+            Let’s talk{' '}
+            <span aria-hidden="true" className="arrow-sm">
+              ↗
+            </span>
           </Link>
         </div>
 
         <div className="grid grid-cols-2 items-end gap-6 border-t border-footer-line pt-[30px] pb-10 text-[13px] min-[761px]:grid-cols-[1.4fr_1fr_auto] min-[761px]:gap-10">
           <div>
-            <p className="font-display text-[1.1rem] font-medium tracking-[-0.02em]">
-              {DISPLAY_NAME}
-            </p>
-            <p className="mt-1 text-footer-ink/60">
+            <p className="font-semibold">{DISPLAY_NAME}</p>
+            <p className="mt-0.5 text-footer-ink/60">
               {JOB_TITLE} · {LOCATION}
             </p>
           </div>

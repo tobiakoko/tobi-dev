@@ -369,7 +369,8 @@ until then the placeholder has empty `alt` (decorative) and a `TODO(content)`.
       Certifications + Community side-by-side, teal CTA band.
 - [x] Contact: `Let's talk`, `Direct` ruled rows, `Message` form with placeholders +
       "What's this about?" (Other plain), `Open email draft ↗`, callout quote;
-      mailto correct; no fake success.
+      mailto correct; no fake success. (*The callout quote was removed by the owner,
+      7 Nov 2026.*)
 - [x] Footer: "Have a role or project in mind?" + `Let's talk ↗`; 3-col bottom bar
       with the right-aligned GA disclaimer.
 - [x] No blue, no Inter, no invented facts. Self-hosted Manrope + DM Sans

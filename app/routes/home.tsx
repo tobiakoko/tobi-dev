@@ -40,7 +40,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <h1 id="hero-title">{HERO.headline}</h1>
           <p className="hero-intro">{HERO.intro}</p>
           <div className="hero-actions">
-            <a href="#selected-work" className="btn btn-primary">
+            <a href="#selected-work" className="btn btn-primary btn--sm">
               View selected work <span aria-hidden="true">↓</span>
             </a>
             <span className="flex gap-[1.1rem] font-semibold">
