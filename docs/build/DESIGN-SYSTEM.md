@@ -166,7 +166,7 @@ Build these; don't add others unless the plan does.
 - **Home (`/`):** Hero → Proof strip → Selected work → How I can help → Availability
   → Footer. Hero: eyebrow, H1, intro, `View selected work ↓` + About/Contact; right
   a credited editorial Dallas photo with the two-span caption and the micro-colophon
-  (`Editorial photo by {photographer} on Unsplash`, 11px, opacity .4). Hero fits one
+  (`Editorial photo by {photographer} on Unsplash`, 12px, `--muted`; opacity .4 on ink fails contrast). Hero fits one
   screen (`min-height: calc(100svh - 74px)`); the eyebrow sits in the copy column
   above the H1 (line-height 0.93, max 720px wide), the intro is up to 22px and 600px
   wide, the CTA button is 46px tall with 14px text, and the photo column is 300px

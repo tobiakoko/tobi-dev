@@ -582,11 +582,12 @@
     text-transform: uppercase;
   }
 
+  /* Quiet but legible: --muted passes 4.5:1 in both themes; opacity on ink didn't. */
   .hero-credit {
     display: block;
     margin-top: 18px;
+    color: var(--muted);
     font-size: 12px;
-    opacity: 0.6;
   }
 
   @media (max-width: 900px) {
