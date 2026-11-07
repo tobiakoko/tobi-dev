@@ -1,6 +1,8 @@
 # Content: tobiakoko.com
 
-Every word and fact on the site comes from this file. Copy it exactly. Where it says `TODO(content):`, hide the element and leave the comment; don't fill the gap yourself.
+Every word and fact on the site comes from this file. Copy it exactly.
+
+**Warm Editorial redesign (7 Nov 2026).** New copy below comes from the owner's prototype (`docs/build/prototype.html`) and `REDESIGN-IMPLEMENTATION.md` §13. Where the prototype disagreed with a fact Daniel had already confirmed (the Bio's "criminology", the Education years), this file keeps the confirmed fact. Where it says `TODO(content):`, hide the element and leave the comment; don't fill the gap yourself.
 
 Facts about the projects were checked against each repository on 3 November 2026. Each number lists its source.
 
@@ -30,56 +32,53 @@ No résumé on the site (Daniel's decision, 3 Nov 2026): experience, education a
 
 ### 2.1 Headline
 
-**Chosen: A** (Daniel, 3 November 2026).
-
-General headlines (work for every career track):
-
-| | Headline | Why it works |
-| --- | --- | --- |
-| **A (default)** | **From requirements to release.** | Names the whole span: analysis, building, delivery. Four words. |
-| B | I build software people can trust. | Ties to the audit story: correct facts, honest errors. |
-| C | Clear plans. Working software. | Speaks to analysts and project leads as much as engineers. |
-| D | I find what's broken, then fix it. | Leads with the audit and rebuild, your most distinctive work. |
-| E | Software that's right, not just running. | Quality-first; good for QA and analyst roles. |
-
-Track-specific headlines (for a later version, or if Daniel narrows his search):
-
-| Track | Headline |
-| --- | --- |
-| Software engineering | Full-stack web apps, built to last. |
-| Business and systems analysis | Requirements first. Then the code. |
-| Implementation and solutions | I launch software teams can run themselves. |
-| Project delivery / PMO | Phased plans. Honest status. Shipped. |
-| Data | Many sources. One source of truth. |
+**I engineer software and systems people can rely on.** (Redesign, 7 Nov 2026. Replaces "From requirements to release.", Daniel's choice A of 3 Nov 2026.)
 
 ### 2.2 Hero
 
-- Label: **Daniel (Tobi) Akoko · Dallas, Texas**
+- Eyebrow: **Daniel (Tobi) Akoko · Dallas, Texas**
 - Headline: from 2.1
-- Intro (two sentences):
+- Intro:
 
-  > I'm a software engineer who plans, builds, tests and hands over web software for churches and small businesses. My work runs from paid voting and live leaderboards to content systems that staff update themselves.
+  > I'm a Dallas based software developer. I plan, build, test and support web products, payment flows, content platforms and live systems for churches, events and small businesses.
 
-- Links: **Work** · **About** · **Email**
+- Actions: **View selected work ↓** (button, scrolls to Selected work) · **About** · **Contact**
+- Photo: one editorial photo of Dallas. `TODO(content): the photo file and the photographer's name. Show the placeholder until both arrive.`
+- Caption (two parts): **Based in Dallas** · **Working across software + systems**
+- Credit, under the caption: `Editorial photo by {photographer} on Unsplash`. Hidden until the photographer's name is known.
+
+### 2.2a Proof strip
+
+Three cells, in this order:
+
+- Full-stack product delivery
+- Payments and real-time systems
+- IT & AV leadership since 2018
+
+(2018 matches the IT & AV Systems Lead role in §4.5.)
 
 ### 2.3 Selected work
 
-Heading: **Selected work**. Show the four `featured` projects in `order`: Lewisville, Afromerica, the Lewisville LED wall, DLBC Tampa. The LED wall shows range beyond web code: diagnosis, systems design and hardware configuration. Then the link **All work →**.
+- Eyebrow: **01 / Work**. Heading: **Selected work**. Link: **All work ↗**.
+- Show the four `featured` projects in `order`: Lewisville, Afromerica, the Lewisville LED wall, DLBC Tampa. The LED wall shows range beyond web code: diagnosis, systems design and hardware configuration.
+- Each card: the project's `proposition` (§6) and **Read case study ↗**.
 
-### 2.4 How I work
+### 2.4 How I can help
 
-Heading: **How I work**
+- Eyebrow: **02 / Capabilities**. Heading: **How I can help**.
+- Lead: `From the first constraint to a handover people can use.`
 
-| Discipline | Line | Sentence | Proof link |
+| # | Title | Sentence | Proof link |
 | --- | --- | --- | --- |
-| Engineering | **Build it properly.** | Typed APIs, real tests and pages that load fast, in Next.js, React, TypeScript and Postgres. | Afromerica |
-| Analysis | **Get the facts right.** | I start with discovery and an audit, then write requirements with acceptance criteria someone can check. | Lewisville |
-| Implementation | **Hand it over.** | Content systems, integrations, a runbook and training, so non-technical staff can run what I build. | Lewisville |
-| Delivery | **Ship in phases.** | Small, gated releases with a clear status and a sign-off at each step. | Lewisville |
+| 01 | **Systems analysis & implementation** | Understanding the current setup, finding the constraint and planning a practical path forward. | Extending a church LED wall |
+| 02 | **Software engineering** | Accessible web products, APIs, payments and the interfaces that hold them together. | Afromerica Entertainment |
+| 03 | **Delivery & handover** | Testing, documentation and support that help the next person run what was built. | Deeper Life Bible Church Lewisville |
+
+Each proof link reads `{project title} ↗`. (Replaces the four-row "How I work" block, 7 Nov 2026.)
 
 ### 2.5 Availability
 
-> ● Open to full-time roles and freelance projects. **enquiries@tobiakoko.com** · **Book a call**
+> ● Open to full-time roles and freelance projects. **enquiries@tobiakoko.com ↗** · **Book a call**
 
 (Hide "Book a call" until the booking link exists.)
 
@@ -92,6 +91,7 @@ Heading: **How I work**
 
 ## 3. Work index
 
+- Eyebrow: **Projects** · **01–07** (the count follows the number of case studies)
 - Title: **Work**
 - Intro: `Projects I've planned, built and supported, each with a full case study.`
 - Meta title: `Work · Daniel (Tobi) Akoko`
@@ -105,22 +105,35 @@ Meta title: `About · Daniel (Tobi) Akoko`. Meta description: `Daniel (Tobi) Ako
 
 ### 4.1 Heading
 
+- Eyebrow: **The person behind the work**
 - H1: **About**
-- Subheading: **I build software that tells the truth: correct facts, honest error messages, and a handover the client can actually run.**
+- Subheading: **I came to software through engineering, hospitality and hands-on systems work. That mix taught me to listen first, make the complicated clear and stay with a problem until it works.**
+
+(The previous subheading, "I build software that tells the truth…", moved to the Contact quote in §5.)
 
 ### 4.2 Bio (label: Bio)
 
-> I'm Daniel Akoko, and most people call me Tobi. I'm a software engineer in Dallas, Texas. I build web software for churches and small businesses, and I care most about the parts people only notice when they break: the facts on the page, the error messages, the tests and the handover.
+> I'm Daniel Akoko, though most people call me Tobi. I'm a software engineer in Dallas, Texas. I build web software for churches and small businesses, and I pay close attention to the parts people usually notice only when they fail: the information on the page, the error message after a wrong turn, the test that catches a regression and the documentation someone needs after handover.
 >
-> My path here wasn't a straight line. I studied electrical engineering, then criminal justice, then computer science, and I worked in hospitality, where I learned to stay calm under pressure and look after people. For years I've also run sound, media and livestreaming at my church. All of it shows up in how I work: I listen first, I plan in steps, and I don't call something done until it works for the person using it.
+> My route into software was not a straight line. I studied electrical engineering, then criminal justice, then computer science. I worked in hospitality, where I learned to stay calm when the room is busy and take care of the person in front of me. For years I have also run sound, media and livestreaming at church.
+>
+> That mix shapes how I work now. I listen before I propose, turn complicated work into clear steps and stay with a project through testing, launch and handover. The goal is not simply to ship software. It is to leave people with something they can understand, use and depend on.
 
-### 4.3 How I work (label: How I work)
+<!-- The prototype says "criminology"; kept "criminal justice" to match the degree (Daniel, 5 Nov 2026). -->
 
-Three principles, each a bold line and one sentence:
+### 4.3 Capabilities (label: Capabilities)
 
-1. **Get the facts right.** Every fact lives in one place, and a test fails if a wrong one comes back.
-2. **Fail honestly.** A form that can't send says so, and shows another way to reach a person.
-3. **Leave it runnable.** Documentation, a runbook and training mean the client never depends on me to change a service time.
+Shown as pills, in this order:
+
+- Full-stack engineering
+- Front-end development
+- Systems analysis
+- Implementation
+- Payments
+- IT & AV systems
+- Documentation & handover
+
+(Replaces the "How I work" principles on About, 7 Nov 2026.)
 
 ### 4.4 Present (label: Present)
 
@@ -164,7 +177,7 @@ A list, newest first. Each item: role, organisation, location, dates, then 2–4
 
 ### 4.6 Origins (label: Origins)
 
-> I started in electrical engineering at the Community College of Baltimore County, moved into criminal justice at the University of South Florida, and found my way to computer science at Western Governors University. Music has been a constant: I direct choirs and help run music and media for church events.
+> I started in electrical engineering at the Community College of Baltimore County, moved into criminal justice at the University of South Florida, and found my way to computer science at Western Governors University. Music has been a constant: I direct choirs and help run music and media for my church's events.
 
 ### 4.7 Education (label: Education)
 
@@ -175,7 +188,7 @@ A list, newest first. Each item: role, organisation, location, dates, then 2–4
 | Bachelor of Arts (BA), Criminal Justice | University of South Florida | Sep 2018 – Dec 2022 |
 | Associate of Science (AS), Electrical Engineering | Community College of Baltimore County | Aug 2015 – May 2018 |
 
-Degree names and dates from Daniel (5 Nov 2026). The Bio and Origins say "criminal justice" to match the degree (Daniel, 5 Nov 2026).
+Degree names and dates from Daniel (5 Nov 2026). The prototype shows "Year to be confirmed" for USF and CCBC; these dates replace that. The Bio and Origins say "criminal justice" to match the degree (Daniel, 5 Nov 2026).
 
 ### 4.8 Certifications (label: Certifications)
 
@@ -189,23 +202,40 @@ Degree names and dates from Daniel (5 Nov 2026). The Bio and Origins say "crimin
 - Media production, choir direction and digital streaming, Deeper Life Bible Church
 - DLYA fundraising team
 
-### 4.10 Closing line
+### 4.10 Closing band
 
-> Want to work together? **Email me** or **see my work**.
+Teal band: **Want to work together?** · **Email me ↗** · **See my work ↗**
 
 ---
 
 ## 5. Contact
 
+- Eyebrow: **Contact** · **Dallas, Texas**
 - H1: **Let's talk**
-- Line: `I'm open to full-time roles and freelance projects. Email is best, and I reply within two business days.`
-- List: Email · Book a call (hide until set) · LinkedIn · GitHub · Location: Dallas, Texas
+- Lead: `Tell me about the role, project or problem you're working through. I'm open to full-time roles and freelance projects — email is best, and I reply within two business days.`
+- Direct (label: Direct): Email · LinkedIn ↗ · GitHub ↗ · Location: Dallas, Texas · Book a call (hide until set)
+- Form (label: Message, with **About a minute** beside it):
+  - Name, placeholder `Your name`
+  - Email, placeholder `you@example.com`
+  - What's this about? Options: `Full-time role`, `Freelance project`, `Other`
+  - Message, placeholder `A little context about what you need…`
+  - Note: `Sending opens your email app with this message filled in. Nothing is submitted in the browser.`
+  - Button: **Open email draft ↗**
+  - Email subject: `[Portfolio enquiry] {What's this about?} from {Name}`. Body: name, reply-to email, type, message. No "sent" message on the page.
+- Quote: `I build software that tells the truth — correct facts, honest errors, and a handover you can actually run.`
 - Meta title: `Contact · Daniel (Tobi) Akoko`
 - Meta description: `Contact Daniel (Tobi) Akoko, a software engineer in Dallas, about full-time roles or freelance web projects.`
 
-### 5.1 Footer privacy note
+### 5.1 Footer
 
-Shown on every page, under the footer links. Google's Analytics terms require telling visitors that the site uses Google Analytics and cookies. The owner chose this note over a cookie banner (6 Nov 2026): visitors are mostly in the US, where no banner is required.
+- Eyebrow: **Start a conversation**
+- Heading: **Have a role or project in mind?**
+- Link: **Let's talk ↗** → Contact
+- Bottom bar: **Daniel (Tobi) Akoko** / **Software Engineer · Dallas, Texas** · Email · LinkedIn · GitHub · `© {year} Daniel Akoko`, then the privacy note below.
+
+### 5.2 Footer privacy note
+
+Shown on every page, at the right of the footer's bottom bar. Google's Analytics terms require telling visitors that the site uses Google Analytics and cookies. The owner chose this note over a cookie banner (6 Nov 2026): visitors are mostly in the US, where no banner is required.
 
 - Text: `This site uses Google Analytics, which sets cookies, to count visits. Vercel Analytics counts visits too, without cookies.`
 - Link: `How Google uses this data` → `https://policies.google.com/technologies/partner-sites`
@@ -531,7 +561,8 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 
 ## 7. Still missing
 
-- [x] Headline choice (2.1): A
+- [x] Headline choice (2.1): replaced in the redesign (7 Nov 2026)
+- [ ] Hero photo of Dallas and the photographer's name (§2.2)
 - [x] LinkedIn URL confirmed
 - [ ] Booking link (optional; see §1)
 - [x] Résumé: not used (§1)
