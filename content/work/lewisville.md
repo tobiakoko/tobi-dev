@@ -27,6 +27,7 @@ links:
   # Switch to https://deeperlifelewisville.org when the domain moves.
   live: https://dclm-lewisville.vercel.app/
   code: https://github.com/tobiakoko/dclm-lewisville
+card: /work/lewisville/card.webp
 cover:
   src: /work/lewisville/cover.webp
   alt: 'Lewisville home page on desktop: the headline "God still changes lives." over a congregation photo, with the Sunday worship time, the address and a livestream link in a bar below'

@@ -23,6 +23,13 @@ export interface Cover {
   srcSet?: string;
 }
 
+/**
+ * The project card's image: a desktop-and-phone composite made from the live
+ * site's own screenshots. Decorative on the card (the title names the link), so
+ * it has no alt text. Cards without one fall back to the cover.
+ */
+export type CardImage = Omit<Cover, 'alt'>;
+
 /** Front matter, per docs/build/CASE-STUDY-TEMPLATE.md. */
 export interface WorkMeta {
   slug: string;
@@ -46,6 +53,8 @@ export interface WorkMeta {
   links: { live?: string; code?: string };
   /** TODO(content): optional until the LED wall and OseiPrempeh have usable covers. */
   cover?: Cover;
+  /** Front matter `card: /work/<slug>/card.webp`, shown on Home and Work only. */
+  card?: CardImage;
   /** 1200 x 630 link preview made from the cover (tools/capture-kit/prepare.mjs). */
   ogImage?: string;
   stats: Stat[];

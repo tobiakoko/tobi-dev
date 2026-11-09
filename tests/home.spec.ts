@@ -47,6 +47,22 @@ test('project cards show number, year, "NN / 07", proposition and a CTA', async 
   await expect(first.locator('.project-media__overlay').first()).toHaveText('01');
 });
 
+test('cards use the card composite when set; case studies keep the cover', async ({ page }) => {
+  await page.goto('/work');
+  for (const slug of ['lewisville', 'afromerica', 'rons-body-shop', 'oseiprempeh']) {
+    const img = page.locator(`a.project-card[href="/work/${slug}"] .project-media img`);
+    await expect(img).toHaveAttribute('src', `/work/${slug}/card.webp`);
+  }
+  await expect(
+    page.locator('a.project-card[href="/work/led-wall"] .project-media img'),
+  ).toHaveAttribute('src', '/work/led-wall/cover.webp');
+  await page.goto('/work/lewisville');
+  await expect(page.locator('.case-cover img')).toHaveAttribute(
+    'src',
+    '/work/lewisville/cover.webp',
+  );
+});
+
 test('every service links to its proof case study', async ({ page }) => {
   await page.goto('/');
   const links = page.locator('.service a');

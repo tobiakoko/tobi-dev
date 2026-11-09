@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { Marked, type Tokens } from 'marked';
 import {
   DISCIPLINES,
+  type CardImage,
   type Cover,
   type Discipline,
   type Stat,
@@ -218,6 +219,14 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     cover = { src, alt: requireString(file, c, 'alt'), width, height, srcSet: srcSet(src, width) };
   }
 
+  let card: CardImage | undefined;
+  if (data.card !== undefined) {
+    const src = requireString(file, data, 'card');
+    if (!publicFileExists(src)) fail(file, `card ${src} not found in public/`);
+    const { width, height } = imageSize(file, src);
+    card = { src, width, height, srcSet: srcSet(src, width) };
+  }
+
   const stats: Stat[] = ((data.stats ?? []) as Record<string, unknown>[]).map((s) => {
     const stat = { value: requireString(file, s, 'value'), label: requireString(file, s, 'label') };
     if (!FACTS.includes(stat.value))
@@ -244,6 +253,7 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     disciplines: disciplines as Discipline[],
     links: { live, code },
     cover,
+    card,
     ogImage: publicFileExists(og) ? og : undefined,
     stats,
   };

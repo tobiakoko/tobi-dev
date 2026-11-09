@@ -21,20 +21,21 @@ export default function ProjectCard({
   level?: 2 | 3;
 }) {
   const Heading = `h${level}` as const;
-  const { cover } = work;
+  // The composite made for cards wins; otherwise the case study cover.
+  const image = work.card ?? work.cover;
 
   return (
     <Link to={`/work/${work.slug}`} className="project-card group">
-      {/* No cover yet: the card stays text-only rather than show a placeholder. */}
-      {cover && (
+      {/* No image yet: the card stays text-only rather than show a placeholder. */}
+      {image && (
         <div className="project-media">
           {/* Decorative here: the title below names the link. */}
           <img
-            src={cover.src}
-            srcSet={cover.srcSet}
-            sizes={cover.srcSet ? '(min-width: 761px) 50vw, 100vw' : undefined}
-            width={cover.width}
-            height={cover.height}
+            src={image.src}
+            srcSet={image.srcSet}
+            sizes={image.srcSet ? '(min-width: 761px) 50vw, 100vw' : undefined}
+            width={image.width}
+            height={image.height}
             alt=""
             loading="lazy"
             decoding="async"

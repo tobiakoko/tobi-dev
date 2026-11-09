@@ -13,6 +13,7 @@ disciplines: [Engineering, Implementation]
 links:
   live: https://www.ronsbodyshop.net/
   code: https://github.com/tobiakoko/RonsBodyShop
+card: /work/rons-body-shop/card.webp
 cover:
   src: /work/rons-body-shop/cover.webp
   alt: 'Ron''s Body Shop home page on desktop: "Quality without compromise" over a video still of a car being polished, with buttons for the shop''s specialties and a free estimate'

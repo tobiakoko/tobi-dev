@@ -680,7 +680,8 @@
 
   .project-media {
     position: relative;
-    aspect-ratio: 4 / 3;
+    /* 16:9 so the desktop-and-phone card composites show whole. */
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--bg-alt);
   }

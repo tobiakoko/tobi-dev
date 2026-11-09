@@ -24,6 +24,7 @@ disciplines: [Engineering, Implementation]
 links:
   live: https://www.afromericaent.com/
   # TODO(content): code link after the repo clean-up (BUILD-PLAN "Outside this repo")
+card: /work/afromerica/card.webp
 cover:
   src: /work/afromerica/cover.webp
   alt: 'Afromerica home page on desktop: "Welcome to Afromerica" over a concert stage photo, with buttons for finale voting and the finale leaderboard'
