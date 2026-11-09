@@ -326,6 +326,35 @@ Ask Kumuyi AI is **not** included (deployment is down).
 
 Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit, about, ministries, events, contact and give at desktop and phone; full-page home, visit and contact; `architecture-light.svg` and `architecture-dark.svg`. The `sermons-*` shots show the honest "couldn't load videos" state; use them only as the figure for the "honest failure" decision. Still wanted: the Phase 4 before captures (owner, local only) and a Studio editing screen.
 
+**Architecture, revised (supplied by Daniel, 9 Nov 2026).** Source: `Portfolio-Architecture-Mermaid.md`, drawn from [dclm-lewisville @ 18ec2e1](https://github.com/tobiakoko/dclm-lewisville/commit/18ec2e1bbb64d8289846170b063fbf68a59ce827), the same commit as the screenshots. It replaces the current `architecture-light.svg` / `-dark.svg` when the page is updated. It adds the editors and Studio path, and it leaves out Upstash, consent-based analytics and CI, which stay in the text above.
+
+Caption: `The publishing path and the contact path run independently. A signed Sanity webhook expires the affected cache tag. The contact handler returns the delivery outcome that the form displays.`
+
+```mermaid
+flowchart TB
+    editors["Church editors"]
+    visitors["Church visitors"]
+    studio["Sanity Studio"]
+    web["Next.js pages · Vercel"]
+    sanity[("Sanity content")]
+    cache["Revalidation API"]
+    contact["Contact API"]
+    youtube["YouTube feeds"]
+    resend["Resend"]
+
+    editors -->|Edit in /studio| studio
+    studio -->|Publish| sanity
+    visitors --> web
+    web <-->|Cached GROQ| sanity
+    sanity -->|Signed webhook| cache
+    cache -.->|Expire cache tag| web
+    web -->|Submit form| contact
+    web -->|Read videos and live status| youtube
+    contact -->|Validate and send| resend
+```
+
+Classes: actor = editors, visitors · ui = studio, web · service = contact, cache · data = sanity · vendor = youtube, resend.
+
 **Reflection.** `What I'd do next:` measure Core Web Vitals on real phones, and add calendar export for events once the church approves it. And next time, audit before adding features, not a year later.
 
 **AI note (one line in Process → Rebuild):** `I wrote the plan, content source, design system and acceptance gates, used Claude Code to implement against them, and reviewed every pull request.`
@@ -431,6 +460,39 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 
 `TODO(content): before/after page weight, Lighthouse, and estimate requests per month (with the owner's OK).`
 
+**Architecture (supplied by Daniel, 9 Nov 2026).** Source: `Portfolio-Architecture-Mermaid.md`, drawn from [RonsBodyShop @ 740b6bc](https://github.com/tobiakoko/RonsBodyShop/commit/740b6bc94c56fceebeedbecac3a0a2e337407393) (merged 5 Nov 2026, "redesign-build"). Checked against that commit on 9 Nov 2026: `api/lead.ts` validates with the same Zod schemas as the client, emails the shop through Resend, and requires a Turnstile token only when `TURNSTILE_SECRET_KEY` is set.
+
+Caption: `Both forms share the lead endpoint. The optional Turnstile check runs when configured. The reference confirms acceptance by the email provider for a genuine submission. The shop's inbox is the next delivery checkpoint.`
+
+```mermaid
+flowchart TB
+    customer["Customer browser"]
+    site["React site · Vite build on Vercel"]
+    estimate["Four-step estimate"]
+    message["Quick message"]
+    lead["Vercel /api/lead · Zod validation"]
+    check["Cloudflare Turnstile"]
+    resend["Resend"]
+    shop["Shop inbox"]
+
+    customer -->|Open site| site
+    site --> estimate
+    site --> message
+    estimate -->|Submit details| lead
+    message -->|Submit details| lead
+    lead -.->|Verify token if configured| check
+    lead -->|Send validated lead| resend
+    resend -->|Route email| shop
+    lead -.->|Reference or error| site
+```
+
+Classes: actor = customer, shop · ui = site, estimate, message · service = lead · vendor = check, resend.
+
+- **Stack at this commit** (for the front matter once the case study is written): React 19, Vite, TypeScript, Tailwind CSS 4, Zod, Resend, Vercel Analytics, Vitest. The current front matter (above) predates the fix and lacks Zod, Resend and Vitest. Cloudflare Turnstile is a service the API calls, not a package; list it only if the live deployment sets the key. `TODO(content): confirm whether TURNSTILE_SECRET_KEY is set in production.`
+- **Known issues:** this commit replaces the simulated form success with a real send. `TODO(content): confirm the fix is live and get the owner's OK before writing it up as a before/after.`
+
+**Lighthouse (8 Nov 2026):** see §8.
+
 ### 6.5 OseiPrempeh Law Firm
 
 **Front matter**
@@ -445,6 +507,33 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 Short case study (300–400 words): context, my role, practice-area structure (immigration, personal injury, international business, family law, contract disputes, criminal defense), search metadata and link previews, screenshots desktop and phone.
 
 `TODO(content): the firm must approve the statistics and testimonials shown on its site before any screenshot that includes them is used.` The supplied screenshots show both, so they're held in `assets/public/work/oseiprempeh/` (not deployed) until the firm approves.
+
+**Architecture (supplied by Daniel, 9 Nov 2026).** Source: `Portfolio-Architecture-Mermaid.md`, drawn from [D-Law @ 6fd1c17](https://github.com/tobiakoko/D-Law/commit/6fd1c177b68ea11518d0ff301b71a2deaad6687d). `TODO(content): not yet checked against the code (no local copy of D-Law); check before publishing.` The diagram has no statistics or testimonials, so it can be used before the firm's approval.
+
+Caption: `React Router produces the homepage HTML at build time. The consultation form opens a draft in the visitor's email app. The visitor sends the email, and the office confirms availability separately.`
+
+```mermaid
+flowchart TB
+    content["Typed firm content"]
+    assets["Fonts and media"]
+    build["React Router · Prerender"]
+    host["Vercel · Static hosting"]
+    browser["React page and consultation form"]
+    email["Visitor email app"]
+    firm["Firm office"]
+
+    content -->|Apply display rules| build
+    build -->|Homepage HTML and JS| host
+    assets --> host
+    host -->|Serve files| browser
+    browser -->|Prefilled mailto draft| email
+    browser -.->|Call directly| firm
+    email -->|Visitor presses Send| firm
+```
+
+Classes: data = content, assets · service = build, host · ui = browser · vendor = email · actor = firm.
+
+**Lighthouse (8 Nov 2026):** see §8.
 
 ### 6.6 This portfolio
 
@@ -560,6 +649,47 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 
 **AI note.** The source lists "Claude for spec research and diagnostic cross-checks" under tools. Keep it in the tools line.
 
+### 6.8 ChoirHub (not on the site yet)
+
+Supplied by Daniel on 9 Nov 2026 as an architecture diagram only. There's no case study file, front matter, permission note or screenshots yet, so nothing goes on the site. `TODO(content): decide whether ChoirHub becomes a case study; if so, supply year, role, timeline, the stack from its package.json, links and screenshots (five app screens are in "Desktop/05 ChoirHub", unchecked).` The diagram isn't checked against the code (no local copy of the repo).
+
+Source: `Portfolio-Architecture-Mermaid.md`, drawn from [choirhub @ a732499](https://github.com/tobiakoko/choirhub/commit/a73249931d9738f362857e5d12ab3a669345b078).
+
+Caption: `This is the native Expo client and cloud architecture represented in the repository. Rehearsal responses can queue locally. Sync sends pending mutations and pulls changed rows, while song media uses a separate download cache.`
+
+```mermaid
+flowchart TB
+    members["Choir members and leaders"]
+    app["Expo mobile app"]
+    local[("WatermelonDB · SQLite outbox")]
+    files["Device media cache"]
+    engine["Sync engine"]
+    auth["Supabase Auth"]
+    sync["Sync Edge Function"]
+    db[("Supabase Postgres · RLS")]
+    notify["Notification Edge Functions"]
+    media["Configured media URLs"]
+    push["Expo Push Service"]
+
+    members --> app
+    app <-->|Local reads and writes| local
+    local <-->|Queue and apply changes| engine
+    engine <-->|Push and pull| sync
+    sync <-->|Caller-scoped data| db
+    app -->|Sign in| auth
+    app <-->|Play or download| files
+    files -->|Fetch files| media
+    app -->|Request fan-out| notify
+    notify -->|Resolve audience| db
+    notify -->|Dispatch to devices| push
+```
+
+Classes: actor = members · ui = app · service = engine, auth, sync, notify · data = local, files, db · vendor = media, push.
+
+### 6.9 Rendering the architecture diagrams
+
+The source file gives every diagram the same five classes (actor, ui, service, data, vendor), coloured with Tailwind slate, sky, violet, green and amber. The sky (blue) and violet fills break the teal-only rule (CLAUDE.md rule 8). When the diagrams are rendered with `@mermaid-js/mermaid-cli`, map the five classes to the site's tokens and make light and dark SVGs like the existing ones. Keep the node labels, edge labels and captions word for word as above.
+
 ---
 
 ## 7. Still missing
@@ -585,6 +715,10 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [ ] DLBC Tampa: material for Process and Architecture (§6.3 has none)
 - [ ] Ron's Body Shop: fixes done, then numbers and owner's OK
 - [ ] OseiPrempeh: firm's approval of statistics and testimonials
+- [ ] OseiPrempeh and ChoirHub architecture diagrams: check against the code (§6.5, §6.8)
+- [ ] Ron's Body Shop: is the 5 Nov lead fix live, and is Turnstile on in production? (§6.4)
+- [ ] ChoirHub: a case study or not; if yes, front matter, permission and screenshots (§6.8)
+- [ ] Afromerica /artists: rerun Lighthouse (22.5 s mobile LCP on 8 Nov) (§8.1)
 - [x] Lighthouse scores (§8)
 - [x] Afromerica screenshots from the live site (capture kit)
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
@@ -626,3 +760,31 @@ This portfolio (`tobiakoko.com`, the Phase 1 build on `main`), rerun 5 Nov 2026 
 | portfolio | / | desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 |
 | portfolio | /about | mobile | 100 | 100 | 100 | 100 | 1.4 s | 0 |
 | portfolio | /about | desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 |
+
+### 8.1 Rerun, 8 Nov 2026 (single runs)
+
+Supplied by Daniel as `rons-lighthouse-summary.json`, `osei-lighthouse-summary.json` and `afromerica-lighthouse-summary.json`, measured 8 Nov 2026 between 04:25 and 04:28 UTC against the live sites. **Each row is one Lighthouse lab run, not a median of 3 like the table above, and not real-user Core Web Vitals; Lighthouse can't report field INP.** Quote them only with the date and "single lab run". Values are rounded: LCP and FCP to 0.1 s, CLS to 3 decimals, TBT to the nearest ms.
+
+| Project | Page | Form | Perf | A11y | BP | SEO | LCP | FCP | TBT | CLS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| rons-body-shop | / | mobile | 86 | 96 | 96 | 100 | 2.5 s | 2.0 s | 397 ms | 0.031 |
+| rons-body-shop | / | desktop | 85 | 96 | 96 | 100 | 0.9 s | 0.9 s | 0 ms | 0.256 |
+| oseiprempeh | / | mobile | 95 | 97 | 100 | 100 | 2.4 s | 2.3 s | 24 ms | 0 |
+| oseiprempeh | / | desktop | 100 | 97 | 100 | 100 | 0.5 s | 0.5 s | 0 ms | 0.039 |
+| afromerica | / | mobile | 83 | 100 | 96 | 100 | 4.6 s | 1.0 s | 75 ms | 0 |
+| afromerica | / | desktop | 97 | 100 | 96 | 100 | 1.3 s | 0.3 s | 0 ms | 0 |
+| afromerica | /events | mobile | 98 | 98 | 100 | 92 | 2.2 s | 1.0 s | 22 ms | 0 |
+| afromerica | /events | desktop | 100 | 98 | 100 | 92 | 0.6 s | 0.4 s | 0 ms | 0 |
+| afromerica | /artists | mobile | 73 | 97 | 100 | 92 | 22.5 s | 1.0 s | 114 ms | 0 |
+| afromerica | /artists | desktop | 73 | 96 | 100 | 92 | 9.9 s | 0.3 s | 55 ms | 0 |
+| afromerica | /about | mobile | 99 | 98 | 100 | 92 | 2.1 s | 0.8 s | 30 ms | 0 |
+| afromerica | /about | desktop | 100 | 98 | 100 | 92 | 0.5 s | 0.3 s | 0 ms | 0 |
+| afromerica | /contact | mobile | 99 | 98 | 100 | 92 | 2.1 s | 0.9 s | 29 ms | 0 |
+| afromerica | /contact | desktop | 100 | 98 | 100 | 92 | 0.5 s | 0.3 s | 0 ms | 0 |
+
+Notes before any of these reach a page:
+
+- **Ron's desktop CLS is 0.256**, above Google's 0.25 "poor" line. Don't present it as a strength; it's a fix to make and then show as a before/after.
+- **Afromerica /artists** has LCP of 22.5 s (mobile) and 9.9 s (desktop) in this run. Look into it before citing the other Afromerica pages, and don't quote it without a rerun.
+- **OseiPrempeh** scores are clean (95–100 performance, 97 accessibility) and show no firm statistics, so they can be used before the firm's approval.
+- Rules 1 and 2 still apply: a figure goes into a case study's `stats` only after it's added to the facts list with this source.
