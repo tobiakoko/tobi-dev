@@ -57,8 +57,11 @@ test('every service links to its proof case study', async ({ page }) => {
 });
 
 test('case studies have a facts row and previous/next links', async ({ page }) => {
+  await page.goto('/work/lewisville');
+  await expect(page.locator('.case-facts dt')).toHaveText(['Year', 'Role', 'Team', 'Tools']);
+  // No team listed: the Team fact is left out rather than shown empty.
   await page.goto('/work/afromerica');
-  await expect(page.locator('.case-facts dt')).toHaveText(['Year', 'Work', 'Tools']);
+  await expect(page.locator('.case-facts dt')).toHaveText(['Year', 'Role', 'Tools']);
   const pager = page.getByRole('navigation', { name: 'More case studies' });
   await expect(pager.getByRole('link')).toHaveCount(2);
 });

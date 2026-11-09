@@ -1,20 +1,19 @@
 import { Link } from 'react-router';
 import type { WorkMeta } from '~/data/work';
-import DisciplineTag from './DisciplineTag';
 
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
 /**
  * Back link, "Case study NN" and the title with the proposition beside it,
- * then the Year · Work · Tools facts and the cover.
+ * then the Year · Role · Team · Tools facts and the cover.
  */
 export default function CaseStudyHeader({ work, number }: { work: WorkMeta; number: number }) {
   const { live, code } = work.links;
 
   return (
     <header>
-      <Link to="/work" className="ulink text-[0.9rem] font-semibold">
-        <span aria-hidden="true">←</span> Work
+      <Link to="/work" className="ulink text-[13px]">
+        <span aria-hidden="true">←</span> All work
       </Link>
 
       <div className="case-title-grid">
@@ -25,34 +24,23 @@ export default function CaseStudyHeader({ work, number }: { work: WorkMeta; numb
         <p className="case-summary">{work.proposition}</p>
       </div>
 
+      {/* Facts: Year, Role, Team (only when the case study has one) and Tools. */}
       <dl className="case-facts">
-        <div>
+        <div className="case-facts__year">
           <dt>Year</dt>
-          <dd>
-            {work.year}
-            <br />
-            <span className="text-muted">{work.timeline}</span>
-          </dd>
+          <dd>{work.year}</dd>
         </div>
         <div>
-          <dt>Work</dt>
-          <dd>
-            {work.role} · <DisciplineTag disciplines={work.disciplines} />
-            {work.team && (
-              <>
-                <br />
-                <span className="text-muted">{work.team}</span>
-              </>
-            )}
-            {work.location && (
-              <>
-                <br />
-                <span className="text-muted">{work.location}</span>
-              </>
-            )}
-          </dd>
+          <dt>Role</dt>
+          <dd>{work.role}</dd>
         </div>
-        <div>
+        {work.team && (
+          <div>
+            <dt>Team</dt>
+            <dd>{work.team}</dd>
+          </div>
+        )}
+        <div className="case-facts__tools">
           <dt>{work.stackLabel ?? 'Tools'}</dt>
           <dd>{work.stack.join(', ')}</dd>
         </div>

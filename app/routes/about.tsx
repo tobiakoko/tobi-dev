@@ -137,8 +137,6 @@ const community = [
   'DLYA fundraising team',
 ];
 
-const join = (...parts: (string | undefined)[]) => parts.filter(Boolean).join(' · ');
-
 /*
  * Rail labels are H2s styled as eyebrows, and role titles are H3s, so the
  * page reads as a proper outline to screen readers.
@@ -227,7 +225,7 @@ export default function About() {
                 </p>
                 <div>
                   <h3>{r.role}</h3>
-                  {r.org && <p className="mt-1 text-muted">{r.org}</p>}
+                  {r.org && <p className="timeline-org">{r.org}</p>}
                   {r.bullets.length > 0 && (
                     <ul>
                       {r.bullets.map((b, i) => (
@@ -253,13 +251,14 @@ export default function About() {
         </Rail>
 
         <Rail label="Education">
-          <ul className="ruled">
+          <ul className="ruled edu-list">
             {education.map((d) => (
               <li key={d.degree}>
-                <span className="ruled__main">{d.degree}</span>
-                {(d.school || d.dates) && (
-                  <span className="ruled__note">{join(d.school, d.dates)}</span>
-                )}
+                <span>
+                  <span className="ruled__main">{d.degree}</span>
+                  {d.school && <span className="edu-list__school">{d.school}</span>}
+                </span>
+                {d.dates && <span className="ruled__note">{d.dates}</span>}
               </li>
             ))}
           </ul>
@@ -287,21 +286,27 @@ export default function About() {
             </ul>
           </section>
         </div>
-      </div>
 
-      <section className="about-cta-band" aria-labelledby="work-together">
-        <div className="about-cta-band__inner shell">
-          <h2 id="work-together">Want to work together?</h2>
-          <p className="flex flex-wrap gap-x-[26px] gap-y-2 font-semibold">
-            <a href={`mailto:${EMAIL}`} className="ulink">
-              Email me <span aria-hidden="true">↗</span>
-            </a>
-            <Link to="/work" className="ulink">
-              See my work <span aria-hidden="true">↗</span>
-            </Link>
-          </p>
-        </div>
-      </section>
+        <section className="about-cta-band" aria-labelledby="work-together">
+          <div className="about-cta-band__inner">
+            <h2 id="work-together">Want to work together?</h2>
+            <p className="flex flex-wrap gap-x-[26px] gap-y-2 font-semibold">
+              <a href={`mailto:${EMAIL}`}>
+                Email me{' '}
+                <span aria-hidden="true" className="arrow-sm">
+                  ↗
+                </span>
+              </a>
+              <Link to="/work">
+                See my work{' '}
+                <span aria-hidden="true" className="arrow-sm">
+                  ↗
+                </span>
+              </Link>
+            </p>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

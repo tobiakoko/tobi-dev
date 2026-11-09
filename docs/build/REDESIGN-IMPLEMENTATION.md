@@ -358,7 +358,8 @@ until then the placeholder has empty `alt` (decorative) and a `TODO(content)`.
       `Read case study ↗`, real disciplines; Work page has per-card boundary lines.
 - [x] How I can help: `02 / Capabilities`, right lead, bottom-aligned stagger, your
       order + proof links.
-- [ ] Project detail: `Case study NN`, `Year · Work · Tools` row, editorial spine
+- [ ] Project detail: `Case study NN`, `Year · Work · Tools` row (*now Year · Role ·
+      Team · Tools, owner, 8 Nov 2026*), editorial spine
       with architecture + results table + CWV note, prev/next pagination; unknown
       slug → 404. (*7 Nov 2026: everything but the spine headings is done. The
       case study sections still use their existing markdown headings (Context, The
