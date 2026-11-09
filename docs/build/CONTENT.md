@@ -452,7 +452,7 @@ Classes: actor = editors, visitors · ui = studio, web · service = contact, cac
 - stack: React 19, Vite, TypeScript, Tailwind CSS 4, Vercel Analytics
 - location: Torrance, California
 - links: live `https://www.ronsbodyshop.net/`; code `https://github.com/tobiakoko/RonsBodyShop`
-- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown. Numbers still need the owner's OK.
+- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown. On 9 Nov 2026 Daniel confirmed the project can be published. `TODO(content): does that cover the founding year (1980) and the rating (4.7, 85+ Google reviews)? The shop's own content file (src/content/shop.ts @ 740b6bc) still marks both "confirm with owner", and the card composite shows them.`
 
 **Facts available now:** a collision-repair shop in Torrance, California; video hero; services, gallery, story and contact sections; Vercel Analytics tracks "Request Estimate" clicks; 44 commits from August 2025 to January 2026.
 
@@ -491,7 +491,7 @@ Classes: actor = customer, shop · ui = site, estimate, message · service = lea
 - **Stack at this commit** (for the front matter once the case study is written): React 19, Vite, TypeScript, Tailwind CSS 4, Zod, Resend, Vercel Analytics, Vitest. The current front matter (above) predates the fix and lacks Zod, Resend and Vitest. Cloudflare Turnstile is a service the API calls, not a package; list it only if the live deployment sets the key. `TODO(content): confirm whether TURNSTILE_SECRET_KEY is set in production.`
 - **Known issues:** this commit replaces the simulated form success with a real send. `TODO(content): confirm the fix is live and get the owner's OK before writing it up as a before/after.`
 
-**Lighthouse (8 Nov 2026):** see §8.
+**Lighthouse (7 Nov 2026 audit):** see §8.1.
 
 ### 6.5 OseiPrempeh Law Firm
 
@@ -503,6 +503,7 @@ Classes: actor = customer, shop · ui = site, estimate, message · service = lea
 - timeline: `May – Jun 2025`
 - stack: React Router 7, React 19, TypeScript, Tailwind CSS 4, Radix UI, Embla Carousel
 - links: live `https://www.oseiprempeh.com/`; code `https://github.com/tobiakoko/D-Law`
+- Permission: Daniel confirmed on 9 Nov 2026 that the project can be published. `TODO(content): does that include the statistics and claims on the firm's site ("Over Two Decades", "20+", "800+")? Daniel's own case study PDF (9 Nov 2026) still lists statistics, case results, fees and testimonial consent as needing attorney review.`
 
 Short case study (300–400 words): context, my role, practice-area structure (immigration, personal injury, international business, family law, contract disputes, criminal defense), search metadata and link previews, screenshots desktop and phone.
 
@@ -533,7 +534,7 @@ flowchart TB
 
 Classes: data = content, assets · service = build, host · ui = browser · vendor = email · actor = firm.
 
-**Lighthouse (8 Nov 2026):** see §8.
+**Lighthouse (7 Nov 2026 audit):** see §8.1.
 
 ### 6.6 This portfolio
 
@@ -718,7 +719,7 @@ The source file gives every diagram the same five classes (actor, ui, service, d
 - [ ] OseiPrempeh and ChoirHub architecture diagrams: check against the code (§6.5, §6.8)
 - [ ] Ron's Body Shop: is the 5 Nov lead fix live, and is Turnstile on in production? (§6.4)
 - [ ] ChoirHub: a case study or not; if yes, front matter, permission and screenshots (§6.8)
-- [ ] Afromerica /artists: rerun Lighthouse (22.5 s mobile LCP on 8 Nov) (§8.1)
+- [ ] Afromerica /artists: rerun Lighthouse (22.5 s mobile LCP on 7 Nov) (§8.1)
 - [x] Lighthouse scores (§8)
 - [x] Afromerica screenshots from the live site (capture kit)
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
@@ -761,9 +762,9 @@ This portfolio (`tobiakoko.com`, the Phase 1 build on `main`), rerun 5 Nov 2026 
 | portfolio | /about | mobile | 100 | 100 | 100 | 100 | 1.4 s | 0 |
 | portfolio | /about | desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 |
 
-### 8.1 Rerun, 8 Nov 2026 (single runs)
+### 8.1 Audit run, 7 Nov 2026 (single runs)
 
-Supplied by Daniel as `rons-lighthouse-summary.json`, `osei-lighthouse-summary.json` and `afromerica-lighthouse-summary.json`, measured 8 Nov 2026 between 04:25 and 04:28 UTC against the live sites. **Each row is one Lighthouse lab run, not a median of 3 like the table above, and not real-user Core Web Vitals; Lighthouse can't report field INP.** Quote them only with the date and "single lab run". Values are rounded: LCP and FCP to 0.1 s, CLS to 3 decimals, TBT to the nearest ms.
+Supplied by Daniel as `rons-lighthouse-summary.json`, `osei-lighthouse-summary.json` and `afromerica-lighthouse-summary.json`, measured on the evening of 7 Nov 2026, Dallas time (8 Nov, 04:25–04:28 UTC), against the live sites. The case study PDFs (9 Nov 2026) call this the "November 7, 2026 audit". **Each row is one Lighthouse lab run, not a median of 3 like the table above, and not real-user Core Web Vitals; Lighthouse can't report field INP.** Quote them only with the date and "single lab run". Values are rounded: LCP and FCP to 0.1 s, CLS to 3 decimals, TBT to the nearest ms.
 
 | Project | Page | Form | Perf | A11y | BP | SEO | LCP | FCP | TBT | CLS |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
