@@ -12,5 +12,4 @@ disciplines: [Engineering]
 links:
   live: https://www.oseiprempeh.com/
   code: https://github.com/tobiakoko/D-Law
-card: /work/oseiprempeh/card.webp
 ---

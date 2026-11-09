@@ -259,7 +259,7 @@ Order and front matter. `featured: true` for the first four.
 
 Section numbers below don't follow display order; `order` decides it. The LED wall is §6.7.
 
-**Card images (9 Nov 2026).** Lewisville, Afromerica, Ron's Body Shop and OseiPrempeh use a desktop-and-phone composite on their project card (front matter `card`, `public/work/<slug>/card.webp`). Daniel made them from each live site's own screenshots; text in them was checked against the live pages. A first set with AI-altered text (wrong times, address and phone numbers) was rejected. The case study pages keep their `cover` screenshot. The LED wall, DLBC Tampa and this portfolio cards still use their cover.
+**Card images (9 Nov 2026).** Lewisville, Afromerica and Ron's Body Shop use a desktop-and-phone composite on their project card (front matter `card`, `public/work/<slug>/card.webp`). Daniel made them from each live site's own screenshots; text in them was checked against the live pages. A first set with AI-altered text (wrong times, address and phone numbers) was rejected. The case study pages keep their `cover` screenshot. The LED wall, DLBC Tampa and this portfolio cards still use their cover. OseiPrempeh's composite shows the firm's statistics ("Over Two Decades", "20+", "800+"), so it's held in `assets/public/work/oseiprempeh/` with the other Osei shots until the firm approves (§6.5); its card stays text-only.
 
 Ask Kumuyi AI is **not** included (deployment is down).
 

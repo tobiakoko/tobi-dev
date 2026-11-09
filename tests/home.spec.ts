@@ -49,7 +49,7 @@ test('project cards show number, year, "NN / 07", proposition and a CTA', async 
 
 test('cards use the card composite when set; case studies keep the cover', async ({ page }) => {
   await page.goto('/work');
-  for (const slug of ['lewisville', 'afromerica', 'rons-body-shop', 'oseiprempeh']) {
+  for (const slug of ['lewisville', 'afromerica', 'rons-body-shop']) {
     const img = page.locator(`a.project-card[href="/work/${slug}"] .project-media img`);
     await expect(img).toHaveAttribute('src', `/work/${slug}/card.webp`);
   }

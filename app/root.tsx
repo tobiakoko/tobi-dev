@@ -22,7 +22,6 @@ import {
   SITE_URL,
 } from '~/data/site';
 import bodyFont from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
-import Logo from '/Logo-dark.ico';
 import type { Route } from './+types/root';
 import './app.css';
 
@@ -30,7 +29,7 @@ import './app.css';
 // tell search engines the whole site is one page. Each route emits its own via
 // pageMeta() in app/data/site.ts.
 export const links: Route.LinksFunction = () => [
-  { rel: 'icon', type: 'image/x-icon', href: Logo },
+  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
   // The body font paints first; app.css declares the same URL in @font-face.
   { rel: 'preload', href: bodyFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
 ];
