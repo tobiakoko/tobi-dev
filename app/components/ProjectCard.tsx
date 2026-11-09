@@ -54,16 +54,16 @@ export default function ProjectCard({
           </p>
           <Heading className="group-hover:text-accent">{work.title}</Heading>
           <p className="project-summary">{work.proposition}</p>
-          <p className="mt-4">
-            <span className="arrowlink">
-              Read case study <span aria-hidden="true">↗</span>
-            </span>
-          </p>
         </div>
         <p className="project-meta">
           <span className="tabular-nums">{work.year}</span>
           <span>
             <DisciplineTag disciplines={work.disciplines} />
+          </span>
+        </p>
+        <p className="project-card__cta mt-2">
+          <span className="arrowlink">
+            Read case study <span aria-hidden="true">↗</span>
           </span>
         </p>
       </div>

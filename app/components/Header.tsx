@@ -78,7 +78,7 @@ export default function Header() {
             onClick={() => setIsMenuOpen((open) => !open)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            className="label grid h-11 place-items-center border border-line px-3.5 text-ink min-[1000px]:hidden"
+            className="grid h-11 place-items-center px-1 text-[13px] font-medium text-ink min-[1000px]:hidden"
           >
             {isMenuOpen ? 'Close' : 'Menu'}
           </button>

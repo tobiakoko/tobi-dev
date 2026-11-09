@@ -39,7 +39,7 @@ the light palette warms up, plus new tokens.**
 | `--ink` | `#171714` | `#ededea` | Text, headings, primary links |
 | `--muted` | `#5c5b55` | `#a3a39c` | Secondary text, eyebrows, captions |
 | `--line` | `#cbc8bd` | `#2a2a27` | Hairline rules, dividers, figure borders |
-| `--accent` | `oklch(0.48 0.1 195)` | `oklch(0.82 0.1 185)` | Links, focus ring, availability dot, brand period, CTA band. **Unchanged.** |
+| `--accent` | `oklch(0.48 0.1 195)` | `oklch(0.82 0.1 185)` | Links, focus ring, availability dot (round, with a soft teal ring), brand period, CTA band. **Unchanged.** |
 | `--acid` | `#d9ff54` | `#d9ff54` | Highlight only (`::selection`, `<mark>`). Never text. |
 | `--on-acid` | `#171714` | `#171714` | Text colour when sitting on acid (both themes) |
 | `--inverse-bg` | `#1a1a16` | `#f2f0e9` | Proof strip (inverts per theme so it stays legible) |
@@ -116,6 +116,7 @@ facts and results tables; prose links `--ink` underlined, hover `--accent`.
 - **Grid:** 1 column on phones → a 12-column editorial grid on desktop. Key
   breakpoints: ~1000px (nav → drawer), ~860px (page-header stacks), ~760px (cards /
   rails / timelines stack), 640px (proof strip and caption stack).
+- **Phones (8 Nov 2026):** hero H1 up to 60px with a full-width button and a near-square photo; proof strip rows with hairlines; card titles 22px with the CTA after the meta; 72px between a service's number and title; About rows 68px above each label and 50px between label and content; the About band heading 26px with its links stacked; the footer's bottom bar in one column. All behind max-width queries, so desktop is unchanged.
 - **Section rhythm:** `padding-block` ~130px desktop / clamp down on phones; a 1px
   `--line` top rule between content sections.
 - **Band order:** warm paper throughout; **at most one dark band per page.** Home:
@@ -138,7 +139,7 @@ Build these; don't add others unless the plan does.
 
 | Component | Spec |
 | --- | --- |
-| `Header` | Brand `Tobi Akoko.` (period in `--accent`) left; nav Work/About/Contact (13px, `--muted`, current page teal) with an **underline-grow hover** and `aria-current`, grouped on the right with the theme toggle and a **text "Menu"/"Close"** mobile button. 74px tall (72px on phones), bottom rule on scroll. Drawer: large links, current page inked, others muted; Esc closes, focus returns. Keep the Radix/`aria-expanded` behaviour. |
+| `Header` | Brand `Tobi Akoko.` (period in `--accent`) left; nav Work/About/Contact (13px, `--muted`, current page teal) with an **underline-grow hover** and `aria-current`, grouped on the right with the theme toggle and a plain-text **"Menu"/"Close"** mobile button (13px, no box). 74px tall (72px on phones), bottom rule on scroll. Drawer: large links, current page inked, others muted; Esc closes, focus returns. Keep the Radix/`aria-expanded` behaviour. |
 | `Footer` | Always dark. **CTA band:** eyebrow "Start a conversation", H2 "Have a role or project in mind?", one `Let's talk ↗` link (DM Sans 17px semibold, underlined). Name in semibold, role below, both 13px. **Bottom bar** (3 cols): name/role stacked · Email/LinkedIn/GitHub · right-aligned `© {year}` + the GA/Vercel disclaimer (smaller, extra top margin, verbatim from `CONTENT.md`). |
 | `Eyebrow` | 11px bold uppercase `--muted`. Often numbered (`01 / Work`) or two-part (`Contact` / `Dallas, Texas`). A `<p>`/`<span>`, never a heading. |
 | `Button` | Square. `primary` = `--ink` fill, `--bg` text, inverts on hover. Hero CTA `View selected work ↓`. Links use `↗`. |

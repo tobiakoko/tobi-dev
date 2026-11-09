@@ -43,7 +43,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <a href="#selected-work" className="btn btn-primary btn--sm">
               View selected work <span aria-hidden="true">↓</span>
             </a>
-            <span className="flex gap-[1.1rem] font-semibold">
+            <span className="hero-links flex gap-[1.1rem] font-semibold">
               <Link to="/about" className="ulink">
                 About
               </Link>
@@ -138,23 +138,28 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       </section>
 
       <section className="band shell" aria-label="Availability">
-        <p className="availability">
-          <span aria-hidden="true" className="inline-block h-[9px] w-[9px] shrink-0 bg-accent" />
-          <span>{AVAILABILITY}.</span>
-          <a href={`mailto:${EMAIL}`} className="arrowlink ulink">
-            {EMAIL} <span aria-hidden="true">↗</span>
-          </a>
-          {BOOKING_URL && (
-            <a
-              href={BOOKING_URL}
-              className="arrowlink ulink"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book a call <span aria-hidden="true">↗</span>
+        <div className="availability">
+          <span aria-hidden="true" className="availability__dot" />
+          <p className="availability__text">
+            <span>{AVAILABILITY}.</span>{' '}
+            <a href={`mailto:${EMAIL}`} className="arrowlink ulink">
+              {EMAIL} <span aria-hidden="true">↗</span>
             </a>
-          )}
-        </p>
+            {BOOKING_URL && (
+              <>
+                {' '}
+                <a
+                  href={BOOKING_URL}
+                  className="arrowlink ulink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a call <span aria-hidden="true">↗</span>
+                </a>
+              </>
+            )}
+          </p>
+        </div>
       </section>
     </>
   );

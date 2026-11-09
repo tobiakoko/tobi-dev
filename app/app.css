@@ -735,7 +735,14 @@
     line-height: 1.5;
   }
 
+  /* The CTA is its own grid child: under the summary on desktop, after the meta on phones. */
+  .project-card__cta {
+    grid-column: 1;
+  }
+
   .project-meta {
+    grid-column: 2;
+    grid-row: 1 / span 2;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -755,10 +762,17 @@
     }
 
     .project-meta {
+      grid-column: auto;
+      grid-row: auto;
       justify-self: start;
       max-width: none;
       margin-top: 6px;
       text-align: left;
+    }
+
+    .project-card__cta {
+      grid-column: auto;
+      margin-top: 10px;
     }
   }
 
@@ -1469,15 +1483,152 @@
     font-size: 13px;
   }
 
-  /* Availability: bordered panel with a square teal dot. */
+  /* Availability: bordered panel with a round teal dot. */
   .availability {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 16px;
     padding: 26px 30px;
     border: 1px solid var(--line);
     background: var(--bg-alt);
+  }
+
+  .availability__dot {
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in oklch, var(--accent) 18%, transparent);
+  }
+
+  .availability__text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+  }
+
+  /*
+   * Phone layout (owner's mobile reference, 8 Nov 2026). Desktop is untouched:
+   * every rule here sits behind a max-width query.
+   */
+  @media (max-width: 640px) {
+    /* Hero */
+    .hero h1 {
+      font-size: clamp(2.25rem, 15vw, 3.75rem);
+      line-height: 1.03;
+    }
+
+    .hero-intro {
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      gap: 22px;
+    }
+
+    .hero-actions .btn {
+      justify-content: space-between;
+      width: 100%;
+      min-height: 45px;
+    }
+
+    .hero-links {
+      font-size: 15px;
+    }
+
+    .hero-visual {
+      max-width: none;
+    }
+
+    .hero-photo {
+      height: auto;
+      aspect-ratio: 21 / 20;
+      border: 0;
+    }
+
+    .hero-caption {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px 12px;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+    }
+
+    /* Proof strip: rows with a hairline between */
+    .proof-grid li {
+      padding: 21px 0;
+    }
+
+    .proof-grid li + li {
+      border-top: 1px solid var(--inverse-line);
+    }
+
+    /* Availability: dot, then the sentence and email as one run */
+    .availability {
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .availability__dot {
+      margin-top: 8px;
+    }
+
+    .availability__text {
+      display: block;
+    }
+
+    /* About closing band */
+    .about-cta-band h2 {
+      font-size: 26px;
+    }
+
+    .about-cta-band__inner {
+      gap: 26px;
+      padding: 30px 22px;
+    }
+
+    .about-cta-band__inner > p {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 22px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    /* Project cards: the long titles fit on one line */
+    .project-card :is(h2, h3) {
+      font-size: 22px;
+    }
+
+    /* How I can help: room between the number and the title */
+    .section-heading__lead {
+      font-size: 15px;
+    }
+
+    .service .service__body {
+      margin-top: 72px;
+    }
+
+    .service h3 {
+      font-size: 24px;
+    }
+
+    /* About rows: more air above each label and between label and content */
+    .rail {
+      gap: 50px;
+      padding: 68px 0 72px;
+    }
+
+    .rail--first {
+      padding-top: 0;
+    }
+
+    .two-col-divided > * {
+      padding: 86px 0 96px;
+    }
   }
 }
 

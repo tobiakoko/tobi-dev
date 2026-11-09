@@ -35,7 +35,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 items-end gap-6 border-t border-footer-line pt-[30px] pb-10 text-[13px] min-[761px]:grid-cols-[1.4fr_1fr_auto] min-[761px]:gap-10">
+        <div className="grid grid-cols-1 items-end gap-6 border-t border-footer-line pt-[30px] pb-10 text-[13px] min-[761px]:grid-cols-[1.4fr_1fr_auto] min-[761px]:gap-10">
           <div>
             <p className="font-semibold">{DISPLAY_NAME}</p>
             <p className="mt-0.5 text-footer-ink/60">
