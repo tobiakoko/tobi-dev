@@ -47,9 +47,3 @@ Home page body text in the prerendered HTML went from 92 to 1,416 characters.
 
 Lighthouse 12, median of 3 runs, measured on 5 November 2026.
 
-<div data-pair>
-
-![This portfolio's About page on desktop: the About heading and subheading, then the Bio in a label rail](/work/portfolio/about-desktop.webp 'About on desktop: each section in a label rail.')
-![This portfolio's home page on a phone: the headline and introduction with links to Work, About and Email](/work/portfolio/home-phone.webp 'Home on a phone.')
-
-</div>

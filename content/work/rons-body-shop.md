@@ -26,11 +26,5 @@ cover:
 
 I built the original React site and implemented a rebuild focused on mobile navigation and estimate requests. Visitors can call, get directions, or select a repair service and carry that choice into the estimate form. The original form could display “Message sent” without delivering a request. I replaced that behavior with a server-issued reference and an email containing the details the shop needs to follow up. My work also covered responsive images, shared business information, analytics, and automated checks for the estimate and quick-message forms.
 
-<div data-pair>
-
-![Ron's Body Shop home page on desktop, with the video hero and the free estimate button](/work/rons-body-shop/home-desktop.webp 'Home page on desktop.')
-![Ron's Body Shop home page on a phone](/work/rons-body-shop/home-phone.webp 'The same page on a phone.')
-
-</div>
 
 <!-- TODO(content): the full case study, after the client fixes in BUILD-PLAN "Outside this repo" are live: forms, the shop's own photos, media compression and a hero video pause control, with before/after numbers and the owner's OK. -->
