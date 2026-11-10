@@ -1,17 +1,25 @@
 # Portfolio assets for tobi-dev
 
-Supplied by Daniel on 5 Nov 2026. Images are in `public/work/<slug>/`, the capture kit in `tools/capture-kit/` and the diagram source in `tools/draw-diagrams.py`. The OseiPrempeh shots are held in `assets/public/work/oseiprempeh/` (git-ignored, not deployed) until the firm approves its statistics and testimonial.
+Supplied by Daniel on 5 Nov 2026. Images are in `public/work/<slug>/`, the capture kit in `tools/capture-kit/` and the diagram source in `tools/draw-diagrams.py`. OseiPrempeh was approved for publishing on 10 Nov 2026; its cover (recaptured from the live site) and card are in `public/work/oseiprempeh/`.
 
 ## What's here
 
+`public/` holds only what the site shows. Updated 9 Nov 2026: screenshots no page used were moved to `assets/public/work/<slug>/` (git-ignored, local only); move one back into `public/work/<slug>/` when a case study references it.
+
 | Folder | Contents | Source |
 | --- | --- | --- |
-| `public/work/lewisville/` | 8 pages × desktop + phone, 3 full-page shots, `cover.webp`, architecture diagram (light and dark SVG) | Production build of `dclm-lewisville` `main` (commit 18ec2e1) with its seed content, which is the same content the live site was seeded with |
-| `public/work/afromerica/` | Architecture diagram (light and dark SVG) | Drawn from the repo. **Screenshots: run the capture kit against the live site** (see below) |
-| `public/work/dlbc-tampa/` | 7 pages × desktop + phone, `cover.webp` | Production build of `dlbc-template` `main` |
-| `public/work/rons-body-shop/` | Home desktop + phone, `cover.webp` | Production build of `RonsBodyShop` `main` |
-| `public/work/oseiprempeh/` | Home desktop + phone + full page, `cover.webp` | Production build of `D-Law` `main` |
-| `public/work/led-wall/` | `cover.webp` and 7 photos (each with a `-1x` copy), port map and configuration-layers diagrams (light and dark SVG), `og.jpg` | Daniel's photos, 2 Sep – 3 Oct 2026. Full-resolution originals and the source fact sheet are in `assets/originals/led-wall/` (git-ignored, local only) |
+| `public/` | `favicon.ico` (the one site icon, linked from `app/root.tsx`), `og.png` (default link preview; source `assets/og.svg`), `robots.txt`, `sitemap.css` | — |
+| `app/assets/` | `hero-dallas-640.webp` and `hero-dallas-1280.webp`, imported by `app/data/home.ts` so Vite fingerprints them | Made from `assets/public/hero-image.webp` (10 Nov 2026) |
+| `public/work/<slug>/` | Each project's `cover.webp`, its `card.webp` composite where set, the figures its markdown uses (each with a `-1x` copy), light and dark diagrams, `og.jpg` where made | See below |
+| `public/work/lewisville/` | Cover, card, visit (desktop and phone), sermons (desktop), architecture diagram, `og.jpg` | Production build of `dclm-lewisville` `main` (commit 18ec2e1) with its seed content |
+| `public/work/afromerica/` | Cover, card, artists and event (desktop), leaderboard (desktop and phone), architecture diagram, `og.jpg` | Live site, capture kit |
+| `public/work/dlbc-tampa/` | Cover, contact (desktop and phone), gallery (phone), `og.jpg` | Production build of `dlbc-template` `main` |
+| `public/work/rons-body-shop/` | Cover, card, home (desktop and phone), `og.jpg` | Production build of `RonsBodyShop` `main` |
+| `public/work/led-wall/` | Cover, photos, port map and configuration-layers diagrams, `og.jpg` | Daniel's photos, 2 Sep – 3 Oct 2026 |
+| `public/work/portfolio/` | Cover, about (desktop), home (phone), `og.jpg` | This site |
+| `assets/public/` (local) | Hero photo original; unused captures for every project; the older OseiPrempeh shots (superseded by the 10 Nov cover) | — |
+| `assets/originals/led-wall/` (local) | Full-resolution photos and the source fact sheet | — |
+| `assets/og.svg` | Source for `public/og.png` | — |
 | `tools/capture-kit/` | Screenshot and Lighthouse scripts for the live sites | — |
 | `tools/draw-diagrams.py` | Source for the two diagrams (`python3 draw-diagrams.py <out-dir>`) | — |
 

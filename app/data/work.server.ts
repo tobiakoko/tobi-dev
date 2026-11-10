@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { Marked, type Tokens } from 'marked';
 import {
   DISCIPLINES,
+  type CardImage,
   type Cover,
   type Discipline,
   type Stat,
@@ -63,8 +64,9 @@ function imageSize(file: string, src: string): { width: number; height: number }
   fail(file, `can't read the size of ${src}`);
 }
 
-// Figures span the wide container (70rem); below that they're full width.
-const SIZES = '(min-width: 70rem) 70rem, 100vw';
+// Figures sit in the case study's content column (2/3 of 1040px, about
+// 660px); below 760px the column is full width.
+const SIZES = '(min-width: 1040px) 660px, 100vw';
 
 /**
  * srcset for a 2x screenshot when tools/capture-kit/prepare.mjs has made its
@@ -158,17 +160,37 @@ function markdown(file: string) {
 
 /** Splits the body on `## ` headings; each becomes a row in the label rail. */
 function sections(file: string, body: string): WorkSection[] {
+  return splitSections(file, body).map(({ heading, markdown: text }) => ({
+    id: slugify(heading),
+    heading,
+    html: markdown(file).parse(text) as string,
+  }));
+}
+
+function splitSections(file: string, body: string) {
   const parts = body.split(/^## /m);
   if (parts[0].trim()) fail(file, 'text before the first ## heading');
-  const md = markdown(file);
   return parts.slice(1).map((part) => {
     const [heading, ...rest] = part.split('\n');
-    return {
-      id: slugify(heading),
-      heading: heading.trim(),
-      html: md.parse(rest.join('\n')) as string,
-    };
+    return { heading: heading.trim(), markdown: rest.join('\n') };
   });
+}
+
+/**
+ * The text paragraphs of the `## Context` section, without its images or
+ * comments. Shown as the overview while a case study is in progress.
+ */
+function contextText(file: string, body: string): string | undefined {
+  const context = splitSections(file, body).find((s) => s.heading === 'Context');
+  if (!context) return undefined;
+  const md = markdown(file);
+  const paragraphs = md
+    .lexer(context.markdown)
+    .filter(
+      (t): t is Tokens.Paragraph =>
+        t.type === 'paragraph' && !(t as Tokens.Paragraph).tokens.some((c) => c.type === 'image'),
+    );
+  return paragraphs.length ? (md.parser(paragraphs) as string) : undefined;
 }
 
 function requireString(file: string, data: Record<string, unknown>, key: string) {
@@ -191,7 +213,11 @@ function requireStrings(file: string, data: Record<string, unknown>, key: string
   return value as string[];
 }
 
-function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
+function parse(file: string): {
+  meta: WorkMeta;
+  sections: WorkSection[];
+  context?: string;
+} {
   const { data, content } = matter(readFileSync(path.join(CONTENT_DIR, file), 'utf8'));
 
   const slug = requireString(file, data, 'slug');
@@ -217,6 +243,14 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     cover = { src, alt: requireString(file, c, 'alt'), width, height, srcSet: srcSet(src, width) };
   }
 
+  let card: CardImage | undefined;
+  if (data.card !== undefined) {
+    const src = requireString(file, data, 'card');
+    if (!publicFileExists(src)) fail(file, `card ${src} not found in public/`);
+    const { width, height } = imageSize(file, src);
+    card = { src, width, height, srcSet: srcSet(src, width) };
+  }
+
   const stats: Stat[] = ((data.stats ?? []) as Record<string, unknown>[]).map((s) => {
     const stat = { value: requireString(file, s, 'value'), label: requireString(file, s, 'label') };
     if (!FACTS.includes(stat.value))
@@ -230,8 +264,10 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     slug,
     title: requireString(file, data, 'title'),
     outcome: optionalString(file, data, 'outcome'),
+    proposition: requireString(file, data, 'proposition'),
     order: data.order,
     featured: data.featured === true,
+    inProgress: data.inProgress === true,
     year: requireString(file, data, 'year'),
     role: requireString(file, data, 'role'),
     team: optionalString(file, data, 'team'),
@@ -242,11 +278,12 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     disciplines: disciplines as Discipline[],
     links: { live, code },
     cover,
+    card,
     ogImage: publicFileExists(og) ? og : undefined,
     stats,
   };
 
-  return { meta, sections: sections(file, content) };
+  return { meta, sections: sections(file, content), context: contextText(file, content) };
 }
 
 function load() {
@@ -269,12 +306,19 @@ export function getAllWork(): WorkMeta[] {
 
 export function getWorkBySlug(slug: string | undefined): WorkStudy | undefined {
   const found = WORK.find((w) => w.meta.slug === slug);
-  return found && { ...found.meta, sections: found.sections };
+  return found && { ...found.meta, sections: found.sections, context: found.context };
 }
 
-/** The case study after this one, wrapping to the first after the last. */
-export function getNextWork(slug: string): WorkMeta {
+/**
+ * A case study's neighbours and its 1-based place in display order. Previous
+ * and next wrap around the ends of the list.
+ */
+export function getWorkPosition(slug: string): { number: number; prev: WorkMeta; next: WorkMeta } {
   const all = getAllWork();
   const i = all.findIndex((w) => w.slug === slug);
-  return all[(i + 1) % all.length];
+  return {
+    number: i + 1,
+    prev: all[(i - 1 + all.length) % all.length],
+    next: all[(i + 1) % all.length],
+  };
 }

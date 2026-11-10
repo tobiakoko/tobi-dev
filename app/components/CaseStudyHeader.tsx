@@ -1,53 +1,79 @@
 import { Link } from 'react-router';
 import type { WorkMeta } from '~/data/work';
-import DisciplineTag from './DisciplineTag';
-import Figure from './Figure';
-import MetaGrid from './MetaGrid';
-import Stats from './Stats';
 
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
-export default function CaseStudyHeader({ work }: { work: WorkMeta }) {
+/**
+ * Back link, "Case study NN" and the title with the proposition beside it,
+ * then the Year · Role · Team · Tools facts and the cover.
+ */
+export default function CaseStudyHeader({ work, number }: { work: WorkMeta; number: number }) {
   const { live, code } = work.links;
-  const links = (live || code) && (
-    <span className="flex flex-wrap gap-x-4">
-      {live && (
-        <a href={live} className="link" {...external}>
-          Live site ↗
-        </a>
-      )}
-      {code && (
-        <a href={code} className="link" {...external}>
-          Code ↗
-        </a>
-      )}
-    </span>
-  );
 
   return (
-    <header className="flex flex-col gap-12 md:gap-18">
-      <div className="flex flex-col gap-6">
-        <Link to="/work" className="link self-start text-small">
-          ← Work
-        </Link>
-        <h1 className="max-w-[18ch] text-title text-balance">{work.title}</h1>
-        {work.outcome && (
-          <p className="max-w-[48rem] text-h2 text-balance text-muted">{work.outcome}</p>
-        )}
+    <header>
+      <Link to="/work" className="ulink text-[13px]">
+        <span aria-hidden="true">←</span> All work
+      </Link>
+
+      <div className="case-title-grid">
+        <div>
+          <p className="label tabular-nums">Case study {String(number).padStart(2, '0')}</p>
+          <h1>{work.title}</h1>
+        </div>
+        <p className="case-summary">{work.proposition}</p>
       </div>
-      <MetaGrid
-        items={[
-          { label: 'Role', value: work.role },
-          { label: 'Timeline', value: work.timeline },
-          { label: 'Team', value: work.team },
-          { label: 'Location', value: work.location },
-          { label: 'Disciplines', value: <DisciplineTag disciplines={work.disciplines} /> },
-          { label: 'Links', value: links },
-          { label: work.stackLabel ?? 'Stack', value: work.stack.join(', '), wide: true },
-        ]}
-      />
-      {work.cover && <Figure image={work.cover} eager />}
-      <Stats stats={work.stats} />
+
+      {/* Facts: Year, Role, Team (only when the case study has one) and Tools. */}
+      <dl className="case-facts">
+        <div className="case-facts__year">
+          <dt>Year</dt>
+          <dd>{work.year}</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>{work.role}</dd>
+        </div>
+        {work.team && (
+          <div>
+            <dt>Team</dt>
+            <dd>{work.team}</dd>
+          </div>
+        )}
+        <div className="case-facts__tools">
+          <dt>{work.stackLabel ?? 'Tools'}</dt>
+          <dd>{work.stack.join(', ')}</dd>
+        </div>
+      </dl>
+
+      {(live || code) && (
+        <p className="flex flex-wrap gap-x-6 gap-y-2">
+          {live && (
+            <a href={live} className="arrowlink ulink" {...external}>
+              Live site <span aria-hidden="true">↗</span>
+            </a>
+          )}
+          {code && (
+            <a href={code} className="arrowlink ulink" {...external}>
+              Code <span aria-hidden="true">↗</span>
+            </a>
+          )}
+        </p>
+      )}
+
+      {work.cover && (
+        <div className="case-cover">
+          <img
+            src={work.cover.src}
+            srcSet={work.cover.srcSet}
+            sizes={work.cover.srcSet ? '(min-width: 78rem) 75rem, 100vw' : undefined}
+            width={work.cover.width}
+            height={work.cover.height}
+            alt={work.cover.alt}
+            fetchPriority="high"
+          />
+        </div>
+      )}
     </header>
   );
 }

@@ -1,0 +1,557 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>tobiakoko.com Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Manrope:wght@400;500;600&display=swap">
+<style>
+/* ============================================================
+   tobiakoko.com — redesign prototype v3 (static HTML/CSS/vanilla JS)
+   Matched to the Figma-Make redesign CSS + the user's content decisions.
+   Headings Manrope 500 (-0.045em) · body DM Sans · teal accent · acid highlight.
+   Prototype uses Google Fonts CDN; production self-hosts via @fontsource.
+   NOTE: the redesign's blue (#213cff) was dropped from the palette, so the
+   brand period and the About CTA band use the teal accent instead.
+   ============================================================ */
+:root{
+  --bg:#f2f0e9; --surface:#fbfaf6; --ink:#171714; --soft:#5c5b55; --line:#cbc8bd;
+  --accent:#006e6f; --acid:#d9ff54; --on-acid:#171714; --band:#006e6f;
+  --footer-bg:#1a1a16; --footer-line:#3d3d38; --footer-ink:#fbfaf6;
+  --inverse-bg:#1a1a16; --inverse-text:#fbfaf6; --inverse-line:rgba(251,250,246,.22);
+  --max:1320px;
+  --font-sans:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-display:"Manrope",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --bg:#111110; --surface:#1a1a18; --ink:#ededea; --soft:#a3a39c; --line:#2a2a27;
+  --accent:#70d9cc; --inverse-bg:#f2f0e9; --inverse-text:#171714; --inverse-line:rgba(23,23,20,.18); color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --bg:#111110; --surface:#1a1a18; --ink:#ededea; --soft:#a3a39c; --line:#2a2a27;
+  --accent:#70d9cc; --inverse-bg:#f2f0e9; --inverse-text:#171714; --inverse-line:rgba(23,23,20,.18); color-scheme:dark; }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--acid);color:var(--on-acid)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;letter-spacing:-0.045em;line-height:1.02;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+button,input,select,textarea{border-radius:0;font-family:inherit;font-size:inherit}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.eyebrow{color:var(--soft);font-size:11px;font-weight:600;letter-spacing:0.14em;line-height:1.2;text-transform:uppercase}
+.eyebrow-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.muted{color:var(--soft)}
+.ulink{position:relative;display:inline-block}
+.ulink::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right .22s ease}
+.ulink:hover::after,.ulink:focus-visible::after{right:0}
+.arrowlink{color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:.4rem}
+
+.btn{display:inline-flex;align-items:center;gap:.6rem;min-height:52px;padding:0 1.5rem;font-weight:600;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .15s,color .15s}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:transparent;color:var(--ink)}
+.btn:hover{background:var(--ink);color:var(--bg)}
+
+/* header */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--bg);border-bottom:1px solid transparent;transition:border-color .2s}
+header.site.scrolled{border-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:78px;gap:1.5rem}
+.brand{font-family:var(--font-display);font-weight:600;font-size:1.15rem;letter-spacing:-0.03em;white-space:nowrap}
+.brand .pd{color:var(--accent)}
+nav.main{display:flex;align-items:center;gap:1.9rem}
+nav.main a{font-size:.95rem;font-weight:500}
+nav.main a[aria-current="page"]{color:var(--accent)}
+.hdr-right{display:flex;align-items:center;gap:1rem}
+.toggle{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer}
+.menu-btn{display:none;height:40px;padding:0 14px;place-items:center;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.drawer{display:none}
+@media (max-width:1000px){
+  nav.main{display:none}
+  .menu-btn{display:grid}
+  .drawer.open{display:block;border-top:1px solid var(--line)}
+  .drawer ul{list-style:none;margin:0;padding:1.5rem 0 2rem}
+  .drawer a{display:flex;min-height:64px;align-items:center;font-family:var(--font-display);font-weight:500;font-size:1.9rem;letter-spacing:-0.03em;color:var(--soft)}
+  .drawer a[aria-current="page"]{color:var(--ink)}
+}
+
+.view{display:none}
+.view.active{display:block}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,0.55fr);gap:clamp(48px,7vw,110px);min-height:calc(100svh - 78px);align-items:center;padding-block:80px}
+.hero .eyebrow{grid-column:1/-1}
+.hero-copy h1{max-width:960px;margin:24px 0 34px;font-size:clamp(54px,7.8vw,118px)}
+.hero-intro{max-width:690px;color:var(--soft);font-size:clamp(19px,2vw,25px);line-height:1.5}
+.hero-actions{display:flex;align-items:center;gap:26px;margin-top:42px;flex-wrap:wrap}
+.hero-actions .txt{display:inline-flex;gap:1.1rem}
+.hero-actions .txt a{font-weight:600}
+.hero-visual{align-self:stretch;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;margin:0}
+.hero-photo{flex:1;min-height:360px;border:1px solid var(--line);position:relative;overflow:hidden;background:linear-gradient(170deg,#c7d3d6,#8aa0a4 55%,#5f7579)}
+.hero-photo .sky{position:absolute;inset:auto 0 18% 0;height:34%;background:repeating-linear-gradient(90deg,#55707a 0 16px,#6d8992 16px 24px,#49626b 24px 54px,#7d9aa2 54px 60px);opacity:.85}
+.hero-photo .grd{position:absolute;inset:0;background:radial-gradient(70% 60% at 65% 30%,rgba(255,240,210,.35),transparent 70%)}
+.hero-photo .lawn{position:absolute;inset:auto 0 0 0;height:18%;background:linear-gradient(#6f7d4a,#59663b)}
+.hero-photo .ph{position:absolute;top:12px;left:12px;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#f3f1ea;background:rgba(0,0,0,.35);padding:4px 8px}
+.hero-visual figcaption{padding-top:12px}
+.cap-row{display:flex;justify-content:space-between;gap:12px;color:var(--soft);font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.colophon{display:block;margin-top:26px;font-size:11px;opacity:.4;letter-spacing:.01em}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-block:40px 28px;gap:28px}
+  .hero-visual{min-height:0;order:2}.hero-copy{order:1}
+}
+
+/* section heading */
+.section-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:62px}
+.section-heading .sh-left{min-width:0}
+.section-heading h2{margin-top:14px;font-size:clamp(44px,6vw,82px)}
+.sh-lead{max-width:300px;color:var(--soft);font-size:16px;line-height:1.5}
+@media (max-width:760px){.section-heading{align-items:start;flex-direction:column;margin-bottom:40px}}
+section.band{padding-block:clamp(3.5rem,7vw,7rem);border-top:1px solid var(--line)}
+section.band.first{border-top:0}
+
+/* work grid / cards */
+.work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px;row-gap:80px}
+@media (min-width:761px){.work-grid>:nth-child(even){margin-top:72px}}
+@media (max-width:760px){.work-grid{grid-template-columns:1fr;row-gap:60px}}
+.project-card{min-width:0;display:block}
+.project-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,#9fb0b4,#5f7276)}
+.project-media .fill{position:absolute;inset:0;background:linear-gradient(135deg,#8fa6ab,#45565b);filter:saturate(.78);transition:transform 500ms cubic-bezier(.2,.8,.2,1),filter 300ms ease}
+@media (prefers-reduced-motion:no-preference){.project-card:hover .project-media .fill{transform:scale(1.05);filter:saturate(1)}}
+.project-media::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(transparent,rgba(10,14,16,.55))}
+.project-media .ph{position:absolute;inset:0;display:grid;place-items:center;color:#eef1ee;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;z-index:1}
+.ov{position:absolute;bottom:14px;z-index:2;color:#fff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.ov-num{left:16px}.ov-year{right:16px}
+.project-card-body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;padding-top:22px}
+@media (max-width:760px){.project-card-body{grid-template-columns:1fr}}
+.project-index{color:var(--soft);font-size:11px;letter-spacing:.09em}
+.project-card h3{font-size:clamp(27px,3.1vw,44px);margin-top:13px}
+.project-summary{max-width:590px;margin-top:15px;color:var(--soft);font-size:16px;line-height:1.5}
+.project-cta{margin-top:16px}
+.project-meta{max-width:220px;display:flex;flex-direction:column;gap:6px;color:var(--soft);font-size:11px;line-height:1.45;text-align:right;text-transform:uppercase;letter-spacing:.06em;justify-self:end}
+@media (max-width:760px){.project-meta{max-width:none;text-align:left;justify-self:start;margin-top:6px}}
+.work-index .project-card{border-top:1px solid var(--line);padding-top:22px}
+
+/* how I can help (service grid, bottom-aligned = staggered) */
+.service{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+@media (max-width:760px){.service{grid-template-columns:1fr}}
+.service .item{min-height:330px;padding:26px 26px 32px 0;display:flex;flex-direction:column;border-right:1px solid var(--line)}
+.service .item:last-child{border-right:0}
+@media (max-width:760px){.service .item{min-height:0;border-right:0;border-bottom:1px solid var(--line);padding:24px 0}}
+.service .num{color:var(--soft);font-size:11px;letter-spacing:.09em}
+.service .sbody{margin-top:auto;display:flex;flex-direction:column;gap:.55rem}
+.service h3{font-size:clamp(21px,2.6vw,30px)}
+.service p{color:var(--soft);font-size:16px;line-height:1.5}
+.service .proof{margin-top:.3rem;align-self:start}
+
+/* availability */
+.availability{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:26px 30px;border:1px solid var(--line);background:var(--surface)}
+.dot{width:9px;height:9px;background:var(--accent);display:inline-block;flex:none}
+
+/* proof strip (inverse band, home) */
+.proof-strip{background:var(--inverse-bg);color:var(--inverse-text)}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.proof-grid p{padding:24px 0;font-size:14px}
+.proof-grid p+p{border-left:1px solid var(--inverse-line);padding-left:34px}
+@media (max-width:640px){.proof-grid{grid-template-columns:1fr}.proof-grid p{padding:16px 0}.proof-grid p+p{border-left:0;padding-left:0}}
+
+/* inner page header */
+.page-header{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,0.6fr);gap:60px;align-items:end;margin-bottom:110px;padding-bottom:50px;border-bottom:1px solid var(--line)}
+.page-header .eyebrow{grid-column:1/-1}
+.page-header h1{font-size:clamp(72px,12vw,170px)}
+.page-header .lead{color:var(--soft);font-size:clamp(18px,2vw,24px);line-height:1.5}
+@media (max-width:860px){.page-header{grid-template-columns:1fr;gap:28px;margin-bottom:70px}}
+
+/* project detail */
+.case-study{padding-top:70px}
+@media (max-width:760px){.case-study{padding-top:45px}}
+.back{font-weight:600;font-size:.9rem}
+.case-title-grid{display:grid;grid-template-columns:1.4fr 0.6fr;gap:50px;align-items:end;margin-top:80px}
+@media (max-width:760px){.case-title-grid{grid-template-columns:1fr;gap:30px;margin-top:55px}}
+.case-title-grid h1{max-width:1000px;margin-top:18px;font-size:clamp(58px,8vw,120px)}
+.case-summary{color:var(--soft);font-size:clamp(18px,2vw,24px);line-height:1.45}
+.case-facts{display:grid;grid-template-columns:0.5fr 1.2fr 1.3fr;margin-top:70px;padding-block:20px;border-top:1px solid var(--line)}
+@media (max-width:760px){.case-facts{grid-template-columns:1fr;gap:16px}}
+.case-facts .f{display:flex;gap:20px}
+.case-facts dt{color:var(--soft);font-size:11px;text-transform:uppercase;letter-spacing:.08em;flex:none}
+.case-facts dd{font-size:13px;margin:0;max-width:30ch}
+.case-image{margin-top:30px}.case-image .project-media{aspect-ratio:16/8.5}
+.case-image .project-media::after{display:none}
+.case-body{max-width:1040px;margin-inline:auto;padding-block:clamp(70px,10vw,120px) clamp(70px,12vw,150px)}
+.case-intro{display:grid;grid-template-columns:1fr 3fr;gap:40px;padding-bottom:clamp(60px,8vw,100px)}
+@media (max-width:760px){.case-intro{grid-template-columns:1fr;gap:12px}}
+.case-section{display:grid;grid-template-columns:1fr 2fr;gap:50px;padding-block:70px;border-top:1px solid var(--line)}
+@media (max-width:760px){.case-section{grid-template-columns:1fr;gap:16px;padding-block:50px}}
+.case-section h2{font-size:clamp(29px,3.3vw,44px)}
+.case-section .content{display:flex;flex-direction:column;gap:1.1rem}
+.case-section p{color:#3f3f3a;font-size:18px;line-height:1.6}
+:root[data-theme="dark"] .case-section p,:root:not([data-theme="light"]) .case-section p{color:#c9c9c2}
+.figph{aspect-ratio:16/9;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;color:var(--soft);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.figcap{font-size:.82rem;color:var(--soft);margin-top:.5rem}
+table.results{width:100%;border-collapse:collapse;font-size:.92rem;font-variant-numeric:tabular-nums}
+table.results th,table.results td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+table.results thead th{background:var(--surface);font-weight:600}
+.panel{border:1px solid var(--line);background:var(--surface);padding:1.3rem 1.4rem;font-size:.95rem}
+.project-pagination{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+@media (max-width:760px){.project-pagination{grid-template-columns:1fr}}
+.project-pagination a{display:flex;min-height:190px;flex-direction:column;justify-content:center;gap:12px;padding-block:1.5rem}
+.project-pagination a.next{text-align:right;align-items:flex-end;border-left:1px solid var(--line)}
+@media (max-width:760px){.project-pagination a.next{border-left:0;border-top:1px solid var(--line)}}
+.project-pagination span{color:var(--soft);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.project-pagination strong{font:500 clamp(22px,3vw,38px)/1.1 var(--font-display);letter-spacing:-0.035em}
+
+/* about */
+.about-sub{font-family:var(--font-display);font-weight:500;letter-spacing:-0.03em;font-size:clamp(21px,2.4vw,32px);line-height:1.2;color:var(--ink)}
+.rail{display:grid;grid-template-columns:0.8fr 2.2fr;gap:30px;padding:45px 0;border-top:1px solid var(--line)}
+.rail:first-of-type{padding-top:0;border-top:0}
+@media (max-width:760px){.rail{grid-template-columns:1fr;gap:12px}}
+.rail .prose{display:flex;flex-direction:column;gap:1rem;max-width:720px}
+.caps{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
+.caps li{padding:10px 15px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:14px}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline-item{display:grid;grid-template-columns:0.8fr 2.2fr;gap:30px;padding:45px 0;border-top:1px solid var(--line)}
+.timeline-item:first-child{padding-top:0;border-top:0}
+@media (max-width:760px){.timeline-item{grid-template-columns:1fr;gap:10px}}
+.timeline-meta{color:var(--soft);font-size:12px;text-transform:uppercase;letter-spacing:.05em;line-height:1.6}
+.timeline-item h2{font-size:clamp(26px,3vw,38px)}
+.timeline-item .org{color:var(--soft);margin-top:.3rem}
+.timeline-item ul{max-width:720px;padding-left:20px;margin:1rem 0 0;display:flex;flex-direction:column;gap:.5rem;font-size:.98rem;line-height:1.55}
+/* certifications + community side by side */
+.two-col-divided{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);padding-top:0}
+@media (max-width:760px){.two-col-divided{grid-template-columns:1fr}}
+.two-col-divided .col{padding:45px 0}
+.two-col-divided .col+.col{border-left:1px solid var(--line);padding-left:48px}
+@media (max-width:760px){.two-col-divided .col+.col{border-left:0;padding-left:0;border-top:1px solid var(--line)}}
+.two-col-divided .col .eyebrow{margin-bottom:24px}
+.ruled{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ruled li{padding:18px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.ruled .d{font-weight:500}.ruled .m{color:var(--soft);font-size:.9rem}
+/* about CTA band (teal; was blue in redesign) */
+.about-cta-band{background:var(--band);color:#fff;margin-top:90px}
+.about-cta-band .inner{padding-block:clamp(48px,6vw,70px);display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.about-cta-band h2{color:#fff;font-size:clamp(35px,5vw,58px)}
+.about-cta-band .acts{display:flex;gap:26px}
+.about-cta-band a{color:#fff;font-weight:600}
+
+/* contact */
+.contact{display:grid;grid-template-columns:0.78fr 1.22fr;gap:clamp(2rem,4vw,4rem);align-items:start}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.cinfo .ruled li{flex-wrap:nowrap}
+.cinfo .k{color:var(--soft)}
+.cinfo .v{text-align:right}
+.form-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:22px}
+.form-head .mins{color:var(--soft);font-size:13px}
+.form{display:flex;flex-direction:column;gap:1.4rem}
+.field{display:flex;flex-direction:column;gap:.5rem}
+.field label{color:var(--soft);font-size:.8rem}
+.field input,.field select,.field textarea{border:0;border-bottom:1.5px solid var(--soft);background:transparent;color:var(--ink);padding:.5rem 0;font-size:1.05rem}
+.field input::placeholder,.field textarea::placeholder{color:var(--soft);opacity:.7}
+.field textarea{min-height:150px;resize:vertical}
+.form .note{font-size:.85rem;color:var(--soft)}
+.callout-quote{border-left:3px solid var(--accent);background:var(--surface);padding:1.7rem 1.9rem;font-family:var(--font-display);font-weight:500;letter-spacing:-0.03em;font-size:clamp(23px,2.6vw,34px);line-height:1.2}
+.callout-quote .mk{color:var(--accent)}
+
+/* footer */
+footer.site{margin-top:120px;background:var(--footer-bg);color:var(--footer-ink)}
+.footer-cta{padding-block:clamp(72px,9vw,100px)}
+.footer-cta .eyebrow{color:rgba(251,250,246,.55)}
+.footer-cta h2{max-width:1000px;margin:20px 0 34px;font-size:clamp(47px,8vw,110px)}
+.footer-cta .talk{color:var(--footer-ink);font-family:var(--font-display);font-weight:500;font-size:clamp(20px,2.4vw,30px);letter-spacing:-0.03em;text-decoration:underline;text-underline-offset:6px}
+.footer-bottom{display:grid;grid-template-columns:1.4fr 1fr auto;gap:40px;align-items:end;padding-block:30px 40px;border-top:1px solid var(--footer-line);font-size:13px}
+@media (max-width:760px){.footer-bottom{grid-template-columns:1fr 1fr;gap:24px}}
+.footer-id .nm{font-family:var(--font-display);font-weight:500;letter-spacing:-0.02em;font-size:1.1rem}
+.footer-id .rl{color:rgba(251,250,246,.6);margin-top:.25rem}
+.footer-links{display:flex;gap:22px}
+.footer-links a{color:rgba(251,250,246,.8)}
+.footer-links a:hover{color:var(--footer-ink);text-decoration:underline}
+.footer-right{text-align:right}
+.footer-right .cr{color:rgba(251,250,246,.8)}
+.footer-right .disc{margin-top:14px;font-size:11px;color:rgba(251,250,246,.45);max-width:34ch;margin-left:auto;line-height:1.5}
+.footer-right .disc a{text-decoration:underline}
+@media (max-width:760px){.footer-right{grid-column:1/-1;text-align:left}.footer-right .disc{margin-left:0}}
+</style>
+
+<header class="site" id="hdr">
+  <div class="wrap bar">
+    <a href="#home" class="brand">Tobi Akoko<span class="pd">.</span></a>
+    <nav class="main" aria-label="Main">
+      <a href="#work" class="ulink" data-nav="work">Work</a>
+      <a href="#about" class="ulink" data-nav="about">About</a>
+      <a href="#contact" class="ulink" data-nav="contact">Contact</a>
+    </nav>
+    <div class="hdr-right">
+      <button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme" title="Toggle theme">◐</button>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button>
+    </div>
+  </div>
+  <div class="wrap drawer" id="drawer">
+    <ul><li><a href="#work" data-nav="work">Work</a></li><li><a href="#about" data-nav="about">About</a></li><li><a href="#contact" data-nav="contact">Contact</a></li></ul>
+  </div>
+</header>
+
+<main>
+<!-- ===================== HOME ===================== -->
+<div class="view" id="view-home">
+  <section class="hero wrap">
+    <p class="eyebrow">Daniel (Tobi) Akoko · Dallas, Texas</p>
+    <div class="hero-copy">
+      <h1>I engineer software and systems people can rely on.</h1>
+      <p class="hero-intro">I&rsquo;m a Dallas based software developer. I plan, build, test and support web products, payment flows, content platforms and live systems for churches, events and small businesses.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="toWork">View selected work <span aria-hidden="true">↓</span></button>
+        <span class="txt"><a href="#about" class="ulink">About</a><a href="#contact" class="ulink">Contact</a></span>
+      </div>
+    </div>
+    <figure class="hero-visual">
+      <div class="hero-photo"><div class="grd"></div><div class="sky"></div><div class="lawn"></div><span class="ph">Dallas landmark — placeholder</span></div>
+      <figcaption>
+        <div class="cap-row"><span>Based in Dallas</span><span>Working across software + systems</span></div>
+        <span class="colophon">Editorial photo by [photographer] on Unsplash</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="proof-strip" aria-label="Experience highlights">
+    <div class="wrap proof-grid">
+      <p>Full-stack product delivery</p>
+      <p>Payments and real-time systems</p>
+      <p>IT &amp; AV leadership since 2018</p>
+    </div>
+  </section>
+
+  <section class="band wrap" id="selected">
+    <div class="section-heading">
+      <div class="sh-left"><p class="eyebrow">01 / Work</p><h2>Selected work</h2></div>
+      <a href="#work" class="arrowlink ulink">All work ↗</a>
+    </div>
+    <div class="work-grid">
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">Lewisville cover</span><span class="ov ov-num">01</span><span class="ov ov-year">2025–2026</span></div>
+        <div class="project-card-body"><div><p class="project-index">01 / 07</p><h3>Deeper Life Bible Church Lewisville</h3><p class="project-summary">A church website planned and built around clear information and dependable access.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div>
+          <div class="project-meta"><span>2025–2026</span><span>Engineering · Analysis · Implementation · Delivery</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">Afromerica cover</span><span class="ov ov-num">02</span><span class="ov ov-year">2025</span></div>
+        <div class="project-card-body"><div><p class="project-index">02 / 07</p><h3>Afromerica Entertainment</h3><p class="project-summary">A competition and events platform with paid voting, live results and ticket checkout.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div>
+          <div class="project-meta"><span>2025</span><span>Engineering · Implementation</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">LED wall cover</span><span class="ov ov-num">03</span><span class="ov ov-year">2026</span></div>
+        <div class="project-card-body"><div><p class="project-index">03 / 07</p><h3>Extending a church LED wall</h3><p class="project-summary">Diagnosing a display constraint and designing a practical path to extend a church LED wall.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div>
+          <div class="project-meta"><span>2026</span><span>Analysis · Implementation · Delivery</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">Tampa cover</span><span class="ov ov-num">04</span><span class="ov ov-year">2025–2026</span></div>
+        <div class="project-card-body"><div><p class="project-index">04 / 07</p><h3>Deeper Life Bible Church Tampa</h3><p class="project-summary">A church website focused on making essential information easier to find and support.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div>
+          <div class="project-meta"><span>2025–2026</span><span>Engineering · Analysis · Implementation</span></div></div></a>
+    </div>
+  </section>
+
+  <section class="band wrap">
+    <div class="section-heading">
+      <div class="sh-left"><p class="eyebrow">02 / Capabilities</p><h2>How I can help</h2></div>
+      <p class="sh-lead">From the first constraint to a handover people can use.</p>
+    </div>
+    <div class="service">
+      <div class="item"><p class="num">01</p><div class="sbody"><h3>Systems analysis &amp; implementation</h3><p>Understanding the current setup, finding the constraint and planning a practical path forward.</p><a href="#project" class="arrowlink ulink proof">Extending a church LED wall ↗</a></div></div>
+      <div class="item"><p class="num">02</p><div class="sbody"><h3>Software engineering</h3><p>Accessible web products, APIs, payments and the interfaces that hold them together.</p><a href="#project" class="arrowlink ulink proof">Afromerica Entertainment ↗</a></div></div>
+      <div class="item"><p class="num">03</p><div class="sbody"><h3>Delivery &amp; handover</h3><p>Testing, documentation and support that help the next person run what was built.</p><a href="#project" class="arrowlink ulink proof">Deeper Life Bible Church Lewisville ↗</a></div></div>
+    </div>
+  </section>
+
+  <section class="band wrap">
+    <div class="availability"><span class="dot"></span><span>Open to full-time roles and freelance projects.</span><a href="#contact" class="arrowlink ulink">enquiries@tobiakoko.com ↗</a></div>
+  </section>
+</div>
+
+<!-- ===================== WORK ===================== -->
+<div class="view work-index" id="view-work">
+  <section class="case-study wrap">
+    <div class="page-header">
+      <p class="eyebrow eyebrow-row"><span>Projects</span><span>01–07</span></p>
+      <h1>Work</h1>
+      <p class="lead">Projects I&rsquo;ve planned, built and supported, each with a full case study.</p>
+    </div>
+    <div class="work-grid">
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">Lewisville</span><span class="ov ov-num">01</span><span class="ov ov-year">2025–2026</span></div><div class="project-card-body"><div><p class="project-index">01 / 07</p><h3>Deeper Life Bible Church Lewisville</h3><p class="project-summary">A church website planned and built around clear information and dependable access.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div><div class="project-meta"><span>2025–2026</span><span>Engineering · Analysis · Implementation · Delivery</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">Afromerica</span><span class="ov ov-num">02</span><span class="ov ov-year">2025</span></div><div class="project-card-body"><div><p class="project-index">02 / 07</p><h3>Afromerica Entertainment</h3><p class="project-summary">A competition and events platform with paid voting, live results and ticket checkout.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div><div class="project-meta"><span>2025</span><span>Engineering · Implementation</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">LED wall</span><span class="ov ov-num">03</span><span class="ov ov-year">2026</span></div><div class="project-card-body"><div><p class="project-index">03 / 07</p><h3>Extending a church LED wall</h3><p class="project-summary">Diagnosing a display constraint and designing a practical path to extend a church LED wall.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div><div class="project-meta"><span>2026</span><span>Analysis · Implementation · Delivery</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">Tampa</span><span class="ov ov-num">04</span><span class="ov ov-year">2025–2026</span></div><div class="project-card-body"><div><p class="project-index">04 / 07</p><h3>Deeper Life Bible Church Tampa</h3><p class="project-summary">A church website focused on making essential information easier to find and support.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div><div class="project-meta"><span>2025–2026</span><span>Engineering · Analysis · Implementation</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">Ron&rsquo;s Body Shop</span><span class="ov ov-num">05</span><span class="ov ov-year">2025–2026</span></div><div class="project-card-body"><div><p class="project-index">05 / 07</p><h3>Ron&rsquo;s Body Shop</h3><p class="project-summary">A small-business website for a collision-repair shop in Torrance, California.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div><div class="project-meta"><span>2025–2026</span><span>Engineering · Implementation</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">OseiPrempeh</span><span class="ov ov-num">06</span><span class="ov ov-year">2025</span></div><div class="project-card-body"><div><p class="project-index">06 / 07</p><h3>OseiPrempeh Law Firm</h3><p class="project-summary">A straightforward web presence for a Tampa law practice.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div><div class="project-meta"><span>2025</span><span>Engineering</span></div></div></a>
+      <a href="#project" class="project-card"><div class="project-media"><div class="fill"></div><span class="ph">This portfolio</span><span class="ov ov-num">07</span><span class="ov ov-year">2025–2026</span></div><div class="project-card-body"><div><p class="project-index">07 / 07</p><h3>This portfolio</h3><p class="project-summary">A content-first portfolio designed to make the work, process and range clear.</p><p class="project-cta"><span class="arrowlink">Read case study ↗</span></p></div><div class="project-meta"><span>2025–2026</span><span>Engineering</span></div></div></a>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PROJECT DETAIL ===================== -->
+<div class="view" id="view-project">
+  <section class="case-study wrap">
+    <a href="#work" class="back ulink">← Work</a>
+    <div class="case-title-grid">
+      <div><p class="eyebrow">Case study 02</p><h1>Afromerica Entertainment</h1></div>
+      <p class="case-summary">A competition and events platform with paid voting, live results and ticket checkout.</p>
+    </div>
+    <dl class="case-facts">
+      <div class="f"><dt>Year</dt><dd>2025</dd></div>
+      <div class="f"><dt>Work</dt><dd>Sole developer · Engineering, Implementation</dd></div>
+      <div class="f"><dt>Tools</dt><dd>Next.js, React, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind, Vercel</dd></div>
+    </dl>
+    <div class="case-image"><div class="project-media"><div class="fill"></div><span class="ph">Afromerica cover — real screenshot</span></div></div>
+  </section>
+
+  <div class="case-body wrap">
+    <div class="case-intro"><p class="eyebrow">Overview</p>
+      <p style="font-size:1.1rem">A competition and events platform I built end to end — from the database and APIs to the admin dashboard — with paid voting, a live judged finale, and ticket checkout. Scoring is computed in the database so the leaderboard stays correct under load.</p></div>
+    <section class="case-section"><h2>Why this work mattered</h2><div class="content"><p>A live competition needs voting people trust and a finale that can be scored in real time, in front of an audience. The platform had to take money, count votes and show results without going down at the worst possible moment.</p></div></section>
+    <section class="case-section"><h2>What I needed to solve</h2><div class="content"><p>Paid votes and public votes had to combine with judges&rsquo; scores and performance into one final result, on a fixed weighting, with no double-counting and no way to tamper with the tally. Payments had to be idempotent, and the leaderboard had to update live.</p>
+      <div class="panel"><strong>Definition of done:</strong> votes, tickets and scores reconcile to the same number every time; a dropped or repeated webhook never changes the tally; results update in real time.</div></div></section>
+    <section class="case-section"><h2>How I approached it</h2><div class="content"><p>I put the scoring logic in the database rather than the app, so the final weighting is computed once from the source rows. Payment webhooks are signed and idempotent, so a retry can&rsquo;t inflate a count. Realtime subscriptions push leaderboard changes to the client.</p>
+      <div><div class="figph">Architecture diagram — light / dark</div><p class="figcap">Fig 1. Paystack webhook → signed, idempotent handler → Postgres scoring → realtime leaderboard. Your existing light/dark architecture SVG slots in here.</p></div></div></section>
+    <section class="case-section"><h2>What I delivered</h2><div class="content"><p>Paid voting with a live leaderboard, an event-management dashboard, and ticket checkout with Paystack, on REST APIs over Postgres with signed, idempotent payment webhooks and realtime updates.</p>
+      <table class="results"><thead><tr><th>Measure</th><th>Value</th></tr></thead><tbody>
+        <tr><th scope="row">Final weighting (paid / public / judges / performance)</th><td>35 / 10 / 30 / 25</td></tr>
+        <tr><th scope="row">API routes</th><td>23</td></tr>
+        <tr><th scope="row">One-time-code expiry</th><td>10 min</td></tr>
+      </tbody></table></div></section>
+    <section class="case-section"><h2>Result &amp; handoff</h2><div class="content"><p>The platform ran the finale with voting, ticketing and live results. Performance was tracked with Lighthouse and Core Web Vitals, and errors routed to Sentry.</p>
+      <div class="panel"><strong>Case study details in progress.</strong> Vote and ticket totals will be added here once the client shares them — no numbers are shown until they&rsquo;re real.</div></div></section>
+  </div>
+
+  <nav class="project-pagination wrap" aria-label="More projects">
+    <a href="#project" class="prev"><span>← Previous</span><strong>Deeper Life Bible Church Lewisville</strong></a>
+    <a href="#project" class="next"><span>Next →</span><strong>Extending a church LED wall</strong></a>
+  </nav>
+</div>
+
+<!-- ===================== ABOUT ===================== -->
+<div class="view" id="view-about">
+  <section class="case-study wrap">
+    <div class="page-header">
+      <p class="eyebrow">The person behind the work</p>
+      <h1>About</h1>
+      <p class="lead about-sub">I came to software through engineering, hospitality and hands-on systems work. That mix taught me to listen first, make the complicated clear and stay with a problem until it works.</p>
+    </div>
+
+    <div class="rail"><p class="eyebrow">Bio</p>
+      <div class="prose">
+        <p>I&rsquo;m Daniel Akoko, though most people call me Tobi. I&rsquo;m a software engineer in Dallas, Texas. I build web software for churches and small businesses, and I pay close attention to the parts people usually notice only when they fail: the information on the page, the error message after a wrong turn, the test that catches a regression and the documentation someone needs after handover.</p>
+        <p>My route into software was not a straight line. I studied electrical engineering, then criminology, then computer science. I worked in hospitality, where I learned to stay calm when the room is busy and take care of the person in front of me. For years I have also run sound, media and livestreaming at church.</p>
+        <p>That mix shapes how I work now. I listen before I propose, turn complicated work into clear steps and stay with a project through testing, launch and handover. The goal is not simply to ship software. It is to leave people with something they can understand, use and depend on.</p>
+      </div></div>
+
+    <div class="rail"><p class="eyebrow">Capabilities</p>
+      <ul class="caps"><li>Full-stack engineering</li><li>Front-end development</li><li>Systems analysis</li><li>Implementation</li><li>Payments</li><li>IT &amp; AV systems</li><li>Documentation &amp; handover</li></ul></div>
+
+    <div class="rail"><p class="eyebrow">Present</p>
+      <div class="prose"><p>I build websites and digital services for churches and small businesses, and I&rsquo;m studying for an MBA at Western Governors University (expected June 2027). I&rsquo;m open to full-time roles in software engineering, business and systems analysis, implementation, and project delivery.</p></div></div>
+
+    <div class="rail"><p class="eyebrow">Past</p>
+      <ul class="timeline">
+        <li class="timeline-item"><p class="timeline-meta">Aug 2025 – Dec 2025<br>Remote</p><div><h2>Senior Full-Stack Developer</h2><p class="org">Afromerica Entertainment</p><ul><li>Built a competition and events platform in React, TypeScript and Next.js, from the database and APIs to the admin dashboard.</li><li>Delivered paid voting with a live leaderboard, an event management dashboard and ticket checkout with Paystack.</li><li>Built REST APIs on PostgreSQL (Supabase) with signed, idempotent payment webhooks and real-time updates.</li></ul></div></li>
+        <li class="timeline-item"><p class="timeline-meta">2018 – present<br>Tampa, FL &amp; Dallas, TX</p><div><h2>IT &amp; AV Systems Lead</h2><p class="org">Deeper Life Bible Church</p><ul><li>Run IT across two church locations: workstations, networks, printers and troubleshooting.</li><li>Designed and installed the AV and livestream system for weekly services broadcast online.</li></ul></div></li>
+        <li class="timeline-item"><p class="timeline-meta">2025 – present<br>Remote</p><div><h2>Freelance Web Developer</h2><p class="org">Self-employed</p><ul><li>Websites for a Tampa law practice and a Torrance, California collision-repair shop.</li></ul></div></li>
+        <li class="timeline-item"><p class="timeline-meta">Dallas, TX</p><div><h2>Hospitality</h2><ul><li>Guest-facing service in high-volume restaurants.</li></ul></div></li>
+      </ul></div>
+
+    <div class="rail"><p class="eyebrow">Origins</p>
+      <div class="prose"><p>I started in electrical engineering at the Community College of Baltimore County, moved into criminal justice at the University of South Florida, and found my way to computer science at Western Governors University. Music has been a constant: I direct choirs and help run music and media for my church&rsquo;s events.</p></div></div>
+
+    <div class="rail"><p class="eyebrow">Education</p>
+      <ul class="ruled">
+        <li><span class="d">Master of Business Administration (in progress)</span><span class="m">Western Governors University · Jun 2026 – Jun 2027 (expected)</span></li>
+        <li><span class="d">B.S. Computer Science</span><span class="m">Western Governors University · Apr 2023 – Sep 2024</span></li>
+        <li><span class="d">Bachelor of Arts, Criminal Justice</span><span class="m">University of South Florida · Year to be confirmed</span></li>
+        <li><span class="d">Associate of Science, Electrical Engineering</span><span class="m">Community College of Baltimore County · Year to be confirmed</span></li>
+      </ul></div>
+
+    <div class="two-col-divided">
+      <div class="col"><p class="eyebrow">Certifications</p>
+        <ul class="ruled"><li><span class="d">ITIL Foundation</span></li><li><span class="d">LPI Linux Essentials</span></li></ul></div>
+      <div class="col"><p class="eyebrow">Community</p>
+        <ul class="ruled"><li><span class="d">Media production, choir direction and digital streaming, Deeper Life Bible Church</span></li><li><span class="d">DLYA fundraising team</span></li></ul></div>
+    </div>
+  </section>
+
+  <div class="about-cta-band"><div class="wrap inner">
+    <h2>Want to work together?</h2>
+    <div class="acts"><a href="#contact" class="ulink">Email me ↗</a><a href="#work" class="ulink">See my work ↗</a></div>
+  </div></div>
+</div>
+
+<!-- ===================== CONTACT ===================== -->
+<div class="view" id="view-contact">
+  <section class="case-study wrap">
+    <div class="page-header">
+      <p class="eyebrow eyebrow-row"><span>Contact</span><span>Dallas, Texas</span></p>
+      <h1>Let&rsquo;s talk</h1>
+      <p class="lead">Tell me about the role, project or problem you&rsquo;re working through. I&rsquo;m open to full-time roles and freelance projects — email is best, and I reply within two business days.</p>
+    </div>
+
+    <div class="contact">
+      <div class="cinfo">
+        <p class="eyebrow" style="margin-bottom:22px">Direct</p>
+        <ul class="ruled">
+          <li><span class="k">Email</span><span class="v"><a href="#" class="ulink">enquiries@tobiakoko.com</a></span></li>
+          <li><span class="k">LinkedIn</span><span class="v"><a href="#" class="ulink">daniel-akoko ↗</a></span></li>
+          <li><span class="k">GitHub</span><span class="v"><a href="#" class="ulink">tobiakoko ↗</a></span></li>
+          <li><span class="k">Location</span><span class="v">Dallas, Texas</span></li>
+        </ul>
+      </div>
+      <form class="form-wrap" onsubmit="return false">
+        <div class="form-head"><p class="eyebrow">Message</p><span class="mins">About a minute</span></div>
+        <div class="form">
+          <div class="field"><label for="n">Name</label><input id="n" type="text" placeholder="Your name"></div>
+          <div class="field"><label for="e">Email</label><input id="e" type="email" placeholder="you@example.com"></div>
+          <div class="field"><label for="t">What&rsquo;s this about?</label><select id="t"><option>Full-time role</option><option>Freelance project</option><option>Other</option></select></div>
+          <div class="field"><label for="m">Message</label><textarea id="m" placeholder="A little context about what you need…"></textarea></div>
+          <p class="note">Sending opens your email app with this message filled in. Nothing is submitted in the browser.</p>
+          <button type="submit" class="btn btn-primary" style="align-self:start">Open email draft <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="callout-quote" style="margin-top:3.5rem"><span class="mk">&ldquo;</span>I build software that tells the truth — correct facts, honest errors, and a handover you can actually run.<span class="mk">&rdquo;</span></div>
+  </section>
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-cta">
+      <p class="eyebrow">Start a conversation</p>
+      <h2>Have a role or project in mind?</h2>
+      <a href="#contact" class="talk">Let&rsquo;s talk ↗</a>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-id"><p class="nm">Daniel (Tobi) Akoko</p><p class="rl">Software Engineer · Dallas, Texas</p></div>
+      <div class="footer-links"><a href="#">Email</a><a href="#">LinkedIn</a><a href="#">GitHub</a></div>
+      <div class="footer-right"><p class="cr">© 2026 Daniel Akoko</p><p class="disc">This site uses Google Analytics, which sets cookies, to count visits. Vercel Analytics counts visits too, without cookies. <a href="https://policies.google.com/technologies/partner-sites">How Google uses this data</a></p></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var views=["home","work","project","about","contact"];
+  function show(name){
+    if(views.indexOf(name)<0) name="home";
+    views.forEach(function(v){var el=document.getElementById("view-"+v); if(el) el.classList.toggle("active", v===name);});
+    document.querySelectorAll('[data-nav]').forEach(function(a){a.setAttribute("aria-current", a.getAttribute("data-nav")===name?"page":"false");});
+    window.scrollTo(0,0);
+    var d=document.getElementById("drawer"); d.classList.remove("open");
+    var mb=document.getElementById("menuBtn"); mb.setAttribute("aria-expanded","false"); mb.textContent="Menu";
+  }
+  function current(){return (location.hash||"#home").replace("#","");}
+  window.addEventListener("hashchange",function(){show(current());});
+  show(current());
+  var hdr=document.getElementById("hdr");
+  function onScroll(){hdr.classList.toggle("scrolled", window.scrollY>0);}
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  var mb=document.getElementById("menuBtn"), dr=document.getElementById("drawer");
+  mb.addEventListener("click",function(){var open=dr.classList.toggle("open"); mb.setAttribute("aria-expanded",open?"true":"false"); mb.textContent=open?"Close":"Menu";});
+  var tb=document.getElementById("themeBtn");
+  function apply(t){ if(t) document.documentElement.setAttribute("data-theme",t); else document.documentElement.removeAttribute("data-theme"); }
+  try{var s=localStorage.getItem("proto-theme"); if(s) apply(s);}catch(e){}
+  tb.addEventListener("click",function(){
+    var isDark=document.documentElement.getAttribute("data-theme")==="dark" || (!document.documentElement.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    var n=isDark?"light":"dark"; apply(n); try{localStorage.setItem("proto-theme",n);}catch(e){}
+  });
+  var toWork=document.getElementById("toWork");
+  if(toWork) toWork.addEventListener("click",function(){var s=document.getElementById("selected"); if(s) s.scrollIntoView({behavior:"smooth"});});
+})();
+</script>
+
+</body></html>

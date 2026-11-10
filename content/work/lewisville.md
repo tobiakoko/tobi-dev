@@ -2,11 +2,14 @@
 slug: lewisville
 title: Deeper Life Bible Church Lewisville
 outcome: I built a church website, audited it a year later, then rebuilt it in four gated phases.
+proposition: A church website that helps visitors plan a visit, members find service information, and volunteers manage updates.
+# Header, overview and the "in progress" note only, until Daniel confirms the full case study.
+inProgress: true
 order: 1
 featured: true
 year: '2025–2026'
-role: Sole developer, analyst and project lead
-team: Solo, with the pastor and church staff
+role: Sole developer, analyst, project lead and product designer
+team: Solo, with pastor and church volunteers as content editors
 timeline: Nov 2025 – Nov 2026
 stack:
   [
@@ -26,6 +29,7 @@ links:
   # Switch to https://deeperlifelewisville.org when the domain moves.
   live: https://dclm-lewisville.vercel.app/
   code: https://github.com/tobiakoko/dclm-lewisville
+card: /work/lewisville/card.webp
 cover:
   src: /work/lewisville/cover.webp
   alt: 'Lewisville home page on desktop: the headline "God still changes lives." over a congregation photo, with the Sunday worship time, the address and a livestream link in a bar below'
@@ -37,7 +41,7 @@ stats:
 
 ## Context
 
-Deeper Life Bible Church Lewisville is a local congregation of an international church. Most first-time visitors find it on a phone and need to know, within seconds, when and where it meets and what to expect.
+I designed and built the website for Deeper Life Bible Church Lewisville, a local congregation of Deeper Christian Life Ministry in North Texas, starting with a codebase audit and phased implementation plan. A central challenge was maintaining consistent service schedules across the site while separating local church information from resources provided by the wider ministry. As the sole developer, I implemented the pages, the content management system, the contact API, and the release checks. I worked with the church sponsor to preserve approved religious wording. I wrote an editor guide and training outline so volunteers could practice updates before publishing.
 
 ## The problem
 

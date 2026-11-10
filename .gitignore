@@ -19,3 +19,7 @@
 
 # Full-resolution originals and source notes, kept locally, not deployed
 /assets/originals/
+
+# Playwright
+/test-results/
+/playwright-report/

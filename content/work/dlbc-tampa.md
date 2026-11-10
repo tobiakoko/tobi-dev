@@ -2,6 +2,9 @@
 slug: dlbc-tampa
 title: Deeper Life Bible Church Tampa
 outcome: An audit-driven pass that cut the entry bundle by 87% and made every form actually deliver.
+proposition: An in-progress redesign of a church website, focused on helping first-time visitors find service times, directions, beliefs, and contact information.
+# Header, overview and the "in progress" note only, until Daniel confirms the full case study.
+inProgress: true
 order: 4
 featured: true
 year: '2025–2026'
@@ -24,7 +27,9 @@ stats:
 
 ## Context
 
-The Tampa congregation's site, with sermons, events, ministries, a gallery and an embedded Sanity Studio at `/studio`.
+The redesign prioritizes people browsing on a phone and deciding whether to attend. The goal is to make essential information easy to find, including what to expect, how to watch or listen, and how to contact the church.
+
+Status: Redesign in progress.
 
 ## The problem
 

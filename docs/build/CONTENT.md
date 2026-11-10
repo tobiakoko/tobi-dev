@@ -1,6 +1,8 @@
 # Content: tobiakoko.com
 
-Every word and fact on the site comes from this file. Copy it exactly. Where it says `TODO(content):`, hide the element and leave the comment; don't fill the gap yourself.
+Every word and fact on the site comes from this file. Copy it exactly.
+
+**Warm Editorial redesign (7 Nov 2026).** New copy below comes from the owner's prototype (`docs/build/prototype.html`) and `REDESIGN-IMPLEMENTATION.md` §13. Where the prototype disagreed with a fact Daniel had already confirmed (the Bio's "criminology", the Education years), this file keeps the confirmed fact. Where it says `TODO(content):`, hide the element and leave the comment; don't fill the gap yourself.
 
 Facts about the projects were checked against each repository on 3 November 2026. Each number lists its source.
 
@@ -30,56 +32,52 @@ No résumé on the site (Daniel's decision, 3 Nov 2026): experience, education a
 
 ### 2.1 Headline
 
-**Chosen: A** (Daniel, 3 November 2026).
-
-General headlines (work for every career track):
-
-| | Headline | Why it works |
-| --- | --- | --- |
-| **A (default)** | **From requirements to release.** | Names the whole span: analysis, building, delivery. Four words. |
-| B | I build software people can trust. | Ties to the audit story: correct facts, honest errors. |
-| C | Clear plans. Working software. | Speaks to analysts and project leads as much as engineers. |
-| D | I find what's broken, then fix it. | Leads with the audit and rebuild, your most distinctive work. |
-| E | Software that's right, not just running. | Quality-first; good for QA and analyst roles. |
-
-Track-specific headlines (for a later version, or if Daniel narrows his search):
-
-| Track | Headline |
-| --- | --- |
-| Software engineering | Full-stack web apps, built to last. |
-| Business and systems analysis | Requirements first. Then the code. |
-| Implementation and solutions | I launch software teams can run themselves. |
-| Project delivery / PMO | Phased plans. Honest status. Shipped. |
-| Data | Many sources. One source of truth. |
+**I engineer software and systems people can rely on.** (Redesign, 7 Nov 2026. Replaces "From requirements to release.", Daniel's choice A of 3 Nov 2026.)
 
 ### 2.2 Hero
 
-- Label: **Daniel (Tobi) Akoko · Dallas, Texas**
+- Eyebrow: **Daniel (Tobi) Akoko · Dallas, Texas**
 - Headline: from 2.1
-- Intro (two sentences):
+- Intro:
 
-  > I'm a software engineer who plans, builds, tests and hands over web software for churches and small businesses. My work runs from paid voting and live leaderboards to content systems that staff update themselves.
+  > I'm a Dallas based software developer. I plan, build, test and support web products, payment flows, content platforms and live systems for churches, events and small businesses.
 
-- Links: **Work** · **About** · **Email**
+- Actions: **View selected work ↓** (button, scrolls to Selected work) · **About** · **Contact**
+- Photo: one editorial photo of Dallas (supplied by Daniel, 10 Nov 2026). Alt text: `The Dallas skyline seen between modern buildings`. Original in `assets/public/hero-image.webp` (not in the repo); web copies in `app/assets/`.
+- Caption: **Based in Dallas** · **Working across software + systems**
+
+### 2.2a Proof strip
+
+Three cells, in this order:
+
+- Full-stack product delivery
+- Payments and real-time systems
+- IT & AV leadership since 2018
+
+(2018 matches the IT & AV Systems Lead role in §4.5.)
 
 ### 2.3 Selected work
 
-Heading: **Selected work**. Show the four `featured` projects in `order`: Lewisville, Afromerica, the Lewisville LED wall, DLBC Tampa. The LED wall shows range beyond web code: diagnosis, systems design and hardware configuration. Then the link **All work →**.
+- Eyebrow: **01 / Work**. Heading: **Selected work**. Link: **All work ↗**.
+- Show the four `featured` projects in `order`: Lewisville, Afromerica, the Lewisville LED wall, DLBC Tampa. The LED wall shows range beyond web code: diagnosis, systems design and hardware configuration.
+- Each card: the project's `proposition` (§6) and **Read case study ↗**.
 
-### 2.4 How I work
+### 2.4 How I can help
 
-Heading: **How I work**
+- Eyebrow: **02 / Capabilities**. Heading: **How I can help**.
+- Lead: `From the first constraint to a handover people can use.`
 
-| Discipline | Line | Sentence | Proof link |
+| # | Title | Sentence | Proof link |
 | --- | --- | --- | --- |
-| Engineering | **Build it properly.** | Typed APIs, real tests and pages that load fast, in Next.js, React, TypeScript and Postgres. | Afromerica |
-| Analysis | **Get the facts right.** | I start with discovery and an audit, then write requirements with acceptance criteria someone can check. | Lewisville |
-| Implementation | **Hand it over.** | Content systems, integrations, a runbook and training, so non-technical staff can run what I build. | Lewisville |
-| Delivery | **Ship in phases.** | Small, gated releases with a clear status and a sign-off at each step. | Lewisville |
+| 01 | **Systems analysis & implementation** | Understanding the current setup, finding the constraint and planning a practical path forward. | Extending a church LED wall |
+| 02 | **Software engineering** | Accessible web products, APIs, payments and the interfaces that hold them together. | Afromerica Entertainment |
+| 03 | **Delivery & handover** | Testing, documentation and support that help the next person run what was built. | Deeper Life Bible Church Lewisville |
+
+Each proof link reads `{project title} ↗`. (Replaces the four-row "How I work" block, 7 Nov 2026.)
 
 ### 2.5 Availability
 
-> ● Open to full-time roles and freelance projects. **enquiries@tobiakoko.com** · **Book a call**
+> ● Open to full-time roles and freelance projects. **enquiries@tobiakoko.com ↗** · **Book a call**
 
 (Hide "Book a call" until the booking link exists.)
 
@@ -92,6 +90,7 @@ Heading: **How I work**
 
 ## 3. Work index
 
+- Eyebrow: **Projects** · **01–07** (the count follows the number of case studies)
 - Title: **Work**
 - Intro: `Projects I've planned, built and supported, each with a full case study.`
 - Meta title: `Work · Daniel (Tobi) Akoko`
@@ -105,22 +104,35 @@ Meta title: `About · Daniel (Tobi) Akoko`. Meta description: `Daniel (Tobi) Ako
 
 ### 4.1 Heading
 
+- Eyebrow: **The person behind the work**
 - H1: **About**
-- Subheading: **I build software that tells the truth: correct facts, honest error messages, and a handover the client can actually run.**
+- Subheading: **I came to software through engineering, hospitality and hands-on systems work. That mix taught me to listen first, make the complicated clear and stay with a problem until it works.**
+
+(The previous subheading, "I build software that tells the truth…", moved to the Contact quote in §5, which was later removed.)
 
 ### 4.2 Bio (label: Bio)
 
-> I'm Daniel Akoko, and most people call me Tobi. I'm a software engineer in Dallas, Texas. I build web software for churches and small businesses, and I care most about the parts people only notice when they break: the facts on the page, the error messages, the tests and the handover.
+> I'm Daniel Akoko, though most people call me Tobi. I'm a software engineer in Dallas, Texas. I build web software for churches and small businesses, and I pay close attention to the parts people usually notice only when they fail: the information on the page, the error message after a wrong turn, the test that catches a regression and the documentation someone needs after handover.
 >
-> My path here wasn't a straight line. I studied electrical engineering, then criminal justice, then computer science, and I worked in hospitality, where I learned to stay calm under pressure and look after people. For years I've also run sound, media and livestreaming at my church. All of it shows up in how I work: I listen first, I plan in steps, and I don't call something done until it works for the person using it.
+> My route into software was not a straight line. I studied electrical engineering, then criminal justice, then computer science. I worked in hospitality, where I learned to stay calm when the room is busy and take care of the person in front of me. For years I have also run sound, media and livestreaming at church.
+>
+> That mix shapes how I work now. I listen before I propose, turn complicated work into clear steps and stay with a project through testing, launch and handover. The goal is not simply to ship software. It is to leave people with something they can understand, use and depend on.
 
-### 4.3 How I work (label: How I work)
+<!-- The prototype says "criminology"; kept "criminal justice" to match the degree (Daniel, 5 Nov 2026). -->
 
-Three principles, each a bold line and one sentence:
+### 4.3 Capabilities (label: Capabilities)
 
-1. **Get the facts right.** Every fact lives in one place, and a test fails if a wrong one comes back.
-2. **Fail honestly.** A form that can't send says so, and shows another way to reach a person.
-3. **Leave it runnable.** Documentation, a runbook and training mean the client never depends on me to change a service time.
+Shown as pills, in this order:
+
+- Full-stack engineering
+- Front-end development
+- Systems analysis
+- Implementation
+- Payments
+- IT & AV systems
+- Documentation & handover
+
+(Replaces the "How I work" principles on About, 7 Nov 2026.)
 
 ### 4.4 Present (label: Present)
 
@@ -158,13 +170,33 @@ A list, newest first. Each item: role, organisation, location, dates, then 2–4
 
 - Websites for a Tampa law practice and a Torrance, California collision-repair shop (see Work).
 
-**Hospitality** · Dallas, TX · `TODO(content): years` · Guest-facing service in high-volume restaurants. (Daniel's decision: don't name the employers.)
+**Hospitality** · Tampa, FL, Los Angeles, CA, and Dallas, TX · 2019 – 2026 (Daniel, 10 Nov 2026; employers not named)
+
+Provided guest-facing service in high-volume restaurants, coordinating requests and resolving concerns while managing competing priorities.
+
+**IT Service Desk Technician** · University of South Florida · Tampa, FL · 2019 (Daniel, 10 Nov 2026)
+
+Provided Tier 1 technical support to students, faculty, and staff through phone, chat, email, and walk-up service.
+
+- Diagnosed and resolved hardware, software, account-access, and peripheral issues, explaining troubleshooting steps to users with varying technical knowledge.
+- Logged and tracked incidents in Jira and ServiceNow, documenting reported issues, troubleshooting actions, and resolution details.
+- Installed, configured, serviced, and repaired computers, printers, and related devices; trained users on their operation.
+- Created installation and troubleshooting guides in Confluence for use as shared knowledge-base references.
+
+**Student Ambassador | Writing Center Receptionist** · Community College of Baltimore County · Baltimore, MD · Aug 2016 – May 2018 (Daniel, 10 Nov 2026)
+
+Supported campus outreach, student services, and events through student leadership, front-desk service, and public-facing communication.
+
+- Represented the college during campus tours, orientation, and events, answering questions from prospective and incoming students.
+- Partnered with faculty to coordinate college-wide events and support student participation.
+- Provided front-desk support at the Writing Center, helping students find information and connect with available resources.
+- Published student blog posts about campus life, demanding coursework, motivation, and college support services.
 
 <!-- TODO(content): employment type for each role (full-time, contract, part-time, volunteer). Recruiters and background checks verify titles and dates, so the type should match what an employer reference would say. -->
 
 ### 4.6 Origins (label: Origins)
 
-> I started in electrical engineering at the Community College of Baltimore County, moved into criminal justice at the University of South Florida, and found my way to computer science at Western Governors University. Music has been a constant: I direct choirs and help run music and media for church events.
+> I started in electrical engineering at the Community College of Baltimore County, moved into criminal justice at the University of South Florida, and found my way to computer science at Western Governors University. Music has been a constant: I direct choirs and help run music and media for my church's events.
 
 ### 4.7 Education (label: Education)
 
@@ -175,37 +207,57 @@ A list, newest first. Each item: role, organisation, location, dates, then 2–4
 | Bachelor of Arts (BA), Criminal Justice | University of South Florida | Sep 2018 – Dec 2022 |
 | Associate of Science (AS), Electrical Engineering | Community College of Baltimore County | Aug 2015 – May 2018 |
 
-Degree names and dates from Daniel (5 Nov 2026). The Bio and Origins say "criminal justice" to match the degree (Daniel, 5 Nov 2026).
+Degree names and dates from Daniel (5 Nov 2026). The prototype shows "Year to be confirmed" for USF and CCBC; these dates replace that. The Bio and Origins say "criminal justice" to match the degree (Daniel, 5 Nov 2026).
 
 ### 4.8 Certifications (label: Certifications)
 
-- ITIL Foundation
-- LPI Linux Essentials
+| Certification | Credential ID | Issued |
+| --- | --- | --- |
+| ITIL Foundation | 9980093812593301 | Jun 2024 |
+| LPI Linux Essentials | LPI000616819 | Jun 2024 |
 
-`TODO(content): years earned.`
+Issue dates and credential IDs from Daniel (10 Nov 2026).
 
 ### 4.9 Community (label: Community)
 
 - Media production, choir direction and digital streaming, Deeper Life Bible Church
 - DLYA fundraising team
 
-### 4.10 Closing line
+### 4.10 Closing band
 
-> Want to work together? **Email me** or **see my work**.
+Teal band: **Want to work together?** · **Email me ↗** · **See my work ↗**
 
 ---
 
 ## 5. Contact
 
+- Eyebrow: **Contact / Dallas, Texas**
 - H1: **Let's talk**
-- Line: `I'm open to full-time roles and freelance projects. Email is best, and I reply within two business days.`
-- List: Email · Book a call (hide until set) · LinkedIn · GitHub · Location: Dallas, Texas
+- Lead: `Tell me about the role, project or problem you're working through.`
+- Note, under the lead in smaller type: `I'm open to full-time roles and freelance projects. Email is best, and I reply within two business days.` (Split and reworded by Daniel, 7 Nov 2026.)
+- Direct (label: Direct): Email · LinkedIn ↗ · GitHub ↗ · Location: Dallas, Texas · Book a call (hide until set)
+- Form (label: Message, with **About a minute** beside it):
+  - Name, placeholder `Your name`
+  - Email, placeholder `you@example.com`
+  - What's this about? Options: `Full-time role`, `Freelance project`, `Other`
+  - Message, placeholder `A little context about what you need…`
+  - Note: `Sending opens your email app with this message filled in. Nothing is submitted in the browser.`
+  - Button: **Open email draft ↗**
+  - Email subject: `[Portfolio enquiry] {What's this about?} from {Name}`. Body: name, reply-to email, type, message. No "sent" message on the page.
+- Quote: removed by Daniel (7 Nov 2026); the form panel runs straight to the footer.
 - Meta title: `Contact · Daniel (Tobi) Akoko`
 - Meta description: `Contact Daniel (Tobi) Akoko, a software engineer in Dallas, about full-time roles or freelance web projects.`
 
-### 5.1 Footer privacy note
+### 5.1 Footer
 
-Shown on every page, under the footer links. Google's Analytics terms require telling visitors that the site uses Google Analytics and cookies. The owner chose this note over a cookie banner (6 Nov 2026): visitors are mostly in the US, where no banner is required.
+- Eyebrow: **Start a conversation**
+- Heading: **Have a role or project in mind?**
+- Link: **Let's talk ↗** → Contact
+- Bottom bar: **Daniel (Tobi) Akoko** / **Software Engineer · Dallas, Texas** · Email · LinkedIn · GitHub · `© {year} Daniel Akoko`, then the privacy note below.
+
+### 5.2 Footer privacy note
+
+Shown on every page, at the right of the footer's bottom bar. Google's Analytics terms require telling visitors that the site uses Google Analytics and cookies. The owner chose this note over a cookie banner (6 Nov 2026): visitors are mostly in the US, where no banner is required.
 
 - Text: `This site uses Google Analytics, which sets cookies, to count visits. Vercel Analytics counts visits too, without cookies.`
 - Link: `How Google uses this data` → `https://policies.google.com/technologies/partner-sites`
@@ -223,10 +275,25 @@ Order and front matter. `featured: true` for the first four.
 | 3 | `led-wall` | Extending a church LED wall | 2026 | Analysis, Implementation, Delivery |
 | 4 | `dlbc-tampa` | Deeper Life Bible Church Tampa | 2025–2026 | Engineering, Analysis, Implementation |
 | 5 | `rons-body-shop` | Ron's Body Shop | 2025–2026 | Engineering, Implementation |
-| 6 | `oseiprempeh` | OseiPrempeh Law Firm | 2025 | Engineering |
+| 6 | `oseiprempeh` | OseiPrempeh Law Firm | 2025–2026 | Engineering |
 | 7 | `portfolio` | This portfolio | 2025–2026 | Engineering |
 
 Section numbers below don't follow display order; `order` decides it. The LED wall is §6.7.
+
+**Case study pages in progress (Daniel, 10 Nov 2026).** Until Daniel confirms the content for each page, every `/work/:slug` page shows only the header (with the cover recaptured from the live site on 10 Nov 2026; the portfolio's from this branch's build), the Overview and this note. While a page is in progress, its Overview is the text of its `## Context` section (paragraphs only, no images; falls back to the outcome line when there is no Context), with no stats. Once `inProgress` comes off, the Overview goes back to the outcome line and stats (Daniel, 10 Nov 2026). Each file has `inProgress: true`; remove it to show the full case study again. The markdown sections stay in the files, unchanged.
+
+- Eyebrow: `Case study details in progress`
+- Heading: `There is more to document.`
+- Body: `The detailed challenge, process and outcomes for this project are still being documented.`
+- Link: `Ask about this project ↗` (to `/contact`)
+
+Links from the case study PDFs (9 Nov 2026) are not added (Daniel, 10 Nov 2026).
+
+**Propositions and overviews (Daniel, 10 Nov 2026).** The propositions and the Context text in §6.1–§6.5 below were rewritten by Daniel on 10 Nov 2026. Figures in that text ("three separate workflows", "four-stage finale", "six practice areas") are Daniel's own description of the projects. The LED wall and this portfolio keep their earlier text.
+
+**Link previews (`og.jpg`).** Remade from the 10 Nov 2026 covers for every project except the LED wall (its cover didn't change).
+
+**Card images (9 Nov 2026).** Lewisville, Afromerica and Ron's Body Shop use a desktop-and-phone composite on their project card (front matter `card`, `public/work/<slug>/card.webp`). Daniel made them from each live site's own screenshots; text in them was checked against the live pages. A first set with AI-altered text (wrong times, address and phone numbers) was rejected. The case study pages keep their `cover` screenshot. The LED wall, DLBC Tampa and this portfolio cards still use their cover. OseiPrempeh's composite was held back on 9 Nov for its statistics and restored on 10 Nov 2026 after the firm's approval (§6.5).
 
 Ask Kumuyi AI is **not** included (deployment is down).
 
@@ -235,15 +302,16 @@ Ask Kumuyi AI is **not** included (deployment is down).
 **Front matter**
 
 - outcome: `I built a church website, audited it a year later, then rebuilt it in four gated phases.`
-- role: `Sole developer, analyst and project lead`
-- team: `Solo, with the pastor and church staff`
+- proposition: `A church website that helps visitors plan a visit, members find service information, and volunteers manage updates.` (10 Nov 2026)
+- role: `Sole developer, analyst, project lead and product designer` (10 Nov 2026)
+- team: `Solo, with pastor and church volunteers as content editors` (Daniel's wording, 10 Nov 2026)
 - timeline: `Nov 2025 – Nov 2026`
 - stack: Next.js 16, React 19, TypeScript, Sanity 6, Tailwind CSS 4, Resend, Upstash, Jest, Playwright, Vercel
 - links: live `https://dclm-lewisville.vercel.app/` (switch to `https://deeperlifelewisville.org` when the domain moves); code `https://github.com/tobiakoko/dclm-lewisville`
 - stats: `109 → 333` unit tests · `13 → 0` wrong facts in the home page HTML · `360` browser test runs with accessibility checks
 - Permission: given by the pastor (5 Nov 2026) to name leaders and show photos from the site.
 
-**Context.** Deeper Life Bible Church Lewisville is a local congregation of an international church. Most first-time visitors find it on a phone and need to know, within seconds, when and where it meets and what to expect.
+**Context** (10 Nov 2026). I designed and built the website for Deeper Life Bible Church Lewisville, a local congregation of Deeper Christian Life Ministry in North Texas, starting with a codebase audit and phased implementation plan. A central challenge was maintaining consistent service schedules across the site while separating local church information from resources provided by the wider ministry. As the sole developer, I implemented the pages, the content management system, the contact API, and the release checks. I worked with the church sponsor to preserve approved religious wording. I wrote an editor guide and training outline so volunteers could practice updates before publishing.
 
 **The problem.** I built the first version in November 2025 and kept adding to it. A year later I audited it and found it wasn't trustworthy (source: `docs/build/BASELINE.md`):
 
@@ -292,6 +360,35 @@ Ask Kumuyi AI is **not** included (deployment is down).
 
 Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit, about, ministries, events, contact and give at desktop and phone; full-page home, visit and contact; `architecture-light.svg` and `architecture-dark.svg`. The `sermons-*` shots show the honest "couldn't load videos" state; use them only as the figure for the "honest failure" decision. Still wanted: the Phase 4 before captures (owner, local only) and a Studio editing screen.
 
+**Architecture, revised (supplied by Daniel, 9 Nov 2026).** Source: `Portfolio-Architecture-Mermaid.md`, drawn from [dclm-lewisville @ 18ec2e1](https://github.com/tobiakoko/dclm-lewisville/commit/18ec2e1bbb64d8289846170b063fbf68a59ce827), the same commit as the screenshots. It replaces the current `architecture-light.svg` / `-dark.svg` when the page is updated. It adds the editors and Studio path, and it leaves out Upstash, consent-based analytics and CI, which stay in the text above.
+
+Caption: `The publishing path and the contact path run independently. A signed Sanity webhook expires the affected cache tag. The contact handler returns the delivery outcome that the form displays.`
+
+```mermaid
+flowchart TB
+    editors["Church editors"]
+    visitors["Church visitors"]
+    studio["Sanity Studio"]
+    web["Next.js pages · Vercel"]
+    sanity[("Sanity content")]
+    cache["Revalidation API"]
+    contact["Contact API"]
+    youtube["YouTube feeds"]
+    resend["Resend"]
+
+    editors -->|Edit in /studio| studio
+    studio -->|Publish| sanity
+    visitors --> web
+    web <-->|Cached GROQ| sanity
+    sanity -->|Signed webhook| cache
+    cache -.->|Expire cache tag| web
+    web -->|Submit form| contact
+    web -->|Read videos and live status| youtube
+    contact -->|Validate and send| resend
+```
+
+Classes: actor = editors, visitors · ui = studio, web · service = contact, cache · data = sanity · vendor = youtube, resend.
+
 **Reflection.** `What I'd do next:` measure Core Web Vitals on real phones, and add calendar export for events once the church approves it. And next time, audit before adding features, not a year later.
 
 **AI note (one line in Process → Rebuild):** `I wrote the plan, content source, design system and acceptance gates, used Claude Code to implement against them, and reviewed every pull request.`
@@ -301,9 +398,12 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 **Front matter**
 
 - outcome: `A talent-competition platform with paid voting, ticketing and a live judged finale, with scoring computed in the database.`
-- role: `Sole developer`
-- timeline: `Oct – Dec 2025`
-- stack: Next.js 16, React 19, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind CSS 4, Vercel
+- proposition: `An events platform for a music talent competition, with ticket booking, paid voting, live standings, and judge scoring.` (10 Nov 2026)
+- Context (10 Nov 2026): `I built the platform to support three separate workflows: ticket purchases, paid audience votes during the showcase, and judge scoring during a four-stage finale. Visitors could discover artists, book tickets, and follow results, while organizers managed voting, competition stages, and standings. As the sole developer, I implemented payment checkout and verification, scoring logic, and the public and admin interfaces. I translated competition rules into eligibility checks, stage transitions, and published results. After the competition, I investigated missing stage views and repaired the build pipeline so builds could run without production secrets.`
+- role: `Sole developer and repository maintainer` (10 Nov 2026)
+- team: `Solo, with the company CEO` (10 Nov 2026)
+- timeline: `Aug – Dec 2025` (changed from Oct to match the About role, Daniel 10 Nov 2026)
+- stack: Next.js 16, React 19, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind CSS 4, Vercel (Termii not added, Daniel 10 Nov 2026)
 - links: live `https://www.afromericaent.com/`; code `https://github.com/tobiakoko/afromerica-ent` (link it only after the repo clean-up in BUILD-PLAN "Outside this repo": root fix notes moved, `.backup` file removed)
 - stats (system facts until the client supplies figures): `35 / 10 / 30 / 25` final weighting: paid votes / public / judges / performance · `23` API routes · `10 min` one-time-code expiry. The weighting is from the live Final Results page (`/events/december-showcase-2025/leaderboard`, captured 5 Nov 2026); Daniel confirmed it replaces the earlier 60 / 40 figure. `TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them`
 - Permission: given by the client (5 Nov 2026) to name them and use screenshots, including the artists page with contestants' photos and names (Daniel, 5 Nov 2026). Still blur voter names, emails and phone numbers.
@@ -339,6 +439,8 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 **Front matter**
 
 - outcome: `An audit-driven pass that cut the entry bundle by 87% and made every form actually deliver.`
+- proposition: `An in-progress redesign of a church website, focused on helping first-time visitors find service times, directions, beliefs, and contact information.` (10 Nov 2026)
+- Context (10 Nov 2026): `The redesign prioritizes people browsing on a phone and deciding whether to attend. The goal is to make essential information easy to find, including what to expect, how to watch or listen, and how to contact the church.` then `Status: Redesign in progress.`
 - role: `Sole developer`
 - timeline: `Dec 2025 – Aug 2026`
 - stack: Vite, React 18, React Router 6, TypeScript, Tailwind CSS 4, Sanity, Framer Motion, Formspree
@@ -380,13 +482,17 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 
 **Front matter**
 
-- outcome (after fixes): `TODO(content): e.g. "A collision-repair site that now delivers every estimate request" — only once the form fix is live`
-- role: `Sole developer`
-- timeline: `Aug 2025 – Jan 2026`
-- stack: React 19, Vite, TypeScript, Tailwind CSS 4, Vercel Analytics
+- outcome: `A collision repair website with a four-step estimate request and a quick message form that share one email delivery path.` (from Daniel's case study PDF, 9 Nov 2026)
+- proposition: `A collision-repair website that helps drivers explore services, request an estimate, and contact a shop in Torrance, California.` (10 Nov 2026)
+- Context (10 Nov 2026): `I built the original React site and implemented a rebuild focused on mobile navigation and estimate requests. Visitors can call, get directions, or select a repair service and carry that choice into the estimate form. The original form could display “Message sent” without delivering a request. I replaced that behavior with a server-issued reference and an email containing the details the shop needs to follow up. My work also covered responsive images, shared business information, analytics, and automated checks for the estimate and quick-message forms.`
+- role: `Sole developer and repository maintainer` (10 Nov 2026)
+- team: `Solo, with the shop owner who handles follow-up on requests` (10 Nov 2026)
+- timeline: `Aug 2025 – Nov 2026`
+- stack: React 19, Vite, TypeScript, Tailwind CSS 4, Zod, Resend, Vercel Analytics, Vitest (matches `package.json` at 740b6bc)
 - location: Torrance, California
 - links: live `https://www.ronsbodyshop.net/`; code `https://github.com/tobiakoko/RonsBodyShop`
-- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown. Numbers still need the owner's OK.
+- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown. On 9 Nov 2026 Daniel confirmed the project can be published.
+- **Founded: 1982** (Daniel, 10 Nov 2026). Use 1982 in all portfolio copy. The live site and its screenshots still say "Est. 1980"; the owner is fine with that. Evidence in the shop's repo: the original site (commit 3d2c5d6, Jan 2026) said "Established 1982", "Circa 1982" and `foundingDate: "1982"`; the redesign changed it to 1980; 1983 appears nowhere. `TODO(content): final confirmation from the owner (1982 or 1983).` The rating (4.7, 85+ Google reviews) on the live site is still marked "confirm with owner" in `src/content/shop.ts`; don't repeat it in portfolio copy until confirmed.
 
 **Facts available now:** a collision-repair shop in Torrance, California; video hero; services, gallery, story and contact sections; Vercel Analytics tracks "Request Estimate" clicks; 44 commits from August 2025 to January 2026.
 
@@ -394,25 +500,91 @@ Figures: `public/work/lewisville/` (supplied 5 Nov 2026): cover and home, visit,
 
 `TODO(content): before/after page weight, Lighthouse, and estimate requests per month (with the owner's OK).`
 
+**Architecture (supplied by Daniel, 9 Nov 2026).** Source: `Portfolio-Architecture-Mermaid.md`, drawn from [RonsBodyShop @ 740b6bc](https://github.com/tobiakoko/RonsBodyShop/commit/740b6bc94c56fceebeedbecac3a0a2e337407393) (merged 5 Nov 2026, "redesign-build"). Checked against that commit on 9 Nov 2026: `api/lead.ts` validates with the same Zod schemas as the client, emails the shop through Resend, and requires a Turnstile token only when `TURNSTILE_SECRET_KEY` is set.
+
+Caption: `Both forms share the lead endpoint. The optional Turnstile check runs when configured. The reference confirms acceptance by the email provider for a genuine submission. The shop's inbox is the next delivery checkpoint.`
+
+```mermaid
+flowchart TB
+    customer["Customer browser"]
+    site["React site · Vite build on Vercel"]
+    estimate["Four-step estimate"]
+    message["Quick message"]
+    lead["Vercel /api/lead · Zod validation"]
+    check["Cloudflare Turnstile"]
+    resend["Resend"]
+    shop["Shop inbox"]
+
+    customer -->|Open site| site
+    site --> estimate
+    site --> message
+    estimate -->|Submit details| lead
+    message -->|Submit details| lead
+    lead -.->|Verify token if configured| check
+    lead -->|Send validated lead| resend
+    resend -->|Route email| shop
+    lead -.->|Reference or error| site
+```
+
+Classes: actor = customer, shop · ui = site, estimate, message · service = lead · vendor = check, resend.
+
+- **Stack at this commit** (for the front matter once the case study is written): React 19, Vite, TypeScript, Tailwind CSS 4, Zod, Resend, Vercel Analytics, Vitest. The current front matter (above) predates the fix and lacks Zod, Resend and Vitest. Cloudflare Turnstile is a service the API calls, not a package; list it only if the live deployment sets the key. `TODO(content): confirm whether TURNSTILE_SECRET_KEY is set in production.`
+- **Known issues:** this commit replaces the simulated form success with a real send. `TODO(content): confirm the fix is live and get the owner's OK before writing it up as a before/after.`
+
+**Lighthouse (7 Nov 2026 audit):** see §8.1.
+
 ### 6.5 OseiPrempeh Law Firm
 
 **Front matter**
 
-- outcome: `A single-page site for a Tampa law practice, delivered in three weeks.`
-- role: `Sole developer`
-- timeline: `May – Jun 2025`
-- stack: React Router 7, React 19, TypeScript, Tailwind CSS 4, Radix UI, Embla Carousel
+- outcome: `A prerendered law firm website that helps prospective clients prepare a consultation request in their email app.` (10 Nov 2026)
+- proposition: `A one-page website that helps prospective clients explore a Tampa law firm’s practice areas and contact the office.` (10 Nov 2026)
+- Context (10 Nov 2026): `I built the original site and implemented its redesign, organizing six practice areas, the attorney’s background, and consultation options. Visitors can call directly or complete a guided form that opens a draft in their own email app, where they must press Send. The firm manages availability and follow-up outside the website.` then `My work covered React Router implementation, prerendered public content, centralized firm information, mobile navigation, release checks, and hosting security headers.`
+- year: `2025–2026`
+- role: `Sole developer and repository maintainer` (10 Nov 2026)
+- team: `Solo, with the attorney who handles follow-up` (10 Nov 2026)
+- timeline: `May 2025 – Nov 2026`
+- stack: React Router, React, TypeScript, Tailwind CSS, Vite (Daniel, 10 Nov 2026; not checked against the code here)
 - links: live `https://www.oseiprempeh.com/`; code `https://github.com/tobiakoko/D-Law`
+- Permission: Daniel confirmed on 9 Nov 2026 that the project can be published, and on 10 Nov 2026 that this covers the screenshots and the card composite, including the figures shown on the firm's site.
 
 Short case study (300–400 words): context, my role, practice-area structure (immigration, personal injury, international business, family law, contract disputes, criminal defense), search metadata and link previews, screenshots desktop and phone.
 
-`TODO(content): the firm must approve the statistics and testimonials shown on its site before any screenshot that includes them is used.` The supplied screenshots show both, so they're held in `assets/public/work/oseiprempeh/` (not deployed) until the firm approves.
+Screenshots: approved 10 Nov 2026. The cover was recaptured from the live site that day; the older supplied shots stay in `assets/public/work/oseiprempeh/`.
+
+**Architecture (supplied by Daniel, 9 Nov 2026).** Source: `Portfolio-Architecture-Mermaid.md`, drawn from [D-Law @ 6fd1c17](https://github.com/tobiakoko/D-Law/commit/6fd1c177b68ea11518d0ff301b71a2deaad6687d). `TODO(content): not yet checked against the code (no local copy of D-Law); check before publishing.` The diagram has no statistics or testimonials, so it can be used before the firm's approval.
+
+Caption: `React Router produces the homepage HTML at build time. The consultation form opens a draft in the visitor's email app. The visitor sends the email, and the office confirms availability separately.`
+
+```mermaid
+flowchart TB
+    content["Typed firm content"]
+    assets["Fonts and media"]
+    build["React Router · Prerender"]
+    host["Vercel · Static hosting"]
+    browser["React page and consultation form"]
+    email["Visitor email app"]
+    firm["Firm office"]
+
+    content -->|Apply display rules| build
+    build -->|Homepage HTML and JS| host
+    assets --> host
+    host -->|Serve files| browser
+    browser -->|Prefilled mailto draft| email
+    browser -.->|Call directly| firm
+    email -->|Visitor presses Send| firm
+```
+
+Classes: data = content, assets · service = build, host · ui = browser · vendor = email · actor = firm.
+
+**Lighthouse (7 Nov 2026 audit):** see §8.1.
 
 ### 6.6 This portfolio
 
 **Front matter**
 
 - outcome: `Made my own site indexable and rebuilt it as a quiet, fast, prerendered portfolio.`
+- proposition: `A content-first portfolio designed to make the work, process and range clear.`
 - role: `Designer and developer`
 - timeline: `2025 – 2026`
 - stack: React Router 7 (prerendered), React 19, TypeScript, Tailwind CSS 4, Vercel
@@ -428,6 +600,7 @@ Source: Daniel's case study "Case Study: Extending a P1.25 LED Wall" (3 November
 
 - title: `Extending a church LED wall`
 - outcome: `I took a church's LED wall from a failed extension, with scrambled and repeated content, to one working 3072 × 1536 display.`
+- proposition: `Diagnosing a display constraint and designing a practical path to extend a church LED wall.`
 - role: `Diagnosis, system design, controller and receiving-card configuration, vendor follow-up`
 - team: `Solo, with the church and the equipment vendor`
 - timeline: `Sep – Oct 2026` (hands-on 2 September to 3 October 2026; ordered March 2026)
@@ -520,19 +693,61 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 
 **AI note.** The source lists "Claude for spec research and diagnostic cross-checks" under tools. Keep it in the tools line.
 
+### 6.8 ChoirHub (not on the site yet)
+
+Supplied by Daniel on 9 Nov 2026 as an architecture diagram only. There's no case study file, front matter, permission note or screenshots yet, so nothing goes on the site. `TODO(content): decide whether ChoirHub becomes a case study; if so, supply year, role, timeline, the stack from its package.json, links and screenshots (five app screens are in "Desktop/05 ChoirHub", unchecked).` The diagram isn't checked against the code (no local copy of the repo).
+
+Source: `Portfolio-Architecture-Mermaid.md`, drawn from [choirhub @ a732499](https://github.com/tobiakoko/choirhub/commit/a73249931d9738f362857e5d12ab3a669345b078).
+
+Caption: `This is the native Expo client and cloud architecture represented in the repository. Rehearsal responses can queue locally. Sync sends pending mutations and pulls changed rows, while song media uses a separate download cache.`
+
+```mermaid
+flowchart TB
+    members["Choir members and leaders"]
+    app["Expo mobile app"]
+    local[("WatermelonDB · SQLite outbox")]
+    files["Device media cache"]
+    engine["Sync engine"]
+    auth["Supabase Auth"]
+    sync["Sync Edge Function"]
+    db[("Supabase Postgres · RLS")]
+    notify["Notification Edge Functions"]
+    media["Configured media URLs"]
+    push["Expo Push Service"]
+
+    members --> app
+    app <-->|Local reads and writes| local
+    local <-->|Queue and apply changes| engine
+    engine <-->|Push and pull| sync
+    sync <-->|Caller-scoped data| db
+    app -->|Sign in| auth
+    app <-->|Play or download| files
+    files -->|Fetch files| media
+    app -->|Request fan-out| notify
+    notify -->|Resolve audience| db
+    notify -->|Dispatch to devices| push
+```
+
+Classes: actor = members · ui = app · service = engine, auth, sync, notify · data = local, files, db · vendor = media, push.
+
+### 6.9 Rendering the architecture diagrams
+
+The source file gives every diagram the same five classes (actor, ui, service, data, vendor), coloured with Tailwind slate, sky, violet, green and amber. The sky (blue) and violet fills break the teal-only rule (CLAUDE.md rule 8). When the diagrams are rendered with `@mermaid-js/mermaid-cli`, map the five classes to the site's tokens and make light and dark SVGs like the existing ones. Keep the node labels, edge labels and captions word for word as above.
+
 ---
 
 ## 7. Still missing
 
-- [x] Headline choice (2.1): A
+- [x] Headline choice (2.1): replaced in the redesign (7 Nov 2026)
+- [x] Hero photo of Dallas (§2.2): `assets/public/hero-image.webp`, no credit line (Daniel, 10 Nov 2026)
 - [x] LinkedIn URL confirmed
 - [ ] Booking link (optional; see §1)
 - [x] Résumé: not used (§1)
 - [x] MBA and B.S. dates
 - [x] B.A. and A.S. names and dates (§4.7)
-- [ ] Years for both certifications
+- [x] Years for both certifications: Jun 2024, with credential IDs (§4.8)
 - [x] Bio and Origins use "criminal justice"
-- [x] Roles and dates (§4.5)
+- [x] Roles and dates (§4.5); Hospitality years, USF IT Service Desk and CCBC roles added 10 Nov 2026
 - [ ] DLBC ICT role: a link to the donation project, or rewritten bullets (§4.5 comment)
 - [ ] Afromerica: a source for any performance or traffic figures before they return
 - [ ] Employment type for each role
@@ -543,7 +758,13 @@ Settings are saved to the controller and the cards and survived a power cycle. H
 - [ ] Lewisville: the Phase 4 before/after captures and a Studio editing screen
 - [ ] DLBC Tampa: material for Process and Architecture (§6.3 has none)
 - [ ] Ron's Body Shop: fixes done, then numbers and owner's OK
-- [ ] OseiPrempeh: firm's approval of statistics and testimonials
+- [ ] Ron's Body Shop: owner's final word on the founding year (1982 or 1983) and the 4.7 / 85+ rating (§6.4)
+- [x] OseiPrempeh: approved for publishing, screenshots included (10 Nov 2026)
+- [ ] Case study content for every page: Daniel to confirm, then remove `inProgress` (§6)
+- [ ] OseiPrempeh and ChoirHub architecture diagrams: check against the code (§6.5, §6.8)
+- [ ] Ron's Body Shop: is the 5 Nov lead fix live, and is Turnstile on in production? (§6.4)
+- [ ] ChoirHub: a case study or not; if yes, front matter, permission and screenshots (§6.8)
+- [ ] Afromerica /artists: rerun Lighthouse (22.5 s mobile LCP on 7 Nov) (§8.1)
 - [x] Lighthouse scores (§8)
 - [x] Afromerica screenshots from the live site (capture kit)
 - [x] Lewisville screenshots and architecture diagram; Afromerica architecture diagram
@@ -585,3 +806,31 @@ This portfolio (`tobiakoko.com`, the Phase 1 build on `main`), rerun 5 Nov 2026 
 | portfolio | / | desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 |
 | portfolio | /about | mobile | 100 | 100 | 100 | 100 | 1.4 s | 0 |
 | portfolio | /about | desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 |
+
+### 8.1 Audit run, 7 Nov 2026 (single runs)
+
+Supplied by Daniel as `rons-lighthouse-summary.json`, `osei-lighthouse-summary.json` and `afromerica-lighthouse-summary.json`, measured on the evening of 7 Nov 2026, Dallas time (8 Nov, 04:25–04:28 UTC), against the live sites. The case study PDFs (9 Nov 2026) call this the "November 7, 2026 audit". **Each row is one Lighthouse lab run, not a median of 3 like the table above, and not real-user Core Web Vitals; Lighthouse can't report field INP.** Quote them only with the date and "single lab run". Values are rounded: LCP and FCP to 0.1 s, CLS to 3 decimals, TBT to the nearest ms.
+
+| Project | Page | Form | Perf | A11y | BP | SEO | LCP | FCP | TBT | CLS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| rons-body-shop | / | mobile | 86 | 96 | 96 | 100 | 2.5 s | 2.0 s | 397 ms | 0.031 |
+| rons-body-shop | / | desktop | 85 | 96 | 96 | 100 | 0.9 s | 0.9 s | 0 ms | 0.256 |
+| oseiprempeh | / | mobile | 95 | 97 | 100 | 100 | 2.4 s | 2.3 s | 24 ms | 0 |
+| oseiprempeh | / | desktop | 100 | 97 | 100 | 100 | 0.5 s | 0.5 s | 0 ms | 0.039 |
+| afromerica | / | mobile | 83 | 100 | 96 | 100 | 4.6 s | 1.0 s | 75 ms | 0 |
+| afromerica | / | desktop | 97 | 100 | 96 | 100 | 1.3 s | 0.3 s | 0 ms | 0 |
+| afromerica | /events | mobile | 98 | 98 | 100 | 92 | 2.2 s | 1.0 s | 22 ms | 0 |
+| afromerica | /events | desktop | 100 | 98 | 100 | 92 | 0.6 s | 0.4 s | 0 ms | 0 |
+| afromerica | /artists | mobile | 73 | 97 | 100 | 92 | 22.5 s | 1.0 s | 114 ms | 0 |
+| afromerica | /artists | desktop | 73 | 96 | 100 | 92 | 9.9 s | 0.3 s | 55 ms | 0 |
+| afromerica | /about | mobile | 99 | 98 | 100 | 92 | 2.1 s | 0.8 s | 30 ms | 0 |
+| afromerica | /about | desktop | 100 | 98 | 100 | 92 | 0.5 s | 0.3 s | 0 ms | 0 |
+| afromerica | /contact | mobile | 99 | 98 | 100 | 92 | 2.1 s | 0.9 s | 29 ms | 0 |
+| afromerica | /contact | desktop | 100 | 98 | 100 | 92 | 0.5 s | 0.3 s | 0 ms | 0 |
+
+Notes before any of these reach a page:
+
+- **Ron's desktop CLS is 0.256**, above Google's 0.25 "poor" line. Don't present it as a strength; it's a fix to make and then show as a before/after.
+- **Afromerica /artists** has LCP of 22.5 s (mobile) and 9.9 s (desktop) in this run. Look into it before citing the other Afromerica pages, and don't quote it without a rerun.
+- **OseiPrempeh** scores are clean (95–100 performance, 97 accessibility) and show no firm statistics, so they can be used before the firm's approval.
+- Rules 1 and 2 still apply: a figure goes into a case study's `stats` only after it's added to the facts list with this source.

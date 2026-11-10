@@ -21,8 +21,7 @@ import {
   LINKEDIN_URL,
   SITE_URL,
 } from '~/data/site';
-import interFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
-import Logo from '/Logo-dark.ico';
+import bodyFont from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
 import type { Route } from './+types/root';
 import './app.css';
 
@@ -30,9 +29,9 @@ import './app.css';
 // tell search engines the whole site is one page. Each route emits its own via
 // pageMeta() in app/data/site.ts.
 export const links: Route.LinksFunction = () => [
-  { rel: 'icon', type: 'image/x-icon', href: Logo },
-  // The one font file; app.css declares the same URL in @font-face.
-  { rel: 'preload', href: interFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
+  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+  // The body font paints first; app.css declares the same URL in @font-face.
+  { rel: 'preload', href: bodyFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
 ];
 
 /** Runs at build time. The stacks live in content/work, read by work.server.ts. */
@@ -164,7 +163,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="mx-auto max-w-wide px-6 py-24 md:px-12 md:py-40">
+    <main className="shell py-24 md:py-40">
       <h1 className="text-title">{message}</h1>
       <p className="mt-6 max-w-measure text-muted">{details}</p>
       <Link to="/" className="link mt-10 inline-block">

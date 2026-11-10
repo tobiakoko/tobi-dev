@@ -23,14 +23,29 @@ export interface Cover {
   srcSet?: string;
 }
 
+/**
+ * The project card's image: a desktop-and-phone composite made from the live
+ * site's own screenshots. Decorative on the card (the title names the link), so
+ * it has no alt text. Cards without one fall back to the cover.
+ */
+export type CardImage = Omit<Cover, 'alt'>;
+
 /** Front matter, per docs/build/CASE-STUDY-TEMPLATE.md. */
 export interface WorkMeta {
   slug: string;
   title: string;
   /** TODO(content): required by the template; optional while Ron's Body Shop has none. */
   outcome?: string;
+  /** One-line proposition shown on Home, Work and the case study intro. Factual, no metrics. */
+  proposition: string;
   order: number;
   featured: boolean;
+  /**
+   * Front matter `inProgress: true`: the page shows only the header, the
+   * overview (the `## Context` text) and the in-progress note (CONTENT.md §6),
+   * not the sections.
+   */
+  inProgress: boolean;
   year: string;
   role: string;
   team?: string;
@@ -38,12 +53,14 @@ export interface WorkMeta {
   timeline: string;
   /** Exactly what the project's own code uses. */
   stack: string[];
-  /** MetaGrid label for `stack`. Set for non-software projects ("Tools and hardware"). */
+  /** Label for `stack` in the case study facts (default "Tools"). Set for non-software projects ("Tools and hardware"). */
   stackLabel?: string;
   disciplines: Discipline[];
   links: { live?: string; code?: string };
   /** TODO(content): optional until the LED wall and OseiPrempeh have usable covers. */
   cover?: Cover;
+  /** Front matter `card: /work/<slug>/card.webp`, shown on Home and Work only. */
+  card?: CardImage;
   /** 1200 x 630 link preview made from the cover (tools/capture-kit/prepare.mjs). */
   ogImage?: string;
   stats: Stat[];
@@ -58,6 +75,8 @@ export interface WorkSection {
 
 export interface WorkStudy extends WorkMeta {
   sections: WorkSection[];
+  /** HTML of the `## Context` section's paragraphs (no images); the overview while in progress. */
+  context?: string;
 }
 
 /**
@@ -72,3 +91,11 @@ export function technologies(work: WorkMeta[]) {
     .flatMap((w) => w.stack.map((s) => s.replace(/\s*\(.*\)$/, '').replace(/\s+\d+$/, '')));
   return [...new Set(names)];
 }
+
+/** CONTENT.md §6, "Case study details in progress". Word for word. */
+export const IN_PROGRESS_NOTE = {
+  eyebrow: 'Case study details in progress',
+  heading: 'There is more to document.',
+  body: 'The detailed challenge, process and outcomes for this project are still being documented.',
+  link: 'Ask about this project',
+} as const;

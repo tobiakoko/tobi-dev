@@ -2,6 +2,9 @@
 slug: portfolio
 title: This portfolio
 outcome: Made my own site indexable and rebuilt it as a quiet, fast, prerendered portfolio.
+proposition: A content-first portfolio designed to make the work, process and range clear.
+# Header, overview and the "in progress" note only, until Daniel confirms the full case study.
+inProgress: true
 order: 7
 year: '2025–2026'
 role: Designer and developer
@@ -13,7 +16,7 @@ links:
   code: https://github.com/tobiakoko/tobi-dev
 cover:
   src: /work/portfolio/cover.webp
-  alt: 'This portfolio''s home page on desktop: the headline "From requirements to release." with a two-sentence introduction and links to Work, About and Email'
+  alt: 'This portfolio''s home page on desktop: the headline "I engineer software and systems people can rely on." beside a photo of the Dallas skyline, with links to selected work, About and Contact'
 ---
 
 ## The problem
@@ -44,9 +47,3 @@ Home page body text in the prerendered HTML went from 92 to 1,416 characters.
 
 Lighthouse 12, median of 3 runs, measured on 5 November 2026.
 
-<div data-pair>
-
-![This portfolio's About page on desktop: the About heading and subheading, then the Bio in a label rail](/work/portfolio/about-desktop.webp 'About on desktop: each section in a label rail.')
-![This portfolio's home page on a phone: the headline and introduction with links to Work, About and Email](/work/portfolio/home-phone.webp 'Home on a phone.')
-
-</div>

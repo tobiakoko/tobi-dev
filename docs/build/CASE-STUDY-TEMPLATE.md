@@ -11,6 +11,7 @@ The structure borrows the depth of a design case study (context, impact, solutio
 slug: lewisville
 title: Deeper Life Bible Church Lewisville
 outcome: I built a church website, audited it, then rebuilt it in four gated phases.
+proposition: A church website planned and built around clear information and dependable access.   # required; one factual line, no metrics
 order: 1
 featured: true
 year: "2025–2026"
