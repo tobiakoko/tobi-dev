@@ -170,7 +170,27 @@ A list, newest first. Each item: role, organisation, location, dates, then 2–4
 
 - Websites for a Tampa law practice and a Torrance, California collision-repair shop (see Work).
 
-**Hospitality** · Dallas, TX · `TODO(content): years` · Guest-facing service in high-volume restaurants. (Daniel's decision: don't name the employers.)
+**Hospitality** · Tampa, FL, Los Angeles, CA, and Dallas, TX · 2019 – 2026 (Daniel, 10 Nov 2026; employers not named)
+
+Provided guest-facing service in high-volume restaurants, coordinating requests and resolving concerns while managing competing priorities.
+
+**IT Service Desk Technician** · University of South Florida · Tampa, FL · 2019 (Daniel, 10 Nov 2026)
+
+Provided Tier 1 technical support to students, faculty, and staff through phone, chat, email, and walk-up service.
+
+- Diagnosed and resolved hardware, software, account-access, and peripheral issues, explaining troubleshooting steps to users with varying technical knowledge.
+- Logged and tracked incidents in Jira and ServiceNow, documenting reported issues, troubleshooting actions, and resolution details.
+- Installed, configured, serviced, and repaired computers, printers, and related devices; trained users on their operation.
+- Created installation and troubleshooting guides in Confluence for use as shared knowledge-base references.
+
+**Student Ambassador | Writing Center Receptionist** · Community College of Baltimore County · Baltimore, MD · Aug 2016 – May 2018 (Daniel, 10 Nov 2026)
+
+Supported campus outreach, student services, and events through student leadership, front-desk service, and public-facing communication.
+
+- Represented the college during campus tours, orientation, and events, answering questions from prospective and incoming students.
+- Partnered with faculty to coordinate college-wide events and support student participation.
+- Provided front-desk support at the Writing Center, helping students find information and connect with available resources.
+- Published student blog posts about campus life, demanding coursework, motivation, and college support services.
 
 <!-- TODO(content): employment type for each role (full-time, contract, part-time, volunteer). Recruiters and background checks verify titles and dates, so the type should match what an employer reference would say. -->
 
@@ -258,7 +278,7 @@ Order and front matter. `featured: true` for the first four.
 
 Section numbers below don't follow display order; `order` decides it. The LED wall is §6.7.
 
-**Case study pages in progress (Daniel, 10 Nov 2026).** Until Daniel confirms the content for each page, every `/work/:slug` page shows only the header (with the cover recaptured from the live site on 10 Nov 2026; the portfolio's from this branch's build), the Overview (the outcome line, no stats) and this note. Each file has `inProgress: true`; remove it to show the full case study again. The markdown sections stay in the files, unchanged.
+**Case study pages in progress (Daniel, 10 Nov 2026).** Until Daniel confirms the content for each page, every `/work/:slug` page shows only the header (with the cover recaptured from the live site on 10 Nov 2026; the portfolio's from this branch's build), the Overview and this note. While a page is in progress, its Overview is the text of its `## Context` section (paragraphs only, no images; falls back to the outcome line when there is no Context), with no stats. Once `inProgress` comes off, the Overview goes back to the outcome line and stats (Daniel, 10 Nov 2026). Each file has `inProgress: true`; remove it to show the full case study again. The markdown sections stay in the files, unchanged.
 
 - Eyebrow: `Case study details in progress`
 - Heading: `There is more to document.`
@@ -266,6 +286,10 @@ Section numbers below don't follow display order; `order` decides it. The LED wa
 - Link: `Ask about this project ↗` (to `/contact`)
 
 Links from the case study PDFs (9 Nov 2026) are not added (Daniel, 10 Nov 2026).
+
+**Propositions and overviews (Daniel, 10 Nov 2026).** The propositions and the Context text in §6.1–§6.5 below were rewritten by Daniel on 10 Nov 2026. Figures in that text ("three separate workflows", "four-stage finale", "six practice areas") are Daniel's own description of the projects. The LED wall and this portfolio keep their earlier text.
+
+**Link previews (`og.jpg`).** Remade from the 10 Nov 2026 covers for every project except the LED wall (its cover didn't change).
 
 **Card images (9 Nov 2026).** Lewisville, Afromerica and Ron's Body Shop use a desktop-and-phone composite on their project card (front matter `card`, `public/work/<slug>/card.webp`). Daniel made them from each live site's own screenshots; text in them was checked against the live pages. A first set with AI-altered text (wrong times, address and phone numbers) was rejected. The case study pages keep their `cover` screenshot. The LED wall, DLBC Tampa and this portfolio cards still use their cover. OseiPrempeh's composite was held back on 9 Nov for its statistics and restored on 10 Nov 2026 after the firm's approval (§6.5).
 
@@ -276,16 +300,16 @@ Ask Kumuyi AI is **not** included (deployment is down).
 **Front matter**
 
 - outcome: `I built a church website, audited it a year later, then rebuilt it in four gated phases.`
-- proposition: `A church website planned and built around clear information and dependable access.`
+- proposition: `A church website that helps visitors plan a visit, members find service information, and volunteers manage updates.` (10 Nov 2026)
 - role: `Sole developer, analyst, project lead and product designer` (10 Nov 2026)
-- team: `Solo, with the pastor and church volunteers as editors` (10 Nov 2026)
+- team: `Solo, with pastor and church volunteers as content editors` (Daniel's wording, 10 Nov 2026)
 - timeline: `Nov 2025 – Nov 2026`
 - stack: Next.js 16, React 19, TypeScript, Sanity 6, Tailwind CSS 4, Resend, Upstash, Jest, Playwright, Vercel
 - links: live `https://dclm-lewisville.vercel.app/` (switch to `https://deeperlifelewisville.org` when the domain moves); code `https://github.com/tobiakoko/dclm-lewisville`
 - stats: `109 → 333` unit tests · `13 → 0` wrong facts in the home page HTML · `360` browser test runs with accessibility checks
 - Permission: given by the pastor (5 Nov 2026) to name leaders and show photos from the site.
 
-**Context.** Deeper Life Bible Church Lewisville is a local congregation of an international church. Most first-time visitors find it on a phone and need to know, within seconds, when and where it meets and what to expect.
+**Context** (10 Nov 2026). I designed and built the website for Deeper Life Bible Church Lewisville, a local congregation of Deeper Christian Life Ministry in North Texas, starting with a codebase audit and phased implementation plan. A central challenge was maintaining consistent service schedules across the site while separating local church information from resources provided by the wider ministry. As the sole developer, I implemented the pages, the content management system, the contact API, and the release checks. I worked with the church sponsor to preserve approved religious wording. I wrote an editor guide and training outline so volunteers could practice updates before publishing.
 
 **The problem.** I built the first version in November 2025 and kept adding to it. A year later I audited it and found it wasn't trustworthy (source: `docs/build/BASELINE.md`):
 
@@ -372,7 +396,8 @@ Classes: actor = editors, visitors · ui = studio, web · service = contact, cac
 **Front matter**
 
 - outcome: `A talent-competition platform with paid voting, ticketing and a live judged finale, with scoring computed in the database.`
-- proposition: `A competition and events platform with paid voting, live results and ticket checkout.`
+- proposition: `An events platform for a music talent competition, with ticket booking, paid voting, live standings, and judge scoring.` (10 Nov 2026)
+- Context (10 Nov 2026): `I built the platform to support three separate workflows: ticket purchases, paid audience votes during the showcase, and judge scoring during a four-stage finale. Visitors could discover artists, book tickets, and follow results, while organizers managed voting, competition stages, and standings. As the sole developer, I implemented payment checkout and verification, scoring logic, and the public and admin interfaces. I translated competition rules into eligibility checks, stage transitions, and published results. After the competition, I investigated missing stage views and repaired the build pipeline so builds could run without production secrets.`
 - role: `Sole developer and repository maintainer` (10 Nov 2026)
 - team: `Solo, with the company CEO` (10 Nov 2026)
 - timeline: `Oct – Dec 2025` (kept, 10 Nov 2026)
@@ -412,7 +437,8 @@ Classes: actor = editors, visitors · ui = studio, web · service = contact, cac
 **Front matter**
 
 - outcome: `An audit-driven pass that cut the entry bundle by 87% and made every form actually deliver.`
-- proposition: `A church website focused on making essential information easier to find and support.`
+- proposition: `An in-progress redesign of a church website, focused on helping first-time visitors find service times, directions, beliefs, and contact information.` (10 Nov 2026)
+- Context (10 Nov 2026): `The redesign prioritizes people browsing on a phone and deciding whether to attend. The goal is to make essential information easy to find, including what to expect, how to watch or listen, and how to contact the church.` then `Status: Redesign in progress.`
 - role: `Sole developer`
 - timeline: `Dec 2025 – Aug 2026`
 - stack: Vite, React 18, React Router 6, TypeScript, Tailwind CSS 4, Sanity, Framer Motion, Formspree
@@ -455,7 +481,8 @@ Classes: actor = editors, visitors · ui = studio, web · service = contact, cac
 **Front matter**
 
 - outcome: `A collision repair website with a four-step estimate request and a quick message form that share one email delivery path.` (from Daniel's case study PDF, 9 Nov 2026)
-- proposition: `A small-business website for a collision-repair shop in Torrance, California.`
+- proposition: `A collision-repair website that helps drivers explore services, request an estimate, and contact a shop in Torrance, California.` (10 Nov 2026)
+- Context (10 Nov 2026): `I built the original React site and implemented a rebuild focused on mobile navigation and estimate requests. Visitors can call, get directions, or select a repair service and carry that choice into the estimate form. The original form could display “Message sent” without delivering a request. I replaced that behavior with a server-issued reference and an email containing the details the shop needs to follow up. My work also covered responsive images, shared business information, analytics, and automated checks for the estimate and quick-message forms.`
 - role: `Sole developer and repository maintainer` (10 Nov 2026)
 - team: `Solo, with the shop owner who handles follow-up on requests` (10 Nov 2026)
 - timeline: `Aug 2025 – Nov 2026`
@@ -509,7 +536,8 @@ Classes: actor = customer, shop · ui = site, estimate, message · service = lea
 **Front matter**
 
 - outcome: `A prerendered law firm website that helps prospective clients prepare a consultation request in their email app.` (10 Nov 2026)
-- proposition: `A straightforward web presence for a Tampa law practice.`
+- proposition: `A one-page website that helps prospective clients explore a Tampa law firm’s practice areas and contact the office.` (10 Nov 2026)
+- Context (10 Nov 2026): `I built the original site and implemented its redesign, organizing six practice areas, the attorney’s background, and consultation options. Visitors can call directly or complete a guided form that opens a draft in their own email app, where they must press Send. The firm manages availability and follow-up outside the website.` then `My work covered React Router implementation, prerendered public content, centralized firm information, mobile navigation, release checks, and hosting security headers.`
 - year: `2025–2026`
 - role: `Sole developer and repository maintainer` (10 Nov 2026)
 - team: `Solo, with the attorney who handles follow-up` (10 Nov 2026)
@@ -709,7 +737,7 @@ The source file gives every diagram the same five classes (actor, ui, service, d
 ## 7. Still missing
 
 - [x] Headline choice (2.1): replaced in the redesign (7 Nov 2026)
-- [x] Hero photo of Dallas and the photographer's name (§2.2): Walt Wellborn, 7 Nov 2026
+- [x] Hero photo of Dallas (§2.2): `assets/public/hero-image.webp`, no credit line (Daniel, 10 Nov 2026)
 - [x] LinkedIn URL confirmed
 - [ ] Booking link (optional; see §1)
 - [x] Résumé: not used (§1)
@@ -717,7 +745,7 @@ The source file gives every diagram the same five classes (actor, ui, service, d
 - [x] B.A. and A.S. names and dates (§4.7)
 - [ ] Years for both certifications
 - [x] Bio and Origins use "criminal justice"
-- [x] Roles and dates (§4.5)
+- [x] Roles and dates (§4.5); Hospitality years, USF IT Service Desk and CCBC roles added 10 Nov 2026
 - [ ] DLBC ICT role: a link to the donation project, or rewritten bullets (§4.5 comment)
 - [ ] Afromerica: a source for any performance or traffic figures before they return
 - [ ] Employment type for each role

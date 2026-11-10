@@ -1024,6 +1024,19 @@
     line-height: 1.25;
   }
 
+  /* The in-progress overview: a few paragraphs, so a step down from the statement size. */
+  .case-intro__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    max-width: 680px;
+    font-family: var(--font-display);
+    font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.5;
+  }
+
   /* Stands in for the sections while a case study is in progress. */
   .in-progress {
     --accent: var(--note-ink);
@@ -1263,6 +1276,18 @@
   .timeline-org {
     margin-top: 10px;
     color: var(--muted);
+  }
+
+  .timeline-summary {
+    max-width: 720px;
+    margin-top: 28px;
+    padding-left: 18px;
+    font-size: 15px;
+    line-height: 1.47;
+  }
+
+  .timeline-summary + ul {
+    margin-top: 14px;
   }
 
   .timeline-item ul {

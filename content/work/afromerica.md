@@ -2,7 +2,7 @@
 slug: afromerica
 title: Afromerica Entertainment
 outcome: A talent-competition platform with paid voting, ticketing and a live judged finale, with scoring computed in the database.
-proposition: A competition and events platform with paid voting, live results and ticket checkout.
+proposition: An events platform for a music talent competition, with ticket booking, paid voting, live standings, and judge scoring.
 # Header, overview and the "in progress" note only, until Daniel confirms the full case study.
 inProgress: true
 order: 2
@@ -44,7 +44,7 @@ stats:
 
 ## Context
 
-Afromerica Entertainment runs a music talent competition with public events, artist profiles, ticket sales and fan voting, ending in a live grand finale.
+I built the platform to support three separate workflows: ticket purchases, paid audience votes during the showcase, and judge scoring during a four-stage finale. Visitors could discover artists, book tickets, and follow results, while organizers managed voting, competition stages, and standings. As the sole developer, I implemented payment checkout and verification, scoring logic, and the public and admin interfaces. I translated competition rules into eligibility checks, stage transitions, and published results. After the competition, I investigated missing stage views and repaired the build pipeline so builds could run without production secrets.
 
 ![Afromerica artists page on desktop: a grid of contestant cards, each with a photo, name, stage name, genre and a "Top 10" badge](/work/afromerica/artists-desktop.webp 'The artists page, where fans find the contestants they vote for.')
 

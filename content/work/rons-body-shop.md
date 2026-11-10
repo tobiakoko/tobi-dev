@@ -1,7 +1,7 @@
 ---
 slug: rons-body-shop
 title: Ron's Body Shop
-proposition: A small-business website for a collision-repair shop in Torrance, California.
+proposition: A collision-repair website that helps drivers explore services, request an estimate, and contact a shop in Torrance, California.
 outcome: A collision repair website with a four-step estimate request and a quick message form that share one email delivery path.
 # Header, overview and the "in progress" note only, until Daniel confirms the full case study.
 inProgress: true
@@ -24,7 +24,7 @@ cover:
 
 ## Context
 
-A collision-repair shop in Torrance, California. The site has a video hero; services, gallery, story and contact sections; and Vercel Analytics tracks "Request Estimate" clicks.
+I built the original React site and implemented a rebuild focused on mobile navigation and estimate requests. Visitors can call, get directions, or select a repair service and carry that choice into the estimate form. The original form could display “Message sent” without delivering a request. I replaced that behavior with a server-issued reference and an email containing the details the shop needs to follow up. My work also covered responsive images, shared business information, analytics, and automated checks for the estimate and quick-message forms.
 
 <div data-pair>
 

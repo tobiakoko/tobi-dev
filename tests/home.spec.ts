@@ -88,9 +88,12 @@ test('in-progress case studies show the header, overview and note only', async (
     'src',
     '/work/rons-body-shop/cover.webp',
   );
-  await expect(page.locator('.case-intro__text')).toHaveText(
-    'A collision repair website with a four-step estimate request and a quick message form that share one email delivery path.',
+  // The overview is the Context text, without the Context images.
+  const overview = page.locator('.case-intro__body');
+  await expect(overview).toContainText(
+    'I built the original React site and implemented a rebuild focused on mobile navigation and estimate requests.',
   );
+  await expect(overview.locator('img')).toHaveCount(0);
   const note = page.locator('.in-progress');
   await expect(note.getByRole('heading', { level: 2 })).toHaveText('There is more to document.');
   await expect(note.getByRole('link', { name: 'Ask about this project' })).toHaveAttribute(
@@ -99,4 +102,16 @@ test('in-progress case studies show the header, overview and note only', async (
   );
   await expect(page.locator('.case-section')).toHaveCount(0);
   await expect(page.locator('.stats, .case-stats')).toHaveCount(0);
+});
+
+test('the About timeline lists past roles newest first', async ({ page }) => {
+  await page.goto('/about');
+  const past = page.getByRole('region', { name: 'Past' });
+  const roles = await past.locator('.timeline-item h3').allTextContents();
+  expect(roles.slice(-3)).toEqual([
+    'Hospitality',
+    'IT Service Desk Technician',
+    'Student Ambassador | Writing Center Receptionist',
+  ]);
+  await expect(past.locator('.timeline-item').last()).toContainText('Aug 2016 – May 2018');
 });

@@ -38,17 +38,32 @@ export default function WorkDetail({ loaderData }: Route.ComponentProps) {
       </div>
 
       <div className="case-body shell">
-        {/* Overview: the outcome line and the key numbers. Hidden when neither exists.
-            While a case study is in progress, only the outcome line shows. */}
-        {(work.outcome || (!work.inProgress && work.stats.length > 0)) && (
-          <div className="case-intro">
-            <p className="label">Overview</p>
-            <div>
-              {work.outcome && <p className="case-intro__text">{work.outcome}</p>}
-              {!work.inProgress && <Stats stats={work.stats} />}
-            </div>
-          </div>
-        )}
+        {/* Overview. While a case study is in progress it is the Context text
+            (falling back to the outcome line); otherwise the outcome line and the
+            key numbers. Hidden when there is nothing to show. */}
+        {work.inProgress
+          ? (work.context || work.outcome) && (
+              <div className="case-intro">
+                <p className="label">Overview</p>
+                {work.context ? (
+                  <div
+                    className="case-intro__body"
+                    dangerouslySetInnerHTML={{ __html: work.context }}
+                  />
+                ) : (
+                  <p className="case-intro__text">{work.outcome}</p>
+                )}
+              </div>
+            )
+          : (work.outcome || work.stats.length > 0) && (
+              <div className="case-intro">
+                <p className="label">Overview</p>
+                <div>
+                  {work.outcome && <p className="case-intro__text">{work.outcome}</p>}
+                  <Stats stats={work.stats} />
+                </div>
+              </div>
+            )}
 
         {work.inProgress && <InProgressNote />}
 

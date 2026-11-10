@@ -160,17 +160,37 @@ function markdown(file: string) {
 
 /** Splits the body on `## ` headings; each becomes a row in the label rail. */
 function sections(file: string, body: string): WorkSection[] {
+  return splitSections(file, body).map(({ heading, markdown: text }) => ({
+    id: slugify(heading),
+    heading,
+    html: markdown(file).parse(text) as string,
+  }));
+}
+
+function splitSections(file: string, body: string) {
   const parts = body.split(/^## /m);
   if (parts[0].trim()) fail(file, 'text before the first ## heading');
-  const md = markdown(file);
   return parts.slice(1).map((part) => {
     const [heading, ...rest] = part.split('\n');
-    return {
-      id: slugify(heading),
-      heading: heading.trim(),
-      html: md.parse(rest.join('\n')) as string,
-    };
+    return { heading: heading.trim(), markdown: rest.join('\n') };
   });
+}
+
+/**
+ * The text paragraphs of the `## Context` section, without its images or
+ * comments. Shown as the overview while a case study is in progress.
+ */
+function contextText(file: string, body: string): string | undefined {
+  const context = splitSections(file, body).find((s) => s.heading === 'Context');
+  if (!context) return undefined;
+  const md = markdown(file);
+  const paragraphs = md
+    .lexer(context.markdown)
+    .filter(
+      (t): t is Tokens.Paragraph =>
+        t.type === 'paragraph' && !(t as Tokens.Paragraph).tokens.some((c) => c.type === 'image'),
+    );
+  return paragraphs.length ? (md.parser(paragraphs) as string) : undefined;
 }
 
 function requireString(file: string, data: Record<string, unknown>, key: string) {
@@ -193,7 +213,11 @@ function requireStrings(file: string, data: Record<string, unknown>, key: string
   return value as string[];
 }
 
-function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
+function parse(file: string): {
+  meta: WorkMeta;
+  sections: WorkSection[];
+  context?: string;
+} {
   const { data, content } = matter(readFileSync(path.join(CONTENT_DIR, file), 'utf8'));
 
   const slug = requireString(file, data, 'slug');
@@ -259,7 +283,7 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     stats,
   };
 
-  return { meta, sections: sections(file, content) };
+  return { meta, sections: sections(file, content), context: contextText(file, content) };
 }
 
 function load() {
@@ -282,7 +306,7 @@ export function getAllWork(): WorkMeta[] {
 
 export function getWorkBySlug(slug: string | undefined): WorkStudy | undefined {
   const found = WORK.find((w) => w.meta.slug === slug);
-  return found && { ...found.meta, sections: found.sections };
+  return found && { ...found.meta, sections: found.sections, context: found.context };
 }
 
 /**

@@ -33,6 +33,8 @@ interface Role {
   org?: string;
   location: string;
   dates?: string;
+  /** One-line summary under the role and organisation. */
+  summary?: string;
   bullets: ReactNode[];
 }
 
@@ -94,9 +96,40 @@ const past: Role[] = [
   },
   {
     role: 'Hospitality',
-    location: 'Dallas, TX',
-    // TODO(content): years. Employers are deliberately not named.
-    bullets: ['Guest-facing service in high-volume restaurants.'],
+    location: 'Tampa, FL, Los Angeles, CA, and Dallas, TX',
+    dates: '2019 – 2026',
+    // Employers are deliberately not named.
+    summary:
+      'Provided guest-facing service in high-volume restaurants, coordinating requests and resolving concerns while managing competing priorities.',
+    bullets: [],
+  },
+  {
+    role: 'IT Service Desk Technician',
+    org: 'University of South Florida',
+    location: 'Tampa, FL',
+    dates: '2019',
+    summary:
+      'Provided Tier 1 technical support to students, faculty, and staff through phone, chat, email, and walk-up service.',
+    bullets: [
+      'Diagnosed and resolved hardware, software, account-access, and peripheral issues, explaining troubleshooting steps to users with varying technical knowledge.',
+      'Logged and tracked incidents in Jira and ServiceNow, documenting reported issues, troubleshooting actions, and resolution details.',
+      'Installed, configured, serviced, and repaired computers, printers, and related devices; trained users on their operation.',
+      'Created installation and troubleshooting guides in Confluence for use as shared knowledge-base references.',
+    ],
+  },
+  {
+    role: 'Student Ambassador | Writing Center Receptionist',
+    org: 'Community College of Baltimore County',
+    location: 'Baltimore, MD',
+    dates: 'Aug 2016 – May 2018',
+    summary:
+      'Supported campus outreach, student services, and events through student leadership, front-desk service, and public-facing communication.',
+    bullets: [
+      'Represented the college during campus tours, orientation, and events, answering questions from prospective and incoming students.',
+      'Partnered with faculty to coordinate college-wide events and support student participation.',
+      'Provided front-desk support at the Writing Center, helping students find information and connect with available resources.',
+      'Published student blog posts about campus life, demanding coursework, motivation, and college support services.',
+    ],
   },
 ];
 
@@ -226,6 +259,7 @@ export default function About() {
                 <div>
                   <h3>{r.role}</h3>
                   {r.org && <p className="timeline-org">{r.org}</p>}
+                  {r.summary && <p className="timeline-summary">{r.summary}</p>}
                   {r.bullets.length > 0 && (
                     <ul>
                       {r.bullets.map((b, i) => (

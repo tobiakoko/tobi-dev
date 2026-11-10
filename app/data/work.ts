@@ -42,7 +42,8 @@ export interface WorkMeta {
   featured: boolean;
   /**
    * Front matter `inProgress: true`: the page shows only the header, the
-   * overview and the in-progress note (CONTENT.md §6), not the sections.
+   * overview (the `## Context` text) and the in-progress note (CONTENT.md §6),
+   * not the sections.
    */
   inProgress: boolean;
   year: string;
@@ -74,6 +75,8 @@ export interface WorkSection {
 
 export interface WorkStudy extends WorkMeta {
   sections: WorkSection[];
+  /** HTML of the `## Context` section's paragraphs (no images); the overview while in progress. */
+  context?: string;
 }
 
 /**
