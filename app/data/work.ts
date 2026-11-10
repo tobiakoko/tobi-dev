@@ -79,19 +79,6 @@ export interface WorkStudy extends WorkMeta {
   context?: string;
 }
 
-/**
- * Every software technology across all projects, without version numbers or
- * notes: 'Supabase (Postgres, Auth, Realtime)' and 'Next.js 16' become
- * 'Supabase' and 'Next.js'. Projects with a stackLabel list hardware and tools,
- * not a software stack, so they're left out. Feeds the Person schema's knowsAbout.
- */
-export function technologies(work: WorkMeta[]) {
-  const names = work
-    .filter((w) => !w.stackLabel)
-    .flatMap((w) => w.stack.map((s) => s.replace(/\s*\(.*\)$/, '').replace(/\s+\d+$/, '')));
-  return [...new Set(names)];
-}
-
 /** CONTENT.md §6, "Case study details in progress". Word for word. */
 export const IN_PROGRESS_NOTE = {
   eyebrow: 'Case study details in progress',

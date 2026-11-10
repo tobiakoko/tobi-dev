@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import PageHeader from '~/components/PageHeader';
-import { EMAIL, pageMeta } from '~/data/site';
+import { CERTIFICATIONS, EDUCATION, EMAIL, pageMeta } from '~/data/site';
 
 export function meta() {
   return pageMeta({
@@ -133,47 +133,6 @@ const past: Role[] = [
   },
 ];
 
-interface Degree {
-  degree: string;
-  school?: string;
-  dates?: string;
-}
-
-const education: Degree[] = [
-  {
-    degree: 'Master of Business Administration (in progress)',
-    school: 'Western Governors University',
-    dates: 'Jun 2026 – Jun 2027 (expected)',
-  },
-  {
-    degree: 'B.S. Computer Science',
-    school: 'Western Governors University',
-    dates: 'Apr 2023 – Sep 2024',
-  },
-  {
-    degree: 'Bachelor of Arts (BA), Criminal Justice',
-    school: 'University of South Florida',
-    dates: 'Sep 2018 – Dec 2022',
-  },
-  {
-    degree: 'Associate of Science (AS), Electrical Engineering',
-    school: 'Community College of Baltimore County',
-    dates: 'Aug 2015 – May 2018',
-  },
-];
-
-interface Certification {
-  name: string;
-  issued: string;
-  credentialId: string;
-}
-
-// CONTENT.md §4.8 (Daniel, 10 Nov 2026).
-const certifications: Certification[] = [
-  { name: 'ITIL Foundation', issued: 'Jun 2024', credentialId: '9980093812593301' },
-  { name: 'LPI Linux Essentials', issued: 'Jun 2024', credentialId: 'LPI000616819' },
-];
-
 const community = [
   'Media production, choir direction and digital streaming, Deeper Life Bible Church',
   'DLYA fundraising team',
@@ -295,7 +254,7 @@ export default function About() {
 
         <Rail label="Education">
           <ul className="ruled edu-list">
-            {education.map((d) => (
+            {EDUCATION.map((d) => (
               <li key={d.degree}>
                 <span>
                   <span className="ruled__main">{d.degree}</span>
@@ -311,7 +270,7 @@ export default function About() {
           <section aria-label="Certifications">
             <h2 className="label">Certifications</h2>
             <ul className="ruled edu-list">
-              {certifications.map((c) => (
+              {CERTIFICATIONS.map((c) => (
                 <li key={c.name}>
                   <span>
                     <span className="ruled__main">{c.name}</span>

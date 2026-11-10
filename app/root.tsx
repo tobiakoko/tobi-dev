@@ -6,19 +6,20 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useRouteLoaderData,
 } from 'react-router';
 import { Analytics } from '@vercel/analytics/react';
-import { technologies } from '~/data/work';
-import { getAllWork } from '~/data/work.server';
 import {
   ALT_NAME,
+  CERTIFICATIONS,
+  EDUCATION,
   EMAIL,
   FULL_NAME,
   GA_ID,
   GITHUB_URL,
   JOB_TITLE,
+  KNOWS_ABOUT,
   LINKEDIN_URL,
+  PERSON_DESCRIPTION,
   SITE_URL,
 } from '~/data/site';
 import bodyFont from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
@@ -34,49 +35,53 @@ export const links: Route.LinksFunction = () => [
   { rel: 'preload', href: bodyFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
 ];
 
-/** Runs at build time. The stacks live in content/work, read by work.server.ts. */
-export function loader() {
-  return { knowsAbout: technologies(getAllWork()) };
-}
-
 /**
  * Person schema. This is what lets Google resolve "Daniel Akoko" and
  * "Tobi Akoko" to a single entity, so a search for either name can surface
  * this site. Rendered into every prerendered page.
  */
-function personSchema(knowsAbout: string[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Person',
-        '@id': `${SITE_URL}/#person`,
-        name: FULL_NAME,
-        alternateName: [ALT_NAME, 'Daniel Tobi Akoko'],
-        url: SITE_URL,
-        jobTitle: JOB_TITLE,
-        email: `mailto:${EMAIL}`,
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Dallas',
-          addressRegion: 'TX',
-          addressCountry: 'US',
-        },
-        sameAs: [GITHUB_URL, LINKEDIN_URL],
-        // Derived from the project stacks, so it lists only what the code uses.
-        knowsAbout,
+const personSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#person`,
+      name: FULL_NAME,
+      alternateName: [ALT_NAME, 'Daniel Tobi Akoko'],
+      url: SITE_URL,
+      jobTitle: JOB_TITLE,
+      description: PERSON_DESCRIPTION,
+      email: `mailto:${EMAIL}`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Dallas',
+        addressRegion: 'TX',
+        addressCountry: 'US',
       },
-      {
-        '@type': 'WebSite',
-        '@id': `${SITE_URL}/#website`,
-        url: SITE_URL,
-        name: `${FULL_NAME} — ${JOB_TITLE}`,
-        publisher: { '@id': `${SITE_URL}/#person` },
-        inLanguage: 'en-US',
-      },
-    ],
-  };
-}
+      // No image: the site has no photo of Daniel (CLAUDE.md).
+      alumniOf: [...new Set(EDUCATION.map((d) => d.school))].map((name) => ({
+        '@type': 'CollegeOrUniversity',
+        name,
+      })),
+      hasCredential: CERTIFICATIONS.map((c) => ({
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'certification',
+        name: c.name,
+        identifier: c.credentialId,
+      })),
+      knowsAbout: KNOWS_ABOUT,
+      sameAs: [LINKEDIN_URL, GITHUB_URL],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: `${FULL_NAME} — ${JOB_TITLE}`,
+      publisher: { '@id': `${SITE_URL}/#person` },
+      inLanguage: 'en-US',
+    },
+  ],
+});
 
 /*
  * Google's gtag.js setup, run only on the production domain so localhost and
@@ -109,10 +114,6 @@ try {
 `;
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  // Undefined only if the root loader didn't run (an error page); the schema
-  // then omits knowsAbout rather than the whole block.
-  const data = useRouteLoaderData<typeof loader>('root');
-
   return (
     // themeScript sets data-theme before hydration, so the attribute differs
     // from the prerendered HTML on purpose.
@@ -123,10 +124,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script dangerouslySetInnerHTML={{ __html: gaScript }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema(data?.knowsAbout ?? [])) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: personSchema }} />
         <Meta />
         <Links />
       </head>

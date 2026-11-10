@@ -26,6 +26,13 @@ Facts about the projects were checked against each repository on 3 November 2026
 
 No résumé on the site (Daniel's decision, 3 Nov 2026): experience, education and certifications live on About instead.
 
+**Person structured data** (in every page's `<head>`, built in `app/root.tsx` from `app/data/site.ts`; Daniel, 10 Nov 2026):
+
+- description: `Full-stack software engineer (React, Next.js, TypeScript) building, auditing, and rebuilding production web apps.`
+- alumniOf: the schools in §4.7. hasCredential: the certifications in §4.8, with their credential IDs.
+- knowsAbout: Daniel's list in `KNOWS_ABOUT` (35 entries). It replaces the list that was built from the project stacks.
+- No `image`: there is no photo of Daniel on the site, so the supplied `headshot.jpg` line is left out.
+
 ---
 
 ## 2. Home
