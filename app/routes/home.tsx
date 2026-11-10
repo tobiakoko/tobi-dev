@@ -72,12 +72,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <span>{HERO.caption[0]}</span>
               <span>{HERO.caption[1]}</span>
             </span>
-            {/* The credit shows only once the photographer is known (CONTENT.md §2.2). */}
-            {HERO_PHOTO && (
-              <span className="hero-credit">
-                Editorial photo by {HERO_PHOTO.photographer} on Unsplash
-              </span>
-            )}
           </figcaption>
         </figure>
       </section>

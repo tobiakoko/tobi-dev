@@ -3,7 +3,7 @@
  * route and its components don't hard-code it.
  */
 
-// Web copies of the original photo (2048 x 3072, kept out of the repo in
+// Web copies of the original photo (1600 x 2400, kept out of the repo in
 // assets/public/): 640 and 1280 wide, WebP, so Vite fingerprints and caches them.
 import heroPhoto1280 from '~/assets/hero-dallas-1280.webp';
 import heroPhoto640 from '~/assets/hero-dallas-640.webp';
@@ -21,17 +21,15 @@ export interface HeroPhoto {
   alt: string;
   width: number;
   height: number;
-  photographer: string;
 }
 
-/** CONTENT.md §2.2. Set to null to fall back to the plain panel with no credit. */
+/** CONTENT.md §2.2. Set to null to fall back to the plain panel. */
 export const HERO_PHOTO: HeroPhoto | null = {
   src: heroPhoto640,
   srcSet: `${heroPhoto640} 640w, ${heroPhoto1280} 1280w`,
-  alt: 'a tall glass building with Fountain Place in the background',
+  alt: 'The Dallas skyline seen between modern buildings',
   width: 640,
   height: 960,
-  photographer: 'Walt Wellborn',
 };
 
 /** CONTENT.md §2.2a. */

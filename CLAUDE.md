@@ -2,7 +2,7 @@
 
 You are building the personal portfolio of **Daniel "Tobi" Akoko**, a software engineer in Dallas, Texas. The site has to work for several kinds of reader at once: engineering hiring managers, business and systems analyst hiring managers, implementation and solutions teams, project and PMO leads, and prospective freelance clients. It does that through one honest story and deep case studies, not by claiming to be everything.
 
-The site is being given a **"Warm Editorial" redesign**: warm paper, big Manrope headlines, a 12-column grid, image-led project cards, and one credited editorial hero photo. It is a visual and content refresh **on the existing app** — the architecture does not change.
+The site is being given a **"Warm Editorial" redesign**: warm paper, big Manrope headlines, a 12-column grid, image-led project cards, and one editorial hero photo. It is a visual and content refresh **on the existing app** — the architecture does not change.
 
 Read this file at the start of every session, then the document for the area you're about to touch.
 
@@ -22,7 +22,7 @@ When documents disagree: `CONTENT.md` wins for words and facts, `DESIGN-SYSTEM.m
 
 A recruiter or hiring manager who gives the site about 30 seconds, then opens one case study if the first screen earns it. They need to find, without scrolling far: who Daniel is, what he does, proof that he has done it, and how to reach him. A freelance client needs the same, plus what working with him looks like.
 
-The site has four sections only: **Home, Work (with a case study page per project), About, Contact.** There's no blog and no headshot. **Imagery is real project screenshots and diagrams, plus one editorial photo of Dallas in the home hero (credited to its photographer). No photos of Daniel.**
+The site has four sections only: **Home, Work (with a case study page per project), About, Contact.** There's no blog and no headshot. **Imagery is real project screenshots and diagrams, plus one editorial photo of Dallas in the home hero. No photos of Daniel.**
 
 ## Rules you must not break
 
@@ -32,7 +32,7 @@ The site has four sections only: **Home, Work (with a case study page per projec
 4. **One source for every fact.** Name, title, location, email, links and availability live in `app/data/site.ts`. Project metadata (including each project's one-line `proposition`) lives in the project's content file. No component hard-codes them.
 5. **First person, plain words.** Copy says "I", not "Daniel". No "exceptional", "sophisticated", "enterprise-grade", "seamless", "passionate" or "cutting-edge". Short sentences.
 6. **Client privacy.** No client staff names, member or customer data, voter emails or phone numbers in screenshots or text. Blur or crop them. Don't name or quote a client unless `CONTENT.md` says permission was given.
-7. **Imagery.** Project media is real screenshots and diagrams only. The home hero is the one editorial photo, and it carries a visible credit (`Editorial photo by {photographer} on Unsplash`). Until the real photo lands, ship the placeholder with a `TODO(content):`.
+7. **Imagery.** Project media is real screenshots and diagrams only. The home hero is the one editorial photo. It shows no credit line (Daniel's decision, 10 Nov 2026); its source is recorded in `CONTENT.md` §2.2.
 8. **Teal only; acid is a highlight.** `--accent` (teal) is the single interactive colour — **no blue anywhere** (the mock-ups' `#213cff` is dropped; the brand period and the About CTA band use teal). `--acid` is only ever a highlight behind ink-black text (`::selection`, `<mark>`); it is never text and never sits behind white.
 9. **Accessibility is required: WCAG 2.2 AA.** Keyboard access everywhere, visible focus, nothing on hover only, `prefers-reduced-motion` respected, real alt text, contrast from the design tokens only. Eyebrows are 11px (the one sub-14px exception); everything else ≥14px.
 10. **No secrets in the repo.** `.env*` stays untracked.

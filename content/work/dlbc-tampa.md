@@ -3,6 +3,8 @@ slug: dlbc-tampa
 title: Deeper Life Bible Church Tampa
 outcome: An audit-driven pass that cut the entry bundle by 87% and made every form actually deliver.
 proposition: A church website focused on making essential information easier to find and support.
+# Header, overview and the "in progress" note only, until Daniel confirms the full case study.
+inProgress: true
 order: 4
 featured: true
 year: '2025–2026'

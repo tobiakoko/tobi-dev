@@ -3,11 +3,13 @@ slug: lewisville
 title: Deeper Life Bible Church Lewisville
 outcome: I built a church website, audited it a year later, then rebuilt it in four gated phases.
 proposition: A church website planned and built around clear information and dependable access.
+# Header, overview and the "in progress" note only, until Daniel confirms the full case study.
+inProgress: true
 order: 1
 featured: true
 year: '2025–2026'
-role: Sole developer, analyst and project lead
-team: Solo, with the pastor and church staff
+role: Sole developer, analyst, project lead and product designer
+team: Solo, with the pastor and church volunteers as editors
 timeline: Nov 2025 – Nov 2026
 stack:
   [

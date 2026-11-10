@@ -19,7 +19,7 @@ dark themes, teal accent, one acid-lime highlight.
 2. **One accent, one highlight.** Teal (`--accent`) is the only interactive colour.
    Acid-lime (`--acid`) is a highlight *only* — never text, only ever behind ink.
 3. **Images earn their place.** Project cards and case studies use real screenshots
-   and diagrams. The home hero carries one credited editorial photo of Dallas. No
+   and diagrams. The home hero carries one editorial photo of Dallas (no credit line). No
    photos of Daniel.
 4. **Square and spacious.** `border-radius: 0` everywhere except pills (nav,
    capabilities, buttons). Space separates sections; rules separate rows.
@@ -145,6 +145,7 @@ Build these; don't add others unless the plan does.
 | `Button` | Square. `primary` = `--ink` fill, `--bg` text, inverts on hover. Hero CTA `View selected work ↓`. Links use `↗`. |
 | `ProofStrip` | Full-width inverse band; 3 cells (14px) with 1px `--inverse-line` left dividers (34px pad); theme-aware; stacks ≤640px. |
 | `SectionHeading` | Flex row, align-end: left = numbered eyebrow + H2 (`clamp(44,6vw,82)`); right = a lead (`max 310px`, `--muted`) or an `All work ↗` link. |
+| `InProgressNote` | Stands in for a case study's sections while front matter has `inProgress: true`. Panel `--note-bg` (dark in both themes; darker than the page in dark), padding 28–44px; 11px eyebrow in `--note-muted`, H2 36–52px in `--note-ink`, 15px body in `--note-muted`, 14px semibold underlined link to `/contact` with ↗. Focus ring uses `--note-ink`. The overview above it shows only the outcome line (Manrope 24–38px, 500, −0.03em); stats are hidden. |
 | `ProjectCard` | One link to `/work/:slug`. Media (16/9, `object-cover`; uses the front-matter `card` composite when set, else the cover, hover `scale(1.05)`+saturate under reduced-motion-OK; bottom scrim) with **number (bottom-left) + year (bottom-right)** overlaid, white 11px. Body grid `1fr auto`: left = `NN / 07` index, H3 title, one-line `proposition`, `Read case study ↗`; right = year + disciplines (joined ` · `), right-aligned 11px uppercase. On `/work`, add a 1px `--line` top border per card. Even cards offset down 72px on desktop (stagger). |
 | `ServiceGrid` | How-I-can-help: 3 columns, 1px `--ink` top border, 1px `--line` column dividers, each item **bottom-aligned** (number top; title/desc/proof pushed down, `min-height ~330px`) for the stagger. |
 | `PageHeader` | Grid `1fr / minmax(280px, 420px)`, 1px `--line` bottom rule. Full-width eyebrow (two parts read `Contact / Dallas, Texas`), H1 (up to 160px), lead in the right column (DM Sans up to 19px, `--muted`) with its bottom level with the H1's, and an optional 14px note under it (Contact). About uses an inline variant (see Pages). |
@@ -165,8 +166,8 @@ Build these; don't add others unless the plan does.
 
 - **Home (`/`):** Hero → Proof strip → Selected work → How I can help → Availability
   → Footer. Hero: eyebrow, H1, intro, `View selected work ↓` + About/Contact; right
-  a credited editorial Dallas photo with the two-span caption and the micro-colophon
-  (`Editorial photo by {photographer} on Unsplash`, 12px, `--muted`; opacity .4 on ink fails contrast). Hero fits one
+  an editorial Dallas photo with the two-span caption and nothing below it (the
+  credit line was removed on 10 Nov 2026). Hero fits one
   screen (`min-height: calc(100svh - 74px)`); the eyebrow sits in the copy column
   above the H1 (line-height 0.93, max 720px wide), the intro is up to 22px and 600px
   wide, the CTA button is 46px tall with 14px text, and the photo column is 300px

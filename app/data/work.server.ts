@@ -243,6 +243,7 @@ function parse(file: string): { meta: WorkMeta; sections: WorkSection[] } {
     proposition: requireString(file, data, 'proposition'),
     order: data.order,
     featured: data.featured === true,
+    inProgress: data.inProgress === true,
     year: requireString(file, data, 'year'),
     role: requireString(file, data, 'role'),
     team: optionalString(file, data, 'team'),

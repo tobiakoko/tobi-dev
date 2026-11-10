@@ -3,10 +3,13 @@ slug: afromerica
 title: Afromerica Entertainment
 outcome: A talent-competition platform with paid voting, ticketing and a live judged finale, with scoring computed in the database.
 proposition: A competition and events platform with paid voting, live results and ticket checkout.
+# Header, overview and the "in progress" note only, until Daniel confirms the full case study.
+inProgress: true
 order: 2
 featured: true
 year: '2025'
-role: Sole developer
+role: Sole developer and repository maintainer
+team: Solo, with the company CEO
 timeline: Oct – Dec 2025
 stack:
   [
@@ -27,7 +30,7 @@ links:
 card: /work/afromerica/card.webp
 cover:
   src: /work/afromerica/cover.webp
-  alt: 'Afromerica home page on desktop: "Welcome to Afromerica" over a concert stage photo, with buttons for finale voting and the finale leaderboard'
+  alt: 'Afromerica home page on desktop: "Welcome to Afromerica" over a photo of a brass section on stage, with buttons to meet the December showcase winners and browse events'
 # System facts until the client supplies figures.
 # TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them
 stats:

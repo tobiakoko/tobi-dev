@@ -56,6 +56,10 @@
   --footer-bg: #1a1a16;
   --footer-line: #3d3d38;
   --footer-ink: #fbfaf6;
+  /* In-progress note on case studies: dark in both themes, darker than the page in dark. */
+  --note-bg: #1a1a16;
+  --note-ink: #fbfaf6;
+  --note-muted: #c9c7be;
   /* About CTA band: teal. */
   --band: oklch(0.48 0.1 195);
   /* Case study body text: a step softer than ink. */
@@ -64,6 +68,7 @@
 
 [data-theme='dark'] {
   --bg: #111110;
+  --note-bg: #070706;
   --bg-alt: #1a1a18;
   --ink: #ededea;
   --muted: #a3a39c;
@@ -589,14 +594,6 @@
     text-transform: uppercase;
   }
 
-  /* Quiet but legible: --muted passes 4.5:1 in both themes; opacity on ink didn't. */
-  .hero-credit {
-    display: block;
-    margin-top: 18px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-
   @media (max-width: 900px) {
     .hero {
       grid-template-columns: 1fr;
@@ -1017,9 +1014,51 @@
     padding-bottom: clamp(60px, 8vw, 100px);
   }
 
+  /* The overview reads as a statement: Manrope, between body and H2 size. */
   .case-intro__text {
-    font-size: clamp(18px, 1.6vw, 21px);
-    line-height: 1.55;
+    max-width: 640px;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 2.6vw, 38px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+  }
+
+  /* Stands in for the sections while a case study is in progress. */
+  .in-progress {
+    --accent: var(--note-ink);
+    padding: clamp(28px, 4vw, 44px);
+    background: var(--note-bg);
+    color: var(--note-ink);
+  }
+
+  .in-progress .label {
+    color: var(--note-muted);
+  }
+
+  .in-progress h2 {
+    margin: 18px 0 16px;
+    color: var(--note-ink);
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  }
+
+  .in-progress__body {
+    max-width: 560px;
+    margin-bottom: 26px;
+    color: var(--note-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .in-progress .ulink {
+    color: var(--note-ink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* Always underlined here, as in the reference; elsewhere .ulink underlines on hover. */
+  .in-progress .ulink::after {
+    right: 0;
   }
 
   .case-section {

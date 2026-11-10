@@ -1,4 +1,5 @@
 import CaseStudyHeader from '~/components/CaseStudyHeader';
+import InProgressNote from '~/components/InProgressNote';
 import ProjectPagination from '~/components/ProjectPagination';
 import Stats from '~/components/Stats';
 import NotFound from './not-found';
@@ -37,24 +38,28 @@ export default function WorkDetail({ loaderData }: Route.ComponentProps) {
       </div>
 
       <div className="case-body shell">
-        {/* Overview: the outcome line and the key numbers. Hidden when neither exists. */}
-        {(work.outcome || work.stats.length > 0) && (
+        {/* Overview: the outcome line and the key numbers. Hidden when neither exists.
+            While a case study is in progress, only the outcome line shows. */}
+        {(work.outcome || (!work.inProgress && work.stats.length > 0)) && (
           <div className="case-intro">
             <p className="label">Overview</p>
             <div>
               {work.outcome && <p className="case-intro__text">{work.outcome}</p>}
-              <Stats stats={work.stats} />
+              {!work.inProgress && <Stats stats={work.stats} />}
             </div>
           </div>
         )}
 
+        {work.inProgress && <InProgressNote />}
+
         {/* Each ## section of the markdown file; sections with no content don't exist. */}
-        {work.sections.map((section) => (
-          <section key={section.id} className="case-section" aria-labelledby={section.id}>
-            <h2 id={section.id}>{section.heading}</h2>
-            <div className="prose" dangerouslySetInnerHTML={{ __html: section.html }} />
-          </section>
-        ))}
+        {!work.inProgress &&
+          work.sections.map((section) => (
+            <section key={section.id} className="case-section" aria-labelledby={section.id}>
+              <h2 id={section.id}>{section.heading}</h2>
+              <div className="prose" dangerouslySetInnerHTML={{ __html: section.html }} />
+            </section>
+          ))}
       </div>
 
       <ProjectPagination prev={prev} next={next} />

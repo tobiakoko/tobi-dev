@@ -40,6 +40,11 @@ export interface WorkMeta {
   proposition: string;
   order: number;
   featured: boolean;
+  /**
+   * Front matter `inProgress: true`: the page shows only the header, the
+   * overview and the in-progress note (CONTENT.md §6), not the sections.
+   */
+  inProgress: boolean;
   year: string;
   role: string;
   team?: string;
@@ -83,3 +88,11 @@ export function technologies(work: WorkMeta[]) {
     .flatMap((w) => w.stack.map((s) => s.replace(/\s*\(.*\)$/, '').replace(/\s+\d+$/, '')));
   return [...new Set(names)];
 }
+
+/** CONTENT.md §6, "Case study details in progress". Word for word. */
+export const IN_PROGRESS_NOTE = {
+  eyebrow: 'Case study details in progress',
+  heading: 'There is more to document.',
+  body: 'The detailed challenge, process and outcomes for this project are still being documented.',
+  link: 'Ask about this project',
+} as const;

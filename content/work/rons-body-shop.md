@@ -2,13 +2,16 @@
 slug: rons-body-shop
 title: Ron's Body Shop
 proposition: A small-business website for a collision-repair shop in Torrance, California.
-# TODO(content): outcome, only once the estimate form fix is live
+outcome: A collision repair website with a four-step estimate request and a quick message form that share one email delivery path.
+# Header, overview and the "in progress" note only, until Daniel confirms the full case study.
+inProgress: true
 order: 5
 year: '2025–2026'
-role: Sole developer
+role: Sole developer and repository maintainer
+team: Solo, with the shop owner who handles follow-up on requests
 location: Torrance, California
-timeline: Aug 2025 – Jan 2026
-stack: [React 19, Vite, TypeScript, Tailwind CSS 4, Vercel Analytics]
+timeline: Aug 2025 – Nov 2026
+stack: [React 19, Vite, TypeScript, Tailwind CSS 4, Zod, Resend, Vercel Analytics, Vitest]
 disciplines: [Engineering, Implementation]
 links:
   live: https://www.ronsbodyshop.net/
@@ -16,7 +19,7 @@ links:
 card: /work/rons-body-shop/card.webp
 cover:
   src: /work/rons-body-shop/cover.webp
-  alt: 'Ron''s Body Shop home page on desktop: "Quality without compromise" over a video still of a car being polished, with buttons for the shop''s specialties and a free estimate'
+  alt: 'Ron''s Body Shop home page on desktop: "Precision auto body, collision repair & custom paint" beside a photo of the shop on Cabrillo Avenue, with buttons to call the shop or request a free estimate'
 ---
 
 ## Context

@@ -49,7 +49,7 @@ test('project cards show number, year, "NN / 07", proposition and a CTA', async 
 
 test('cards use the card composite when set; case studies keep the cover', async ({ page }) => {
   await page.goto('/work');
-  for (const slug of ['lewisville', 'afromerica', 'rons-body-shop']) {
+  for (const slug of ['lewisville', 'afromerica', 'rons-body-shop', 'oseiprempeh']) {
     const img = page.locator(`a.project-card[href="/work/${slug}"] .project-media img`);
     await expect(img).toHaveAttribute('src', `/work/${slug}/card.webp`);
   }
@@ -76,8 +76,27 @@ test('case studies have a facts row and previous/next links', async ({ page }) =
   await page.goto('/work/lewisville');
   await expect(page.locator('.case-facts dt')).toHaveText(['Year', 'Role', 'Team', 'Tools']);
   // No team listed: the Team fact is left out rather than shown empty.
-  await page.goto('/work/afromerica');
+  await page.goto('/work/dlbc-tampa');
   await expect(page.locator('.case-facts dt')).toHaveText(['Year', 'Role', 'Tools']);
   const pager = page.getByRole('navigation', { name: 'More case studies' });
   await expect(pager.getByRole('link')).toHaveCount(2);
+});
+
+test('in-progress case studies show the header, overview and note only', async ({ page }) => {
+  await page.goto('/work/rons-body-shop');
+  await expect(page.locator('.case-cover img')).toHaveAttribute(
+    'src',
+    '/work/rons-body-shop/cover.webp',
+  );
+  await expect(page.locator('.case-intro__text')).toHaveText(
+    'A collision repair website with a four-step estimate request and a quick message form that share one email delivery path.',
+  );
+  const note = page.locator('.in-progress');
+  await expect(note.getByRole('heading', { level: 2 })).toHaveText('There is more to document.');
+  await expect(note.getByRole('link', { name: 'Ask about this project' })).toHaveAttribute(
+    'href',
+    '/contact',
+  );
+  await expect(page.locator('.case-section')).toHaveCount(0);
+  await expect(page.locator('.stats, .case-stats')).toHaveCount(0);
 });

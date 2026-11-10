@@ -26,15 +26,10 @@ test('no placeholder copy', () => {
   expect(offenders(/lorem ipsum|\blorem\b/i)).toEqual([]);
 });
 
-test('the hero photo never ships without its photographer’s credit', async ({ page }) => {
+test('the hero photo has real alt text and no credit line (CONTENT.md §2.2)', async ({ page }) => {
   // Checked on the rendered page: home.ts imports image files Node can't load.
   await page.goto('/');
-  const photo = page.locator('.hero-photo img');
-  const credit = page.locator('.hero-credit');
-  if ((await photo.count()) > 0) {
-    await expect(photo).not.toHaveAttribute('alt', '');
-    await expect(credit).toHaveText(/^Editorial photo by \S.* on Unsplash$/);
-  } else {
-    await expect(credit).toHaveCount(0);
-  }
+  await expect(page.locator('.hero-photo img')).not.toHaveAttribute('alt', '');
+  await expect(page.locator('.hero-credit')).toHaveCount(0);
+  await expect(page.locator('.hero')).not.toContainText('Unsplash');
 });

@@ -3,6 +3,8 @@ slug: led-wall
 title: Extending a church LED wall
 outcome: I took a church's LED wall from a failed extension, with scrambled and repeated content, to one working 3072 × 1536 display.
 proposition: Diagnosing a display constraint and designing a practical path to extend a church LED wall.
+# Header, overview and the "in progress" note only, until Daniel confirms the full case study.
+inProgress: true
 order: 3
 featured: true
 year: '2026'

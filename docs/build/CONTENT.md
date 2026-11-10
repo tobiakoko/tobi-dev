@@ -43,9 +43,8 @@ No résumé on the site (Daniel's decision, 3 Nov 2026): experience, education a
   > I'm a Dallas based software developer. I plan, build, test and support web products, payment flows, content platforms and live systems for churches, events and small businesses.
 
 - Actions: **View selected work ↓** (button, scrolls to Selected work) · **About** · **Contact**
-- Photo: one editorial photo of Dallas, by Walt Wellborn on Unsplash (supplied by Daniel, 7 Nov 2026). Alt text: `a tall glass building with Fountain Place in the background`. Original in `assets/public/hero-image-dallas.webp` (not in the repo); web copies in `app/assets/`.
-- Caption (two parts): **Based in Dallas** · **Working across software + systems**
-- Credit, under the caption: `Editorial photo by Walt Wellborn on Unsplash`.
+- Photo: one editorial photo of Dallas (supplied by Daniel, 10 Nov 2026). Alt text: `The Dallas skyline seen between modern buildings`. Original in `assets/public/hero-image.webp` (not in the repo); web copies in `app/assets/`.
+- Caption: **Based in Dallas** · **Working across software + systems**
 
 ### 2.2a Proof strip
 
@@ -254,12 +253,21 @@ Order and front matter. `featured: true` for the first four.
 | 3 | `led-wall` | Extending a church LED wall | 2026 | Analysis, Implementation, Delivery |
 | 4 | `dlbc-tampa` | Deeper Life Bible Church Tampa | 2025–2026 | Engineering, Analysis, Implementation |
 | 5 | `rons-body-shop` | Ron's Body Shop | 2025–2026 | Engineering, Implementation |
-| 6 | `oseiprempeh` | OseiPrempeh Law Firm | 2025 | Engineering |
+| 6 | `oseiprempeh` | OseiPrempeh Law Firm | 2025–2026 | Engineering |
 | 7 | `portfolio` | This portfolio | 2025–2026 | Engineering |
 
 Section numbers below don't follow display order; `order` decides it. The LED wall is §6.7.
 
-**Card images (9 Nov 2026).** Lewisville, Afromerica and Ron's Body Shop use a desktop-and-phone composite on their project card (front matter `card`, `public/work/<slug>/card.webp`). Daniel made them from each live site's own screenshots; text in them was checked against the live pages. A first set with AI-altered text (wrong times, address and phone numbers) was rejected. The case study pages keep their `cover` screenshot. The LED wall, DLBC Tampa and this portfolio cards still use their cover. OseiPrempeh's composite shows the firm's statistics ("Over Two Decades", "20+", "800+"), so it's held in `assets/public/work/oseiprempeh/` with the other Osei shots until the firm approves (§6.5); its card stays text-only.
+**Case study pages in progress (Daniel, 10 Nov 2026).** Until Daniel confirms the content for each page, every `/work/:slug` page shows only the header (with the cover recaptured from the live site on 10 Nov 2026; the portfolio's from this branch's build), the Overview (the outcome line, no stats) and this note. Each file has `inProgress: true`; remove it to show the full case study again. The markdown sections stay in the files, unchanged.
+
+- Eyebrow: `Case study details in progress`
+- Heading: `There is more to document.`
+- Body: `The detailed challenge, process and outcomes for this project are still being documented.`
+- Link: `Ask about this project ↗` (to `/contact`)
+
+Links from the case study PDFs (9 Nov 2026) are not added (Daniel, 10 Nov 2026).
+
+**Card images (9 Nov 2026).** Lewisville, Afromerica and Ron's Body Shop use a desktop-and-phone composite on their project card (front matter `card`, `public/work/<slug>/card.webp`). Daniel made them from each live site's own screenshots; text in them was checked against the live pages. A first set with AI-altered text (wrong times, address and phone numbers) was rejected. The case study pages keep their `cover` screenshot. The LED wall, DLBC Tampa and this portfolio cards still use their cover. OseiPrempeh's composite was held back on 9 Nov for its statistics and restored on 10 Nov 2026 after the firm's approval (§6.5).
 
 Ask Kumuyi AI is **not** included (deployment is down).
 
@@ -269,8 +277,8 @@ Ask Kumuyi AI is **not** included (deployment is down).
 
 - outcome: `I built a church website, audited it a year later, then rebuilt it in four gated phases.`
 - proposition: `A church website planned and built around clear information and dependable access.`
-- role: `Sole developer, analyst and project lead`
-- team: `Solo, with the pastor and church staff`
+- role: `Sole developer, analyst, project lead and product designer` (10 Nov 2026)
+- team: `Solo, with the pastor and church volunteers as editors` (10 Nov 2026)
 - timeline: `Nov 2025 – Nov 2026`
 - stack: Next.js 16, React 19, TypeScript, Sanity 6, Tailwind CSS 4, Resend, Upstash, Jest, Playwright, Vercel
 - links: live `https://dclm-lewisville.vercel.app/` (switch to `https://deeperlifelewisville.org` when the domain moves); code `https://github.com/tobiakoko/dclm-lewisville`
@@ -365,9 +373,10 @@ Classes: actor = editors, visitors · ui = studio, web · service = contact, cac
 
 - outcome: `A talent-competition platform with paid voting, ticketing and a live judged finale, with scoring computed in the database.`
 - proposition: `A competition and events platform with paid voting, live results and ticket checkout.`
-- role: `Sole developer`
-- timeline: `Oct – Dec 2025`
-- stack: Next.js 16, React 19, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind CSS 4, Vercel
+- role: `Sole developer and repository maintainer` (10 Nov 2026)
+- team: `Solo, with the company CEO` (10 Nov 2026)
+- timeline: `Oct – Dec 2025` (kept, 10 Nov 2026)
+- stack: Next.js 16, React 19, TypeScript, Supabase (Postgres, Auth, Realtime), Paystack, Resend, Sentry, Tailwind CSS 4, Vercel (Termii not added, Daniel 10 Nov 2026)
 - links: live `https://www.afromericaent.com/`; code `https://github.com/tobiakoko/afromerica-ent` (link it only after the repo clean-up in BUILD-PLAN "Outside this repo": root fix notes moved, `.backup` file removed)
 - stats (system facts until the client supplies figures): `35 / 10 / 30 / 25` final weighting: paid votes / public / judges / performance · `23` API routes · `10 min` one-time-code expiry. The weighting is from the live Final Results page (`/events/december-showcase-2025/leaderboard`, captured 5 Nov 2026); Daniel confirmed it replaces the earlier 60 / 40 figure. `TODO(content): replace with votes cast, tickets sold or peak voters if the client shares them`
 - Permission: given by the client (5 Nov 2026) to name them and use screenshots, including the artists page with contestants' photos and names (Daniel, 5 Nov 2026). Still blur voter names, emails and phone numbers.
@@ -445,14 +454,16 @@ Classes: actor = editors, visitors · ui = studio, web · service = contact, cac
 
 **Front matter**
 
-- outcome (after fixes): `TODO(content): e.g. "A collision-repair site that now delivers every estimate request" — only once the form fix is live`
+- outcome: `A collision repair website with a four-step estimate request and a quick message form that share one email delivery path.` (from Daniel's case study PDF, 9 Nov 2026)
 - proposition: `A small-business website for a collision-repair shop in Torrance, California.`
-- role: `Sole developer`
-- timeline: `Aug 2025 – Jan 2026`
-- stack: React 19, Vite, TypeScript, Tailwind CSS 4, Vercel Analytics
+- role: `Sole developer and repository maintainer` (10 Nov 2026)
+- team: `Solo, with the shop owner who handles follow-up on requests` (10 Nov 2026)
+- timeline: `Aug 2025 – Nov 2026`
+- stack: React 19, Vite, TypeScript, Tailwind CSS 4, Zod, Resend, Vercel Analytics, Vitest (matches `package.json` at 740b6bc)
 - location: Torrance, California
 - links: live `https://www.ronsbodyshop.net/`; code `https://github.com/tobiakoko/RonsBodyShop`
-- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown. On 9 Nov 2026 Daniel confirmed the project can be published. `TODO(content): does that cover the founding year (1980) and the rating (4.7, 85+ Google reviews)? The shop's own content file (src/content/shop.ts @ 740b6bc) still marks both "confirm with owner", and the card composite shows them.`
+- Permission: Daniel confirmed (5 Nov 2026) that the supplied screenshots can be shown. On 9 Nov 2026 Daniel confirmed the project can be published.
+- **Founded: 1982** (Daniel, 10 Nov 2026). Use 1982 in all portfolio copy. The live site and its screenshots still say "Est. 1980"; the owner is fine with that. Evidence in the shop's repo: the original site (commit 3d2c5d6, Jan 2026) said "Established 1982", "Circa 1982" and `foundingDate: "1982"`; the redesign changed it to 1980; 1983 appears nowhere. `TODO(content): final confirmation from the owner (1982 or 1983).` The rating (4.7, 85+ Google reviews) on the live site is still marked "confirm with owner" in `src/content/shop.ts`; don't repeat it in portfolio copy until confirmed.
 
 **Facts available now:** a collision-repair shop in Torrance, California; video hero; services, gallery, story and contact sections; Vercel Analytics tracks "Request Estimate" clicks; 44 commits from August 2025 to January 2026.
 
@@ -497,17 +508,19 @@ Classes: actor = customer, shop · ui = site, estimate, message · service = lea
 
 **Front matter**
 
-- outcome: `A single-page site for a Tampa law practice, delivered in three weeks.`
+- outcome: `A prerendered law firm website that helps prospective clients prepare a consultation request in their email app.` (10 Nov 2026)
 - proposition: `A straightforward web presence for a Tampa law practice.`
-- role: `Sole developer`
-- timeline: `May – Jun 2025`
-- stack: React Router 7, React 19, TypeScript, Tailwind CSS 4, Radix UI, Embla Carousel
+- year: `2025–2026`
+- role: `Sole developer and repository maintainer` (10 Nov 2026)
+- team: `Solo, with the attorney who handles follow-up` (10 Nov 2026)
+- timeline: `May 2025 – Nov 2026`
+- stack: React Router, React, TypeScript, Tailwind CSS, Vite (Daniel, 10 Nov 2026; not checked against the code here)
 - links: live `https://www.oseiprempeh.com/`; code `https://github.com/tobiakoko/D-Law`
-- Permission: Daniel confirmed on 9 Nov 2026 that the project can be published. `TODO(content): does that include the statistics and claims on the firm's site ("Over Two Decades", "20+", "800+")? Daniel's own case study PDF (9 Nov 2026) still lists statistics, case results, fees and testimonial consent as needing attorney review.`
+- Permission: Daniel confirmed on 9 Nov 2026 that the project can be published, and on 10 Nov 2026 that this covers the screenshots and the card composite, including the figures shown on the firm's site.
 
 Short case study (300–400 words): context, my role, practice-area structure (immigration, personal injury, international business, family law, contract disputes, criminal defense), search metadata and link previews, screenshots desktop and phone.
 
-`TODO(content): the firm must approve the statistics and testimonials shown on its site before any screenshot that includes them is used.` The supplied screenshots show both, so they're held in `assets/public/work/oseiprempeh/` (not deployed) until the firm approves.
+Screenshots: approved 10 Nov 2026. The cover was recaptured from the live site that day; the older supplied shots stay in `assets/public/work/oseiprempeh/`.
 
 **Architecture (supplied by Daniel, 9 Nov 2026).** Source: `Portfolio-Architecture-Mermaid.md`, drawn from [D-Law @ 6fd1c17](https://github.com/tobiakoko/D-Law/commit/6fd1c177b68ea11518d0ff301b71a2deaad6687d). `TODO(content): not yet checked against the code (no local copy of D-Law); check before publishing.` The diagram has no statistics or testimonials, so it can be used before the firm's approval.
 
@@ -715,7 +728,9 @@ The source file gives every diagram the same five classes (actor, ui, service, d
 - [ ] Lewisville: the Phase 4 before/after captures and a Studio editing screen
 - [ ] DLBC Tampa: material for Process and Architecture (§6.3 has none)
 - [ ] Ron's Body Shop: fixes done, then numbers and owner's OK
-- [ ] OseiPrempeh: firm's approval of statistics and testimonials
+- [ ] Ron's Body Shop: owner's final word on the founding year (1982 or 1983) and the 4.7 / 85+ rating (§6.4)
+- [x] OseiPrempeh: approved for publishing, screenshots included (10 Nov 2026)
+- [ ] Case study content for every page: Daniel to confirm, then remove `inProgress` (§6)
 - [ ] OseiPrempeh and ChoirHub architecture diagrams: check against the code (§6.5, §6.8)
 - [ ] Ron's Body Shop: is the 5 Nov lead fix live, and is Turnstile on in production? (§6.4)
 - [ ] ChoirHub: a case study or not; if yes, front matter, permission and screenshots (§6.8)
