@@ -116,7 +116,7 @@ Goal: apply the Warm Editorial system (`DESIGN-SYSTEM.md`) to the existing app, 
 
 - [ ] **4.1** (*Mostly covered by R.8; still to add: the `/projects/*` redirect check, which needs Vercel's routing.*) Playwright + `@axe-core/playwright`: every page returns 200, has one H1, its own title and canonical, 0 serious or critical axe violations, and no horizontal scroll at 320 px. Test the mobile menu by keyboard and the theme toggle. Unknown URLs return the 404 page. `/projects/*` redirects to `/work/*`.
 - [ ] **4.2** GitHub Actions on pull requests: `npm ci`, typecheck, lint, build, Playwright, and Lighthouse CI (mobile) with the budgets in `DESIGN-SYSTEM.md`. Fail the PR if any fails.
-- [ ] **4.3** README: what the site is, stack, decisions, Lighthouse scores, how to run, a screenshot.
+- [x] **4.3** (*10 Nov 2026*) README: what the site is, stack, decisions, Lighthouse scores, how to run, a screenshot.
 - [ ] **4.4** Final pass: spell-check every page; check every external link; confirm copy matches `CONTENT.md`.
 
 **Gate 4:** CI green; Lighthouse budgets met on every page.

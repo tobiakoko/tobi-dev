@@ -211,10 +211,12 @@ Degree names and dates from Daniel (5 Nov 2026). The prototype shows "Year to be
 
 ### 4.8 Certifications (label: Certifications)
 
-- ITIL Foundation
-- LPI Linux Essentials
+| Certification | Credential ID | Issued |
+| --- | --- | --- |
+| ITIL Foundation | 9980093812593301 | Jun 2024 |
+| LPI Linux Essentials | LPI000616819 | Jun 2024 |
 
-`TODO(content): years earned.`
+Issue dates and credential IDs from Daniel (10 Nov 2026).
 
 ### 4.9 Community (label: Community)
 
@@ -743,7 +745,7 @@ The source file gives every diagram the same five classes (actor, ui, service, d
 - [x] Résumé: not used (§1)
 - [x] MBA and B.S. dates
 - [x] B.A. and A.S. names and dates (§4.7)
-- [ ] Years for both certifications
+- [x] Years for both certifications: Jun 2024, with credential IDs (§4.8)
 - [x] Bio and Origins use "criminal justice"
 - [x] Roles and dates (§4.5); Hospitality years, USF IT Service Desk and CCBC roles added 10 Nov 2026
 - [ ] DLBC ICT role: a link to the donation project, or rewritten bullets (§4.5 comment)

@@ -162,8 +162,17 @@ const education: Degree[] = [
   },
 ];
 
-// TODO(content): years earned.
-const certifications = ['ITIL Foundation', 'LPI Linux Essentials'];
+interface Certification {
+  name: string;
+  issued: string;
+  credentialId: string;
+}
+
+// CONTENT.md §4.8 (Daniel, 10 Nov 2026).
+const certifications: Certification[] = [
+  { name: 'ITIL Foundation', issued: 'Jun 2024', credentialId: '9980093812593301' },
+  { name: 'LPI Linux Essentials', issued: 'Jun 2024', credentialId: 'LPI000616819' },
+];
 
 const community = [
   'Media production, choir direction and digital streaming, Deeper Life Bible Church',
@@ -301,10 +310,14 @@ export default function About() {
         <div className="two-col-divided">
           <section aria-label="Certifications">
             <h2 className="label">Certifications</h2>
-            <ul className="ruled">
+            <ul className="ruled edu-list">
               {certifications.map((c) => (
-                <li key={c}>
-                  <span className="ruled__main">{c}</span>
+                <li key={c.name}>
+                  <span>
+                    <span className="ruled__main">{c.name}</span>
+                    <span className="edu-list__school">Credential ID {c.credentialId}</span>
+                  </span>
+                  <span className="ruled__note">Issued {c.issued}</span>
                 </li>
               ))}
             </ul>
