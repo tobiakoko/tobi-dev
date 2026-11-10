@@ -38,6 +38,10 @@
             ]
         },
         {
+            "source": "/(__spa-fallback|404).html",
+            "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+        },
+        {
             "source": "/assets/(.*)",
             "headers": [
                 {
