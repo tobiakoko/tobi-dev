@@ -10,7 +10,7 @@ featured: true
 year: '2025'
 role: Sole developer and repository maintainer
 team: Solo, with the company CEO
-timeline: Oct – Dec 2025
+timeline: Aug – Dec 2025
 stack:
   [
     Next.js 16,
