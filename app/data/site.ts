@@ -11,6 +11,91 @@ export const GITHUB_URL = 'https://github.com/tobiakoko';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/daniel-akoko/';
 export const AVAILABILITY = 'Open to full-time roles and freelance projects';
 
+/** One-line summary for the Person structured data (Daniel, 10 Nov 2026). */
+export const PERSON_DESCRIPTION =
+  'Full-stack software engineer (React, Next.js, TypeScript) building, auditing, and rebuilding production web apps.';
+
+export interface Degree {
+  degree: string;
+  school: string;
+  dates: string;
+}
+
+/** About "Education" and the Person schema's alumniOf (CONTENT.md §4.7). */
+export const EDUCATION: Degree[] = [
+  {
+    degree: 'Master of Business Administration (in progress)',
+    school: 'Western Governors University',
+    dates: 'Jun 2026 – Jun 2027 (expected)',
+  },
+  {
+    degree: 'B.S. Computer Science',
+    school: 'Western Governors University',
+    dates: 'Apr 2023 – Sep 2024',
+  },
+  {
+    degree: 'Bachelor of Arts (BA), Criminal Justice',
+    school: 'University of South Florida',
+    dates: 'Sep 2018 – Dec 2022',
+  },
+  {
+    degree: 'Associate of Science (AS), Electrical Engineering',
+    school: 'Community College of Baltimore County',
+    dates: 'Aug 2015 – May 2018',
+  },
+];
+
+export interface Certification {
+  name: string;
+  issued: string;
+  credentialId: string;
+}
+
+/** About "Certifications" and the Person schema's hasCredential (CONTENT.md §4.8). */
+export const CERTIFICATIONS: Certification[] = [
+  { name: 'ITIL Foundation', issued: 'Jun 2024', credentialId: '9980093812593301' },
+  { name: 'LPI Linux Essentials', issued: 'Jun 2024', credentialId: 'LPI000616819' },
+];
+
+/** The Person schema's knowsAbout, as Daniel listed it (10 Nov 2026). */
+export const KNOWS_ABOUT = [
+  'React',
+  'Next.js',
+  'TypeScript',
+  'JavaScript',
+  'Node.js',
+  'Java',
+  'SQL',
+  'PostgreSQL',
+  'Supabase',
+  'Tailwind CSS',
+  'Sanity CMS',
+  'HTML5',
+  'CSS',
+  'REST APIs',
+  'GraphQL',
+  'React Native',
+  'Web Accessibility (WCAG 2.2)',
+  'CI/CD (GitHub Actions)',
+  'Automated testing (Jest, Playwright, axe)',
+  'Design systems',
+  'Payment API integration (Paystack)',
+  'LED display systems (NovaStar)',
+  'AV and livestream systems',
+  'Team leadership and fundraising',
+  'IT Service Management (ITIL)',
+  'Linux',
+  'Requirements gathering',
+  'User stories and acceptance criteria',
+  'UAT and QA testing',
+  'Business and systems analysis',
+  'Jira',
+  'Confluence',
+  'ServiceNow',
+  'SDLC',
+  'Technical documentation',
+];
+
 // TODO(content): Cal.com or Calendly URL. Every "Book a call" link stays hidden while null.
 export const BOOKING_URL: string | null = null;
 

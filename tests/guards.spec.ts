@@ -33,3 +33,25 @@ test('the hero photo has real alt text and no credit line (CONTENT.md §2.2)', a
   await expect(page.locator('.hero-credit')).toHaveCount(0);
   await expect(page.locator('.hero')).not.toContainText('Unsplash');
 });
+
+test('the Person structured data carries schools, certifications and skills, no image', async ({
+  page,
+}) => {
+  await page.goto('/about');
+  const json = await page.locator('script[type="application/ld+json"]').first().textContent();
+  const person = JSON.parse(json!)['@graph'].find(
+    (n: { '@type': string }) => n['@type'] === 'Person',
+  );
+  expect(person.name).toBe('Daniel Akoko');
+  expect(person.alumniOf.map((s: { name: string }) => s.name)).toEqual([
+    'Western Governors University',
+    'University of South Florida',
+    'Community College of Baltimore County',
+  ]);
+  expect(person.hasCredential.map((c: { identifier: string }) => c.identifier)).toEqual([
+    '9980093812593301',
+    'LPI000616819',
+  ]);
+  expect(person.knowsAbout).toContain('Business and systems analysis');
+  expect(person.image).toBeUndefined();
+});
